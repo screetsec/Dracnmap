@@ -46,6 +46,14 @@ you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDz
 - Uptodate new tools hacking visit http://www.kitploit.com
 - My Friends ( Boy Suganda )
 
+## Book for nmap
+
+- Nmap 6: Network exploration and security auditing Cookbook
+- Nmap Host Discovery Techniques
+- Nmap Cheat Sheet (PDF) - 8ack
+- Nmap - A Stealth Port Scanner - Villanova Computer Science
+- Nmap Quick Reference Guide - SCADAhacker
+
 ## Disclaimer
 
 ***Note: modifications, changes, or alterations to this sourcecode is acceptable, however,any public releases utilizing this code must be approved by writen this tool ( Edo -m- ).***
