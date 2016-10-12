@@ -18,7 +18,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ## Getting Started
 1. ```git clone https://github.com/Screetsec/Dracnmap.git```
 2. ```cd Dracnmap```
-3. ```chmod +x Dracnmap.sh ```
+3. ```chmod +x Dracnmap ```
 
 ##  :heavy_exclamation_mark: Requirements
 
