@@ -5,7 +5,7 @@
 #
 #                       Welcome and dont disclaimer
 #                     Dracnmap Author By Edo -maland-
-#                 Tested On Kali Linux and Kali sana v.2
+#                 Tested On Kali Linux and Dracos
 #       contact me in screetsec@gmail.com or screetsec@dracos-linux.org
 #          OS Penetration From Indonesia : https://dracos-linux.org/
 #============================================================================================================
@@ -138,52 +138,52 @@ function scanoutput() {
              read DrS
 
            if test $DrS == '1'
-        				then
+               then
                  echo
-        			   echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+        	 echo -ne $cyan"  Path Location: /Dracnmap/Output/"
                  echo
-        			   echo -ne "  Name of Report:"
-        			   read namafile
+        	 echo -ne "  Name of Report:"
+        	 read namafile
                  echo
                  echo -ne "  What is your IP Target or Host: "
                  read ip
                  echo
                  nmap -A -O -oX 	Output/$namafile.xml $ip
                  firefox Output/$namafile.xml
-        		elif test $DrS == '2'
-        				then
+           elif test $DrS == '2'
+        	then
                   echo
-            	    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+            	  echo -ne $cyan"  Path Location: /Dracnmap/Output/"
                   echo
-            	    echo -ne "  Name of Report:"
-            	    read namafile
+            	  echo -ne "  Name of Report:"
+            	  read namafile
                   echo
                   echo -ne "  What is your IP Target or Host: "
                   read ip
                   echo
-                  nmap -A -O -oX 	Output/$namafile.xml $ip5
-        			  	xsltproc Output/$namafile.xml -o Output/$namafile.html
-        			  	firefox Output/$namafile.html
-        		elif test $DrS == '3'
-        				then
+                  nmap -A -O -oX Output/$namafile.xml $ip5
+        	  xsltproc Output/$namafile.xml -o Output/$namafile.html
+        	  firefox Output/$namafile.html
+            elif test $DrS == '3'
+        	  then
                   echo
-                	echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+                  echo -ne $cyan"  Path Location: /Dracnmap/Output/"
                   echo
-                	echo -ne "  Name of Report:"
-                	read namafile
+                  echo -ne "  Name of Report:"
+                  read namafile
                   echo
                   echo -ne "  What is your IP Target or Host: "
                   read ip
                   echo
                   nmap -F -oN Output/$namafile.txt $ip
                   nano Output/$namafile.txt
-        		elif test $DrS == '4'
-        				then
+             elif test $DrS == '4'
+        	  then
                   echo
-                	echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+                  echo -ne $cyan"  Path Location: /Dracnmap/Output/"
                   echo
-                	echo -ne "  Name of Report:"
-                	read namafile
+                  echo -ne "  Name of Report:"
+                  read namafile
                   echo
                   echo -ne "  What is your IP Target or Host: "
                   read ip
@@ -191,9 +191,9 @@ function scanoutput() {
                   nmap -F -oG Output/$namafile.grep $ip5
                   nano Output/$namafile.grep
               elif test $DrS == '5'
-                then
-                menu
-       			else
+                  then
+                	menu
+       		  else
        			  	echo -e "  Incorrect Number"
         			fi
         			echo -n -e "  Back to Last Menu? ( Yes / No ) :"
@@ -578,25 +578,25 @@ echo ""
 				echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
  				read ip
 				xterm -hold -fa monaco -fs 13 -bg black -e nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" $ip
-      elif test $Scanning == '8'
-        then
-        menu
-      else
-          echo ""
-          echo -e $okegreen " Incorrect Number"
-        fi
-        echo ""
-        echo ""
-        echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-      read back
-      if [ $back != 'n' ] && [ $back != 'N' ]
-          then
-          clear
-          menu
-      elif [ $back != 'y' ] && [ $back != 'Y' ]
-          then
-          zenmapscript
-      fi
+      			elif test $Scanning == '8'
+        			then
+        			menu
+     			else
+     			    echo ""
+     			    echo -e $okegreen " Incorrect Number"
+     			  fi
+     			  echo ""
+     			  echo ""
+     			  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+     			read back
+     			if [ $back != 'n' ] && [ $back != 'N' ]
+     			    then
+     			    clear
+     			    menu
+     			elif [ $back != 'y' ] && [ $back != 'Y' ]
+     			    then
+     			    zenmapscript
+     			fi
  }
 
 ################################################
