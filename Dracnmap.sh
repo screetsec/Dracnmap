@@ -27,7 +27,6 @@ Version='1.0'
 Codename='Komodoku'
 
 #Bebeku
-#Checking
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
 resize -s 50 84 > /dev/null
 
