@@ -432,28 +432,28 @@ function pingbebeb() {
              read DrS
 
            if test $DrS == '1'
-        				then
+        	  then
                   echo -e $cyan""
                   echo -n "  What is your IP Target or Host: " ; tput sgr0
-           				read ip
-          				xterm -hold -fa monaco -fs 13 -bg black -e nmap --script broadcast-ping --script-args broadcast-ping.num_probes=5 $ip
+           	  read ip
+          	  xterm -hold -fa monaco -fs 13 -bg black -e nmap --script broadcast-ping --script-args broadcast-ping.num_probes=5 $ip
                   pingbebeb
-        		elif test $DrS == '2'
-        				then
+           elif test $DrS == '2'
+               	  then
                   echo -e $cyan""
                   echo -n "  What is your IP Target or Host: " ; tput sgr0
-           				read ip
-          				xterm -hold -fa monaco -fs 13 -bg black -e nmap -sP -PS $ip
+           	  read ip
+          	  xterm -hold -fa monaco -fs 13 -bg black -e nmap -sP -PS $ip
                   pingbebeb
-        		elif test $DrS == '3'
-        				then
+           elif test $DrS == '3'
+                  then
                   echo -e $cyan""
                   echo -n "  What is your IP Target or Host: " ; tput sgr0
                   read ip
                   xterm -hold -fa monaco -fs 13 -bg black -e nmap -sP -PA $ip
                   pingbebeb
-        		elif test $DrS == '4'
-        				then
+            elif test $DrS == '4'
+                  then
                   echo -e $cyan""
                   echo -n "  What is your IP Target or Host: " ; tput sgr0
                   read ip
@@ -467,7 +467,7 @@ function pingbebeb() {
                   xterm -hold -fa monaco -fs 13 -bg black -e nmap -sP -PE $ip
                   pingbebeb
             elif test $DrS == '6'
-            		then
+               	  then
                   echo -e $cyan""
                   echo -n "  What is your IP Target or Host: " ; tput sgr0
                   read ip
