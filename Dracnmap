@@ -557,8 +557,6 @@ echo ""
 				echo
 				echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
  				read ip
-				xterm nmap -sn $ip
-				echo -e ""
 				xterm -hold -fa monaco -fs 13 -bg black -e nmap -T4 -F $ip
 			elif test $Scanning == '5'
 				then
