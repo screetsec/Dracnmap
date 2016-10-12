@@ -1,4 +1,4 @@
-#/bin/bash
+#!/usr/bin/env bash
 
 #============================================================================================================
 #                               Dracnmap
@@ -27,7 +27,11 @@ Version='1.0'
 Codename='Komodoku'
 
 #Bebeku
-[[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
+if [[ $EUID -ne 0 ]]; then
+	echo "ERROR! Run this script with root user!"
+	exit 1
+fi
+
 resize -s 50 84 > /dev/null
 
 ###############################################
