@@ -38,7 +38,7 @@ you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDz
 ## :octocat: Credits
 
 - Thanks to allah and Screetsec [ Edo -maland- ] <Me> 
-- Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/ 
+- Dracos Linux from Scratch Indonesia ( Awesome Penetration os ), you can see in http://dracos-linux.org/ 
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
 - http://www.kali.org/"   
 - Jack Wilder admin in http://www.linuxsec.org
