@@ -148,7 +148,7 @@ function scanoutput() {
                  echo -ne "  What is your IP Target or Host: "
                  read ip
                  echo
-                 nmap -A -O -oX 	Output/$namafile.xml $ip
+                 nmap -A -O -oX Output/$namafile.xml $ip
                  firefox Output/$namafile.xml
            elif test $DrS == '2'
         	then
