@@ -7,7 +7,7 @@ Hence Dracnmap is designed to perform fast scaning with the utilizing script eng
 
 #Screenshot
 <img src="https://cloud.githubusercontent.com/assets/17976841/19298772/7a54ba56-907a-11e6-98dc-e5e93689d07a.png" width="55%"></img> 
-#--------------------------------------------------------------------
+#-----------------------------------------------------------------------
 <img src="https://cloud.githubusercontent.com/assets/17976841/19298781/83ff7e1a-907a-11e6-9def-cfb080bf5f61.png" width="45%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/19298782/840556be-907a-11e6-864a-ea272cbbacb7.png" width="45%"></img> 
 
 
