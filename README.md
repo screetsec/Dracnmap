@@ -45,7 +45,7 @@ you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDz
 - Jack Wilder admin in http://www.linuxsec.org
 - And another open sources tool in github
 - Uptodate new tools hacking visit http://www.kitploit.com
-- My Friends ( Boy Suganda )
+- My Friends ( Boy Suganda Sinaga [ dragz17 ] )
 
 ## Book for nmap
 
