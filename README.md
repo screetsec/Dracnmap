@@ -27,9 +27,11 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 - Must install nmap 
 
-## Tutorial ? 
+## Tutorial ?  or another tool ? 
 
 you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
+
+thefatrat , Backdoor Creator ( bypass av ) : https://github.com/Screetsec/TheFatRat
 
 ## BUG ? 
 - Submit new issue 
