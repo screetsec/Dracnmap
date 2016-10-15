@@ -94,7 +94,7 @@ fi
 
 # check apache if exists
       which nmap > /dev/null 2>&1
-      if [ -d $find ]; then
+      if [ "$?" -eq "0" ]; then
       echo [✔]::[ Nmap ]: installation found!;
 else
 
