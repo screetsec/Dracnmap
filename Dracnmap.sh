@@ -23,7 +23,7 @@ BlueF='\e[1;34m'
 
 
 #Variable
-Version='1.0'
+Version='1.1'
 Codename='Komodoku'
 
 #Bebeku
@@ -625,7 +625,10 @@ echo ""
     echo -e $white"	[$okegreen"06"$white]$cyan  ENUMERATING USERS IN AN SMTP SERVER "
     echo -e $white"	[$okegreen"07"$white]$cyan  DETECTING WEB SERVERS VULNERABLE TO SLOWLORIS DDOS  "
     echo -e $white"	[$okegreen"08"$white]$cyan  FINDING SQL INJECTION VULNERABILITIES  "
-    echo -e $white"	[$okegreen"09"$white]$cyan  BACK  "
+    echo -e $white"	[$okegreen"09"$white]$cyan  CHECK IP GEOLOCATION WITH NSE  "
+    echo -e $white"	[$okegreen"10"$white]$cyan  GATHERING INFORMATION FROM WHOIS (NSE)  "
+    echo -e $white"	[$okegreen"11"$white]$cyan  COLLECTING VALID EMAIL ADDRES  "
+    echo -e $white"	[$okegreen"12"$white]$cyan  BACK  "
     echo -e " "
     echo -n -e $red'  \033[4mScreetsec@WebService:\033[0m>> '; tput sgr0 #insert your choice
     read Scanning
@@ -680,7 +683,25 @@ echo ""
       echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
       read ip
       xterm -hold -fa monaco -fs 13 -bg black -e nmap -p80 --script http-sql-injection $ip
-    elif test $Scanning == '9'
+		elif test $Scanning == '9'
+      then
+      echo
+      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+      read ip
+      xterm -hold -fa monaco -fs 13 -bg black -e nmap -Pn -p80 --script ip-geolocation-* $ip
+		elif test $Scanning == '10'
+      then
+      echo
+      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+      read ip
+      xterm -hold -fa monaco -fs 13 -bg black -e nmap -sn --script whois-ip --script-args whois.whodb=nocache $ip
+		elif test $Scanning == '11'
+      then
+      echo
+      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+      read ip
+      xterm -hold -fa monaco -fs 13 -bg black -e nmap -p80 --script http-google-email,http-email-harvest $ip
+    elif test $Scanning == '12'
       then
       menu
     else
