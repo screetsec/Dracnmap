@@ -203,11 +203,11 @@ function scanoutput() {
         			fi
         			echo -n -e "  Back to Last Menu? ( Yes / No ) :"
        			read back
-       			if [ $back != 'n' ] && [ $back != 'N' ]
+       			if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
        					then
        					clear
        					menu
-       			elif [ $back != 'y' ] && [ $back != 'Y' ]
+       			elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
        					then
        					scanoutput
        			fi
@@ -393,11 +393,11 @@ echo "                                                   ";
                echo ""
                echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
              read back
-             if [ $back != 'n' ] && [ $back != 'N' ]
+             if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
                  then
                  clear
                  menu
-             elif [ $back != 'y' ] && [ $back != 'Y' ]
+             elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
                  then
                  brutense
              fi
@@ -489,11 +489,11 @@ function pingbebeb() {
               echo ""
         			echo -n -e $cyan " Back to Last Menu? ( Yes / No ) :"
        			read back
-       			if [ $back != 'n' ] && [ $back != 'N' ]
+       			if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
        					then
        					clear
        					menu
-       			elif [ $back != 'y' ] && [ $back != 'Y' ]
+       			elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
        					then
        					pingbebeb
        			fi
@@ -592,11 +592,11 @@ echo ""
      			  echo ""
      			  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
      			read back
-     			if [ $back != 'n' ] && [ $back != 'N' ]
+     			if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
      			    then
      			    clear
      			    menu
-     			elif [ $back != 'y' ] && [ $back != 'Y' ]
+     			elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
      			    then
      			    zenmapscript
      			fi
@@ -712,11 +712,11 @@ echo ""
       echo ""
       echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
     read back
-    if [ $back != 'n' ] && [ $back != 'N' ]
+    if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
         then
         clear
         menu
-    elif [ $back != 'y' ] && [ $back != 'Y' ]
+    elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
         then
         WebService
     fi
@@ -884,11 +884,11 @@ echo -e $okegreen"    ========================================================= 
 			fi
 			echo -n -e "  Do you want exit? ( Yes / No ) :"
 			read back
-			if [ $back != 'n' ] && [ $back != 'N' ]
+			if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
 					then
 					clear
 					exit
-			elif [ $back != 'y' ] && [ $back != 'Y' ]
+			elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
 					then
 					menu
   fi
@@ -1024,11 +1024,11 @@ echo -e $okegreen"    ========================================================= 
 			fi
 			echo -n -e "  Do you want exit? ( Yes / No ) :"
 			read back
-			if [ $back != 'n' ] && [ $back != 'N' ]
+			if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
 					then
 					clear
 					exit
-			elif [ $back != 'y' ] && [ $back != 'Y' ]
+			elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
 					then
 					menu
 fi
