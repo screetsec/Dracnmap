@@ -32,6 +32,10 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+if [ -z "${DISPLAY:-}" ]; then
+    echo -e "\e[1;31mThe script should be executed inside a X (graphical) session."$transparent""
+    exit 1
+fi
 resize -s 50 84 > /dev/null
 
 ###############################################
