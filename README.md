@@ -36,6 +36,7 @@ thefatrat , Backdoor Creator ( bypass av ) : https://github.com/Screetsec/TheFat
 ## BUG ? 
 - Submit new issue 
 - pm me
+- Hey sup ? do you want ask about all my tools ? you can join me in telegram.me/offscreetsec
 
 
 ## :octocat: Credits
