@@ -1,4 +1,4 @@
-#What is Dracnmap?
+#What is Dracnmap? [ v1.3 ]
 
 Dracnmap is an open source program which is using to exploit the network and gathering information with nmap help.
 Nmap command comes with lots of options that can make the utility more robust and difficult to follow for new users.
@@ -34,8 +34,8 @@ you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDz
 thefatrat , Backdoor Creator ( bypass av ) : https://github.com/Screetsec/TheFatRat
 
 ## BUG ? 
-- Submit new issue 
-- pm me
+- Please Submit new issue 
+- Contact me
 - Hey sup ? do you want ask about all my tools ? you can join me in telegram.me/offscreetsec
 
 
