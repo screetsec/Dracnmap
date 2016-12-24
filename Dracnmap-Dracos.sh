@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #============================================================================================================
-#                               Dracnmap
+#                               Dracnmap for dracos
 #
 #                       Welcome and dont disclaimer
 #                     Dracnmap Author By Edo -maland-
