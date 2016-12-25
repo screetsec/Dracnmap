@@ -132,7 +132,7 @@ sleep 2
       echo [✔]::[xterm]: installation found!;
 else
 
-   echo [x]::[warning]:this script require Nmap ;
+   echo [x]::[warning]:this script require xterm ;
    echo ""
    echo [!]::[please wait]: please install .... ;
    apt-get update
