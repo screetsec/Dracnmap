@@ -1,4 +1,4 @@
-#What is Dracnmap? [ v1.3 ]
+#What is Dracnmap? [ v2.0 ]
 
 Dracnmap is an open source program which is using to exploit the network and gathering information with nmap help.
 Nmap command comes with lots of options that can make the utility more robust and difficult to follow for new users.
