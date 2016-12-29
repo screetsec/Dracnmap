@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 #============================================================================================================
-#                               Dracnmap for dracos
+#                           Dracnmap for dracos
 #
 #                       Welcome and dont disclaimer
-#                     Dracnmap Author By Edo -maland-
-#                 Tested On Kali Linux and Dracos
+#             Dracnmap Author By Edo -maland- a.k.a screetsec
+#                     Tested On Kali Linux and Dracos
 #       contact me in screetsec@gmail.com or screetsec@dracos-linux.org
-#          OS Penetration From Indonesia : https://dracos-linux.org/
+#           OS Penetration From Indonesia : https://dracos-linux.org/
 #============================================================================================================
 
 
