@@ -126,11 +126,11 @@ sleep 2
       echo [✔]::[urxvt]: installation found!;
 else
 
-   echo [x]::[warning]:this script require Nmap ;
+   echo [x]::[warning]:this script require urxvt ;
    echo ""
    echo [!]::[please wait]: please install .... ;
    apt-get update
-   apt-get install urxvt
+   apt-get install rxvt-unicode-256color ncurses-term
    echo ""
    sleep 2
    exit
