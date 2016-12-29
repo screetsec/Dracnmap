@@ -121,16 +121,16 @@ else
 fi
 sleep 2
 # check urxvt if exists
-      which urxvt > /dev/null 2>&1
+      which xterm > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[urxvt]: installation found!;
+      echo [✔]::[xterm]: installation found!;
 else
 
-   echo [x]::[warning]:this script require Nmap ;
+   echo [x]::[warning]:this script require xterm ;
    echo ""
    echo [!]::[please wait]: please install .... ;
    apt-get update
-   apt-get install urxvt
+   apt-get install xterm
    echo ""
    sleep 2
    exit
