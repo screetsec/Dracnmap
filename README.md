@@ -48,7 +48,7 @@ thefatrat , Backdoor Creator ( bypass av ) : https://github.com/Screetsec/TheFat
 - Jack Wilder admin in http://www.linuxsec.org
 - And another open sources tool in github
 - Uptodate new tools hacking visit http://www.kitploit.com
-- My Friends ( Boy Suganda Sinaga [ dragz17 ] )
+- Contribute Boy Suganda Sinaga [ dragz17 ] 
 
 ## Book for nmap
 
