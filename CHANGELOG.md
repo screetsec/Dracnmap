@@ -1,3 +1,6 @@
+* v2.2 - add multi task in dracnmap when scan 
+* v2.2 - the output file will be in root / on folder dracnmap
+* v2.1 - Fixed bug ( typo and double function )
 * v2.0 - Changed a banner
 * v2.0 - added auth-category (34 OPTIONAL)  in to nmap script engine Advanced
 * v2.0 - added broadcast-category (44 OPTIONAL) in to nmap script engine Advanced
