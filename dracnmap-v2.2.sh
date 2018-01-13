@@ -43,6 +43,11 @@ readonly _init_directory="$(dirname "$(readlink -f "$0")")"
 readonly _src_directory="${_init_directory}/src"
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - added _functions_file variable
+# Directory structure.
+readonly _functions_file="${_src_directory}/functions"
+
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - added _modules_directory variable
 #   - added _modules_stack array
 #   - separated modules into files
