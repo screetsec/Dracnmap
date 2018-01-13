@@ -3,10 +3,13 @@
 ################################################
 # PSCANNING FOR WEB SERVICE
 ################################################
+
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - removed blank spaces/tabs
 function WebService() {
   clear
-echo -e $cyan ""
-echo ""
+  echo -e $cyan ""
+  echo ""
   echo -e $red " __      __      ___.       _________                  .__              ";
   echo "/  \    /  \ ____\_ |__    /   _____/ ______________  _|__| ____  ____  ";
   echo "\   \/\/   // __ \| __ \   \_____  \_/ __ \_  __ \  \/ /  |/ ___\/ __ \ ";
@@ -15,107 +18,107 @@ echo ""
   echo -e $okegreen
   echo " -----------------------------------------------------------------------"
   echo ""
-    echo -e $white" [$okegreen"01"$white]$cyan  DETECTING WEB APPLICATION FIREWALLS  "
-    echo -e $white" [$okegreen"02"$white]$cyan  DETECTING POSSIBLE XST VULNERABILITIES "
-    echo -e $white" [$okegreen"03"$white]$cyan  DETECTING OPEN RELAYS "
-    echo -e $white" [$okegreen"04"$white]$cyan  DETECTING BACKDOOR SMTP SERVERS "
-    echo -e $white" [$okegreen"05"$white]$cyan  DETECTING CROSS SITE SCRIPTING VULNERABILITIES  "
-    echo -e $white" [$okegreen"06"$white]$cyan  ENUMERATING USERS IN AN SMTP SERVER "
-    echo -e $white" [$okegreen"07"$white]$cyan  DETECTING WEB SERVERS VULNERABLE TO SLOWLORIS DDOS  "
-    echo -e $white" [$okegreen"08"$white]$cyan  FINDING SQL INJECTION VULNERABILITIES  "
-    echo -e $white" [$okegreen"09"$white]$cyan  CHECK IP GEOLOCATION WITH NSE  "
-    echo -e $white" [$okegreen"10"$white]$cyan  GATHERING INFORMATION FROM WHOIS (NSE)  "
-    echo -e $white" [$okegreen"11"$white]$cyan  COLLECTING VALID EMAIL ADDRES  "
-    echo -e $white" [$okegreen"12"$white]$cyan  BACK  "
-    echo -e " "
-    echo -n -e $red'  \033[4mScreetsec@WebService:\033[0m>> '; tput sgr0 #insert your choice
-    read Scanning
-    if test $Scanning == '1'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-      read ip
-      $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $ip &
-    elif test $Scanning == '2'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-      read ip
-      nmap -sS -sU -T4 -A -v $ip
-      $xterm -p80 --script http-methods,http-trace --script-args http-methods.retest $ip &
-    elif test $Scanning == '3'
-      then
-      echo
-      echo -ne  $okegreen" What is your IP Target or Host: " ; tput sgr0
-      read ip
-      $xterm -sV --script smtp-open-relay -v $ip &
-    elif test $Scanning == '4'
-      then
-      echo
-      echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-      read ip
-      $xterm nmap -sn $ip
-      echo -e ""
-      $xterm -sV --script smtp-strangeport $ip &
-    elif test $Scanning == '5'
-      then
-      echo
-      echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-      read ip
-      $xterm -p80 --script http-phpself-xss,http-unsafe-output-escaping $ip &
-    elif test $Scanning == '6'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: "; tput sgr0
-      read ip
-      $xterm -p25 –script smtp-enum-users $ip &
-    elif test $Scanning == '7'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-      read ip
-      $xterm -p80 --script http-slowloris --max-parallelism 300 $ip &
-    elif test $Scanning == '8'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-      read ip
-      $xterm -p80 --script http-sql-injection $ip &
-    elif test $Scanning == '9'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-      read ip
-      $xterm -Pn -p80 --script ip-geolocation-* $ip &
-    elif test $Scanning == '10'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-      read ip
-      $xterm -sn --script whois-ip --script-args whois.whodb=nocache $ip &
-    elif test $Scanning == '11'
-      then
-      echo
-      echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-      read ip
-      $xterm -p80 --script http-google-email,http-email-harvest $ip &
-    elif test $Scanning == '12'
-      then
-      menu
-    else
-        echo ""
-        echo -e $okegreen " Incorrect Number"
-      fi
-      echo ""
-      echo ""
-      echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-    read back
-    if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-        then
-        clear
-        menu
-    elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-        then
-        WebService
-    fi
+  echo -e $white" [$okegreen"01"$white]$cyan  DETECTING WEB APPLICATION FIREWALLS  "
+  echo -e $white" [$okegreen"02"$white]$cyan  DETECTING POSSIBLE XST VULNERABILITIES "
+  echo -e $white" [$okegreen"03"$white]$cyan  DETECTING OPEN RELAYS "
+  echo -e $white" [$okegreen"04"$white]$cyan  DETECTING BACKDOOR SMTP SERVERS "
+  echo -e $white" [$okegreen"05"$white]$cyan  DETECTING CROSS SITE SCRIPTING VULNERABILITIES  "
+  echo -e $white" [$okegreen"06"$white]$cyan  ENUMERATING USERS IN AN SMTP SERVER "
+  echo -e $white" [$okegreen"07"$white]$cyan  DETECTING WEB SERVERS VULNERABLE TO SLOWLORIS DDOS  "
+  echo -e $white" [$okegreen"08"$white]$cyan  FINDING SQL INJECTION VULNERABILITIES  "
+  echo -e $white" [$okegreen"09"$white]$cyan  CHECK IP GEOLOCATION WITH NSE  "
+  echo -e $white" [$okegreen"10"$white]$cyan  GATHERING INFORMATION FROM WHOIS (NSE)  "
+  echo -e $white" [$okegreen"11"$white]$cyan  COLLECTING VALID EMAIL ADDRES  "
+  echo -e $white" [$okegreen"12"$white]$cyan  BACK  "
+  echo -e " "
+  echo -n -e $red'  \033[4mScreetsec@WebService:\033[0m>> '; tput sgr0 #insert your choice
+  read Scanning
+  if test $Scanning == '1'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+  read ip
+  $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $ip &
+  elif test $Scanning == '2'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+  read ip
+  nmap -sS -sU -T4 -A -v $ip
+  $xterm -p80 --script http-methods,http-trace --script-args http-methods.retest $ip &
+  elif test $Scanning == '3'
+  then
+  echo
+  echo -ne  $okegreen" What is your IP Target or Host: " ; tput sgr0
+  read ip
+  $xterm -sV --script smtp-open-relay -v $ip &
+  elif test $Scanning == '4'
+  then
+  echo
+  echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
+  read ip
+  $xterm nmap -sn $ip
+  echo -e ""
+  $xterm -sV --script smtp-strangeport $ip &
+  elif test $Scanning == '5'
+  then
+  echo
+  echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
+  read ip
+  $xterm -p80 --script http-phpself-xss,http-unsafe-output-escaping $ip &
+  elif test $Scanning == '6'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: "; tput sgr0
+  read ip
+  $xterm -p25 –script smtp-enum-users $ip &
+  elif test $Scanning == '7'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+  read ip
+  $xterm -p80 --script http-slowloris --max-parallelism 300 $ip &
+  elif test $Scanning == '8'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+  read ip
+  $xterm -p80 --script http-sql-injection $ip &
+  elif test $Scanning == '9'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+  read ip
+  $xterm -Pn -p80 --script ip-geolocation-* $ip &
+  elif test $Scanning == '10'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+  read ip
+  $xterm -sn --script whois-ip --script-args whois.whodb=nocache $ip &
+  elif test $Scanning == '11'
+  then
+  echo
+  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+  read ip
+  $xterm -p80 --script http-google-email,http-email-harvest $ip &
+  elif test $Scanning == '12'
+  then
+  menu
+  else
+  echo ""
+  echo -e $okegreen " Incorrect Number"
+  fi
+  echo ""
+  echo ""
+  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+  read back
+  if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
+  then
+  clear
+  menu
+  elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
+  then
+  WebService
+  fi
 }
