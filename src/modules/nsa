@@ -22,15 +22,18 @@ function nse() {
   echo -e $red"  Nmap Script Engine - Advanced Scanning with Nmap Script "
   
   echo -e $white " "
-  echo -e $white" [$okegreen"01"$white]$cyan  auth-category  "
-  echo -e $white" [$okegreen"02"$white]$cyan  broadcast-category "
-  echo -e $white" [$okegreen"03"$white]$cyan  brute-category "
-  echo -e $white" [$okegreen"04"$white]$cyan  exploit-category "
-  echo -e $white" [$okegreen"05"$white]$cyan  fuzzer-category "
-  echo -e $white" [$okegreen"06"$white]$cyan  malware-category "
-  echo -e $white" [$okegreen"07"$white]$cyan  vuln-category "
-  echo -e $white" [$okegreen"08"$white]$cyan  back to menu "
+  echo -e $white"     ID                    DESCRIPTION"
+  echo -e $white"    ---------------------------------------------------------"
+  echo -e $white"    [$okegreen"01"$white]$cyan  auth-category  "
+  echo -e $white"    [$okegreen"02"$white]$cyan  broadcast-category "
+  echo -e $white"    [$okegreen"03"$white]$cyan  brute-category "
+  echo -e $white"    [$okegreen"04"$white]$cyan  exploit-category "
+  echo -e $white"    [$okegreen"05"$white]$cyan  fuzzer-category "
+  echo -e $white"    [$okegreen"06"$white]$cyan  malware-category "
+  echo -e $white"    [$okegreen"07"$white]$cyan  vuln-category "
+  echo -e $white"    [$okegreen"08"$white]$cyan  back to menu "
   echo
+
   echo -n -e $red'  \033[4mScreetsec@nse:\033[0m>> '; tput sgr0 #insert your choice
   read ceh
 
