@@ -59,7 +59,7 @@ for _fname in "${_functions_stack[@]}" ; do
     # If the file exists is loaded.
     . "$_fpath"
 
-  elif [ -z "$_fpath" ] ; then
+  elif [[ -z "$_fpath" ]] ; then
 
     printf "incorrectly loaded '$_fpath' file (incorrect filename)"
     exit 1
