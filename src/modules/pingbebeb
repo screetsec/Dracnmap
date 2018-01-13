@@ -121,7 +121,7 @@ function pingbebeb() {
   else
 
     clear
-    menu
+    pingbebeb
 
   fi
 

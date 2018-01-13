@@ -348,7 +348,7 @@ function auth () {
   else
 
     clear
-    menu
+    auth
 
   fi
 

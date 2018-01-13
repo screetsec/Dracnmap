@@ -405,7 +405,7 @@ function brd () {
   else
 
     clear
-    menu
+    brd
 
   fi
 

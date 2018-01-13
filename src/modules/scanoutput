@@ -124,7 +124,7 @@ function scanoutput() {
   else
 
     clear
-    menu
+    scanoutput
 
   fi
 

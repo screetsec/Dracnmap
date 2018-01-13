@@ -74,7 +74,7 @@ function fuzzer () {
   else
 
     clear
-    menu
+    fuzzer
 
   fi
 

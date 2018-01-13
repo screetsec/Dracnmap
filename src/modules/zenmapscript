@@ -129,7 +129,7 @@ function zenmapscript() {
   else
 
     clear
-    menu
+    zenmapscript
 
   fi
 

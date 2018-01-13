@@ -634,7 +634,7 @@ function brutense() {
   else
 
     clear
-    menu
+    brutense
 
   fi
 
