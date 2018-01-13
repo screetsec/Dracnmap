@@ -44,7 +44,7 @@ readonly _src_directory="${_init_directory}/src"
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - added _functions_file variable
-# Directory structure.
+# Store functions (not modules).
 readonly _functions_file="${_src_directory}/functions"
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
@@ -57,9 +57,17 @@ readonly _modules_stack=("scanoutput" "brutense" "auth" "brd" \
                          "exploit" "fuzzer" "malware" "vuln" "nsa" \
                          "zenmapscript" "WebService" "pingbebeb")
 
-for _filename in "${_modules_stack[@]}" ; do
+for _filename in "$_functions_file" "${_modules_stack[@]}" ; do
 
-  _mpath="${_modules_directory}/${_filename}"
+  if [[ "$_filename" == *"/functions"* ]] ; then
+
+    _mpath="$_filename"
+
+  else
+
+    _mpath="${_modules_directory}/${_filename}"
+
+  fi
 
   if [[ ! -z "$_mpath" ]] && [[ -e "$_mpath" ]] ; then
 
