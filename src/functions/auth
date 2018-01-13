@@ -3,6 +3,8 @@
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
+#   - replaced 'test' to '[[ ]]'
+#   - changed comparison operator (-eq)
 function auth () {
 
   clear
@@ -46,24 +48,21 @@ function auth () {
   echo -n -e $red'  \033[4mScreetsec@nse-auth:\033[0m>> '; tput sgr0 #insert your choice
   read win
 
-  if test $win == '1'
-  then
+  if [[ $win -eq 1 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -p 8009 $ip --script ajp-auth [--script-args ajp-auth.path=/login] &
 
-  elif test $win == '2'
-  then
+  elif [[ $win -eq 2 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV -sC $ip &
 
-  elif test $win == '3'
-  then
+  elif [[ $win -eq 3 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -74,32 +73,28 @@ function auth () {
     read pass
     $xterm -p 2050 $ip --script domcon-cmd --script-args domcon-cmd.cmd="show server" domcon-cmd.user="$user",domcon-cmd.pass="$pass" &
 
-  elif test $win == '4'
-  then
+  elif [[ $win -eq 4 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --script domino-enum-users -p 1352 $ip &
 
-  elif test $win == '5'
-  then
+  elif [[ $win -eq 5 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV -sC $ip &
 
-  elif test $win == '6'
-  then
+  elif [[ $win -eq 6 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --script http-auth [--script-args http-auth.path=/login] -p80 $ip &
 
-  elif test $win == '7'
-  then
+  elif [[ $win -eq 7 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -108,24 +103,21 @@ function auth () {
     read port
     $xterm --script http-barracuda-dir-traversal --script-args http-max-cache-size=5000000 -p $port $ip &
 
-  elif test $win == '8'
-  then
+  elif [[ $win -eq 8 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --script=http-config-backup $ip &
 
-  elif test $win == '9'
-  then
+  elif [[ $win -eq 9 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -p 80 --script http-default-accounts $ip &
 
-  elif test $win == '10'
-  then
+  elif [[ $win -eq 10 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -136,40 +128,35 @@ function auth () {
     read pass
     $xterm  --script domino-enum-passwords -p 80 $ip --script-args domino-enum-passwords.username=$user,domino-enum-passwords.password=$pass &
 
-  elif test $win == '11'
-  then
+  elif [[ $win -eq 11 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm p80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $ip &
 
-  elif test $win == '12'
-  then
+  elif [[ $win -eq 12 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV --script=http-userdir-enum $ip  &
 
-  elif test $win == '13'
-  then
+  elif [[ $win -eq 13 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $ip &
 
-  elif test $win == '14'
-  then
+  elif [[ $win -eq 14 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV --script http-wordpress-users --script-args limit=50 $ip &
 
-  elif test $win == '15'
-  then
+  elif [[ $win -eq 15 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -180,8 +167,7 @@ function auth () {
     read pass
     $xterm -p 9088 $ip --script informix-query --script-args informix-query.username=$user,informix-query.password=$pass &
 
-  elif test $win == '16'
-  then
+  elif [[ $win -eq 16 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -192,24 +178,21 @@ function auth () {
     read pass
     $xterm -p 9088 $ip --script informix-tables --script-args informix-tables.username=$user,informix-tables.password=$pass &
 
-  elif test $win == '17'
-  then
+  elif [[ $win -eq 17 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -p 88 $ip --script krb5-enum-users --script-args krb5-enum-users.realm='test' &
 
-  elif test $win == '18'
-  then
+  elif [[ $win -eq 18 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -p 1433 $ip --script ms-sql-dump-hashes &
 
-  elif test $win == '19'
-  then
+  elif [[ $win -eq 19 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -218,8 +201,7 @@ function auth () {
     read port
     $xterm -p $port --script ms-sql-empty-password --script-args mssql.instance-all $ip &
 
-  elif test $win == '20'
-  then
+  elif [[ $win -eq 20 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -230,8 +212,7 @@ function auth () {
     read pass
     $xterm -p 1433 --script ms-sql-hasdbaccess --script-args mssql.username=$user,mssql.password=$pass $ip &
 
-  elif test $win == '21'
-  then
+  elif [[ $win -eq 21 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -242,16 +223,14 @@ function auth () {
     read pass
     $xterm -p 3306 $ip --script mysql-dump-hashes --script-args="username=$user,password=$pass" &
 
-  elif test $win == '22'
-  then
+  elif [[ $win -eq 22 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV --script=mysql-empty-password $ip &
 
-  elif test $win == '23'
-  then
+  elif [[ $win -eq 23 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -264,88 +243,77 @@ function auth () {
     read query
     $xterm -p 3306 $ip --script mysql-query --script-args="query="$query"[,username=$username,password=$pass]" &
   
-  elif test $win == '24'
-  then
+  elif [[ $win -eq 24 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV --script=mysql-users $ip &
 
-  elif test $win == '25'
-  then
+  elif [[ $win -eq 25 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV --script=ncp-enum-users $ip &
 
-  elif test $win == '26'
-  then
+  elif [[ $win -eq 26 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -p 12345 --script netbus-auth-bypass $ip &
 
-  elif test $win == '27'
-  then
+  elif [[ $win -eq 27 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --script oracle-enum-users --script-args oracle-enum-users.sid=ORCL,userdb=orausers.txt -p 1521-1560 $ip &
 
-  elif test $win == '28'
-  then
+  elif [[ $win -eq 28 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV -sC $ip &
 
-  elif test $win == '29'
-  then
+  elif [[ $win -eq 29 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --script=sip-enum-users -sU -p 5060 $ip &
 
-  elif test $win == '30'
-  then
+  elif [[ $win -eq 30 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -script smb-enum-users.nse -p 445 $ip &
 
-  elif test $win == '31'
-  then
+  elif [[ $win -eq 31 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --script smtp-enum-users.nse [--script-args smtp-enum-users.methods={EXPN,...},...] -p 25,465,587 $ip &
 
-  elif test $win == '32'
-  then
+  elif [[ $win -eq 32 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sU -p 161 --script=snmp-win32-users $ip &
 
-  elif test $win == '33'
-  then
+  elif [[ $win -eq 33 ]] ; then
 
     echo
     echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm --sV -sC $ip &
 
-  elif test $win == '34'
-  then
+  elif [[ $win -eq 34 ]] ; then
 
     nse
 
