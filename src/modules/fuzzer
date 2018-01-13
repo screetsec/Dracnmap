@@ -11,11 +11,15 @@ function fuzzer () {
   clear
   echo
   echo
-  echo -e $white" [$okegreen"01"$white]$cyan File dns-fuzz "
-  echo -e $white" [$okegreen"02"$white]$cyan File http-form-fuzzer  "
-  echo -e $white" [$okegreen"03"$white]$cyan File http-phpself-xss  "
-  echo -e $white" [$okegreen"04"$white]$cyan Back "
+
+  echo -e $white"     ID                    DESCRIPTION"
+  echo -e $white"    ---------------------------------------------------------"
+  echo -e $white"    [$okegreen"01"$white]$cyan File dns-fuzz "
+  echo -e $white"    [$okegreen"02"$white]$cyan File http-form-fuzzer  "
+  echo -e $white"    [$okegreen"03"$white]$cyan File http-phpself-xss  "
+  echo -e $white"    [$okegreen"04"$white]$cyan Back "
   echo -e " "
+
   echo -n -e $red'  \033[4mScreetsec@nse-fuzzer:\033[0m>> '; tput sgr0 #insert your choice
   read win
 
