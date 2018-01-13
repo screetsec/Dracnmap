@@ -33,16 +33,19 @@ function zenmapscript() {
   echo -e $cyan "       Scanning Target with $red'advanced command  ( Zenmap Command )  "
   echo -e $okegreen" ====================================================================="
   echo ""
-  echo ""
-  echo -e $white" [$okegreen"01"$white]$cyan  ITENSE SCAN"
-  echo -e $white" [$okegreen"02"$white]$cyan  ITENSE SCAN + UDP "
-  echo -e $white" [$okegreen"03"$white]$cyan  ITENSE SCAN ALL TCP PORTS "
-  echo -e $white" [$okegreen"04"$white]$cyan  QUICK SCAN  "
-  echo -e $white" [$okegreen"05"$white]$cyan  QUICK SCAN PLUS PLUS "
-  echo -e $white" [$okegreen"06"$white]$cyan  QUICK TRACEROUT   "
-  echo -e $white" [$okegreen"07"$white]$cyan  COMPREHENSIVE SCAN [BEST]  "
-  echo -e $white" [$okegreen"08"$white]$cyan  BACK  "
+
+  echo -e $white"     ID                    DESCRIPTION"
+  echo -e $white"    ---------------------------------------------------------"
+  echo -e $white"    [$okegreen"01"$white]$cyan  ITENSE SCAN"
+  echo -e $white"    [$okegreen"02"$white]$cyan  ITENSE SCAN + UDP "
+  echo -e $white"    [$okegreen"03"$white]$cyan  ITENSE SCAN ALL TCP PORTS "
+  echo -e $white"    [$okegreen"04"$white]$cyan  QUICK SCAN  "
+  echo -e $white"    [$okegreen"05"$white]$cyan  QUICK SCAN PLUS PLUS "
+  echo -e $white"    [$okegreen"06"$white]$cyan  QUICK TRACEROUT   "
+  echo -e $white"    [$okegreen"07"$white]$cyan  COMPREHENSIVE SCAN [BEST]  "
+  echo -e $white"    [$okegreen"08"$white]$cyan  BACK  "
   echo -e   " "
+
   echo -n -e $red'  \033[4mScreetsec@Headshot:\033[0m>> '; tput sgr0 #insert your choice
   read Scanning
 
