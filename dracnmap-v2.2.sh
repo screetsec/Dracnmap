@@ -52,19 +52,19 @@ for _fname in "${_functions_stack[@]}" ; do
   _filename="$_fname"
   _fpath="${_functions_directory}/${_filename}"
 
-  if [[ ! -z "$_filename" ]] && [[ -e "$_filename" ]] ; then
+  if [[ ! -z "$_fpath" ]] && [[ -e "$_fpath" ]] ; then
 
     # If the file exists is loaded.
-    . "$_filename"
+    . "$_fpath"
 
-  elif [ -z "$_filename" ] ; then
+  elif [ -z "$_fpath" ] ; then
 
-    printf "incorrectly loaded '$_filename' file (incorrect filename)"
+    printf "incorrectly loaded '$_fpath' file (incorrect filename)"
     exit 1
 
   else
 
-    printf "incorrectly loaded '$_filename' file (does not exist?)"
+    printf "incorrectly loaded '$_fpath' file (does not exist?)"
     exit 1
 
   fi
