@@ -138,15 +138,17 @@ fi
 sleep 2
 
 
-
-
-
-
-
 ################################################
 # OUTPUT FILE
 ################################################
+
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - removed blank spaces/tabs
+#   - replaced 'test' to '[[ ]]'
+#   - changed comparison operator (-eq)
+#   - protection against giving an illegal value
 function scanoutput() {
+
   echo -e $cyan " "
   clear
   echo "  "
@@ -161,86 +163,109 @@ function scanoutput() {
   echo " ########################/ /######\ \###########/ /####################### "
   echo " | | | | | | | | | | | | \/| | | | \/| | | | | |\/ | | | | | | | | | | | | "
   echo " |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_| "
-    echo -e $white " "
-    echo -e $white"	[$okegreen"01"$white]$okegreen  OUTPUT SCAN IN XML FORMATS  "
-    echo -e $white"	[$okegreen"02"$white]$okegreen  OUTPUT SCAN IN HTML FORMATS "
-    echo -e $white"	[$okegreen"03"$white]$okegreen  OUTPUT SCAN IN NORMAL FORMATS  "
-    echo -e $white"	[$okegreen"04"$white]$okegreen  OUTPUT SCAN IN GREPABLE FORMATS "
-    echo -e $white"	[$okegreen"05"$white]$okegreen  BACK  "
-    echo -e " "
-    echo -n -e $red'  \033[4mScreetsec@Meoong:\033[0m>> '; tput sgr0 #insert your choice
-             read DrS
+  echo -e $white " "
+  echo -e $white" [$okegreen"01"$white]$okegreen  OUTPUT SCAN IN XML FORMATS  "
+  echo -e $white" [$okegreen"02"$white]$okegreen  OUTPUT SCAN IN HTML FORMATS "
+  echo -e $white" [$okegreen"03"$white]$okegreen  OUTPUT SCAN IN NORMAL FORMATS  "
+  echo -e $white" [$okegreen"04"$white]$okegreen  OUTPUT SCAN IN GREPABLE FORMATS "
+  echo -e $white" [$okegreen"05"$white]$okegreen  BACK  "
+  echo -e " "
+  echo -n -e $red'  \033[4mScreetsec@Meoong:\033[0m>> '; tput sgr0 #insert your choice
+  read DrS
 
-           if test $DrS == '1'
-               then
-                 echo
-        	 echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-                 echo
-        	 echo -ne "  Name of Report:"
-        	 read namafile
-                 echo
-                 echo -ne "  What is your IP Target or Host: "
-                 read ip
-                 echo
-                 $xterm -A -O -oX Output/$namafile.xml $ip &
-                 firefox Output/$namafile.xml
-           elif test $DrS == '2'
-        	then
-                  echo
-            	  echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-                  echo
-            	  echo -ne "  Name of Report:"
-            	  read namafile
-                  echo
-                  echo -ne "  What is your IP Target or Host: "
-                  read ip
-                  echo
-                  $xterm -A -O -oX Output/$namafile.xml $ip &
-        	  xsltproc Output/$namafile.xml -o Output/$namafile.html
-        	  firefox Output/$namafile.html
-            elif test $DrS == '3'
-        	  then
-                  echo
-                  echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-                  echo
-                  echo -ne "  Name of Report:"
-                  read namafile
-                  echo
-                  echo -ne "  What is your IP Target or Host: "
-                  read ip
-                  echo
-                  $xterm -F -oN Output/$namafile.txt $ip
-                  nano Output/$namafile.txt
-             elif test $DrS == '4'
-        	  then
-                  echo
-                  echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-                  echo
-                  echo -ne "  Name of Report:"
-                  read namafile
-                  echo
-                  echo -ne "  What is your IP Target or Host: "
-                  read ip
-                  echo
-                  $xterm -F -oG Output/$namafile.grep $ip &
-                  nano Output/$namafile.grep
-              elif test $DrS == '5'
-                  then
-                	menu
-       		  else
-       			  	echo -e "  Incorrect Number"
-        			fi
-        			echo -n -e "  Back to Last Menu? ( Yes / No ) :"
-       			read back
-       			if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-       					then
-       					clear
-       					menu
-       			elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-       					then
-       					scanoutput
-       			fi
-       }
+  if [[ $DrS -eq 1 ]] ; then
+
+    echo
+    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+    echo
+    echo -ne "  Name of Report:"
+    read namafile
+    echo
+    echo -ne "  What is your IP Target or Host: "
+    read ip
+    echo
+    $xterm -A -O -oX Output/$namafile.xml $ip &
+    firefox Output/$namafile.xml
+
+  elif [[ $DrS -eq 2 ]] ; then
+
+    echo
+    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+    echo
+    echo -ne "  Name of Report:"
+    read namafile
+    echo
+    echo -ne "  What is your IP Target or Host: "
+    read ip
+    echo
+    $xterm -A -O -oX Output/$namafile.xml $ip &
+    xsltproc Output/$namafile.xml -o Output/$namafile.html
+    firefox Output/$namafile.html
+
+  elif [[ $DrS -eq 3 ]] ; then
+
+    echo
+    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+    echo
+    echo -ne "  Name of Report:"
+    read namafile
+    echo
+    echo -ne "  What is your IP Target or Host: "
+    read ip
+    echo
+    $xterm -F -oN Output/$namafile.txt $ip
+    nano Output/$namafile.txt
+
+  elif [[ $DrS -eq 4 ]] ; then
+
+    echo
+    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
+    echo
+    echo -ne "  Name of Report:"
+    read namafile
+    echo
+    echo -ne "  What is your IP Target or Host: "
+    read ip
+    echo
+    $xterm -F -oG Output/$namafile.grep $ip &
+    nano Output/$namafile.grep
+
+  elif [[ $DrS -eq 5 ]] ; then
+
+    menu
+
+  else
+
+    echo -e "  Incorrect Number"
+
+  fi
+
+  echo -n -e "  Back to Last Menu? ( Yes / No ) :"
+  read back
+
+  if [ $back != 'n' ] && \
+     [ $back != 'N' ] && \
+     [ $back != 'no' ] && \
+     [ $back != 'No' ] ; then
+
+    clear
+    menu
+
+  elif [ $back != 'y' ] && \
+       [ $back != 'Y' ] && \
+       [ $back != 'yes' ] && \
+       [ $back != 'Yes' ] ; then
+
+    scanoutput
+
+  else
+
+    clear
+    menu
+
+  fi
+
+}
 
 
 
