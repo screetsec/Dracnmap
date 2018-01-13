@@ -49,9 +49,8 @@ readonly _functions_stack=("scanoutput" "brutense" "auth" "brd" \
                            "exploit" "fuzzer" "malware" "vuln" "nsa" \
                            "zenmapscript" "WebService" "pingbebeb")
 
-for _fname in "${_functions_stack[@]}" ; do
+for _filename in "${_functions_stack[@]}" ; do
 
-  _filename="$_fname"
   _fpath="${_functions_directory}/${_filename}"
 
   if [[ ! -z "$_fpath" ]] && [[ -e "$_fpath" ]] ; then
