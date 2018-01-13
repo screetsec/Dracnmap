@@ -301,7 +301,7 @@ function menu() {
     echo -ne "  What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm  $ip &
-  
+
   elif [[ $Dracnmap -eq 2 ]] ; then
 
     echo ""
@@ -315,52 +315,52 @@ function menu() {
     read ip3
     echo ""
     $xterm  $ip1 $ip2 $ip3  &
-  
+
   elif [[ $Dracnmap -eq 3 ]] ; then
 
     echo -e $cyan""
     echo -ne "  What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sV -T4 -O -F --version-light 1  $ip &
-  
+
   elif [[ $Dracnmap -eq 4 ]] ; then
 
     echo -e $cyan""
     echo -ne "  What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm nmap -sA $ip &
-  
+
   elif [[ $Dracnmap -eq 5 ]] ; then
 
     echo -e $cyan""
     echo -ne "  What is your IP Target or Host: " ; tput sgr0
     read ip
     $xterm -sS -P0 $ip &
-  
+
   elif [[ $Dracnmap -eq 6 ]] ; then
 
     pingbebeb
-  
+
   elif [[ $Dracnmap -eq 7 ]] ; then
 
     WebService
-  
+
   elif [[ $Dracnmap -eq 8 ]] ; then
 
     nse
-  
+
   elif [[ $Dracnmap -eq 9 ]] ; then
 
     zenmapscript
-  
+
   elif [[ $Dracnmap -eq 10 ]] ; then
 
     scanoutput
-  
+
   elif [[ $Dracnmap -eq 11 ]] ; then
 
     credits
-  
+
   elif [[ $Dracnmap -eq 12 ]] ; then
 
     clear
@@ -370,7 +370,7 @@ function menu() {
     echo ""
     echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
     exit
-  
+
   else
 
     echo -e "  Incorrect Number"
