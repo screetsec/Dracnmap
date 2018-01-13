@@ -28,22 +28,29 @@ Codename='Redline'
 xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - added _init_name variable
+#   - added _init_directory variable
 # Store the name of the script and directory call.
 readonly _init_name="$(basename "$0")"
 readonly _init_directory="$(dirname "$(readlink -f "$0")")"
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - added fdir variable
+#   - added _src_directory variable
+# Directory structure.
+readonly _src_directory="${_init_directory}/src"
+
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - added _functions_directory variable
 #   - added _functions_stack array
 #   - separated functions into files
-fdir="src/functions"
+readonly _functions_directory="${_src_directory}/functions"
 
 readonly _functions_stack=("scanoutput" "brutense")
 
 for _fname in "${_functions_stack[@]}" ; do
 
   _filename="$_fname"
-  _fpath="${fdir}/${_filename}"
+  _fpath="${_functions_directory}/${_filename}"
 
   if [[ ! -z "$_filename" ]] && [[ -e "$_filename" ]] ; then
 
