@@ -28,6 +28,11 @@ Codename='Redline'
 xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+# Store the name of the script and directory call.
+readonly _init_name="$(basename "$0")"
+readonly _init_directory="$(dirname "$(readlink -f "$0")")"
+
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - added fdir variable
 #   - added _functions_stack array
 #   - separated functions into files
