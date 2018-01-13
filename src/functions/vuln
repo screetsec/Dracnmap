@@ -3,6 +3,8 @@
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
+#   - replaced 'test' to '[[ ]]'
+#   - changed comparison operator (-eq)
 function vuln () {
 
   clear
@@ -100,78 +102,68 @@ function vuln () {
   echo -n -e $red'  \033[4mScreetsec@nse-vuln:\033[0m>> '; tput sgr0 #insert your choice
   read vuln
 
-  if test $vuln == '1'
-  then
+  if [[ $vuln -eq 1 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script=afp-path-vuln $ip &
 
-  elif test $vuln == '2'
-  then
+  elif [[ $vuln -eq 2 ]] ; then
 
   echo
   $xterm --script=broadcast-avahi-dos &
 
-  elif test $vuln == '3'
-  then
+  elif [[ $vuln -eq 3 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script clamav-exec $ip &
 
-  elif test $vuln == '4'
-  then
+  elif [[ $vuln -eq 4 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 3632 $ip --script distcc-exec --script-args="distcc-exec.cmd='id'" &
 
-  elif test $vuln == '5'
-  then
+  elif [[ $vuln -eq 5 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU -p 53 --script=dns-update --script-args=dns-update.hostname=foo.example.com,dns-update.ip=192.0.2.1 $ip &
 
-  elif test $vuln == '6'
-  then
+  elif [[ $vuln -eq 6 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $ip &
 
-  elif test $vuln == '7'
-  then
+  elif [[ $vuln -eq 7 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script=ftp-libopie $ip &
 
-  elif test $vuln == '8'
-  then
+  elif [[ $vuln -eq 8 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script ftp-proftpd-backdoor -p 21 $ip &
 
-  elif test $vuln == '9'
-  then
+  elif [[ $vuln -eq 9 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script ftp-vsftpd-backdoor -p 21 $ip &
 
-  elif test $vuln == '10'
-  then
+  elif [[ $vuln -eq 10 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
@@ -180,632 +172,553 @@ function vuln () {
   read port
   $xterm --script ftp-vuln-cve2010-4221 -p $port $ip &
 
-  elif test $vuln == '11'
-  then
+  elif [[ $vuln -eq 11 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-adobe-coldfusion-apsa1301 --script-args basepath=/cf/adminapi/ $ip &
 
-  elif test $vuln == '12'
-  then
+  elif [[ $vuln -eq 12 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-debug --script-args http-aspnet-debug.path=/path $ip &
 
-  elif test $vuln == '13'
-  then
+  elif [[ $vuln -eq 13 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-avaya-ipoffice-users $ip &
 
-  elif test $vuln == '14'
-  then
+  elif [[ $vuln -eq 14 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-awstatstotals-exec.nse --script-args 'http-awstatstotals-exec.cmd="uname -a", http-awstatstotals-exec.uri=/awstats/index.php' $ip &
 
-  elif test $vuln == '15'
-  then
+  elif [[ $vuln -eq 15 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-axis2-dir-traversal $ip &
 
-  elif test $vuln == '16'
-  then
+  elif [[ $vuln -eq 16 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $ip &
 
-  elif test $vuln == '17'
-  then
+  elif [[ $vuln -eq 17 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-csrf.nse $ip &
 
-  elif test $vuln == '18'
-  then
+  elif [[ $vuln -eq 18 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-dlink-backdoor $ip &
 
-  elif test $vuln == '19'
-  then
+  elif [[ $vuln -eq 19 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-dombased-xss.nse $ip &
 
-  elif test $vuln == '20'
-  then
+  elif [[ $vuln -eq 20 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script=http-enum $ip &
 
-  elif test $vuln == '21'
-  then
+  elif [[ $vuln -eq 21 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-fileupload-exploiter.nse $ip &
 
-  elif test $vuln == '22'
-  then
+  elif [[ $vuln -eq 22 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm $ip -p 80 --script=http-frontpage-login &
 
-  elif test $vuln == '23'
-  then
+  elif [[ $vuln -eq 23 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm sV -sC $ip &
 
-  elif test $vuln == '24'
-  then
+  elif [[ $vuln -eq 24 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV http-huawei-hg5xx-vuln $ip &
 
-  elif test $vuln == '25'
-  then
+  elif [[ $vuln -eq 25 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-iis-webdav-vuln -p 80,8080 $ip &
 
-  elif test $vuln == '26'
-  then
+  elif [[ $vuln -eq 26 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-internal-ip-disclosure --script-args http-internal-ip-disclosure.path=/path $ip &
 
-  elif test $vuln == '27'
-  then
+  elif [[ $vuln -eq 27 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80,8080 --script http-litespeed-sourcecode-download --script-args http-litespeed-sourcecode-download.uri=/phpinfo.php $ip &
 
-  elif test $vuln == '28'
-  then
+  elif [[ $vuln -eq 28 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-majordomo2-dir-traversal $ip &
 
-  elif test $vuln == '29'
-  then
+  elif [[ $vuln -eq 29 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $ip &
 
-  elif test $vuln == '30'
-  then
+  elif [[ $vuln -eq 30 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-passwd --script-args http-passwd.root=/test/ $ip &
 
-  elif test $vuln == '31'
-  then
+  elif [[ $vuln -eq 31 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p80 --script http-phpmyadmin-dir-traversal $ip &
 
-  elif test $vuln == '32'
-  then
+  elif [[ $vuln -eq 32 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-self-xss $ip &
 
-  elif test $vuln == '33'
-  then
+  elif [[ $vuln -eq 33 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV -p- --script http-shellshock --script-args uri=/cgi-bin/bin,cmd=ls $ip &
 
-  elif test $vuln == '34'
-  then
+  elif [[ $vuln -eq 34 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-slowloris-check $ip &
 
-  elif test $vuln == '35'
-  then
+  elif [[ $vuln -eq 35 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script=http-sql-injection $ip &
 
-  elif test $vuln == '36'
-  then
+  elif [[ $vuln -eq 36 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 80 --script http-stored-xss.nse $ip &
 
-  elif test $vuln == '37'
-  then
+  elif [[ $vuln -eq 37 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p80 --script http-tplink-dir-traversal.nse --script-args rfile=/etc/topology.conf -d -n -Pn $ip &
 
-  elif test $vuln == '38'
-  then
+  elif [[ $vuln -eq 38 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-trace -d $ip &
 
-  elif test $vuln == '39'
-  then
+  elif [[ $vuln -eq 39 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-vmware-path-vuln -p80,443,8222,8333 $ip &
 
-  elif test $vuln == '40'
-  then
+  elif [[ $vuln -eq 40 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p80 --script http-vuln-cve2006-3392 --script-args http-vuln-cve2006-3392.file=/etc/shadow $ip &
 
-  elif test $vuln == '41'
-  then
+  elif [[ $vuln -eq 41 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $ip &
 
-  elif test $vuln == '42'
-  then
+  elif [[ $vuln -eq 42 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-vuln-cve2010-2861 $ip &
 
-  elif test $vuln == '43'
-  then
+  elif [[ $vuln -eq 43 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-vuln-cve2011-3192.nse [--script-args http-vuln-cve2011-3192.hostname=nmap.scanme.org] -pT:80,443 $ip &
 
-  elif test $vuln == '44'
-  then
+  elif [[ $vuln -eq 44 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-vuln-cve2011-3368 $ip &
 
-  elif test $vuln == '45'
-  then
+  elif [[ $vuln -eq 45 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-vuln-cve2012-1823 $ip &
 
-  elif test $vuln == '46'
-  then
+  elif [[ $vuln -eq 46 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-vuln-cve2013-0156 $ip &
 
-  elif test $vuln == '47'
-  then
+  elif [[ $vuln -eq 47 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p80 --script http-rompager-xss $ip &
 
-  elif test $vuln == '48'
-  then
+  elif [[ $vuln -eq 48 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p80 --script http-vuln-cve2013-7091 --script-args http-vuln-cve2013-7091=/ZimBra $ip &
 
-  elif test $vuln == '49'
-  then
+  elif [[ $vuln -eq 49 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 443 --script http-vuln-cve2014-2126 $ip &
 
-  elif test $vuln == '50'
-  then
+  elif [[ $vuln -eq 50 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 443 --script http-vuln-cve2014-2127 $ip &
 
-  elif test $vuln == '51'
-  then
+  elif [[ $vuln -eq 51 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 443 --script http-vuln-cve2014-2128 $ip &
 
-  elif test $vuln == '52'
-  then
+  elif [[ $vuln -eq 52 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 443 --script http-vuln-cve2014-2129 $ip &
 
-  elif test $vuln == '53'
-  then
+  elif [[ $vuln -eq 53 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri="/drupal",http-vuln-cve2014-3704.cleanup=false $ip &
 
-  elif test $vuln == '54'
-  then
+  elif [[ $vuln -eq 54 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script http-vuln-cve2014-8877 --script-args http-vuln-cve2014-8877.cmd="whoami",http-vuln-cve2014-8877.uri="/wordpress" $ip &
 
-  elif test $vuln == '55'
-  then
+  elif [[ $vuln -eq 55 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script=http-vuln-cve2015-1427 --script-args command= 'ls' $ip &
 
-  elif test $vuln == '56'
-  then
+  elif [[ $vuln -eq 56 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-vuln-cve2015-1635 --script-args uri='/anotheruri/' $ip &
 
-  elif test $vuln == '57'
-  then
+  elif [[ $vuln -eq 57 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm $ip -p 7547 --script=http-vuln-misfortune-cookie &
 
-  elif test $vuln == '58'
-  then
+  elif [[ $vuln -eq 58 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-vuln-wnr1000-creds $ip -p 80 &
 
-  elif test $vuln == '59'
-  then
+  elif [[ $vuln -eq 59 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script http-wordpress-users --script-args limit=50 $ip &
 
-  elif test $vuln == '60'
-  then
+  elif [[ $vuln -eq 60 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU --script ipmi-cipher-zero -p 623 $ip &
 
-  elif test $vuln == '61'
-  then
+  elif [[ $vuln -eq 61 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 6667 --script=irc-botnet-channels $ip &
 
-  elif test $vuln == '62'
-  then
+  elif [[ $vuln -eq 62 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script=irc-unrealircd-backdoor $ip &
 
-  elif test $vuln == '63'
-  then
+  elif [[ $vuln -eq 63 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script mysql-vuln-cve2012-2122 $ip &
 
-  elif test $vuln == '64'
-  then
+  elif [[ $vuln -eq 64 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 12345 --script netbus-auth-bypass $ip &
 
-  elif test $vuln == '65'
-  then
+  elif [[ $vuln -eq 65 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script qconn-exec --script-args qconn-exec.timeout=60,qconn-exec.bytes=1024,qconn-exec.cmd="uname -a" -p $port $ip &
 
-  elif test $vuln == '66'
-  then
+  elif [[ $vuln -eq 66 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script=rdp-ms12-020 -p 3389 $ip &
 
-  elif test $vuln == '67'
-  then
+  elif [[ $vuln -eq 67 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script=rmi-vuln-classloader -p 1099 $ip &
 
-  elif test $vuln == '68'
-  then
+  elif [[ $vuln -eq 68 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script=samba-vuln-cve-2012-1182 -p 139 $ip &
 
-  elif test $vuln == '69'
-  then
+  elif [[ $vuln -eq 69 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU --script smb-vuln-conficker.nse -p T:139 $ip &
 
-  elif test $vuln == '70'
-  then
+  elif [[ $vuln -eq 70 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU --script smb-vuln-cve2009-3103.nse -p U:137,T:139 $ip &
 
-  elif test $vuln == '71'
-  then
+  elif [[ $vuln -eq 71 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU --script smb-vuln-ms06-025.nse -p U:137,T:139 $ip &
 
-  elif test $vuln == '72'
-  then
+  elif [[ $vuln -eq 72 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU --script smb-vuln-ms07-029.nse -p U:137,T:139 $ip &
 
-  elif test $vuln == '73'
-  then
+  elif [[ $vuln -eq 73 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU --script smb-vuln-ms08-067.nse -p U:137 $ip &
 
-  elif test $vuln == '74'
-  then
+  elif [[ $vuln -eq 74 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 445 $ip --script=smb-vuln-ms10-054 --script-args unsafe &
 
-  elif test $vuln == '75'
-  then
+  elif [[ $vuln -eq 75 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm  -p 445 $ip --script=smb-vuln-ms10-061 &
 
-  elif test $vuln == '76'
-  then
+  elif [[ $vuln -eq 76 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU --script smb-vuln-regsvc-dos.nse -p U:137,T:139 $ip &
 
-  elif test $vuln == '77'
-  then
+  elif [[ $vuln -eq 77 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script=smtp-vuln-cve2010-4344 --script-args="smtp-vuln-cve2010-4344.exploit" -pT:25,465,587 $ip &
 
-  elif test $vuln == '78'
-  then
+  elif [[ $vuln -eq 78 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script=smtp-vuln-cve2011-1720 --script-args='smtp.domain=<domain>' -pT:25,465,587 $ip &
 
-  elif test $vuln == '79'
-  then
+  elif [[ $vuln -eq 79 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm  --script=smtp-vuln-cve2011-1764 -pT:25,465,587 $ip &
 
-  elif test $vuln == '80'
-  then
+  elif [[ $vuln -eq 80 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 443 --script ssl-ccs-injection $ip &
 
-  elif test $vuln == '81'
-  then
+  elif [[ $vuln -eq 81 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 443 --script ssl-cert-intaddr $ip &
 
-  elif test $vuln == '82'
-  then
+  elif [[ $vuln -eq 82 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script ssl-dh-params $ip &
 
-  elif test $vuln == '83'
-  then
+  elif [[ $vuln -eq 83 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p 443 --script ssl-heartbleed $ip &
 
-  elif test $vuln == '84'
-  then
+  elif [[ $vuln -eq 84 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm --script ssl-known-key -p 443 $ip &
 
-  elif test $vuln == '85'
-  then
+  elif [[ $vuln -eq 85 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --version-light --script ssl-poodle -p 443 $ip &
 
-  elif test $vuln == '86'
-  then
+  elif [[ $vuln -eq 86 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sV --script=sslv2-drown $ip &
 
-  elif test $vuln == '87'
-  then
+  elif [[ $vuln -eq 87 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -p49152 --script supermicro-ipmi-conf $ip &
 
-  elif test $vuln == '88'
-  then
+  elif [[ $vuln -eq 88 ]] ; then
 
   echo
   echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
   read ip
   $xterm -sU -p 17185 --script wdb-version $ip &
 
-  elif test $vuln == '89'
-  then
+  elif [[ $vuln -eq 89 ]] ; then
 
   nse
 
