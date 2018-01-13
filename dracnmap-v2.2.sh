@@ -47,7 +47,7 @@ readonly _functions_directory="${_src_directory}/functions"
 
 readonly _functions_stack=("scanoutput" "brutense" "auth" "brd" \
                            "exploit" "fuzzer" "malware" "vuln" "nsa" \
-                           "zenmapscript" "WebService")
+                           "zenmapscript" "WebService" "pingbebeb")
 
 for _fname in "${_functions_stack[@]}" ; do
 
