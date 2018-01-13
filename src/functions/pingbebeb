@@ -6,95 +6,118 @@
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
+#   - correcting indentation (transparent code)
 function pingbebeb() {
 
-echo -e $okegreen " "
-clear
-echo " "
-echo "                "
-echo ""
-echo "          \|/  "
-echo "         .-*-   "
-echo "        / /|\     "
-echo "       _L_         "
-echo "     ,     .         "
-echo -e $okegreen" (\ /  O O  \ /)  $red ______ _______ _______ _______      __ __      "
-echo -e $okegreen"  \|    _    |/   $red |   __ \_     _|    |  |     __|    |  |  |     "
-echo -e $okegreen"    \  (_)  /     $red |    __/_|   |_|       |    |  |    |__|__|   "
-echo -e $okegreen"    _/.___,\_     $red |___|  |_______|__|____|_______|    |__|__|    "
-echo -e $okegreen"   (_/ alf \_)         "
-echo -e $white " "
-echo -e $white" [$okegreen"01"$white]$cyan  BROADCAST PING  "
-echo -e $white" [$okegreen"02"$white]$cyan  TCP SYN PING SCANS "
-echo -e $white" [$okegreen"03"$white]$cyan  TCP ACK PING SCANS "
-echo -e $white" [$okegreen"04"$white]$cyan  UDP PING SCANS "
-echo -e $white" [$okegreen"05"$white]$cyan  ICMP PING SCANS "
-echo -e $white" [$okegreen"06"$white]$cyan  IP PROTOCOL PING SCANS "
-echo -e $white" [$okegreen"07"$white]$cyan  BACK  "
-echo -e " "
-echo -n -e $red'  \033[4mScreetsec@PING!:\033[0m>> '; tput sgr0 #insert your choice
-read DrS
+  echo -e $okegreen " "
+  clear
+  echo " "
+  echo "                "
+  echo ""
+  echo "          \|/  "
+  echo "         .-*-   "
+  echo "        / /|\     "
+  echo "       _L_         "
+  echo "     ,     .         "
+  echo -e $okegreen" (\ /  O O  \ /)  $red ______ _______ _______ _______      __ __      "
+  echo -e $okegreen"  \|    _    |/   $red |   __ \_     _|    |  |     __|    |  |  |     "
+  echo -e $okegreen"    \  (_)  /     $red |    __/_|   |_|       |    |  |    |__|__|   "
+  echo -e $okegreen"    _/.___,\_     $red |___|  |_______|__|____|_______|    |__|__|    "
+  echo -e $okegreen"   (_/ alf \_)         "
+  echo -e $white " "
+  echo -e $white" [$okegreen"01"$white]$cyan  BROADCAST PING  "
+  echo -e $white" [$okegreen"02"$white]$cyan  TCP SYN PING SCANS "
+  echo -e $white" [$okegreen"03"$white]$cyan  TCP ACK PING SCANS "
+  echo -e $white" [$okegreen"04"$white]$cyan  UDP PING SCANS "
+  echo -e $white" [$okegreen"05"$white]$cyan  ICMP PING SCANS "
+  echo -e $white" [$okegreen"06"$white]$cyan  IP PROTOCOL PING SCANS "
+  echo -e $white" [$okegreen"07"$white]$cyan  BACK  "
+  echo -e " "
+  echo -n -e $red'  \033[4mScreetsec@PING!:\033[0m>> '; tput sgr0 #insert your choice
+  read DrS
+  
+  if test $DrS == '1'
+  then
 
-if test $DrS == '1'
-then
-echo -e $cyan""
-echo -n "  What is your IP Target or Host: " ; tput sgr0
-read ip
-$xterm --script broadcast-ping --script-args broadcast-ping.num_probes=5 $ip &
-pingbebeb
-elif test $DrS == '2'
-then
-echo -e $cyan""
-echo -n "  What is your IP Target or Host: " ; tput sgr0
-read ip
-$xterm -sP -PS $ip &
-pingbebeb
-elif test $DrS == '3'
-then
-echo -e $cyan""
-echo -n "  What is your IP Target or Host: " ; tput sgr0
-read ip
-$xterm -sP -PA $ip &
-pingbebeb
-elif test $DrS == '4'
-then
-echo -e $cyan""
-echo -n "  What is your IP Target or Host: " ; tput sgr0
-read ip
-$xterm -sP -PU $ip &
-pingbebeb
-elif test $DrS == '5'
-then
-echo -e $cyan""
-echo -n "  What is your IP Target or Host: " ; tput sgr0
-read ip
-$xterm -sP -PE $ip &
-pingbebeb
-elif test $DrS == '6'
-then
-echo -e $cyan""
-echo -n "  What is your IP Target or Host: " ; tput sgr0
-read ip
-$xterm  -sP -PO --packet-trace $ip  &
-pingbebeb
-elif test $DrS == '7'
-then
-menu
-else
-echo ""
-echo -e $okegreen " Incorrect Number"
-fi
-echo ""
-echo ""
-echo -n -e $cyan " Back to Last Menu? ( Yes / No ) :"
-read back
-if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-then
-clear
-menu
-elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-then
-pingbebeb
-fi
+    echo -e $cyan""
+    echo -n "  What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script broadcast-ping --script-args broadcast-ping.num_probes=5 $ip &
+    pingbebeb
+
+  elif test $DrS == '2'
+  then
+
+    echo -e $cyan""
+    echo -n "  What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sP -PS $ip &
+    pingbebeb
+
+  elif test $DrS == '3'
+  then
+
+    echo -e $cyan""
+    echo -n "  What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sP -PA $ip &
+    pingbebeb
+
+  elif test $DrS == '4'
+  then
+
+    echo -e $cyan""
+    echo -n "  What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sP -PU $ip &
+    pingbebeb
+
+  elif test $DrS == '5'
+  then
+
+    echo -e $cyan""
+    echo -n "  What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sP -PE $ip &
+    pingbebeb
+
+  elif test $DrS == '6'
+  then
+
+    echo -e $cyan""
+    echo -n "  What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm  -sP -PO --packet-trace $ip  &
+    pingbebeb
+
+  elif test $DrS == '7'
+  then
+
+    menu
+
+  else
+
+    echo ""
+    echo -e $okegreen " Incorrect Number"
+
+  fi
+
+    echo ""
+    echo ""
+    echo -n -e $cyan " Back to Last Menu? ( Yes / No ) :"
+    read back
+
+  if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
+  then
+
+    clear
+    menu
+
+  elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
+  then
+
+    pingbebeb
+
+  fi
 
 }
