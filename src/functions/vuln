@@ -5,6 +5,7 @@
 #   - correcting indentation (transparent code)
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
+#   - protection against giving an illegal value
 function vuln () {
 
   clear
@@ -724,8 +725,8 @@ function vuln () {
 
   else
 
-  echo ""
-  echo -e $okegreen " Incorrect Number"
+    echo ""
+    echo -e $okegreen " Incorrect Number"
 
   fi
 
@@ -734,16 +735,25 @@ function vuln () {
   echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
   read back
 
-  if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-  then
+  if [ $back != 'n' ] && \
+     [ $back != 'N' ] && \
+     [ $back != 'no' ] && \
+     [ $back != 'No' ] ; then
 
-  clear
-  menu
+    clear
+    menu
 
-  elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-  then
+  elif [ $back != 'y' ] && \
+       [ $back != 'Y' ] && \
+       [ $back != 'yes' ] && \
+       [ $back != 'Yes' ] ; then
 
-  vuln
+    vuln
+
+  else
+
+    clear
+    menu
 
   fi
 
