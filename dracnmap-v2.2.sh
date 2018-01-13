@@ -147,6 +147,7 @@ sleep 2
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
+#   - correcting indentation (transparent code)
 function scanoutput() {
 
   echo -e $cyan " "
@@ -271,11 +272,13 @@ function scanoutput() {
 ################################################
 # NSE SCRIPT FOR BRUTEFORCE
 ################################################
+
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed leading and trailing whitespaces
 #   - added smart tabs
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
+#   - correcting indentation (transparent code)
 function brutense() {
 
   clear
@@ -358,385 +361,531 @@ function brutense() {
   read Brute
 
   if [[ $Brute -eq 1 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
-  read port
-  $xterm -p $port --script afp-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
+    read port
+    $xterm -p $port --script afp-brute $ip &
+
   elif [[ $Brute -eq 2 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
-  read port
-  $xterm -p $port $ip --script ajp-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
+    read port
+    $xterm -p $port $ip --script ajp-brute &
+
   elif [[ $Brute -eq 3 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
-  read port
-  $xterm -sU --script backorifice-brute $ip --script-args backorifice-brute.ports=$port &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
+    read port
+    $xterm -sU --script backorifice-brute $ip --script-args backorifice-brute.ports=$port &
+
   elif [[ $Brute -eq 4 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 9160 $ip --script=cassandra-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 9160 $ip --script=cassandra-brute &
+
   elif [[ $Brute -eq 5 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=cics-enum -p 23 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script=cics-enum -p 23 $ip &
+
   elif [[ $Brute -eq 6 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=cics-user-enum -p 23 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script=cics-user-enum -p 23 $ip &
+
   elif [[ $Brute -eq 7 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " What Userdb " ; tput sgr0
-  read userdb
-  echo -ne $okegreen " What Passdb " ; tput sgr0
-  read passdb
-  echo -ne $okegreen " What domain " ; tput sgr0
-  read domain
-  $xterm --script=citrix-brute-xml --script-args=userdb=$userdb,passdb=$passdb,ntdomain=$domain -p 80,443,8080 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " What Userdb " ; tput sgr0
+    read userdb
+    echo -ne $okegreen " What Passdb " ; tput sgr0
+    read passdb
+    echo -ne $okegreen " What domain " ; tput sgr0
+    read domain
+    $xterm --script=citrix-brute-xml --script-args=userdb=$userdb,passdb=$passdb,ntdomain=$domain -p 80,443,8080 $ip &
+
   elif [[ $Brute -eq 8 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 2401 --script cvs-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 2401 --script cvs-brute $ip &
+
   elif [[ $Brute -eq 9 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 2401 --script cvs-brute-repository $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 2401 --script cvs-brute-repository $ip &
+
   elif [[ $Brute -eq 10 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script domcon-brute -p 2050 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script domcon-brute -p 2050 $ip &
+
   elif [[ $Brute -eq 11 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script dpap-brute -p 8770 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script dpap-brute -p 8770 $ip &
+
   elif [[ $Brute -eq 12 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 50000 --script drda-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 50000 --script drda-brute $ip &
+
   elif [[ $Brute -eq 13 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
-  read port
-  $xterm --script ftp-brute -p $port $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
+    read port
+    $xterm --script ftp-brute -p $port $ip &
+
   elif [[ $Brute -eq 14 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-form-brute -p 80 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script http-form-brute -p 80 $ip &
+
   elif [[ $Brute -eq 15 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-iis-short-name-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p80 --script http-iis-short-name-brute $ip &
+
   elif [[ $Brute -eq 16 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
-  read port
-  $xterm --script http-brute -p $port $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " Open Port on Target or Host:  " ; tput sgr0
+    read port
+    $xterm --script http-brute -p $port $ip &
+
   elif [[ $Brute -eq 17 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-joomla-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sV --script http-joomla-brute $ip &
+
   elif [[ $Brute -eq 18 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-proxy-brute -p 8080 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script http-proxy-brute -p 8080 $ip &
+
   elif [[ $Brute -eq 19 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-wordpress-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sV --script http-wordpress-brute $ip &
+
   elif [[ $Brute -eq 20 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU -p 4569 $ip --script iax2-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sU -p 4569 $ip --script iax2-brute &
+
   elif [[ $Brute -eq 21 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script informix-brute -p 9088 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script informix-brute -p 9088 $ip &
+
   elif [[ $Brute -eq 22 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script ipmi-brute -p 623 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sU --script ipmi-brute -p 623 $ip &
+
   elif [[ $Brute -eq 23 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script irc-brute -p 6667 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script irc-brute -p 6667 $ip &
+
   elif [[ $Brute -eq 24 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script irc-sasl-brute -p 6667 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script irc-sasl-brute -p 6667 $ip &
+
   elif [[ $Brute -eq 25 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=iscsi-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sV --script=iscsi-brute $ip &
+
   elif [[ $Brute -eq 26 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 389 --script ldap-brute --script-args ldap.base='"cn=users,dc=cqure,dc=net"' $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 389 --script ldap-brute --script-args ldap.base='"cn=users,dc=cqure,dc=net"' $ip &
+
   elif [[ $Brute -eq 27 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 143,993 --script imap-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 143,993 --script imap-brute $ip &
+
   elif [[ $Brute -eq 28 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 11211 --script membase-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 11211 --script membase-brute &
+
   elif [[ $Brute -eq 29 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script mmouse-brute -p 51010 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script mmouse-brute -p 51010 $ip &
+
   elif [[ $Brute -eq 30 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 27017 $ip --script mongodb-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 27017 $ip --script mongodb-brute &
+
   elif [[ $Brute -eq 31 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 445 --script ms-sql-brute --script-args mssql.instance-all,userdb=customuser.txt,passdb=custompass.txt $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 445 --script ms-sql-brute --script-args mssql.instance-all,userdb=customuser.txt,passdb=custompass.txt $ip &
+
   elif [[ $Brute -eq 32 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=mysql-brute $ip
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script=mysql-brute $ip
+
   elif [[ $Brute -eq 33 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  nmap --script=mysql-enum $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    nmap --script=mysql-enum $ip &
+
   elif [[ $Brute -eq 34 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 27017 $ip --script mongodb-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 27017 $ip --script mongodb-brute &
+
   elif [[ $Brute -eq 35 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script metasploit-msgrpc-brute -p 55553 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script metasploit-msgrpc-brute -p 55553 $ip &
+
   elif [[ $Brute -eq 36 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script metasploit-xmlrpc-brute -p 55553 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script metasploit-xmlrpc-brute -p 55553 $ip &
+
   elif [[ $Brute -eq 37 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 8728 --script mikrotik-routeros-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 8728 --script mikrotik-routeros-brute $ip &
+
   elif [[ $Brute -eq 38 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=nessus-xmlrpc-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sV --script=nessus-xmlrpc-brute $ip &
+
   elif [[ $Brute -eq 39 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 12345 --script netbus-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 12345 --script netbus-brute $ip &
+
   elif [[ $Brute -eq 40 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script nexpose-brute -p 3780 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script nexpose-brute -p 3780 $ip &
+
   elif [[ $Brute -eq 41 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=nje-node-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sV --script=nje-node-brute $ip &
+
   elif [[ $Brute -eq 42 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=nje-pass-brute --script-args=ohost='POTATO',rhost='CACTUS',sleep=5 -p 175 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script=nje-pass-brute --script-args=ohost='POTATO',rhost='CACTUS',sleep=5 -p 175 $ip &
+
   elif [[ $Brute -eq 43 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 9929 --script nping-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 9929 --script nping-brute $ip &
+
   elif [[ $Brute -eq 44 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script nessus-brute -p 1241 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script nessus-brute -p 1241 $ip &
+
   elif [[ $Brute -eq 45 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 9390 --script omp2-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 9390 --script omp2-brute $ip &
+
   elif [[ $Brute -eq 46 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=openvas-otp-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sV --script=openvas-otp-brute $ip &
+
   elif [[ $Brute -eq 47 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script oracle-brute -p 1521 --script-args oracle-brute.sid=ORCL $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script oracle-brute -p 1521 --script-args oracle-brute.sid=ORCL $ip &
+
   elif [[ $Brute -eq 48 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script oracle-brute-stealth -p 1521 --script-args oracle-brute-stealth.sid=ORCL $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script oracle-brute-stealth -p 1521 --script-args oracle-brute-stealth.sid=ORCL $ip &
+
   elif [[ $Brute -eq 49 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=oracle-sid-brute -p 1521-1560 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script=oracle-sid-brute -p 1521-1560 $ip &
+
   elif [[ $Brute -eq 50 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=pcanywhere-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script=pcanywhere-brute $ip &
+
   elif [[ $Brute -eq 51 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 5432 --script pgsql-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 5432 --script pgsql-brute $ip &
+
   elif [[ $Brute -eq 52 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=pop3-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sV --script=pop3-brute $ip &
+
   elif [[ $Brute -eq 53 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 6379 $ip --script redis-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 6379 $ip --script redis-brute &
+
   elif [[ $Brute -eq 54 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 512 --script rexec-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 512 --script rexec-brute $ip &
+
   elif [[ $Brute -eq 55 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 513 --script rlogin-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 513 --script rlogin-brute $ip &
+
   elif [[ $Brute -eq 56 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 2002 $ip --script rpcap-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 2002 $ip --script rpcap-brute &
+
   elif [[ $Brute -eq 57 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 873 --script rsync-brute --script-args 'rsync-brute.module=www' $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 873 --script rsync-brute --script-args 'rsync-brute.module=www' $ip &
+
   elif [[ $Brute -eq 58 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script rtsp-url-brute -p 554 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script rtsp-url-brute -p 554 $ip &
+
   elif [[ $Brute -eq 59 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU -p 5060 $ip --script=sip-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sU -p 5060 $ip --script=sip-brute &
+
   elif [[ $Brute -eq 60 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script socks-brute -p 1080 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script socks-brute -p 1080 $ip &
+
   elif [[ $Brute -eq 61 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script svn-brute --script-args svn-brute.repo=/svn/ -p 3690 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script svn-brute --script-args svn-brute.repo=/svn/ -p 3690 $ip &
+
   elif [[ $Brute -eq 62 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=tso-enum -p 23 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script=tso-enum -p 23 $ip &
+
   elif [[ $Brute -eq 63 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU -sS --script smb-brute.nse -p U:137,T:139 &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sU -sS --script smb-brute.nse -p U:137,T:139 &
+
   elif [[ $Brute -eq 64 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 25 --script smtp-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 25 --script smtp-brute $ip &
+
   elif [[ $Brute -eq 65 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " Located Wordlist ? :  " ; tput sgr0
-  read wordlist
-  $xterm -sU --script snmp-brute $ip [--script-args snmp-brute.communitiesdb=$wordlist ]  &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " Located Wordlist ? :  " ; tput sgr0
+    read wordlist
+    $xterm -sU --script snmp-brute $ip [--script-args snmp-brute.communitiesdb=$wordlist ]  &
+
   elif [[ $Brute -eq 66 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " Open Port on Target or Host (23):  " ; tput sgr0
-  read port
-  $xterm -p $port --script telnet-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,telnet-brute.timeout=8s $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " Open Port on Target or Host (23):  " ; tput sgr0
+    read port
+    $xterm -p $port --script telnet-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,telnet-brute.timeout=8s $ip &
+
   elif [[ $Brute -eq 67 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script vtam-enum -p 23 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script vtam-enum -p 23 $ip &
+
   elif [[ $Brute -eq 68 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 902 $ip --script vmauthd-brute &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 902 $ip --script vmauthd-brute &
+
   elif [[ $Brute -eq 69 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script vnc-brute -p 5900 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm --script vnc-brute -p 5900 $ip &
+
   elif [[ $Brute -eq 70 ]] ; then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 5222 --script xmpp-brute $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p 5222 --script xmpp-brute $ip &
+
   elif [[ $Brute -eq 71 ]] ; then
-  nse
+
+    nse
+
   else
-  echo ""
-  echo -e $okegreen " Incorrect Number"
+
+    echo ""
+    echo -e $okegreen " Incorrect Number"
+
   fi
+
   echo ""
   echo ""
   echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
   read back
+
   if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
   then
   clear
