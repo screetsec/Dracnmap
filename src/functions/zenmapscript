@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+###############################################
+# ZENMAP
+###############################################
+function zenmapscript() {
+clear
+clear
+echo ""
+echo -e $okegreen" ===================================================================="
+echo -e $cyan""
+echo "           +--^----------,--------,-----,--------^-, "
+echo -e "           | $red |||||||||   --------      |         O "
+echo -e $cyan"           +---------------------------^----------| "
+echo -e $cyan"            \_,---------,---------,--------------' "
+echo -e "              / $red"XXXXXX"$cyan /'|       /' "
+echo -e "             / $red"XXXXXX"$cyan /   \    /' "
+echo -e "            / $red"XXXXXX"$cyan / _______/ "
+echo -e "           / $red"XXXXXX"$cyan / "
+echo -e "           / $red"XXXXXX"$cyan / "
+echo "           (________(   "
+echo -e "            ------'        $red DOUBLE KILL !! GO GO GO !!  "
+echo ""
+echo -e $okegreen" ====================================================================="
+echo -e $cyan "       Scanning Target with $red'advanced command  ( Zenmap Command )  "
+echo -e $okegreen" ====================================================================="
+echo ""
+echo ""
+  echo -e $white" [$okegreen"01"$white]$cyan  ITENSE SCAN"
+  echo -e $white" [$okegreen"02"$white]$cyan  ITENSE SCAN + UDP "
+  echo -e $white" [$okegreen"03"$white]$cyan  ITENSE SCAN ALL TCP PORTS "
+  echo -e $white" [$okegreen"04"$white]$cyan  QUICK SCAN  "
+  echo -e $white" [$okegreen"05"$white]$cyan  QUICK SCAN PLUS PLUS "
+  echo -e $white" [$okegreen"06"$white]$cyan  QUICK TRACEROUT   "
+  echo -e $white" [$okegreen"07"$white]$cyan  COMPREHENSIVE SCAN [BEST]  "
+  echo -e $white" [$okegreen"08"$white]$cyan  BACK  "
+  echo -e   " "
+  echo -n -e $red'  \033[4mScreetsec@Headshot:\033[0m>> '; tput sgr0 #insert your choice
+      read Scanning
+      if test $Scanning == '1'
+        then
+        echo
+        echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+        read ip
+        $xterm -T4 -A -v $ip &
+      elif test $Scanning == '2'
+        then
+        echo
+        echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+        read ip
+        $xterm -sS -sU -T4 -A -v $ip &
+      elif test $Scanning == '3'
+        then
+        echo
+        echo -ne  $okegreen" What is your IP Target or Host: " ; tput sgr0
+        read ip
+        $xterm -p 1-65535 -T4 -A -v $ip &
+      elif test $Scanning == '4'
+        then
+        echo
+        echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
+        read ip
+        $xterm -T4 -F $ip &
+      elif test $Scanning == '5'
+        then
+        echo
+        echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
+        read ip
+        $xterm -sV -T4 -O -F --version-light $ip &
+      elif test $Scanning == '6'
+        then
+        echo
+        echo -ne $okegreen " What is your IP Target or Host: "; tput sgr0
+        read ip
+        $xterm -sn --traceroute $ip &
+      elif test $Scanning == '7'
+        then
+        echo
+        echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+        read ip
+        $xterm -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" $ip &
+            elif test $Scanning == '8'
+              then
+              menu
+          else
+              echo ""
+              echo -e $okegreen " Incorrect Number"
+            fi
+            echo ""
+            echo ""
+            echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+          read back
+          if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
+              then
+              clear
+              menu
+          elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
+              then
+              zenmapscript
+          fi
+ }
