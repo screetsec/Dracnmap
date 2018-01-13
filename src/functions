@@ -4,42 +4,6 @@
 ######################## Definitions of user functions #########################
 ################################################################################
 
-#######################################################
-# CREDITS
-#######################################################
-
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
-function credits {
-
-  clear
-  echo -e "
-  \033[31m##########################################################################\033[m
-                  Credits To
-  \033[31m##########################################################################\033[m"
-  echo
-  echo -e $white "Special thanks to:"
-  echo
-  echo -e $red "Dracos Linux ( www.dracos-linux.org )"
-  echo
-  echo -e $okegreen "Offensive Security for the awesome OS"
-  echo
-  echo -e $green "http://www.offensive-security.com/"
-  echo
-  echo -e $yellow "http://www.kali.org/"
-  echo
-  echo -e $cyan "http://www.kitploit.com/"
-  echo
-  echo -e $white "http://www.linuxsec.org/"
-  echo
-  echo -e $okegreen "My Friend for helpme ( Boy Suganda )"
-  echo
-  echo -e $red "Big Thanks to : http://www.github.com/"
-  echo
-
-}
-
 ###################################################
 # Function Menu
 ###################################################
@@ -207,5 +171,41 @@ function menu() {
     menu
 
   fi
+
+}
+
+#######################################################
+# CREDITS
+#######################################################
+
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - removed blank spaces/tabs
+#   - correcting indentation (transparent code)
+function credits {
+
+  clear
+  echo -e "
+  \033[31m##########################################################################\033[m
+                  Credits To
+  \033[31m##########################################################################\033[m"
+  echo
+  echo -e $white "Special thanks to:"
+  echo
+  echo -e $red "Dracos Linux ( www.dracos-linux.org )"
+  echo
+  echo -e $okegreen "Offensive Security for the awesome OS"
+  echo
+  echo -e $green "http://www.offensive-security.com/"
+  echo
+  echo -e $yellow "http://www.kali.org/"
+  echo
+  echo -e $cyan "http://www.kitploit.com/"
+  echo
+  echo -e $white "http://www.linuxsec.org/"
+  echo
+  echo -e $okegreen "My Friend for helpme ( Boy Suganda )"
+  echo
+  echo -e $red "Big Thanks to : http://www.github.com/"
+  echo
 
 }
