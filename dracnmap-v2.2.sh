@@ -278,6 +278,7 @@ function scanoutput() {
 #   - added smart tabs
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
+#   - protection against giving an illegal value
 #   - correcting indentation (transparent code)
 function brutense() {
 
@@ -881,18 +882,29 @@ function brutense() {
 
   fi
 
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+  echo -n -e "  Back to Last Menu? ( Yes / No ) :"
   read back
 
-  if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-  then
-  clear
-  menu
-  elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-  then
-  brutense
+  if [ $back != 'n' ] && \
+     [ $back != 'N' ] && \
+     [ $back != 'no' ] && \
+     [ $back != 'No' ] ; then
+
+    clear
+    menu
+
+  elif [ $back != 'y' ] && \
+       [ $back != 'Y' ] && \
+       [ $back != 'yes' ] && \
+       [ $back != 'Yes' ] ; then
+
+    brutense
+
+  else
+
+    clear
+    menu
+
   fi
 
 }
