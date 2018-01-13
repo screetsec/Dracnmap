@@ -24,19 +24,23 @@ function WebService() {
   echo -e $okegreen
   echo " -----------------------------------------------------------------------"
   echo ""
-  echo -e $white" [$okegreen"01"$white]$cyan  DETECTING WEB APPLICATION FIREWALLS  "
-  echo -e $white" [$okegreen"02"$white]$cyan  DETECTING POSSIBLE XST VULNERABILITIES "
-  echo -e $white" [$okegreen"03"$white]$cyan  DETECTING OPEN RELAYS "
-  echo -e $white" [$okegreen"04"$white]$cyan  DETECTING BACKDOOR SMTP SERVERS "
-  echo -e $white" [$okegreen"05"$white]$cyan  DETECTING CROSS SITE SCRIPTING VULNERABILITIES  "
-  echo -e $white" [$okegreen"06"$white]$cyan  ENUMERATING USERS IN AN SMTP SERVER "
-  echo -e $white" [$okegreen"07"$white]$cyan  DETECTING WEB SERVERS VULNERABLE TO SLOWLORIS DDOS  "
-  echo -e $white" [$okegreen"08"$white]$cyan  FINDING SQL INJECTION VULNERABILITIES  "
-  echo -e $white" [$okegreen"09"$white]$cyan  CHECK IP GEOLOCATION WITH NSE  "
-  echo -e $white" [$okegreen"10"$white]$cyan  GATHERING INFORMATION FROM WHOIS (NSE)  "
-  echo -e $white" [$okegreen"11"$white]$cyan  COLLECTING VALID EMAIL ADDRES  "
-  echo -e $white" [$okegreen"12"$white]$cyan  BACK  "
+
+  echo -e $white"     ID                    DESCRIPTION"
+  echo -e $white"    ---------------------------------------------------------"
+  echo -e $white"    [$okegreen"01"$white]$cyan  DETECTING WEB APPLICATION FIREWALLS  "
+  echo -e $white"    [$okegreen"02"$white]$cyan  DETECTING POSSIBLE XST VULNERABILITIES "
+  echo -e $white"    [$okegreen"03"$white]$cyan  DETECTING OPEN RELAYS "
+  echo -e $white"    [$okegreen"04"$white]$cyan  DETECTING BACKDOOR SMTP SERVERS "
+  echo -e $white"    [$okegreen"05"$white]$cyan  DETECTING CROSS SITE SCRIPTING VULNERABILITIES  "
+  echo -e $white"    [$okegreen"06"$white]$cyan  ENUMERATING USERS IN AN SMTP SERVER "
+  echo -e $white"    [$okegreen"07"$white]$cyan  DETECTING WEB SERVERS VULNERABLE TO SLOWLORIS DDOS  "
+  echo -e $white"    [$okegreen"08"$white]$cyan  FINDING SQL INJECTION VULNERABILITIES  "
+  echo -e $white"    [$okegreen"09"$white]$cyan  CHECK IP GEOLOCATION WITH NSE  "
+  echo -e $white"    [$okegreen"10"$white]$cyan  GATHERING INFORMATION FROM WHOIS (NSE)  "
+  echo -e $white"    [$okegreen"11"$white]$cyan  COLLECTING VALID EMAIL ADDRES  "
+  echo -e $white"    [$okegreen"12"$white]$cyan  BACK  "
   echo -e " "
+
   echo -n -e $red'  \033[4mScreetsec@WebService:\033[0m>> '; tput sgr0 #insert your choice
   read Scanning
 
