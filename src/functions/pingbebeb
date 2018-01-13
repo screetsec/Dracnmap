@@ -3,7 +3,11 @@
 ################################################
 # PING PING BEBEB
 ################################################
+
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - removed blank spaces/tabs
 function pingbebeb() {
+
 echo -e $okegreen " "
 clear
 echo " "
