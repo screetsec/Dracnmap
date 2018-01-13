@@ -54,7 +54,7 @@ readonly _functions_file="${_src_directory}/functions"
 readonly _modules_directory="${_src_directory}/modules"
 
 readonly _modules_stack=("scanoutput" "brutense" "auth" "brd" \
-                         "exploit" "fuzzer" "malware" "vuln" "nsa" \
+                         "exploit" "fuzzer" "malware" "vuln" "nse" \
                          "zenmapscript" "WebService" "pingbebeb")
 
 for _filename in "$_functions_file" "${_modules_stack[@]}" ; do
