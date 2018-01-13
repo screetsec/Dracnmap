@@ -27,6 +27,37 @@ Version='2.1'
 Codename='Redline'
 xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
 
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - added fdir variable
+#   - added _functions_stack array
+#   - separated functions into files
+fdir="src/functions"
+
+readonly _functions_stack=("scanoutput" "brutense")
+
+for _fname in "${_functions_stack[@]}" ; do
+
+  _filename="$_fname"
+  _fpath="${fdir}/${_filename}"
+
+  if [[ ! -z "$_filename" ]] && [[ -e "$_filename" ]] ; then
+
+    # If the file exists is loaded.
+    . "$_filename"
+
+  elif [ -z "$_filename" ] ; then
+
+    printf "incorrectly loaded '$_filename' file (incorrect filename)"
+    exit 1
+
+  else
+
+    printf "incorrectly loaded '$_filename' file (does not exist?)"
+    exit 1
+
+  fi
+
+done
 
 trap ctrl_c INT
 ctrl_c() {
