@@ -27,12 +27,16 @@ function scanoutput() {
   echo " | | | | | | | | | | | | \/| | | | \/| | | | | |\/ | | | | | | | | | | | | "
   echo " |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_| "
   echo -e $white " "
-  echo -e $white" [$okegreen"01"$white]$okegreen  OUTPUT SCAN IN XML FORMATS  "
-  echo -e $white" [$okegreen"02"$white]$okegreen  OUTPUT SCAN IN HTML FORMATS "
-  echo -e $white" [$okegreen"03"$white]$okegreen  OUTPUT SCAN IN NORMAL FORMATS  "
-  echo -e $white" [$okegreen"04"$white]$okegreen  OUTPUT SCAN IN GREPABLE FORMATS "
-  echo -e $white" [$okegreen"05"$white]$okegreen  BACK  "
+
+  echo -e $white"     ID                    DESCRIPTION"
+  echo -e $white"    ---------------------------------------------------------"
+  echo -e $white"    [$okegreen"01"$white]$okegreen  OUTPUT SCAN IN XML FORMATS  "
+  echo -e $white"    [$okegreen"02"$white]$okegreen  OUTPUT SCAN IN HTML FORMATS "
+  echo -e $white"    [$okegreen"03"$white]$okegreen  OUTPUT SCAN IN NORMAL FORMATS  "
+  echo -e $white"    [$okegreen"04"$white]$okegreen  OUTPUT SCAN IN GREPABLE FORMATS "
+  echo -e $white"    [$okegreen"05"$white]$okegreen  BACK  "
   echo -e " "
+
   echo -n -e $red'  \033[4mScreetsec@Meoong:\033[0m>> '; tput sgr0 #insert your choice
   read DrS
 
