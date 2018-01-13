@@ -2,80 +2,107 @@
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
+#   - correcting indentation (transparent code)
 function nse() {
 
-clear
-echo -e $okegreen " "
-echo "    )   *           (      (         (   (   (            ";
-echo " ( /( (  \     (     )\ )   )\ )  (   )\ ))\ ))\ )  *   )  ";
-echo " )\()))\))(   )\   (()/(  (()/(  )\ (()/(()/(()/(\  )  /(  ";
-echo "((_)\((_)()((((_)(  /(_))  /(_)|((_) /(_))(_))(_))( )(_)) ";
-echo " _((_|_()((_)\ _ )\(_))   (_)) )\___(_))(_))(_)) (_(_())  ";
-echo "| \| |  \/  (_)_\(_) _ \  / __((/ __| _ \_ _| _ \|_   _|  ";
-echo "| .\ | |\/| |/ _ \ |  _/  \__ \| (__|   /| ||  _/  | |    ";
-echo "|_|\_|_|  |_/_/ \_\|_|    |___/ \___|_|_\___|_|    |_|    ";
-echo "                                                          ";
-echo -e $red"  Nmap Script Engine - Advanced Scanning with Nmap Script "
+  clear
+  echo -e $okegreen " "
+  echo "    )   *           (      (         (   (   (            ";
+  echo " ( /( (  \     (     )\ )   )\ )  (   )\ ))\ ))\ )  *   )  ";
+  echo " )\()))\))(   )\   (()/(  (()/(  )\ (()/(()/(()/(\  )  /(  ";
+  echo "((_)\((_)()((((_)(  /(_))  /(_)|((_) /(_))(_))(_))( )(_)) ";
+  echo " _((_|_()((_)\ _ )\(_))   (_)) )\___(_))(_))(_)) (_(_())  ";
+  echo "| \| |  \/  (_)_\(_) _ \  / __((/ __| _ \_ _| _ \|_   _|  ";
+  echo "| .\ | |\/| |/ _ \ |  _/  \__ \| (__|   /| ||  _/  | |    ";
+  echo "|_|\_|_|  |_/_/ \_\|_|    |___/ \___|_|_\___|_|    |_|    ";
+  echo "                                                          ";
+  echo -e $red"  Nmap Script Engine - Advanced Scanning with Nmap Script "
+  
+  echo -e $white " "
+  echo -e $white" [$okegreen"01"$white]$cyan  auth-category  "
+  echo -e $white" [$okegreen"02"$white]$cyan  broadcast-category "
+  echo -e $white" [$okegreen"03"$white]$cyan  brute-category "
+  echo -e $white" [$okegreen"04"$white]$cyan  exploit-category "
+  echo -e $white" [$okegreen"05"$white]$cyan  fuzzer-category "
+  echo -e $white" [$okegreen"06"$white]$cyan  malware-category "
+  echo -e $white" [$okegreen"07"$white]$cyan  vuln-category "
+  echo -e $white" [$okegreen"08"$white]$cyan  back to menu "
+  echo
+  echo -n -e $red'  \033[4mScreetsec@nse:\033[0m>> '; tput sgr0 #insert your choice
+  read ceh
 
-echo -e $white " "
-echo -e $white" [$okegreen"01"$white]$cyan  auth-category  "
-echo -e $white" [$okegreen"02"$white]$cyan  broadcast-category "
-echo -e $white" [$okegreen"03"$white]$cyan  brute-category "
-echo -e $white" [$okegreen"04"$white]$cyan  exploit-category "
-echo -e $white" [$okegreen"05"$white]$cyan  fuzzer-category "
-echo -e $white" [$okegreen"06"$white]$cyan  malware-category "
-echo -e $white" [$okegreen"07"$white]$cyan  vuln-category "
-echo -e $white" [$okegreen"08"$white]$cyan  back to menu "
-echo
-echo -n -e $red'  \033[4mScreetsec@nse:\033[0m>> '; tput sgr0 #insert your choice
-read ceh
-if test $ceh == '1'
-then
-clear
-auth
-elif test $ceh == '2'
-then
-clear
-brd
-elif test $ceh == '3'
-then
-clear
-brutense
-elif test $ceh == '4'
-then
-clear
-exploit
-elif test $ceh == '5'
-then
-clear
-fuzzer
-elif test $ceh == '6'
-then
-echo
-clear
-malware
-elif test $ceh == '7'
-then
-echo
-clear
-vuln
-elif test $ceh == '8'
-then
-menu
-else
-echo ""
-echo -e $okegreen " Incorrect Number"
-fi
-echo ""
-echo ""
-echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-read back
-if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-then
-clear
-menu
-elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-then
-nse
-fi
+  if test $ceh == '1'
+  then
+
+    clear
+    auth
+
+  elif test $ceh == '2'
+  then
+
+    clear
+    brd
+
+  elif test $ceh == '3'
+  then
+
+    clear
+    brutense
+
+  elif test $ceh == '4'
+  then
+
+    clear
+    exploit
+
+  elif test $ceh == '5'
+  then
+
+    clear
+    fuzzer
+
+  elif test $ceh == '6'
+  then
+
+    echo
+    clear
+    malware
+
+  elif test $ceh == '7'
+  then
+
+    echo
+    clear
+    vuln
+
+  elif test $ceh == '8'
+  then
+
+    menu
+
+  else
+
+    echo ""
+    echo -e $okegreen " Incorrect Number"
+
+  fi
+
+    echo ""
+    echo ""
+    echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+    read back
+
+  if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
+  then
+
+    clear
+    menu
+
+  elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
+  then
+
+    nse
+
+  fi
+
 }
