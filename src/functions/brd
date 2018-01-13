@@ -2,345 +2,443 @@
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
+#   - correcting indentation (transparent code)
 function brd () {
 
-clear
-echo
-echo
-echo -e $white" [$okegreen"01"$white]$cyan broadcast-ataoe-discover "
-echo -e $white" [$okegreen"02"$white]$cyan broadcast-avahi-dos  "
-echo -e $white" [$okegreen"03"$white]$cyan broadcast-bjnp-discover "
-echo -e $white" [$okegreen"04"$white]$cyan broadcast-db2-discover "
-echo -e $white" [$okegreen"05"$white]$cyan broadcast-dhcp-discover  "
-echo -e $white" [$okegreen"06"$white]$cyan broadcast-dhcp6-discover "
-echo -e $white" [$okegreen"07"$white]$cyan broadcast-dns-service-discovery  "
-echo -e $white" [$okegreen"08"$white]$cyan broadcast-dropbox-listener "
-echo -e $white" [$okegreen"09"$white]$cyan broadcast-eigrp-discovery  "
-echo -e $white" [$okegreen"10"$white]$cyan broadcast-igmp-discovery "
-echo -e $white" [$okegreen"11"$white]$cyan broadcast-listener "
-echo -e $white" [$okegreen"12"$white]$cyan broadcast-ms-sql-discover  "
-echo -e $white" [$okegreen"13"$white]$cyan broadcast-netbios-master-browser "
-echo -e $white" [$okegreen"14"$white]$cyan broadcast-networker-discover "
-echo -e $white" [$okegreen"15"$white]$cyan broadcast-novell-locate  "
-echo -e $white" [$okegreen"16"$white]$cyan broadcast-pc-anywhere  "
-echo -e $white" [$okegreen"17"$white]$cyan broadcast-pc-duo "
-echo -e $white" [$okegreen"18"$white]$cyan broadcast-pim-discovery  "
-echo -e $white" [$okegreen"19"$white]$cyan broadcast-ping "
-echo -e $white" [$okegreen"20"$white]$cyan broadcast-pppoe-discover "
-echo -e $white" [$okegreen"21"$white]$cyan broadcast-rip-discover "
-echo -e $white" [$okegreen"22"$white]$cyan broadcast-ripng-discover "
-echo -e $white" [$okegreen"23"$white]$cyan broadcast-sonicwall-discover "
-echo -e $white" [$okegreen"24"$white]$cyan broadcast-sybase-asa-discover  "
-echo -e $white" [$okegreen"25"$white]$cyan broadcast-tellstick-discover "
-echo -e $white" [$okegreen"26"$white]$cyan broadcast-upnp-info  "
-echo -e $white" [$okegreen"27"$white]$cyan broadcast-versant-locate "
-echo -e $white" [$okegreen"28"$white]$cyan broadcast-wake-on-lan  "
-echo -e $white" [$okegreen"29"$white]$cyan broadcast-wpad-discover  "
-echo -e $white" [$okegreen"30"$white]$cyan broadcast-wsdd-discover  "
-echo -e $white" [$okegreen"31"$white]$cyan broadcast-xdmcp-discover "
-echo -e $white" [$okegreen"32"$white]$cyan eap-info "
-echo -e $white" [$okegreen"33"$white]$cyan ipv6-multicast-mld-list  "
-echo -e $white" [$okegreen"34"$white]$cyan knx-gateway-discover "
-echo -e $white" [$okegreen"35"$white]$cyan llmnr-resolve  "
-echo -e $white" [$okegreen"36"$white]$cyan lltd-discovery "
-echo -e $white" [$okegreen"37"$white]$cyan mrinfo "
-echo -e $white" [$okegreen"38"$white]$cyan mtrace "
-echo -e $white" [$okegreen"39"$white]$cyan targets-ipv6-multicast-echo  "
-echo -e $white" [$okegreen"40"$white]$cyan targets-ipv6-multicast-invalid-dst "
-echo -e $white" [$okegreen"41"$white]$cyan targets-ipv6-multicast-mld "
-echo -e $white" [$okegreen"42"$white]$cyan targets-ipv6-multicast-slaac "
-echo -e $white" [$okegreen"43"$white]$cyan targets-sniffer  "
-echo -e $white" [$okegreen"44"$white]$cyan back "
-echo -n -e $red'  \033[4mScreetsec@nse-broadcast:\033[0m>> '; tput sgr0 #insert your choice
-read min
-if test $min == '1'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-ataoe-discover -e $ie &
-elif test $min == '2'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=broadcast-avahi-dos -e $ie &
-elif test $min == '3'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-bjnp-discover -e $ie &
-elif test $min == '4'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script db2-discover -e $ie &
-elif test $min == '5'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-dhcp-discover -e $ie &
-elif test $min == '6'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm -6 --script broadcast-dhcp6-discover -e $ie &
-elif test $min == '7'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=broadcast-dns-service-discovery -e $ie &
-elif test $min == '8'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=broadcast-dropbox-listener --script-args=newtargets -Pn -e $ie &
-elif test $min == '9'
-then
-echo
-echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-read ip
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=broadcast-eigrp-discovery $ip -e $ie &
-elif test $min == '10'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-igmp-discovery -e $ie &
-elif test $min == '11'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-listener -e $ie &
-elif test $min == '12'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm nmap --script broadcast-ms-sql-discover -e $ie &
-elif test $min == '13'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=broadcast-netbios-master-browser -e $ie &
-elif test $min == '14'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-networker-discover -e $ie &
-elif test $min == '15'
-then
-echo
-echo -ne $okegreen " What is your Targets" ; tput sgr0
-read ie
-$xterm -sV --script=broadcast-novell-locate $ie &
-elif test $min == '16'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm  --script broadcast-pc-anywhere -e $ie &
-elif test $min == '17'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-pc-duo -e $ie &
-elif test $min == '18'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm nmap --script broadcast-pim-discovery -e $ie &
-elif test $min == '19'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-echo -ne $okegreen " Default value for TTL is 64 & the length of the payload is 0" ; tput sgr0
-read ttl
-echo -ne $okegreen " The payload is consisted of random bytes." ; tput sgr0
-read payload
-echo -ne $okegreen " Timespec specifying how long to wait for response (default 3s)" ; tput sgr0
-read ti
-echo -ne $okegreen " Number specifying how many ICMP probes should be sent (default 1)" ; tput sgr0
-read np
-$xterm -e $ie [--ttl $ttl] [--data-length $payload] --script broadcast-ping [--script-args [broadcast-ping.timeout=$ti],[num-probes=$np]]] &
-elif test $min == '20'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-pppoe-discover -e $ie &
-elif test $min == '21'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-rip-discover -e $ie &
-elif test $min == '22'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-ripng-discover -e $ie &
-elif test $min == '23'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm -e $ie --script broadcast-sonicwall-discover &
-elif test $min == '24'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-sybase-asa-discover -e $ie &
-elif test $min == '25'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-tellstick-discover -e $ie &
-elif test $min == '26'
-then
-echo
-echo -ne $okegreen " What is your Targets" ; tput sgr0
-read ip
-$xterm -sV --script=broadcast-upnp-info $ip &
-elif test $min == '27'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-versant-locate -e $ie &
-elif test $min == '28'
-then
-echo
-echo -ne $okegreen " The MAC address of the remote system to wake up" ; tput sgr0
-read mac
-$xterm --script broadcast-wake-on-lan --script-args broadcast-wake-on-lan.MAC="$mac" &
-elif test $min == '29'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-wpad-discover -e $ie &
-elif test $min == '30'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-wsdd-discover -e $ie &
-elif test $min == '31'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script broadcast-xdmcp-discover -e $ie &
-elif test $min == '32'
-then
-echo
-echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-read ip
-$xterm -e interface --script eap-info [--script-args="eap-info.identity=0-user,eap-info.scan={13,50}"] $ip &
-elif test $min == '33'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=ipv6-multicast-mld-list -e $ie &
-elif test $min == '34'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script knx-gateway-discover -e $ie &
-elif test $min == '35'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-echo -ne $okegreen " Hostname to resolve : " ; tput sgr0
-read hostname
-$xterm --script llmnr-resolve --script-args "llmnr-resolve.hostname=$hostname" -e $ie &
-elif test $min == '36'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm -e $ie --script lltd-discovery &
-elif test $min == '37'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script mrinfo -e $ie &
-elif test $min == '38'
-then
-echo
-echo -ne $okegreen " Source address from which to traceroute." ; tput sgr0
-read rt
-$xterm --script mtrace --script-args "mtrace.fromip=$rt" &
-elif test $min == '39'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=targets-ipv6-multicast-echo.nse --script-args "newtargets,interface=$ie" -sL &
-elif test $min == '40'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=targets-ipv6-multicast-invalid-dst.nse --script-args "newtargets,interface=$ie" -sP &
-elif test $min == '41'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script=targets-ipv6-multicast-mld.nse --script-args "newtargets,interface=$ie" &
-elif test $min == '42'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm --script targets-ipv6-multicast-slaac --script-args "newtargets,interface=$ie" -sP &
-elif test $min == '43'
-then
-echo
-echo -ne $okegreen " What is your Interfaces" ; tput sgr0
-read ie
-$xterm -sL --script=targets-sniffer --script-args=newtargets,targets-sniffer.timeout=5s,targets-sniffer.iface=$ie &
-elif test $min == '44'
-then
-nse
-else
-echo ""
-echo -e $okegreen " Incorrect Number"
-fi
-echo ""
-echo ""
-echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-read back
-if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-then
-clear
-menu
-elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-then
-brd
-fi
+  clear
+  echo
+  echo
+  echo -e $white" [$okegreen"01"$white]$cyan broadcast-ataoe-discover "
+  echo -e $white" [$okegreen"02"$white]$cyan broadcast-avahi-dos  "
+  echo -e $white" [$okegreen"03"$white]$cyan broadcast-bjnp-discover "
+  echo -e $white" [$okegreen"04"$white]$cyan broadcast-db2-discover "
+  echo -e $white" [$okegreen"05"$white]$cyan broadcast-dhcp-discover  "
+  echo -e $white" [$okegreen"06"$white]$cyan broadcast-dhcp6-discover "
+  echo -e $white" [$okegreen"07"$white]$cyan broadcast-dns-service-discovery  "
+  echo -e $white" [$okegreen"08"$white]$cyan broadcast-dropbox-listener "
+  echo -e $white" [$okegreen"09"$white]$cyan broadcast-eigrp-discovery  "
+  echo -e $white" [$okegreen"10"$white]$cyan broadcast-igmp-discovery "
+  echo -e $white" [$okegreen"11"$white]$cyan broadcast-listener "
+  echo -e $white" [$okegreen"12"$white]$cyan broadcast-ms-sql-discover  "
+  echo -e $white" [$okegreen"13"$white]$cyan broadcast-netbios-master-browser "
+  echo -e $white" [$okegreen"14"$white]$cyan broadcast-networker-discover "
+  echo -e $white" [$okegreen"15"$white]$cyan broadcast-novell-locate  "
+  echo -e $white" [$okegreen"16"$white]$cyan broadcast-pc-anywhere  "
+  echo -e $white" [$okegreen"17"$white]$cyan broadcast-pc-duo "
+  echo -e $white" [$okegreen"18"$white]$cyan broadcast-pim-discovery  "
+  echo -e $white" [$okegreen"19"$white]$cyan broadcast-ping "
+  echo -e $white" [$okegreen"20"$white]$cyan broadcast-pppoe-discover "
+  echo -e $white" [$okegreen"21"$white]$cyan broadcast-rip-discover "
+  echo -e $white" [$okegreen"22"$white]$cyan broadcast-ripng-discover "
+  echo -e $white" [$okegreen"23"$white]$cyan broadcast-sonicwall-discover "
+  echo -e $white" [$okegreen"24"$white]$cyan broadcast-sybase-asa-discover  "
+  echo -e $white" [$okegreen"25"$white]$cyan broadcast-tellstick-discover "
+  echo -e $white" [$okegreen"26"$white]$cyan broadcast-upnp-info  "
+  echo -e $white" [$okegreen"27"$white]$cyan broadcast-versant-locate "
+  echo -e $white" [$okegreen"28"$white]$cyan broadcast-wake-on-lan  "
+  echo -e $white" [$okegreen"29"$white]$cyan broadcast-wpad-discover  "
+  echo -e $white" [$okegreen"30"$white]$cyan broadcast-wsdd-discover  "
+  echo -e $white" [$okegreen"31"$white]$cyan broadcast-xdmcp-discover "
+  echo -e $white" [$okegreen"32"$white]$cyan eap-info "
+  echo -e $white" [$okegreen"33"$white]$cyan ipv6-multicast-mld-list  "
+  echo -e $white" [$okegreen"34"$white]$cyan knx-gateway-discover "
+  echo -e $white" [$okegreen"35"$white]$cyan llmnr-resolve  "
+  echo -e $white" [$okegreen"36"$white]$cyan lltd-discovery "
+  echo -e $white" [$okegreen"37"$white]$cyan mrinfo "
+  echo -e $white" [$okegreen"38"$white]$cyan mtrace "
+  echo -e $white" [$okegreen"39"$white]$cyan targets-ipv6-multicast-echo  "
+  echo -e $white" [$okegreen"40"$white]$cyan targets-ipv6-multicast-invalid-dst "
+  echo -e $white" [$okegreen"41"$white]$cyan targets-ipv6-multicast-mld "
+  echo -e $white" [$okegreen"42"$white]$cyan targets-ipv6-multicast-slaac "
+  echo -e $white" [$okegreen"43"$white]$cyan targets-sniffer  "
+  echo -e $white" [$okegreen"44"$white]$cyan back "
+  echo -n -e $red'  \033[4mScreetsec@nse-broadcast:\033[0m>> '; tput sgr0 #insert your choice
+  read min
+
+  if test $min == '1'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-ataoe-discover -e $ie &
+
+  elif test $min == '2'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=broadcast-avahi-dos -e $ie &
+
+  elif test $min == '3'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-bjnp-discover -e $ie &
+
+  elif test $min == '4'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script db2-discover -e $ie &
+
+  elif test $min == '5'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-dhcp-discover -e $ie &
+
+  elif test $min == '6'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm -6 --script broadcast-dhcp6-discover -e $ie &
+
+  elif test $min == '7'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=broadcast-dns-service-discovery -e $ie &
+
+  elif test $min == '8'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=broadcast-dropbox-listener --script-args=newtargets -Pn -e $ie &
+
+  elif test $min == '9'
+  then
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=broadcast-eigrp-discovery $ip -e $ie &
+
+  elif test $min == '10'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-igmp-discovery -e $ie &
+
+  elif test $min == '11'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-listener -e $ie &
+
+  elif test $min == '12'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm nmap --script broadcast-ms-sql-discover -e $ie &
+
+  elif test $min == '13'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=broadcast-netbios-master-browser -e $ie &
+
+  elif test $min == '14'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-networker-discover -e $ie &
+
+  elif test $min == '15'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Targets" ; tput sgr0
+    read ie
+    $xterm -sV --script=broadcast-novell-locate $ie &
+
+  elif test $min == '16'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm  --script broadcast-pc-anywhere -e $ie &
+
+  elif test $min == '17'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-pc-duo -e $ie &
+
+  elif test $min == '18'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm nmap --script broadcast-pim-discovery -e $ie &
+
+  elif test $min == '19'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    echo -ne $okegreen " Default value for TTL is 64 & the length of the payload is 0" ; tput sgr0
+    read ttl
+    echo -ne $okegreen " The payload is consisted of random bytes." ; tput sgr0
+    read payload
+    echo -ne $okegreen " Timespec specifying how long to wait for response (default 3s)" ; tput sgr0
+    read ti
+    echo -ne $okegreen " Number specifying how many ICMP probes should be sent (default 1)" ; tput sgr0
+    read np
+    $xterm -e $ie [--ttl $ttl] [--data-length $payload] --script broadcast-ping [--script-args [broadcast-ping.timeout=$ti],[num-probes=$np]]] &
+
+  elif test $min == '20'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-pppoe-discover -e $ie &
+
+  elif test $min == '21'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-rip-discover -e $ie &
+
+  elif test $min == '22'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-ripng-discover -e $ie &
+
+  elif test $min == '23'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm -e $ie --script broadcast-sonicwall-discover &
+
+  elif test $min == '24'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-sybase-asa-discover -e $ie &
+
+  elif test $min == '25'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-tellstick-discover -e $ie &
+
+  elif test $min == '26'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Targets" ; tput sgr0
+    read ip
+    $xterm -sV --script=broadcast-upnp-info $ip &
+
+  elif test $min == '27'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-versant-locate -e $ie &
+
+  elif test $min == '28'
+  then
+
+    echo
+    echo -ne $okegreen " The MAC address of the remote system to wake up" ; tput sgr0
+    read mac
+    $xterm --script broadcast-wake-on-lan --script-args broadcast-wake-on-lan.MAC="$mac" &
+
+  elif test $min == '29'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-wpad-discover -e $ie &
+
+  elif test $min == '30'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-wsdd-discover -e $ie &
+
+  elif test $min == '31'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script broadcast-xdmcp-discover -e $ie &
+
+  elif test $min == '32'
+  then
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -e interface --script eap-info [--script-args="eap-info.identity=0-user,eap-info.scan={13,50}"] $ip &
+
+  elif test $min == '33'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=ipv6-multicast-mld-list -e $ie &
+
+  elif test $min == '34'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script knx-gateway-discover -e $ie &
+
+  elif test $min == '35'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    echo -ne $okegreen " Hostname to resolve : " ; tput sgr0
+    read hostname
+    $xterm --script llmnr-resolve --script-args "llmnr-resolve.hostname=$hostname" -e $ie &
+
+  elif test $min == '36'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm -e $ie --script lltd-discovery &
+
+  elif test $min == '37'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script mrinfo -e $ie &
+
+  elif test $min == '38'
+  then
+
+    echo
+    echo -ne $okegreen " Source address from which to traceroute." ; tput sgr0
+    read rt
+    $xterm --script mtrace --script-args "mtrace.fromip=$rt" &
+
+  elif test $min == '39'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=targets-ipv6-multicast-echo.nse --script-args "newtargets,interface=$ie" -sL &
+
+  elif test $min == '40'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=targets-ipv6-multicast-invalid-dst.nse --script-args "newtargets,interface=$ie" -sP &
+
+  elif test $min == '41'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script=targets-ipv6-multicast-mld.nse --script-args "newtargets,interface=$ie" &
+
+  elif test $min == '42'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm --script targets-ipv6-multicast-slaac --script-args "newtargets,interface=$ie" -sP &
+
+  elif test $min == '43'
+  then
+
+    echo
+    echo -ne $okegreen " What is your Interfaces" ; tput sgr0
+    read ie
+    $xterm -sL --script=targets-sniffer --script-args=newtargets,targets-sniffer.timeout=5s,targets-sniffer.iface=$ie &
+
+  elif test $min == '44'
+  then
+
+    nse
+
+  else
+
+    echo ""
+    echo -e $okegreen " Incorrect Number"
+
+  fi
+
+    echo ""
+    echo ""
+    echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+    read back
+
+  if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
+  then
+
+    clear
+    menu
+
+  elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
+  then
+
+    brd
+
+  fi
 
 }
