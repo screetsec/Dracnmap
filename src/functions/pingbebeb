@@ -7,6 +7,8 @@
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
+#   - replaced 'test' to '[[ ]]'
+#   - changed comparison operator (-eq)
 function pingbebeb() {
 
   echo -e $okegreen " "
@@ -36,8 +38,7 @@ function pingbebeb() {
   echo -n -e $red'  \033[4mScreetsec@PING!:\033[0m>> '; tput sgr0 #insert your choice
   read DrS
   
-  if test $DrS == '1'
-  then
+  if [[ $DrS -eq 1 ]] ; then
 
     echo -e $cyan""
     echo -n "  What is your IP Target or Host: " ; tput sgr0
@@ -45,8 +46,7 @@ function pingbebeb() {
     $xterm --script broadcast-ping --script-args broadcast-ping.num_probes=5 $ip &
     pingbebeb
 
-  elif test $DrS == '2'
-  then
+  elif [[ $DrS -eq 2 ]] ; then
 
     echo -e $cyan""
     echo -n "  What is your IP Target or Host: " ; tput sgr0
@@ -54,8 +54,7 @@ function pingbebeb() {
     $xterm -sP -PS $ip &
     pingbebeb
 
-  elif test $DrS == '3'
-  then
+  elif [[ $DrS -eq 3 ]] ; then
 
     echo -e $cyan""
     echo -n "  What is your IP Target or Host: " ; tput sgr0
@@ -63,8 +62,7 @@ function pingbebeb() {
     $xterm -sP -PA $ip &
     pingbebeb
 
-  elif test $DrS == '4'
-  then
+  elif [[ $DrS -eq 4 ]] ; then
 
     echo -e $cyan""
     echo -n "  What is your IP Target or Host: " ; tput sgr0
@@ -72,8 +70,7 @@ function pingbebeb() {
     $xterm -sP -PU $ip &
     pingbebeb
 
-  elif test $DrS == '5'
-  then
+  elif [[ $DrS -eq 5 ]] ; then
 
     echo -e $cyan""
     echo -n "  What is your IP Target or Host: " ; tput sgr0
@@ -81,8 +78,7 @@ function pingbebeb() {
     $xterm -sP -PE $ip &
     pingbebeb
 
-  elif test $DrS == '6'
-  then
+  elif [[ $DrS -eq 6 ]] ; then
 
     echo -e $cyan""
     echo -n "  What is your IP Target or Host: " ; tput sgr0
@@ -90,8 +86,7 @@ function pingbebeb() {
     $xterm  -sP -PO --packet-trace $ip  &
     pingbebeb
 
-  elif test $DrS == '7'
-  then
+  elif [[ $DrS -eq 7 ]] ; then
 
     menu
 
