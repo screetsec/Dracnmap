@@ -6,8 +6,11 @@
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
+#   - correcting indentation (transparent code)
 function WebService() {
+
   clear
+
   echo -e $cyan ""
   echo ""
   echo -e $red " __      __      ___.       _________                  .__              ";
@@ -33,92 +36,129 @@ function WebService() {
   echo -e " "
   echo -n -e $red'  \033[4mScreetsec@WebService:\033[0m>> '; tput sgr0 #insert your choice
   read Scanning
+
   if test $Scanning == '1'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+
+    $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $ip &
+
   elif test $Scanning == '2'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  nmap -sS -sU -T4 -A -v $ip
-  $xterm -p80 --script http-methods,http-trace --script-args http-methods.retest $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    nmap -sS -sU -T4 -A -v $ip
+    $xterm -p80 --script http-methods,http-trace --script-args http-methods.retest $ip &
+
   elif test $Scanning == '3'
   then
-  echo
-  echo -ne  $okegreen" What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script smtp-open-relay -v $ip &
+
+    echo
+    echo -ne  $okegreen" What is your IP Target or Host: " ; tput sgr0
+    read ip
+
+    $xterm -sV --script smtp-open-relay -v $ip &
+
   elif test $Scanning == '4'
   then
-  echo
-  echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-  read ip
-  $xterm nmap -sn $ip
-  echo -e ""
-  $xterm -sV --script smtp-strangeport $ip &
+
+    echo
+    echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
+    read ip
+    $xterm nmap -sn $ip
+    echo -e ""
+    $xterm -sV --script smtp-strangeport $ip &
+
   elif test $Scanning == '5'
   then
-  echo
-  echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-  read ip
-  $xterm -p80 --script http-phpself-xss,http-unsafe-output-escaping $ip &
+
+    echo
+    echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
+    read ip
+    $xterm -p80 --script http-phpself-xss,http-unsafe-output-escaping $ip &
+
   elif test $Scanning == '6'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: "; tput sgr0
-  read ip
-  $xterm -p25 –script smtp-enum-users $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: "; tput sgr0
+    read ip
+    $xterm -p25 –script smtp-enum-users $ip &
+
   elif test $Scanning == '7'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-slowloris --max-parallelism 300 $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p80 --script http-slowloris --max-parallelism 300 $ip &
+
   elif test $Scanning == '8'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-sql-injection $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p80 --script http-sql-injection $ip &
+
   elif test $Scanning == '9'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -Pn -p80 --script ip-geolocation-* $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -Pn -p80 --script ip-geolocation-* $ip &
+
   elif test $Scanning == '10'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sn --script whois-ip --script-args whois.whodb=nocache $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -sn --script whois-ip --script-args whois.whodb=nocache $ip &
+
   elif test $Scanning == '11'
   then
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-google-email,http-email-harvest $ip &
+
+    echo
+    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+    read ip
+    $xterm -p80 --script http-google-email,http-email-harvest $ip &
+
   elif test $Scanning == '12'
   then
-  menu
+
+    menu
+
   else
-  echo ""
-  echo -e $okegreen " Incorrect Number"
+
+    echo ""
+    echo -e $okegreen " Incorrect Number"
+
   fi
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-  read back
+
+    echo ""
+    echo ""
+    echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+    read back
+
   if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
   then
-  clear
-  menu
+
+    clear
+
+    menu
+
   elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
   then
-  WebService
+
+    WebService
+
   fi
+
 }
