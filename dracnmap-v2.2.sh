@@ -43,32 +43,32 @@ readonly _init_directory="$(dirname "$(readlink -f "$0")")"
 readonly _src_directory="${_init_directory}/src"
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - added _functions_directory variable
-#   - added _functions_stack array
-#   - separated functions into files
-readonly _functions_directory="${_src_directory}/functions"
+#   - added _modules_directory variable
+#   - added _modules_stack array
+#   - separated modules into files
+readonly _modules_directory="${_src_directory}/modules"
 
-readonly _functions_stack=("scanoutput" "brutense" "auth" "brd" \
-                           "exploit" "fuzzer" "malware" "vuln" "nsa" \
-                           "zenmapscript" "WebService" "pingbebeb")
+readonly _modules_stack=("scanoutput" "brutense" "auth" "brd" \
+                         "exploit" "fuzzer" "malware" "vuln" "nsa" \
+                         "zenmapscript" "WebService" "pingbebeb")
 
-for _filename in "${_functions_stack[@]}" ; do
+for _filename in "${_modules_stack[@]}" ; do
 
-  _fpath="${_functions_directory}/${_filename}"
+  _mpath="${_modules_directory}/${_filename}"
 
-  if [[ ! -z "$_fpath" ]] && [[ -e "$_fpath" ]] ; then
+  if [[ ! -z "$_mpath" ]] && [[ -e "$_mpath" ]] ; then
 
     # If the file exists is loaded.
-    . "$_fpath"
+    . "$_mpath"
 
-  elif [[ -z "$_fpath" ]] ; then
+  elif [[ -z "$_mpath" ]] ; then
 
-    printf "incorrectly loaded '$_fpath' file (incorrect filename)"
+    printf "incorrectly loaded '$_mpath' file (incorrect filename)"
     exit 1
 
   else
 
-    printf "incorrectly loaded '$_fpath' file (does not exist?)"
+    printf "incorrectly loaded '$_mpath' file (does not exist?)"
     exit 1
 
   fi
