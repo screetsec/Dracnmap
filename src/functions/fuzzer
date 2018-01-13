@@ -1,51 +1,55 @@
 #!/usr/bin/env bash
 
+# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
+#   - removed blank spaces/tabs
 function fuzzer () {
-  clear
-  echo
-  echo
-  echo -e $white" [$okegreen"01"$white]$cyan File dns-fuzz "
-  echo -e $white" [$okegreen"02"$white]$cyan File http-form-fuzzer  "
-  echo -e $white" [$okegreen"03"$white]$cyan File http-phpself-xss  "
-  echo -e $white" [$okegreen"04"$white]$cyan Back "
-  echo -e " "
-  echo -n -e $red'  \033[4mScreetsec@nse-fuzzer:\033[0m>> '; tput sgr0 #insert your choice
-           read win
-        if test $win == '1'
-          then
-          echo
-          echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-          read ip
-          $xterm -sU --script dns-fuzz --script-args timelimit=2h $ip &
-        elif test $win == '2'
-          then
-          echo
-          echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-          read ip
-          $xterm --script http-form-fuzzer --script-args 'http-form-fuzzer.targets={1={path=/},2={path=/register.html}}' -p 80 $ip &
-        elif test $win == '3'
-          then
-          echo
-          echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-          read ip
-          $xterm --script=http-phpself-xss -p80 $ip &
-        elif test $win == '4'
-          then
-           nse
-        else
-            echo ""
-            echo -e $okegreen " Incorrect Number"
-          fi
-          echo ""
-          echo ""
-          echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-        read back
-        if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
-            then
-            clear
-            menu
-        elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
-            then
-            fuzzer
-        fi
+
+clear
+echo
+echo
+echo -e $white" [$okegreen"01"$white]$cyan File dns-fuzz "
+echo -e $white" [$okegreen"02"$white]$cyan File http-form-fuzzer  "
+echo -e $white" [$okegreen"03"$white]$cyan File http-phpself-xss  "
+echo -e $white" [$okegreen"04"$white]$cyan Back "
+echo -e " "
+echo -n -e $red'  \033[4mScreetsec@nse-fuzzer:\033[0m>> '; tput sgr0 #insert your choice
+read win
+if test $win == '1'
+then
+echo
+echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+read ip
+$xterm -sU --script dns-fuzz --script-args timelimit=2h $ip &
+elif test $win == '2'
+then
+echo
+echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+read ip
+$xterm --script http-form-fuzzer --script-args 'http-form-fuzzer.targets={1={path=/},2={path=/register.html}}' -p 80 $ip &
+elif test $win == '3'
+then
+echo
+echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
+read ip
+$xterm --script=http-phpself-xss -p80 $ip &
+elif test $win == '4'
+then
+nse
+else
+echo ""
+echo -e $okegreen " Incorrect Number"
+fi
+echo ""
+echo ""
+echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
+read back
+if [ $back != 'n' ] && [ $back != 'N' ] && [ $back != 'no' ] && [ $back != 'No' ]
+then
+clear
+menu
+elif [ $back != 'y' ] && [ $back != 'Y' ] && [ $back != 'yes' ] && [ $back != 'Yes' ]
+then
+fuzzer
+fi
+
 }
