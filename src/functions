@@ -41,6 +41,19 @@ function _init_cli() {
         $xterm  $ip &
         cstate=1
         ;;
+      02|2)
+        echo ""
+        echo -ne $okegreen"  What is your IP Target or Host (1): " ; tput sgr0
+        read ip1
+        echo ""
+        echo -ne $okegreen " What is your IP Target or Host (2): " ; tput sgr0
+        read ip2
+        echo ""
+        echo -ne $okegreen " What is your IP Target or Host (3): " ; tput sgr0
+        read ip3
+        echo ""
+        $xterm  $ip1 $ip2 $ip3  &
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
