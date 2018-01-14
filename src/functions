@@ -35,25 +35,28 @@ function _init_cli() {
     case ${input_array[0]} in
 
       01|1)
-        echo -e $cyan""
-        echo -ne "  What is your IP Target or Host: " ; tput sgr0
-        read ip
-        $xterm  $ip &
+
+        _get_ip
+        $xterm  $_ip &
         cstate=1
         ;;
+
       02|2)
-        echo ""
-        echo -ne $okegreen"  What is your IP Target or Host (1): " ; tput sgr0
-        read ip1
-        echo ""
-        echo -ne $okegreen " What is your IP Target or Host (2): " ; tput sgr0
-        read ip2
-        echo ""
-        echo -ne $okegreen " What is your IP Target or Host (3): " ; tput sgr0
-        read ip3
-        echo ""
-        $xterm  $ip1 $ip2 $ip3  &
+
+        echo -e $cyan""
+        echo -n "  How many addresses do you want to scan? " ; tput sgr0
+        read -ra _ip_amount
+
+        for i in $(seq 1 $_ip_amount) ; done
+
+          _get_ip
+          _ip_list+=("$_ip")
+
+        done
+
+        $xterm ${_ip_list[@]} &
         ;;
+
       03|3)
         echo -e $cyan""
         echo -ne "  What is your IP Target or Host: " ; tput sgr0
