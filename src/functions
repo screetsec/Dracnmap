@@ -126,13 +126,16 @@ function _init_cli() {
         _init_cli_webservice
         ;;
       08|8)
-        nse
+        menu_nse
+        _init_cli_nse
         ;;
       09|9)
-        zenmapscript
+        menu_zenmapscript
+        _init_cli_zenmapscript
         ;;
       10)
-        scanoutput
+        menu_scanoutput
+        _init_cli_scanoutput
         ;;
       11)
         credits
