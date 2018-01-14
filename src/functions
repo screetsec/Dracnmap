@@ -122,7 +122,8 @@ function _init_cli() {
         _init_cli_pingbebeb
         ;;
       07|7)
-        WebService
+        menu_webservice
+        _init_cli_webservice
         ;;
       08|8)
         nse

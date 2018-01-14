@@ -4,13 +4,214 @@
 # PSCANNING FOR WEB SERVICE
 ################################################
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_webservice()
+#
+# Description:
+#   Starting the Dracnmap Webservice module.
+#
+# Usage:
+#   _init_cli_webservice
+#
+# Examples:
+#   _init_cli_webservice
+#
+
+function _init_cli_webservice() {
+
+  local _FUNCTION_ID="_init_cli_webservice"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="WebService"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sS -sU -T4 -A -v $_ip
+          $xterm -p80 --script http-methods,http-trace --script-args http-methods.retest $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sV --script smtp-open-relay -v $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sV --script smtp-strangeport $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -p80 --script http-phpself-xss,http-unsafe-output-escaping $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -p25 –script smtp-enum-users $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -p80 --script http-slowloris --max-parallelism 300 $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      08|8)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -p80 --script http-sql-injection $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      09|9)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -Pn -p80 --script ip-geolocation-* $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      10)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sn --script whois-ip --script-args whois.whodb=nocache $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      11)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -p80 --script http-google-email,http-email-harvest $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      clear)
+        menu_webservice
+        cstate="0" ;;
+      back)
+        menu
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
-function WebService() {
+function menu_webservice() {
 
   clear
 
@@ -40,128 +241,5 @@ function WebService() {
   echo -e $white"    [$okegreen"11"$white]$cyan  COLLECTING VALID EMAIL ADDRES  "
   echo -e $white"    [$okegreen"12"$white]$cyan  BACK  "
   echo -e " "
-
-  echo -n -e $red'  \033[4mScreetsec@WebService:\033[0m>> '; tput sgr0 #insert your choice
-  read Scanning
-
-  if [[ $Scanning -eq 1 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-
-    $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $ip &
-
-  elif [[ $Scanning -eq 2 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    nmap -sS -sU -T4 -A -v $ip
-    $xterm -p80 --script http-methods,http-trace --script-args http-methods.retest $ip &
-
-  elif [[ $Scanning -eq 3 ]] ; then
-
-    echo
-    echo -ne  $okegreen" What is your IP Target or Host: " ; tput sgr0
-    read ip
-
-    $xterm -sV --script smtp-open-relay -v $ip &
-
-  elif [[ $Scanning -eq 4 ]] ; then
-
-    echo
-    echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-    read ip
-    $xterm nmap -sn $ip
-    echo -e ""
-    $xterm -sV --script smtp-strangeport $ip &
-
-  elif [[ $Scanning -eq 5 ]] ; then
-
-    echo
-    echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-    read ip
-    $xterm -p80 --script http-phpself-xss,http-unsafe-output-escaping $ip &
-
-  elif [[ $Scanning -eq 6 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: "; tput sgr0
-    read ip
-    $xterm -p25 –script smtp-enum-users $ip &
-
-  elif [[ $Scanning -eq 7 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -p80 --script http-slowloris --max-parallelism 300 $ip &
-
-  elif [[ $Scanning -eq 8 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -p80 --script http-sql-injection $ip &
-
-  elif [[ $Scanning -eq 9 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -Pn -p80 --script ip-geolocation-* $ip &
-
-  elif [[ $Scanning -eq 10 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sn --script whois-ip --script-args whois.whodb=nocache $ip &
-
-  elif [[ $Scanning -eq 11 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -p80 --script http-google-email,http-email-harvest $ip &
-
-  elif [[ $Scanning -eq 12 ]] ; then
-
-    menu
-
-  else
-
-    echo ""
-    echo -e $okegreen " Incorrect Number"
-
-  fi
-
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-  read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    menu
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    WebService
-
-  else
-
-    clear
-    WebService
-
-  fi
 
 }
