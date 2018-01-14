@@ -47,7 +47,11 @@ function _init_cli() {
 
         _get_ip
 
-        $xterm  $_ip &
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm  $_ip &
+
+        fi
 
         cstate=1
         ;;
@@ -65,7 +69,11 @@ function _init_cli() {
 
         done
 
-        $xterm ${_ip_list[@]} &
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm ${_ip_list[@]} &
+
+        fi
 
         cstate=1
         ;;
@@ -299,6 +307,17 @@ function _get_ip() {
   echo -en $cyan""
   echo -en "What is your IP Target or Host: " ; tput sgr0
   read -ra _ip
+
+  if [[ $_ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
+
+    _STATE=0
+
+  else
+
+    printf "%s\n" "invalid ip address"
+    _STATE=1
+
+  fi
 
   return $_STATE
 
