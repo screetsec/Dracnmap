@@ -60,6 +60,12 @@ function _init_cli() {
         read ip
         $xterm -sV -T4 -O -F --version-light 1  $ip &
         ;;
+      04|4)
+        echo -e $cyan""
+        echo -ne "  What is your IP Target or Host: " ; tput sgr0
+        read ip
+        $xterm nmap -sA $ip &
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
