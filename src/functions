@@ -135,39 +135,6 @@ function _init_cli() {
       11)
         credits
         ;;
-      help)
-        if [ ${input_array[1]} ] ; then
-          case ${input_array[1]} in
-
-            show)
-              true ;;
-            *)
-              if [[ ${input_array[1]} == `echo ${loaded_modules_array[*]} | grep -o ${input_array[1]}` ]] ; then
-                true
-              else
-                true
-              fi
-              ;;
-          esac
-
-        else true ; fi
-        cstate="0" ;;
-      show)
-        if [ ${input_array[1]} ] ; then
-          case ${input_array[1]} in
-
-            version)
-              true ;;
-            modules)
-              true ;;
-            *)
-              true ;;
-          esac
-
-        else
-          true
-        fi
-        cstate="0" ;;
       clear)
         menu
         cstate="0" ;;
@@ -183,19 +150,12 @@ function _init_cli() {
         echo -en ""
         cstate="0" ;;
       *)
-        for (( j = 0 ; j < ${#loaded_modules_array[*]} ; j++ )) ; do
-
-          if [ "${loaded_modules_array[${j}]}" == "${input_array[0]}" ] ; then
-
-            true && cstate="0"
-
-          fi
-
-        done
 
         if [ "$cstate" -eq "1" ] ; then
 
-          printf "stdout: unknown command\n" ; fi
+          printf "stdout: unknown command\n"
+
+        fi
 
       ;;
 
