@@ -55,13 +55,19 @@ readonly _functions_file="${_src_directory}/functions"
 #   - separated modules into files
 readonly _modules_directory="${_src_directory}/modules"
 
+readonly _config_file="${_init_directory}/config"
+
 readonly _modules_stack=("scanoutput" "brutense" "auth" "brd" \
                          "exploit" "fuzzer" "malware" "vuln" "nse" \
                          "zenmapscript" "WebService" "pingbebeb")
 
-for _filename in "$_functions_file" "${_modules_stack[@]}" ; do
+for _filename in "$_functions_file" "${_modules_stack[@]}" "$_config_file" ; do
 
   if [[ "$_filename" == *"/functions"* ]] ; then
+
+    _mpath="$_filename"
+
+  elif [[ "$_filename" == *"/config"* ]] ; then
 
     _mpath="$_filename"
 
