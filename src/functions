@@ -72,6 +72,9 @@ function _init_cli() {
         read ip
         $xterm -sS -P0 $ip &
         ;;
+      06|6)
+        pingbebeb
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
