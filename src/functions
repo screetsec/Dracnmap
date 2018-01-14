@@ -97,7 +97,7 @@ function _init_cli() {
 
         if [[ $? -eq 0 ]] ; then
 
-          $xterm nmap -sA $_ip &
+          $xterm -sA $_ip
 
         fi
 
