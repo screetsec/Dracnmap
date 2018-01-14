@@ -150,7 +150,7 @@ function _init_cli() {
 
         if [ "$cstate" -eq "1" ] ; then
 
-          printf "Unknown command\n" ; fi
+          printf "stdout: unknown command\n" ; fi
 
       ;;
 
