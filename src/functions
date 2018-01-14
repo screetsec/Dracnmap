@@ -304,3 +304,81 @@ function _get_ip() {
   return $_STATE
 
 }
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _get_port()
+#
+# Description:
+#   Gets the port number.
+#
+# Usage:
+#   _get_port
+#
+# Examples:
+#   _get_port
+#
+
+function _get_port() {
+
+  local _FUNCTION_ID="_get_port"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "What is your Port Target: " ; tput sgr0
+  read -ra _port
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _get_user()
+#
+# Description:
+#   Gets the username.
+#
+# Usage:
+#   _get_user
+#
+# Examples:
+#   _get_user
+#
+
+function _get_user() {
+
+  local _FUNCTION_ID="_get_user"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "What is your cmd user: " ; tput sgr0
+  read -ra _user
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _get_pass()
+#
+# Description:
+#   Gets the password.
+#
+# Usage:
+#   _get_pass
+#
+# Examples:
+#   _get_pass
+#
+
+function _get_pass() {
+
+  local _FUNCTION_ID="_get_pass"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "What is your cmd pass: " ; tput sgr0
+  read -ra _pass
+
+  return $_STATE
+
+}
