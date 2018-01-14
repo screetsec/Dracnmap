@@ -227,7 +227,6 @@ function menu() {
   echo -e $white"    [$okegreen"09"$white]$cyan  ADVANCED NMAP SCANNINGS ( ZENMAP COMMAND ) "
   echo -e $white"    [$okegreen"10"$white]$cyan  SCANNING TARGET WITH OUTPUT FILES"
   echo -e $white"    [$okegreen"11"$white]$cyan  CREDITS  "
-  echo -e $white"    [$okegreen"12"$white]$cyan  EXIT  "
   echo -e " "
 
 }

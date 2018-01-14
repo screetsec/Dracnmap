@@ -172,7 +172,6 @@ function menu_pingbebeb() {
   echo -e $white"    [$okegreen"04"$white]$cyan  UDP PING SCANS "
   echo -e $white"    [$okegreen"05"$white]$cyan  ICMP PING SCANS "
   echo -e $white"    [$okegreen"06"$white]$cyan  IP PROTOCOL PING SCANS "
-  echo -e $white"    [$okegreen"07"$white]$cyan  BACK  "
   echo -e " "
 
 }
