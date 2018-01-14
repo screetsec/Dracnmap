@@ -24,19 +24,27 @@ function _init_cli() {
 
   input_array=()
 
-  while [ "${input_array[0]}" != "quit" ] ; do
+  while [ "${input_array[0]}" != "exit" ] ; do
 
     cstate="1"
 
-    menu
-    printf "\e[0;31m%s\e[m " "${__cli_prompt}>" && read -ra input_array
+    __cli_level="dracmap-v2"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_level}>" && read -ra input_array
 
     case ${input_array[0]} in
 
+      01|1)
+        echo -e $cyan""
+        echo -ne "  What is your IP Target or Host: " ; tput sgr0
+        read ip
+        $xterm  $ip &
+        cstate=1
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
-          
+
             show)
               true ;;
             *)
@@ -53,7 +61,7 @@ function _init_cli() {
       show)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
-          
+
             version)
               true ;;
             modules)
@@ -66,8 +74,10 @@ function _init_cli() {
           true
         fi
         cstate="0" ;;
-      quit)
-        true
+      clear)
+        menu
+        cstate="0" ;;
+      exit)
         cstate="0" ;;
       "")
         echo -en ""
@@ -85,7 +95,7 @@ function _init_cli() {
 
         if [ "$cstate" -eq "1" ] ; then
 
-          printf "Unknown command -> help\n" ; fi
+          printf "Unknown command\n" ; fi
 
       ;;
 
