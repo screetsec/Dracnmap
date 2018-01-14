@@ -30,7 +30,7 @@ xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
 readonly __cli_prompt="Screetsec@"
-__cli_level=""
+__cli_banner=""
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - added _init_name variable

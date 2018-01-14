@@ -28,9 +28,9 @@ function _init_cli() {
 
     cstate="1"
 
-    __cli_level="dracmap-v2"
+    __cli_banner="dracmap-v2"
 
-    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_level}>" && read -ra input_array
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
 
