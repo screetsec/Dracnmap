@@ -78,6 +78,9 @@ function _init_cli() {
       07|7)
         WebService
         ;;
+      08|8)
+        nse
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
