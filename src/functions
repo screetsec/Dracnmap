@@ -92,11 +92,18 @@ function _init_cli() {
         ;;
 
       04|4)
-        echo -e $cyan""
-        echo -ne "  What is your IP Target or Host: " ; tput sgr0
-        read ip
-        $xterm nmap -sA $ip &
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm nmap -sA $_ip &
+
+        fi
+
+        cstate=1
         ;;
+
       05|5)
         echo -e $cyan""
         echo -ne "  What is your IP Target or Host: " ; tput sgr0
