@@ -75,6 +75,9 @@ function _init_cli() {
       06|6)
         pingbebeb
         ;;
+      07|7)
+        WebService
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
