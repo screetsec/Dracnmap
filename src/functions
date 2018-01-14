@@ -160,7 +160,7 @@ function menu() {
      [ $back != 'No' ] ; then
 
     clear
-    menu
+    exit
 
   elif [ $back != 'y' ] && \
        [ $back != 'Y' ] && \
