@@ -261,3 +261,31 @@ function credits {
   echo
 
 }
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _get_ip()
+#
+# Description:
+#   Gets the IP address.
+#
+# Usage:
+#   _get_ip
+#
+# Examples:
+#   _get_ip
+#
+
+function _get_ip() {
+
+  local _FUNCTION_ID="_get_ip"
+  local _STATE=0
+
+  local _ip="127.0.0.1"
+
+  echo -e $cyan""
+  echo -n "  What is your IP Target or Host: " ; tput sgr0
+  read -ra $_ip
+
+  return $_STATE
+
+}
