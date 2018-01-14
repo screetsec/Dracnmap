@@ -54,6 +54,12 @@ function _init_cli() {
         echo ""
         $xterm  $ip1 $ip2 $ip3  &
         ;;
+      03|3)
+        echo -e $cyan""
+        echo -ne "  What is your IP Target or Host: " ; tput sgr0
+        read ip
+        $xterm -sV -T4 -O -F --version-light 1  $ip &
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
