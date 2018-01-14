@@ -1,1 +1,14 @@
 # shellcheck shell=bash
+
+# Specifies the type of terminal.
+# Examples:
+#   - xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
+xterm="xfce4-terminal \
+        --title \"Dracnmap v2 - nmap\"
+        --geometry=150x25 \
+        --hide-menubar \
+        --hide-toolbar \
+        --hide-borders \
+        --show-scrollbar \
+        --font=Monospace \
+        --command \"nmap\""
