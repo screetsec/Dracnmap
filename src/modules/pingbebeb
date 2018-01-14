@@ -4,13 +4,148 @@
 # PING PING BEBEB
 ################################################
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_pingbebeb()
+#
+# Description:
+#   Starting the Dracnmap Ping module.
+#
+# Usage:
+#   _init_cli_pingbebeb
+#
+# Examples:
+#   _init_cli_pingbebeb
+#
+
+function _init_cli_pingbebeb() {
+
+  local _FUNCTION_ID="_init_cli_pingbebeb"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="PING!"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm --script broadcast-ping --script-args broadcast-ping.num_probes=5 $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sP -PS $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sP -PA $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sP -PU $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sP -PE $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sP -PO --packet-trace $_ip
+
+        fi
+
+        cstate=1
+        ;;
+
+      clear)
+        menu_pingbebeb
+        cstate="0" ;;
+      back)
+        menu
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
-function pingbebeb() {
+function menu_pingbebeb() {
 
   echo -e $okegreen " "
   clear
@@ -39,94 +174,5 @@ function pingbebeb() {
   echo -e $white"    [$okegreen"06"$white]$cyan  IP PROTOCOL PING SCANS "
   echo -e $white"    [$okegreen"07"$white]$cyan  BACK  "
   echo -e " "
-
-  echo -n -e $red'  \033[4mScreetsec@PING!:\033[0m>> '; tput sgr0 #insert your choice
-  read DrS
-  
-  if [[ $DrS -eq 1 ]] ; then
-
-    echo -e $cyan""
-    echo -n "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm --script broadcast-ping --script-args broadcast-ping.num_probes=5 $ip &
-    pingbebeb
-
-  elif [[ $DrS -eq 2 ]] ; then
-
-    echo -e $cyan""
-    echo -n "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sP -PS $ip &
-    pingbebeb
-
-  elif [[ $DrS -eq 3 ]] ; then
-
-    echo -e $cyan""
-    echo -n "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sP -PA $ip &
-    pingbebeb
-
-  elif [[ $DrS -eq 4 ]] ; then
-
-    echo -e $cyan""
-    echo -n "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sP -PU $ip &
-    pingbebeb
-
-  elif [[ $DrS -eq 5 ]] ; then
-
-    echo -e $cyan""
-    echo -n "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sP -PE $ip &
-    pingbebeb
-
-  elif [[ $DrS -eq 6 ]] ; then
-
-    echo -e $cyan""
-    echo -n "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm  -sP -PO --packet-trace $ip  &
-    pingbebeb
-
-  elif [[ $DrS -eq 7 ]] ; then
-
-    menu
-
-  else
-
-    echo ""
-    echo -e $okegreen " Incorrect Number"
-
-  fi
-
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-  read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    menu
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    pingbebeb
-
-  else
-
-    clear
-    pingbebeb
-
-  fi
 
 }

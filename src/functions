@@ -118,7 +118,8 @@ function _init_cli() {
         ;;
 
       06|6)
-        pingbebeb
+        menu_pingbebeb
+        _init_cli_pingbebeb
         ;;
       07|7)
         WebService
