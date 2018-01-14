@@ -105,11 +105,18 @@ function _init_cli() {
         ;;
 
       05|5)
-        echo -e $cyan""
-        echo -ne "  What is your IP Target or Host: " ; tput sgr0
-        read ip
-        $xterm -sS -P0 $ip &
+
+        _get_ip
+
+        if [[ $? -eq 0 ]] ; then
+
+          $xterm -sS -P0 $_ip
+
+        fi
+
+        cstate=1
         ;;
+
       06|6)
         pingbebeb
         ;;
