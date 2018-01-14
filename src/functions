@@ -49,7 +49,7 @@ function _init_cli() {
 
         if [[ $? -eq 0 ]] ; then
 
-          $xterm  $_ip &
+          $xterm $_ip
 
         fi
 
