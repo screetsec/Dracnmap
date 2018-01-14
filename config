@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-# Specifies the type of terminal.
+# Specifies the type of terminal (with nmap command).
 # Examples:
 #   - xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
 xterm="nmap"

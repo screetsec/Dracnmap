@@ -71,7 +71,7 @@ function _init_cli() {
 
         if [[ $? -eq 0 ]] ; then
 
-          $xterm ${_ip_list[@]} &
+          $xterm ${_ip_list[@]}
 
         fi
 
@@ -84,7 +84,7 @@ function _init_cli() {
 
         if [[ $? -eq 0 ]] ; then
 
-          $xterm -sV -T4 -O -F --version-light 1 $_ip &
+          $xterm -sV -T4 -O -F --version-light 1 $_ip
 
         fi
 
