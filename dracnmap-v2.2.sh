@@ -23,7 +23,6 @@ BlueF='\e[1;34m'
 # Variable
 Version='2.1'
 Codename='Redline'
-# xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 # Global changes:
