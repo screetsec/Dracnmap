@@ -84,6 +84,9 @@ function _init_cli() {
       09|9)
         zenmapscript
         ;;
+      10)
+        scanoutput
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
