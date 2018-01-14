@@ -87,6 +87,9 @@ function _init_cli() {
       10)
         scanoutput
         ;;
+      11)
+        credits
+        ;;
       help)
         if [ ${input_array[1]} ] ; then
           case ${input_array[1]} in
