@@ -1,12 +1,125 @@
 #!/usr/bin/env bash
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_nse()
+#
+# Description:
+#   Starting the Dracnmap NSE module.
+#
+# Usage:
+#   _init_cli_nse
+#
+# Examples:
+#   _init_cli_nse
+#
+
+function _init_cli_nse() {
+
+  local _FUNCTION_ID="_init_cli_nse"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="nse"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        menu_auth
+        _init_cli_auth
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        menu_brd
+        _init_cli_brd
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        menu_brutense
+        _init_cli_brutense
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        menu_exploit
+        _init_cli_exploit
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        menu_fuzzer
+        _init_cli_fuzzer
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        menu_malware
+        _init_cli_malware
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        menu_vuln
+        _init_cli_vuln
+
+        cstate=1
+        ;;
+
+      clear)
+        menu_nse
+        cstate="0" ;;
+      back)
+        menu
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
-function nse() {
+function menu_nse() {
 
   clear
   echo -e $okegreen " "
@@ -33,83 +146,5 @@ function nse() {
   echo -e $white"    [$okegreen"07"$white]$cyan  vuln-category "
   echo -e $white"    [$okegreen"08"$white]$cyan  back to menu "
   echo
-
-  echo -n -e $red'  \033[4mScreetsec@nse:\033[0m>> '; tput sgr0 #insert your choice
-  read ceh
-
-  if [[ $ceh -eq 1 ]] ; then
-
-    clear
-    auth
-
-  elif [[ $ceh -eq 2 ]] ; then
-
-    clear
-    brd
-
-  elif [[ $ceh -eq 3 ]] ; then
-
-    clear
-    brutense
-
-  elif [[ $ceh -eq 4 ]] ; then
-
-    clear
-    exploit
-
-  elif [[ $ceh -eq 5 ]] ; then
-
-    clear
-    fuzzer
-
-  elif [[ $ceh -eq 6 ]] ; then
-
-    echo
-    clear
-    malware
-
-  elif [[ $ceh -eq 7 ]] ; then
-
-    echo
-    clear
-    vuln
-
-  elif [[ $ceh -eq 8 ]] ; then
-
-    menu
-
-  else
-
-    echo ""
-    echo -e $okegreen " Incorrect Number"
-
-  fi
-
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-  read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    menu
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    nse
-
-  else
-
-    clear
-    nse
-
-  fi
 
 }
