@@ -29,6 +29,7 @@ xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
 # Global changes:
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
+readonly __cli_prompt="Screetsec@dracmap-v2"
 
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - added _init_name variable
@@ -212,5 +213,9 @@ else
 fi
 sleep 2
 
-# Init menu.
-menu
+while true ; do
+
+  # Init Dracnmap CLI.
+  _init_cli
+
+done

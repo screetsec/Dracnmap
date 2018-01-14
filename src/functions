@@ -4,6 +4,99 @@
 ######################## Definitions of user functions #########################
 ################################################################################
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli()
+#
+# Description:
+#   Starting the Dracnmap command interpreter.
+#
+# Usage:
+#   _init_cli
+#
+# Examples:
+#   _init_cli
+#
+
+function _init_cli() {
+
+  local _FUNCTION_ID="_init_cli"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "quit" ] ; do
+
+    cstate="1"
+
+    menu
+    printf "\e[0;31m%s\e[m " "${__cli_prompt}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      help)
+        if [ ${input_array[1]} ] ; then
+          case ${input_array[1]} in
+          
+            show)
+              true ;;
+            *)
+              if [[ ${input_array[1]} == `echo ${loaded_modules_array[*]} | grep -o ${input_array[1]}` ]] ; then
+                true
+              else
+                true
+              fi
+              ;;
+          esac
+
+        else true ; fi
+        cstate="0" ;;
+      show)
+        if [ ${input_array[1]} ] ; then
+          case ${input_array[1]} in
+          
+            version)
+              true ;;
+            modules)
+              true ;;
+            *)
+              true ;;
+          esac
+
+        else
+          true
+        fi
+        cstate="0" ;;
+      quit)
+        true
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+        for (( j = 0 ; j < ${#loaded_modules_array[*]} ; j++ )) ; do
+
+          if [ "${loaded_modules_array[${j}]}" == "${input_array[0]}" ] ; then
+
+            true && cstate="0"
+
+          fi
+
+        done
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "Unknown command -> help\n" ; fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 ###################################################
 # Function Menu
 ###################################################
@@ -65,116 +158,6 @@ function menu() {
   echo -e $white"    [$okegreen"11"$white]$cyan  CREDITS  "
   echo -e $white"    [$okegreen"12"$white]$cyan  EXIT  "
   echo -e " "
-
-  echo -n -e $red'  \033[4mScreetsec@dracmap-v2:\033[0m '; tput sgr0 #insert your choice
-  read Dracnmap
-
-  if [[ $Dracnmap -eq 1 ]] ; then
-
-    echo -e $cyan""
-    echo -ne "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm  $ip &
-
-  elif [[ $Dracnmap -eq 2 ]] ; then
-
-    echo ""
-    echo -ne $okegreen"  What is your IP Target or Host (1): " ; tput sgr0
-    read ip1
-    echo ""
-    echo -ne $okegreen " What is your IP Target or Host (2): " ; tput sgr0
-    read ip2
-    echo ""
-    echo -ne $okegreen " What is your IP Target or Host (3): " ; tput sgr0
-    read ip3
-    echo ""
-    $xterm  $ip1 $ip2 $ip3  &
-
-  elif [[ $Dracnmap -eq 3 ]] ; then
-
-    echo -e $cyan""
-    echo -ne "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sV -T4 -O -F --version-light 1  $ip &
-
-  elif [[ $Dracnmap -eq 4 ]] ; then
-
-    echo -e $cyan""
-    echo -ne "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm nmap -sA $ip &
-
-  elif [[ $Dracnmap -eq 5 ]] ; then
-
-    echo -e $cyan""
-    echo -ne "  What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sS -P0 $ip &
-
-  elif [[ $Dracnmap -eq 6 ]] ; then
-
-    pingbebeb
-
-  elif [[ $Dracnmap -eq 7 ]] ; then
-
-    WebService
-
-  elif [[ $Dracnmap -eq 8 ]] ; then
-
-    nse
-
-  elif [[ $Dracnmap -eq 9 ]] ; then
-
-    zenmapscript
-
-  elif [[ $Dracnmap -eq 10 ]] ; then
-
-    scanoutput
-
-  elif [[ $Dracnmap -eq 11 ]] ; then
-
-    credits
-
-  elif [[ $Dracnmap -eq 12 ]] ; then
-
-    clear
-    sleep 1
-    echo ""
-    echo -e $yellow"[*] Thank You For Using Dracnmap  =)."
-    echo ""
-    echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
-    exit
-
-  else
-
-    echo -e "  Incorrect Number"
-
-  fi
-
-    echo -n -e "  Do you want exit? ( Yes / No ) :"
-    read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    exit
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    menu
-
-  else
-
-    clear
-    menu
-
-  fi
 
 }
 
