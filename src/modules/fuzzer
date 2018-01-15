@@ -1,12 +1,90 @@
 #!/usr/bin/env bash
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_fuzzer()
+#
+# Description:
+#   Starting the Dracnmap Fuzzer module.
+#
+# Usage:
+#   _init_cli_fuzzer
+#
+# Examples:
+#   _init_cli_fuzzer
+#
+
+function _init_cli_fuzzer() {
+
+  local _FUNCTION_ID="_init_cli_fuzzer"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="nse-fuzzer"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        $xterm -sU --script dns-fuzz --script-args timelimit=2h $_ip
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        $xterm -p 80 --script http-form-fuzzer --script-args 'http-form-fuzzer.targets={1={path=/},2={path=/register.html}}' $_ip
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        $xterm -p80 --script=http-phpself-xss $_ip
+
+        cstate=1
+        ;;
+
+      clear)
+        menu_fuzzer
+        cstate="0" ;;
+      back)
+        menu_nse
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
-function fuzzer () {
+function menu_fuzzer() {
 
   clear
   echo
@@ -17,69 +95,6 @@ function fuzzer () {
   echo -e $white"    [$okegreen"01"$white]$cyan File dns-fuzz "
   echo -e $white"    [$okegreen"02"$white]$cyan File http-form-fuzzer  "
   echo -e $white"    [$okegreen"03"$white]$cyan File http-phpself-xss  "
-  echo -e $white"    [$okegreen"04"$white]$cyan Back "
   echo -e " "
-
-  echo -n -e $red'  \033[4mScreetsec@nse-fuzzer:\033[0m>> '; tput sgr0 #insert your choice
-  read win
-
-  if [[ $win -eq 1 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sU --script dns-fuzz --script-args timelimit=2h $ip &
-
-  elif [[ $win -eq 2 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm --script http-form-fuzzer --script-args 'http-form-fuzzer.targets={1={path=/},2={path=/register.html}}' -p 80 $ip &
-
-  elif [[ $win -eq 3 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm --script=http-phpself-xss -p80 $ip &
-
-  elif [[ $win -eq 4 ]] ; then
-
-    nse
-
-  else
-
-    echo ""
-    echo -e $okegreen " Incorrect Number"
-
-  fi
-
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-  read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    menu
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    fuzzer
-
-  else
-
-    clear
-    fuzzer
-
-  fi
 
 }
