@@ -14,15 +14,15 @@ _iface=""
 _hwaddr=""
 
 _session_variables=(\
-                      "_ip:ip:ip address" \
-                      "_port:port:port number" \
-                      "_user:user:username" \
-                      "_pass:pass:user password" \
-                      "_iface:iface:interface" \
-                      "_hwaddr:hwaddr:mac address" \
-                      "_domain:domain:domain name" \
-                      "_userdb:userdb:database user" \
-                      "_passdb:passdb:database user password")
+                      "_ip:IP address:ip" \
+                      "_port:Service port number:port" \
+                      "_user:Username:user" \
+                      "_pass:User password:pass" \
+                      "_iface:Network interface:iface" \
+                      "_hwaddr:MAC address:hwaddr" \
+                      "_domain:Domain name:domain" \
+                      "_userdb:Database user name:userdb" \
+                      "_passdb:Database user password:passdb")
 
 
 ################################################################################
@@ -660,19 +660,19 @@ function show_session() {
   for _svar in "${_session_variables[@]}" ; do
 
     _key_var=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
-    _key_id=$(echo "$_svar" | awk -v FS="(:|:)" '{print $2}')
-    _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $3}')
+    _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $2}')
+    _key_id=$(echo "$_svar" | awk -v FS="(:|:)" '{print $3}')
 
     _i="" ; eval _i='$'$_key_var
 
     # printf "%-8s %-8s %-8s [%-4s]\n" "_ip" "ip" "ip address" "127.0.0.1"
     if [[ -z "$_i" ]] ; then
 
-      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "" "$_key_description"
+      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "$_key_description" ""
 
     else
 
-      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "$_i" "$_key_description"
+      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "$_key_description" "$_i"
 
     fi
 
@@ -724,6 +724,45 @@ function set_session() {
       printf "stdout: %s\n" "unknown key" ;;
 
   esac
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cmd()
+#
+# Description:
+#   Function executing given as a command parameter.
+#
+# Usage:
+#   _init_cmd "parameter"
+#
+# Examples:
+#   _init_cmd "eval cd /etc/init.d && ls"
+#
+
+function _init_cmd() {
+
+  local _FUNCTION_ID="_init_cmd"
+  local _STATE=0
+
+  local _cmd="$1"
+
+  # Execute command and exit save to file.
+  $_cmd ; _state="$?"
+
+  if [[ "$_state" -eq 0 ]] ; then
+
+    printf "\nResult: \e[0;32m%s\e[m\n\n" "pass"
+
+  else
+
+    printf "\nResult: \e[0;31m%s\e[m\n\n" "fail"
+
+  fi
+
+  _STATE=$_state
 
   return $_STATE
 
