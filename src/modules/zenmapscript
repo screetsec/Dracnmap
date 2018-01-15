@@ -82,7 +82,7 @@ function _init_cli_zenmapscript() {
       clear)
         menu_zenmapscript
         cstate="0" ;;
-      back)
+      back|main)
         menu
         cstate="0" ;;
       "")

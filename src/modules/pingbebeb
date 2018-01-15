@@ -79,7 +79,7 @@ function _init_cli_pingbebeb() {
       clear)
         menu_pingbebeb
         cstate="0" ;;
-      back)
+      back|main)
         menu
         cstate="0" ;;
       "")

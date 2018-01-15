@@ -92,6 +92,9 @@ function _init_cli_nse() {
       back)
         menu
         cstate="0" ;;
+      main)
+        menu
+        cstate="0" ;;
       "")
         echo -en ""
         cstate="0" ;;
@@ -133,7 +136,7 @@ function menu_nse() {
   echo "|_|\_|_|  |_/_/ \_\|_|    |___/ \___|_|_\___|_|    |_|    ";
   echo "                                                          ";
   echo -e $red"  Nmap Script Engine - Advanced Scanning with Nmap Script "
-  
+
   echo -e $white " "
   echo -e $white"     ID                    DESCRIPTION"
   echo -e $white"    ---------------------------------------------------------"
