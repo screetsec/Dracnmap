@@ -78,13 +78,18 @@ function _init_cli_pingbebeb() {
 
       clear)
         menu_pingbebeb
+        _init_cli_pingbebebt
         cstate="0" ;;
-      back|main)
+      back)
         menu
+        _init_cli
+        cstate="0" ;;
+      main)
+        menu
+        _init_cli
         cstate="0" ;;
       exit)
-        _exit_
-        cstate="0" ;;
+        _exit_ 0 ;;
       "")
         echo -en ""
         cstate="0" ;;

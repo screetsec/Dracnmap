@@ -525,16 +525,18 @@ function _init_cli_brutense() {
 
       clear)
         menu_brutense
+        _init_cli_brutense
         cstate="0" ;;
       back)
         menu_nse
+        _init_cli_nse
         cstate="0" ;;
       main)
         menu
+        _init_cli
         cstate="0" ;;
       exit)
-        _exit_
-        cstate="0" ;;
+        _exit_ 0 ;;
       "")
         echo -en ""
         cstate="0" ;;

@@ -81,13 +81,18 @@ function _init_cli_zenmapscript() {
 
       clear)
         menu_zenmapscript
+        _init_cli_zenmapscript
         cstate="0" ;;
-      back|main)
+      back)
         menu
+        _init_cli
+        cstate="0" ;;
+      main)
+        menu
+        _init_cli
         cstate="0" ;;
       exit)
-        _exit_
-        cstate="0" ;;
+        _exit_ 0 ;;
       "")
         echo -en ""
         cstate="0" ;;

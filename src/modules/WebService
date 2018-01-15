@@ -114,13 +114,14 @@ function _init_cli_webservice() {
 
       clear)
         menu_webservice
+        _init_cli_webservice
         cstate="0" ;;
       back|main)
         menu
+        _init_cli
         cstate="0" ;;
       exit)
-        _exit_
-        cstate="0" ;;
+        _exit_ 0 ;;
       "")
         echo -en ""
         cstate="0" ;;
