@@ -82,6 +82,9 @@ function _init_cli_pingbebeb() {
       back|main)
         menu
         cstate="0" ;;
+      exit)
+        _exit_
+        cstate="0" ;;
       "")
         echo -en ""
         cstate="0" ;;
