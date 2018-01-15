@@ -135,7 +135,7 @@ function _init_cli_webservice() {
 
         else
 
-          printf "stdout: %s\n" "unknown command"
+          printf "stdout: %s\n" "unknown argument"
 
         fi
         cstate="0" ;;
@@ -150,28 +150,7 @@ function _init_cli_webservice() {
 
               if [ ${input_array[2]} ] ; then
 
-                case ${input_array[2]} in
-
-                  ip)
-                    _set_ip ;;
-                  port)
-                    _set_port ;;
-                  user)
-                    _set_user ;;
-                  pass)
-                    _set_pass ;;
-                  iface)
-                    _set_interface ;;
-                  hwaddr)
-                    _set_hwaddr ;;
-                  domain)
-                    _set_domain ;;
-                  db)
-                    _set_db_credentials ;;
-                  *)
-                    printf "stdout: %s\n" "unknown key" ;;
-
-                esac
+                set_session "${input_array[2]}"
 
               else
 
