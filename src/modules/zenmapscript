@@ -145,13 +145,13 @@ function menu_zenmapscript() {
 
   echo -e $white"     ID                    DESCRIPTION"
   echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$cyan  ITENSE SCAN"
-  echo -e $white"    [$okegreen"02"$white]$cyan  ITENSE SCAN + UDP "
-  echo -e $white"    [$okegreen"03"$white]$cyan  ITENSE SCAN ALL TCP PORTS "
-  echo -e $white"    [$okegreen"04"$white]$cyan  QUICK SCAN  "
-  echo -e $white"    [$okegreen"05"$white]$cyan  QUICK SCAN PLUS PLUS "
-  echo -e $white"    [$okegreen"06"$white]$cyan  QUICK TRACEROUT   "
-  echo -e $white"    [$okegreen"07"$white]$cyan  COMPREHENSIVE SCAN [BEST]  "
+  echo -e $white"    [$okegreen"01"$white]$cyan  Intense Scan"
+  echo -e $white"    [$okegreen"02"$white]$cyan  Intense Scan + UDP "
+  echo -e $white"    [$okegreen"03"$white]$cyan  Intense Scan All TCP Ports"
+  echo -e $white"    [$okegreen"04"$white]$cyan  Quick Scan"
+  echo -e $white"    [$okegreen"05"$white]$cyan  Quick Scan Plus Plus"
+  echo -e $white"    [$okegreen"06"$white]$cyan  Quick Traceroute"
+  echo -e $white"    [$okegreen"07"$white]$cyan  Comprehensive Scan [BEST]"
   echo -e   " "
 
 }
