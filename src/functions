@@ -127,7 +127,28 @@ function _init_cli() {
 
       help)
 
-        _help_
+       if [ ${input_array[1]} ] ; then
+
+          case ${input_array[1]} in
+
+            show)
+              _help_ "show"
+              cstate="0" ;;
+
+            set)
+              _help_ "set"
+              cstate="0" ;;
+
+            *)
+              printf "stdout: unknown command\n" ;;
+
+          esac
+
+        else
+
+          _help_
+
+        fi
         cstate="0" ;;
 
       set)
@@ -360,12 +381,13 @@ function _help_() {
 
 __EOF__
 
-  elif [[ "$help_param" == "set" ]] ; then
+  elif [[ "$help_param" == "show" ]] || [[ "$help_param" == "set" ]] ; then
 
     cat << __EOF__
+
   Built-in:
-    session             set new session values
-    output              set nmap
+    session             $help_param new session values
+    output              $help_param nmap
 
 __EOF__
 
