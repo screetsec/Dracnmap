@@ -112,6 +112,86 @@ function _init_cli_webservice() {
         cstate=1
         ;;
 
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [ ${input_array[1]} ] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              show_session
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown command"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [ ${input_array[1]} ] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [ ${input_array[2]} ] ; then
+
+                case ${input_array[2]} in
+
+                  ip)
+                    _set_ip ;;
+                  port)
+                    _set_port ;;
+                  user)
+                    _set_user ;;
+                  pass)
+                    _set_pass ;;
+                  iface)
+                    _set_interface ;;
+                  hwaddr)
+                    _set_hwaddr ;;
+                  domain)
+                    _set_domain ;;
+                  db)
+                    _set_db_credentials ;;
+                  *)
+                    printf "stdout: %s\n" "unknown key" ;;
+
+                esac
+
+              else
+
+                printf "stdout: %s\n" "invalid session params"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
       clear)
         menu_webservice
         _init_cli_webservice
