@@ -62,7 +62,7 @@ function _init_cli() {
 
         for i in $(seq 1 $_ip_amount) ; do
 
-          _get_ip
+          _set_ip
           _ip_list+=("$_ip")
 
         done
@@ -137,16 +137,16 @@ function _init_cli() {
                 case ${input_array[2]} in
 
                   ip)
-                    _get_ip
+                    _set_ip
                     ;;
                   port)
-                    _get_port
+                    _set_port
                     ;;
                   user)
-                    _get_user
+                    _set_user
                     ;;
                   pass)
-                    _get_pass
+                    _set_pass
                     ;;
                   *)
                     printf "stdout: unknown command\n" ;;
@@ -315,21 +315,21 @@ function credits {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: _get_ip()
+# Function name: _set_ip()
 #
 # Description:
 #   Gets the IP address.
 #
 # Usage:
-#   _get_ip
+#   _set_ip
 #
 # Examples:
-#   _get_ip
+#   _set_ip
 #
 
-function _get_ip() {
+function _set_ip() {
 
-  local _FUNCTION_ID="_get_ip"
+  local _FUNCTION_ID="_set_ip"
   local _STATE=0
 
   echo -en $cyan""
@@ -352,21 +352,21 @@ function _get_ip() {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: _get_port()
+# Function name: _set_port()
 #
 # Description:
 #   Gets the port number.
 #
 # Usage:
-#   _get_port
+#   _set_port
 #
 # Examples:
-#   _get_port
+#   _set_port
 #
 
-function _get_port() {
+function _set_port() {
 
-  local _FUNCTION_ID="_get_port"
+  local _FUNCTION_ID="_set_port"
   local _STATE=0
 
   echo -en $cyan""
@@ -378,21 +378,21 @@ function _get_port() {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: _get_user()
+# Function name: _set_user()
 #
 # Description:
 #   Gets the username.
 #
 # Usage:
-#   _get_user
+#   _set_user
 #
 # Examples:
-#   _get_user
+#   _set_user
 #
 
-function _get_user() {
+function _set_user() {
 
-  local _FUNCTION_ID="_get_user"
+  local _FUNCTION_ID="_set_user"
   local _STATE=0
 
   echo -en $cyan""
@@ -404,21 +404,21 @@ function _get_user() {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: _get_pass()
+# Function name: _set_pass()
 #
 # Description:
 #   Gets the password.
 #
 # Usage:
-#   _get_pass
+#   _set_pass
 #
 # Examples:
-#   _get_pass
+#   _set_pass
 #
 
-function _get_pass() {
+function _set_pass() {
 
-  local _FUNCTION_ID="_get_pass"
+  local _FUNCTION_ID="_set_pass"
   local _STATE=0
 
   echo -en $cyan""
