@@ -269,7 +269,7 @@ function _init_cli_auth() {
         cstate="0" ;;
       back)
         menu_nse
-        _init_cli_auth
+        _init_cli_nse
         cstate="0" ;;
       main)
         menu
