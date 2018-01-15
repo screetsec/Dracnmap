@@ -125,6 +125,11 @@ function _init_cli() {
         menu
         cstate="0" ;;
 
+      help)
+
+        _help_
+        cstate="0" ;;
+
       set)
 
         if [ ${input_array[1]} ] ; then
@@ -333,6 +338,43 @@ function credits {
   read _credits_key
 
   menu
+
+}
+
+function _help_() {
+
+  local FUNCTION_ID="_help_"
+  local STATE="0"
+
+  local help_param="$1"
+
+  if [[ "$help_param" == "" ]] ; then
+
+    cat << __EOF__
+  Built-in:
+    help                show this message
+    show                show the builtin keys
+    set                 set the builtin keys
+    exit                exit from Dracnmap
+
+__EOF__
+
+  elif [[ "$help_param" == "set" ]] ; then
+
+    cat << __EOF__
+  Built-in:
+    session             set new session values
+    output              set nmap
+
+__EOF__
+
+  else
+
+    printf "stdout: unknown command\n"
+
+  fi
+
+  return "$STATE"
 
 }
 
