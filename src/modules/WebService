@@ -173,7 +173,6 @@ function menu_webservice() {
   echo -e $white"    [$okegreen"09"$white]$cyan  CHECK IP GEOLOCATION WITH NSE  "
   echo -e $white"    [$okegreen"10"$white]$cyan  GATHERING INFORMATION FROM WHOIS (NSE)  "
   echo -e $white"    [$okegreen"11"$white]$cyan  COLLECTING VALID EMAIL ADDRES  "
-  echo -e $white"    [$okegreen"12"$white]$cyan  BACK  "
   echo -e " "
 
 }
