@@ -144,80 +144,33 @@ function _init_cli() {
 
       help)
 
-       if [ ${input_array[1]} ] ; then
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [ ${input_array[1]} ] ; then
 
           case ${input_array[1]} in
 
-            show|set)
-              cat << __EOF__
+            session)
 
-  Built-in:
-    session             ${input_array[1]} new session values
-    output              ${input_array[1]} nmap
-
-__EOF__
-
-              if [ ${input_array[2]} ] ; then
-
-                printf "  Description: ${input_array[2]}\n"
-
-                case ${input_array[2]} in
-
-                  session)
-                    cat << __EOF__
-
-    ip                  ${input_array[1]} new ip address
-    port                ${input_array[1]} new port number
-    user                ${input_array[1]} user name
-    pass                ${input_array[1]} user password
-    iface               ${input_array[1]} interface
-    hwaddr              ${input_array[1]} hwaddr (MAC)
-    domain              ${input_array[1]} domain name
-    db                  ${input_array[1]} database (user + pass)
-
-__EOF__
-                  ;;
-
-                  output)
-                    cat << __EOF__
-
-    output              ${input_array[1]} output to file
-
-__EOF__
-                  ;;
-
-                  *)
-                    printf "stdout: unknown command\n" ;;
-
-                esac
-
-              else
-
-                printf "stdout: unknown command\n"
-
-              fi
+              show_session
               ;;
+
             *)
               printf "stdout: unknown command\n" ;;
+
           esac
 
         else
 
-          cat << __EOF__
-
-  Built-in:
-    help                show this message
-    show                show the builtin keys
-    set                 set the builtin keys
-    back                back to previous menu
-    exit                exit from Dracnmap
-
-__EOF__
+          printf "stdout: unknown command\n"
 
         fi
         cstate="0" ;;
 
-      show|set)
+      set)
 
         if [ ${input_array[1]} ] ; then
 
@@ -230,79 +183,23 @@ __EOF__
                 case ${input_array[2]} in
 
                   ip)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "ip address" "$_ip"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_ip
-                    fi
-                    ;;
+                    _set_ip ;;
                   port)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "port number" "$_port"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_port
-                    fi
-                    ;;
+                    _set_port ;;
                   user)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "user name" "$_user"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_user
-                    fi
-                    ;;
+                    _set_user ;;
                   pass)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "password" "$_pass"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_pass
-                    fi
-                    ;;
+                    _set_pass ;;
                   iface)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "interface" "$_iface"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_interface
-                    fi
-                    ;;
+                    _set_interface ;;
                   hwaddr)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "hwaddr" "$_hwaddr"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_hwaddr
-                    fi
-                    ;;
+                    _set_hwaddr ;;
                   domain)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "domain" "$_domain"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_domain
-                    fi
-                    ;;
+                    _set_domain ;;
                   db)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "db user name" "$_userdb"
-                      printf "%s : %s\n" "db password" "$_passdb"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      _set_db_credentials
-                    fi
-                    ;;
-                  all)
-                    if [[ "${input_array[0]}" == "show" ]] ; then
-                      printf "%s : %s\n" "ip address" "$_ip"
-                      printf "%s : %s\n" "port number" "$_port"
-                      printf "%s : %s\n" "user name" "$_user"
-                      printf "%s : %s\n" "password" "$_pass"
-                      printf "%s : %s\n" "interface" "$_iface"
-                      printf "%s : %s\n" "hwaddr" "$_hwaddr"
-                      printf "%s : %s\n" "domain" "$_domain"
-                      printf "%s : %s\n" "db user name" "$_userdb"
-                      printf "%s : %s\n" "db password" "$_passdb"
-                    elif [[ "${input_array[0]}" == "set" ]] ; then
-                      printf "not available on set built-in\n"
-                    fi
-                    ;;
+                    _set_db_credentials ;;
                   *)
-                    printf "stdout: unknown command\n" ;;
+                    printf "stdout: unknown key\n" ;;
 
                 esac
 
@@ -312,6 +209,7 @@ __EOF__
 
               fi
               ;;
+
             *)
               printf "stdout: unknown command\n" ;;
 
@@ -337,7 +235,7 @@ __EOF__
 
         echo -en ""
         cstate="0" ;;
-        
+
       *)
 
         if [ "$cstate" -eq "1" ] ; then
@@ -676,6 +574,92 @@ function _set_db_credentials() {
 
   _set_pass
   _passdb="$_pass"
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _help_()
+#
+# Description:
+#   Help message.
+#
+# Usage:
+#   _help_
+#
+# Examples:
+#   _help_
+#
+
+function _help_() {
+
+  local _FUNCTION_ID="_help_"
+  local _STATE=0
+
+  printf "%s" "
+  Built-in:
+    help                show this message
+    show                show the builtin keys
+    set                 set the builtin keys
+    back                back to previous menu
+    exit                exit from Dracnmap
+
+  show/set:
+    session             show session values
+    output              show output values
+
+  show/set:session:
+    ip                  new ip address
+    port                new port number
+    user                user name
+    pass                user password
+    iface               interface
+    hwaddr              hwaddr (MAC)
+    domain              domain name
+    db                  database (user + pass)
+
+"
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: show_session()
+#
+# Description:
+#   Show session configuration.
+#
+# Usage:
+#   show_session
+#
+# Examples:
+#   show_session
+#
+
+function show_session() {
+
+  local _FUNCTION_ID="show_session"
+  local _STATE=0
+
+  for _sess_var in "_ip" "_port" "_user" "_pass" \
+                   "_iface" "_hwaddr" "_domain" \
+                   "_userdb" "_passdb" ; do
+
+    _i="" ; eval _i='$'$_sess_var
+
+    if [[ -z "$_i" ]] ; then
+
+      printf "%-8s %s\n" "$_sess_var" "[]"
+
+    else
+
+      printf "%-8s %s\n" "$_sess_var" "[${_i}]"
+
+    fi
+
+  done
 
   return $_STATE
 
