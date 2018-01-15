@@ -13,6 +13,17 @@ _pass=""
 _iface=""
 _hwaddr=""
 
+_session_variables=(\
+                      "_ip:ip:ip address" \
+                      "_port:port:port number" \
+                      "_user:user:username" \
+                      "_pass:pass:user password" \
+                      "_iface:iface:interface" \
+                      "_hwaddr:hwaddr:mac address" \
+                      "_domain:domain:domain name" \
+                      "_userdb:userdb:database user" \
+                      "_passdb:passdb:database user password")
+
 
 ################################################################################
 ######################## Definitions of user functions #########################
@@ -166,7 +177,7 @@ function _init_cli() {
 
         else
 
-          printf "stdout: %s\n" "unknown command"
+          printf "stdout: %s\n" "unknown argument"
 
         fi
         cstate="0" ;;
@@ -181,28 +192,7 @@ function _init_cli() {
 
               if [ ${input_array[2]} ] ; then
 
-                case ${input_array[2]} in
-
-                  ip)
-                    _set_ip ;;
-                  port)
-                    _set_port ;;
-                  user)
-                    _set_user ;;
-                  pass)
-                    _set_pass ;;
-                  iface)
-                    _set_interface ;;
-                  hwaddr)
-                    _set_hwaddr ;;
-                  domain)
-                    _set_domain ;;
-                  db)
-                    _set_db_credentials ;;
-                  *)
-                    printf "stdout: %s\n" "unknown key" ;;
-
-                esac
+                set_session "${input_array[2]}"
 
               else
 
@@ -369,7 +359,7 @@ function _exit_() {
 
   clear
   sleep 1
-  
+
   echo ""
   echo -e $yellow"[*] Thank You For Using Dracnmap  =)."
   echo ""
@@ -636,7 +626,7 @@ function _help_() {
   show/set:session:
     ip                  new ip address
     port                new port number
-    user                user name
+    user                username
     pass                user password
     iface               interface
     hwaddr              hwaddr (MAC)
@@ -667,23 +657,75 @@ function show_session() {
   local _FUNCTION_ID="show_session"
   local _STATE=0
 
-  for _sess_var in "_ip" "_port" "_user" "_pass" \
-                   "_iface" "_hwaddr" "_domain" \
-                   "_userdb" "_passdb" ; do
+  printf "%-12s %-12s %-20s\n" "ID" "VALUE" "DESCRIPTION"
 
-    _i="" ; eval _i='$'$_sess_var
+  for _svar in "${_session_variables[@]}" ; do
 
+    _key_var=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
+    _key_id=$(echo "$_svar" | awk -v FS="(:|:)" '{print $2}')
+    _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $3}')
+
+    _i="" ; eval _i='$'$_key_var
+
+    # printf "%-8s %-8s %-8s [%-4s]\n" "_ip" "ip" "ip address" "127.0.0.1"
     if [[ -z "$_i" ]] ; then
 
-      printf "%-8s %s\n" "$_sess_var" "[]"
+      printf "%-12s %-12s %-20s\n" "$_key_id" "" "$_key_description"
 
     else
 
-      printf "%-8s %s\n" "$_sess_var" "[${_i}]"
+      printf "%-12s %-12s %-20s\n" "$_key_id" "$_i" "$_key_description"
 
     fi
 
   done
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: set_session()
+#
+# Description:
+#   Set session configuration.
+#
+# Usage:
+#   set_session
+#
+# Examples:
+#   set_session
+#
+
+function set_session() {
+
+  local _FUNCTION_ID="set_session"
+  local _STATE=0
+
+  local _session_arg="$1"
+
+  case ${input_array[2]} in
+
+    ip)
+      _set_ip ;;
+    port)
+      _set_port ;;
+    user)
+      _set_user ;;
+    pass)
+      _set_pass ;;
+    iface)
+      _set_interface ;;
+    hwaddr)
+      _set_hwaddr ;;
+    domain)
+      _set_domain ;;
+    db)
+      _set_db_credentials ;;
+    *)
+      printf "stdout: %s\n" "unknown key" ;;
+
+  esac
 
   return $_STATE
 
