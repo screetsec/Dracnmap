@@ -483,3 +483,29 @@ function _set_hwaddr() {
   return $_STATE
 
 }
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_domain()
+#
+# Description:
+#   Set the domain.
+#
+# Usage:
+#   _set_domain
+#
+# Examples:
+#   _set_domain
+#
+
+function _set_domain() {
+
+  local _FUNCTION_ID="_set_domain"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "What is your domain name: " ; tput sgr0
+  read -ra _domain
+
+  return $_STATE
+
+}
