@@ -141,7 +141,7 @@ function _init_cli() {
 
       back)
 
-        printf "stdout: you are in root level\n" ;;
+        printf "stdout: %s\n" "you are in root level" ;;
 
       help)
 
@@ -160,13 +160,13 @@ function _init_cli() {
               ;;
 
             *)
-              printf "stdout: unknown command\n" ;;
+              printf "stdout: %s\n" "unknown command" ;;
 
           esac
 
         else
 
-          printf "stdout: unknown command\n"
+          printf "stdout: %s\n" "unknown command"
 
         fi
         cstate="0" ;;
@@ -200,25 +200,25 @@ function _init_cli() {
                   db)
                     _set_db_credentials ;;
                   *)
-                    printf "stdout: unknown key\n" ;;
+                    printf "stdout: %s\n" "unknown key" ;;
 
                 esac
 
               else
 
-                printf "invalid session params\n"
+                printf "stdout: %s\n" "invalid session params"
 
               fi
               ;;
 
             *)
-              printf "stdout: unknown command\n" ;;
+              printf "stdout: %s\n" "unknown command" ;;
 
           esac
 
         else
 
-          printf "unknown argument\n"
+          printf "stdout: %s\n" "unknown argument"
 
         fi
         cstate="0" ;;
@@ -234,7 +234,7 @@ function _init_cli() {
 
         if [ "$cstate" -eq "1" ] ; then
 
-          printf "stdout: unknown command\n"
+          printf "stdout: %s\n" "unknown command"
 
         fi
 
@@ -408,7 +408,7 @@ function _set_ip() {
 
   else
 
-    printf "%s\n" "invalid ip address"
+    printf "stdout: %s\n" "invalid ip address"
     _STATE=1
 
   fi
