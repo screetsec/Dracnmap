@@ -146,10 +146,10 @@ function menu_scanoutput() {
 
   echo -e $white"     ID                    DESCRIPTION"
   echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$okegreen  OUTPUT SCAN IN XML FORMATS  "
-  echo -e $white"    [$okegreen"02"$white]$okegreen  OUTPUT SCAN IN HTML FORMATS "
-  echo -e $white"    [$okegreen"03"$white]$okegreen  OUTPUT SCAN IN NORMAL FORMATS  "
-  echo -e $white"    [$okegreen"04"$white]$okegreen  OUTPUT SCAN IN GREPABLE FORMATS "
+  echo -e $white"    [$okegreen"01"$white]$okegreen  Output Scan in XML Format"
+  echo -e $white"    [$okegreen"02"$white]$okegreen  Output Scan in HTML Format"
+  echo -e $white"    [$okegreen"03"$white]$okegreen  Output Scan in Normal Format"
+  echo -e $white"    [$okegreen"04"$white]$okegreen  Output Scan in Grepable Formats"
   echo -e " "
 
 }
