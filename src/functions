@@ -509,3 +509,31 @@ function _set_domain() {
   return $_STATE
 
 }
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_db_credentials()
+#
+# Description:
+#   Set the database credentials.
+#
+# Usage:
+#   _set_db_credentials
+#
+# Examples:
+#   _set_db_credentials
+#
+
+function _set_db_credentials() {
+
+  local _FUNCTION_ID="_set_db_credential"
+  local _STATE=0
+
+  _set_user
+  _userdb="$_user"
+
+  _set_pass
+  _passdb="$_pass"
+
+  return $_STATE
+
+}
