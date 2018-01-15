@@ -10,6 +10,7 @@ _ip=""
 _port=""
 _user=""
 _pass=""
+_iface=""
 
 
 ################################################################################
@@ -423,6 +424,32 @@ function _get_pass() {
   echo -en $cyan""
   echo -en "What is your cmd pass: " ; tput sgr0
   read -ra _pass
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_interface()
+#
+# Description:
+#   Set the main network interface.
+#
+# Usage:
+#   _set_interface
+#
+# Examples:
+#   _set_interface
+#
+
+function _set_interface() {
+
+  local _FUNCTION_ID="_set_interface"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "What is your interface: " ; tput sgr0
+  read -ra _iface
 
   return $_STATE
 
