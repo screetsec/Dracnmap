@@ -351,6 +351,7 @@ function _help_() {
   if [[ "$help_param" == "" ]] ; then
 
     cat << __EOF__
+
   Built-in:
     help                show this message
     show                show the builtin keys
