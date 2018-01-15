@@ -7,6 +7,9 @@
 _ip_list=()
 _ip_amount=""
 _ip=""
+_port=""
+_user=""
+_pass=""
 
 
 ################################################################################
@@ -45,13 +48,7 @@ function _init_cli() {
 
       01|1)
 
-        _get_ip
-
-        if [[ $? -eq 0 ]] ; then
-
-          $xterm $_ip
-
-        fi
+        $xterm $_ip
 
         cstate=1
         ;;
@@ -80,39 +77,21 @@ function _init_cli() {
 
       03|3)
 
-        _get_ip
-
-        if [[ $? -eq 0 ]] ; then
-
-          $xterm -sV -T4 -O -F --version-light 1 $_ip
-
-        fi
+        $xterm -sV -T4 -O -F --version-light 1 $_ip
 
         cstate=1
         ;;
 
       04|4)
 
-        _get_ip
-
-        if [[ $? -eq 0 ]] ; then
-
-          $xterm -sA $_ip
-
-        fi
+        $xterm -sA $_ip
 
         cstate=1
         ;;
 
       05|5)
 
-        _get_ip
-
-        if [[ $? -eq 0 ]] ; then
-
-          $xterm -sS -P0 $_ip
-
-        fi
+        $xterm -sS -P0 $_ip
 
         cstate=1
         ;;
@@ -143,6 +122,69 @@ function _init_cli() {
       clear)
         menu
         cstate="0" ;;
+
+      set)
+
+        if [ ${input_array[1]} ] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [ ${input_array[2]} ] ; then
+
+                case ${input_array[2]} in
+
+                  ip)
+                    _get_ip
+                    ;;
+                  port)
+                    _get_port
+                    ;;
+                  user)
+                    _get_user
+                    ;;
+                  pass)
+                    _get_pass
+                    ;;
+                  *)
+                    printf "stdout: unknown command\n" ;;
+
+                esac
+
+              else
+
+                printf "invalid session params\n"
+
+              fi
+              ;;
+            *)
+              printf "stdout: unknown command\n" ;;
+
+          esac
+
+        else
+
+          printf "%s" "
+Usage:
+  set <type> <value>
+
+Examples:
+  set session ip
+  set session user
+
+Options:
+  session:
+    ip        set ip address
+    port      set port number
+    user      set user name
+    pass      set user password
+
+"
+
+        fi
+        cstate="0" ;;
+
       exit)
         clear
         sleep 1
