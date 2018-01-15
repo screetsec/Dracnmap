@@ -120,8 +120,8 @@ function _init_cli() {
         ;;
       11)
         credits
-        ;;
-      clear)
+        cstate="0" ;;
+      clear|main)
         menu
         cstate="0" ;;
 
@@ -328,6 +328,11 @@ function credits {
   echo
   echo -e $red "Big Thanks to : http://www.github.com/"
   echo
+
+  echo -en "Press key to back main menu"
+  read _credits_key
+
+  menu
 
 }
 
