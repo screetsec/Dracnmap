@@ -390,7 +390,7 @@ function _init_cli_brd() {
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
-function menu_brd () {
+function menu_brd() {
 
   clear
   echo
