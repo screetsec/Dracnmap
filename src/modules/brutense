@@ -32,448 +32,448 @@ function _init_cli_brutense() {
 
       01|1)
 
-        $xterm -p $port --script afp-brute $_ip
+        _init_cmd "$xterm -p $port --script afp-brute $_ip"
 
         cstate=1
         ;;
 
       02|2)
 
-        $xterm -p $_port --script ajp-brute $_ip
+        _init_cmd "$xterm -p $_port --script ajp-brute $_ip"
 
         cstate=1
         ;;
 
       03|3)
 
-        $xterm -sU --script backorifice-brute --script-args backorifice-brute.ports=$_port $_ip
+        _init_cmd "$xterm -sU --script backorifice-brute --script-args backorifice-brute.ports=$_port $_ip"
 
         cstate=1
         ;;
 
       04|4)
 
-        $xterm -p 9160 --script=cassandra-brute $_ip
+        _init_cmd "$xterm -p 9160 --script=cassandra-brute $_ip"
 
         cstate=1
         ;;
 
       05|5)
 
-        $xterm -p 23 --script=cics-enum $_ip
+        _init_cmd "$xterm -p 23 --script=cics-enum $_ip"
 
         cstate=1
         ;;
 
       06|6)
 
-        $xterm -p 23 --script=cics-user-enum $_ip
+        _init_cmd "$xterm -p 23 --script=cics-user-enum $_ip"
 
         cstate=1
         ;;
 
       07|7)
 
-        $xterm -p 80,443,8080 --script=citrix-brute-xml --script-args=userdb=$_userdb,passdb=$_passdb,ntdomain=$_domain $_ip
+        _init_cmd "$xterm -p 80,443,8080 --script=citrix-brute-xml --script-args=userdb=$_userdb,passdb=$_passdb,ntdomain=$_domain $_ip"
 
         cstate=1
         ;;
 
       08|8)
 
-        $xterm -p 2401 --script cvs-brute $_ip
+        _init_cmd "$xterm -p 2401 --script cvs-brute $_ip"
 
         cstate=1
         ;;
 
       09|9)
 
-        $xterm -p 2401 --script cvs-brute-repository $_ip
+        _init_cmd "$xterm -p 2401 --script cvs-brute-repository $_ip"
 
         cstate=1
         ;;
 
       10)
 
-        $xterm -p 2050 --script domcon-brute $_ip
+        _init_cmd "$xterm -p 2050 --script domcon-brute $_ip"
 
         cstate=1
         ;;
 
       11)
 
-        $xterm -p 8770 --script dpap-brute $_ip
+        _init_cmd "$xterm -p 8770 --script dpap-brute $_ip"
 
         cstate=1
         ;;
 
       12)
 
-        $xterm -p 50000 --script drda-brute $_ip
+        _init_cmd "$xterm -p 50000 --script drda-brute $_ip"
 
         cstate=1
         ;;
 
       13)
 
-        $xterm -p $_port --script ftp-brute $_ip
+        _init_cmd "$xterm -p $_port --script ftp-brute $_ip"
 
         cstate=1
         ;;
 
       14)
 
-        $xterm -p 80 --script http-form-brute $_ip
+        _init_cmd "$xterm -p 80 --script http-form-brute $_ip"
 
         cstate=1
         ;;
 
       15)
 
-        $xterm -p $_port --script http-brute $_ip
+        _init_cmd "$xterm -p $_port --script http-brute $_ip"
 
         cstate=1
         ;;
 
       16)
 
-        $xterm -p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $_ip
+        _init_cmd "$xterm -p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $_ip"
 
         cstate=1
         ;;
 
       17)
 
-        $xterm -sV --script http-joomla-brute $_ip
+        _init_cmd "$xterm -sV --script http-joomla-brute $_ip"
 
         cstate=1
         ;;
 
       18)
 
-        $xterm -p 8080 --script http-proxy-brute $_ip
+        _init_cmd "$xterm -p 8080 --script http-proxy-brute $_ip"
 
         cstate=1
         ;;
 
       19)
 
-        $xterm -sV --script http-wordpress-brute $_ip
+        _init_cmd "$xterm -sV --script http-wordpress-brute $_ip"
 
         cstate=1
         ;;
 
       20)
 
-        $xterm -sU -p 4569 --script iax2-brute $_ip
+        _init_cmd "$xterm -sU -p 4569 --script iax2-brute $_ip"
 
         cstate=1
         ;;
 
       21)
 
-        $xterm -p 9088 --script informix-brute $_ip
+        _init_cmd "$xterm -p 9088 --script informix-brute $_ip"
 
         cstate=1
         ;;
 
       22)
 
-        $xterm -sU -p 623 --script ipmi-brute $_ip
+        _init_cmd "$xterm -sU -p 623 --script ipmi-brute $_ip"
 
         cstate=1
         ;;
 
       23)
 
-        $xterm -p 6667 --script irc-brute $_ip
+        _init_cmd "$xterm -p 6667 --script irc-brute $_ip"
 
         cstate=1
         ;;
 
       24)
 
-        $xterm -p 6667 --script irc-sasl-brute $_ip
+        _init_cmd "$xterm -p 6667 --script irc-sasl-brute $_ip"
 
         cstate=1
         ;;
 
       25)
 
-        $xterm -sV --script=iscsi-brute $_ip
+        _init_cmd "$xterm -sV --script=iscsi-brute $_ip"
 
         cstate=1
         ;;
 
       26)
 
-        $xterm -p 389 --script ldap-brute --script-args ldap.base='"cn=users,dc=cqure,dc=net"' $_ip
+        _init_cmd "$xterm -p 389 --script ldap-brute --script-args ldap.base='"cn=users,dc=cqure,dc=net"' $_ip"
 
         cstate=1
         ;;
 
       27)
 
-        $xterm -p 143,993 --script imap-brute $_ip
+        _init_cmd "$xterm -p 143,993 --script imap-brute $_ip"
 
         cstate=1
         ;;
 
       28)
 
-        $xterm -p 11211 --script membase-brute $_ip
+        _init_cmd "$xterm -p 11211 --script membase-brute $_ip"
 
         cstate=1
         ;;
 
       29)
 
-        $xterm -p 51010 --script mmouse-brute $_ip
+        _init_cmd "$xterm -p 51010 --script mmouse-brute $_ip"
 
         cstate=1
         ;;
 
       30)
 
-        $xterm -p 27017 --script mongodb-brute $_ip
+        _init_cmd "$xterm -p 27017 --script mongodb-brute $_ip"
 
         cstate=1
         ;;
 
       31)
 
-        $xterm -p 445 --script ms-sql-brute --script-args mssql.instance-all,userdb=customuser.txt,passdb=custompass.txt $_ip
+        _init_cmd "$xterm -p 445 --script ms-sql-brute --script-args mssql.instance-all,userdb=customuser.txt,passdb=custompass.txt $_ip"
 
         cstate=1
         ;;
 
       32)
 
-        $xterm --script=mysql-brute $_ip
+        _init_cmd "$xterm --script=mysql-brute $_ip"
 
         cstate=1
         ;;
 
       33)
 
-        $xterm --script=mysql-enum $_ip
+        _init_cmd "$xterm --script=mysql-enum $_ip"
 
         cstate=1
         ;;
 
       34)
 
-        $xterm -p 27017 --script mongodb-brute $_ip
+        _init_cmd "$xterm -p 27017 --script mongodb-brute $_ip"
 
         cstate=1
         ;;
 
       35)
 
-        $xterm -p 55553 --script metasploit-msgrpc-brute $_ip
+        _init_cmd "$xterm -p 55553 --script metasploit-msgrpc-brute $_ip"
 
         cstate=1
         ;;
 
       36)
 
-        $xterm -p 55553 --script metasploit-xmlrpc-brute $_ip
+        _init_cmd "$xterm -p 55553 --script metasploit-xmlrpc-brute $_ip"
 
         cstate=1
         ;;
 
       37)
 
-        $xterm -p 8728 --script mikrotik-routeros-brute $_ip
+        _init_cmd "$xterm -p 8728 --script mikrotik-routeros-brute $_ip"
 
         cstate=1
         ;;
 
       38)
 
-        $xterm -sV --script=nessus-xmlrpc-brute $_ip
+        _init_cmd "$xterm -sV --script=nessus-xmlrpc-brute $_ip"
 
         cstate=1
         ;;
 
       39)
 
-        $xterm -p 12345 --script netbus-brut $_ip
+        _init_cmd "$xterm -p 12345 --script netbus-brut $_ip"
 
         cstate=1
         ;;
 
       40)
 
-        $xterm -p 3780 --script nexpose-brute $_ip
+        _init_cmd "$xterm -p 3780 --script nexpose-brute $_ip"
 
         cstate=1
         ;;
 
       41)
 
-        $xterm -sV --script=nje-node-brute $_ip
+        _init_cmd "$xterm -sV --script=nje-node-brute $_ip"
 
         cstate=1
         ;;
 
       42)
 
-        $xterm -p 175 --script=nje-pass-brute --script-args=ohost='POTATO',rhost='CACTUS',sleep=5 $_ip
+        _init_cmd "$xterm -p 175 --script=nje-pass-brute --script-args=ohost='POTATO',rhost='CACTUS',sleep=5 $_ip"
 
         cstate=1
         ;;
 
       43)
 
-        $xterm -p 9929 --script nping-brute $_ip
+        _init_cmd "$xterm -p 9929 --script nping-brute $_ip"
 
         cstate=1
         ;;
 
       44)
 
-        $xterm -p 1241 --script nessus-brute $_ip
+        _init_cmd "$xterm -p 1241 --script nessus-brute $_ip"
 
         cstate=1
         ;;
 
       45)
 
-        $xterm -p 9390 --script omp2-brute $_ip
+        _init_cmd "$xterm -p 9390 --script omp2-brute $_ip"
 
         cstate=1
         ;;
 
       46)
 
-        $xterm -sV --script=openvas-otp-brute $_ip
+        _init_cmd "$xterm -sV --script=openvas-otp-brute $_ip"
 
         cstate=1
         ;;
 
       47)
 
-        $xterm -p 1521 --script oracle-brute --script-args oracle-brute.sid=ORCL $_ip
+        _init_cmd "$xterm -p 1521 --script oracle-brute --script-args oracle-brute.sid=ORCL $_ip"
 
         cstate=1
         ;;
 
       48)
 
-        $xterm -p 1521 --script oracle-brute-stealth --script-args oracle-brute-stealth.sid=ORCL $_ip
+        _init_cmd "$xterm -p 1521 --script oracle-brute-stealth --script-args oracle-brute-stealth.sid=ORCL $_ip"
 
         cstate=1
         ;;
 
       49)
 
-        $xterm -p 1521-1560 --script=oracle-sid-brute $_ip
+        _init_cmd "$xterm -p 1521-1560 --script=oracle-sid-brute $_ip"
 
         cstate=1
         ;;
 
       50)
 
-        $xterm --script=pcanywhere-brute $_ip
+        _init_cmd "$xterm --script=pcanywhere-brute $_ip"
 
         cstate=1
         ;;
 
       51)
 
-        $xterm -p 5432 --script pgsql-brute $_ip
+        _init_cmd "$xterm -p 5432 --script pgsql-brute $_ip"
 
         cstate=1
         ;;
 
       52)
 
-        $xterm -sV --script=pop3-brute $_ip
+        _init_cmd "$xterm -sV --script=pop3-brute $_ip"
 
         cstate=1
         ;;
 
       53)
 
-        $xterm -p 6379 --script redis-brute $_ip
+        _init_cmd "$xterm -p 6379 --script redis-brute $_ip"
 
         cstate=1
         ;;
 
       54)
 
-        $xterm -p 512 --script rexec-brute $_ip
+        _init_cmd "$xterm -p 512 --script rexec-brute $_ip"
 
         cstate=1
         ;;
 
       55)
 
-        $xterm -p 513 --script rlogin-brute $_ip
+        _init_cmd "$xterm -p 513 --script rlogin-brute $_ip"
 
         cstate=1
         ;;
 
       56)
 
-        $xterm -p 2002 $ip --script rpcap-brute $_ip
+        _init_cmd "$xterm -p 2002 $ip --script rpcap-brute $_ip"
 
         cstate=1
         ;;
 
       57)
 
-        $xterm -p 873 --script rsync-brute --script-args 'rsync-brute.module=www' $_ip
+        _init_cmd "$xterm -p 873 --script rsync-brute --script-args 'rsync-brute.module=www' $_ip"
 
         cstate=1
         ;;
 
       58)
 
-        $xterm -p 554 --script rtsp-url-brute $_ip
+        _init_cmd "$xterm -p 554 --script rtsp-url-brute $_ip"
 
         cstate=1
         ;;
 
       59)
 
-        $xterm -sU -p 5060 $ip --script=sip-brute $_ip
+        _init_cmd "$xterm -sU -p 5060 $ip --script=sip-brute $_ip"
 
         cstate=1
         ;;
 
       60)
 
-        $xterm -p 1080 --script socks-brute $_ip
+        _init_cmd "$xterm -p 1080 --script socks-brute $_ip"
 
         cstate=1
         ;;
 
       61)
 
-        $xterm -p 3690 --script svn-brute --script-args svn-brute.repo=/svn/ $_ip
+        _init_cmd "$xterm -p 3690 --script svn-brute --script-args svn-brute.repo=/svn/ $_ip"
 
         cstate=1
         ;;
 
       62)
 
-        $xterm -p 23 --script=tso-enum $_ip
+        _init_cmd "$xterm -p 23 --script=tso-enum $_ip"
 
         cstate=1
         ;;
 
       63)
 
-        $xterm -sU -sS -p U:137,T:139 --script smb-brute.nse $_ip
+        _init_cmd "$xterm -sU -sS -p U:137,T:139 --script smb-brute.nse $_ip"
 
         cstate=1
         ;;
 
       64)
 
-        $xterm -p 25 --script smtp-brute $_ip
+        _init_cmd "$xterm -p 25 --script smtp-brute $_ip"
 
         cstate=1
         ;;
@@ -483,42 +483,42 @@ function _init_cli_brutense() {
         echo -ne $okegreen "Located Wordlist ?: " ; tput sgr0
         read _wordlist
 
-        $xterm -sU --script snmp-brute [--script-args snmp-brute.communitiesdb="$_wordlist"] $_ip
+        _init_cmd "$xterm -sU --script snmp-brute [--script-args snmp-brute.communitiesdb="$_wordlist"] $_ip"
 
         cstate=1
         ;;
 
       66)
 
-        $xterm -p $port --script telnet-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,telnet-brute.timeout=8s $_ip
+        _init_cmd "$xterm -p $port --script telnet-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,telnet-brute.timeout=8s $_ip"
 
         cstate=1
         ;;
 
       67)
 
-        $xterm -p 23 --script vtam-enum $_ip
+        _init_cmd "$xterm -p 23 --script vtam-enum $_ip"
 
         cstate=1
         ;;
 
       68)
 
-        $xterm -p 902 --script vmauthd-brute $_ip
+        _init_cmd "$xterm -p 902 --script vmauthd-brute $_ip"
 
         cstate=1
         ;;
 
       69)
 
-        $xterm -p 5900 --script vnc-brute $_ip
+        _init_cmd "$xterm -p 5900 --script vnc-brute $_ip"
 
         cstate=1
         ;;
 
       70)
 
-        $xterm -p 5222 --script xmpp-brute $_ip
+        _init_cmd "$xterm -p 5222 --script xmpp-brute $_ip"
 
         cstate=1
         ;;
