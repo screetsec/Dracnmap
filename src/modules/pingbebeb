@@ -76,6 +76,65 @@ function _init_cli_pingbebeb() {
         cstate=1
         ;;
 
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [ ${input_array[1]} ] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              show_session
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [ ${input_array[1]} ] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [ ${input_array[2]} ] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
       clear)
         menu_pingbebeb
         _init_cli_pingbebeb
