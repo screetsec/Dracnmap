@@ -149,6 +149,18 @@ function _init_cli() {
                   pass)
                     _set_pass
                     ;;
+                  iface)
+                    _set_iface
+                    ;;
+                  hwaddr)
+                    _set_hwaddr
+                    ;;
+                  domain)
+                    _set_domain
+                    ;;
+                  db)
+                    _set_db_credentials
+                    ;;
                   *)
                     printf "stdout: unknown command\n" ;;
 
@@ -183,6 +195,8 @@ Options:
     pass      set user password
     iface     set main interface
     hwaddr    set interface hwaddr
+    domain    set domain name
+    db        set database credentials
 
 "
 
@@ -525,7 +539,7 @@ function _set_domain() {
 
 function _set_db_credentials() {
 
-  local _FUNCTION_ID="_set_db_credential"
+  local _FUNCTION_ID="_set_db_credentials"
   local _STATE=0
 
   _set_user
