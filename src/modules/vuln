@@ -1,12 +1,688 @@
 #!/usr/bin/env bash
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_vuln()
+#
+# Description:
+#   Starting the Dracnmap Vuln module.
+#
+# Usage:
+#   _init_cli_vuln
+#
+# Examples:
+#   _init_cli_vuln
+#
+
+function _init_cli_vuln() {
+
+  local _FUNCTION_ID="_init_cli_vuln"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="nse-vuln"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        $xterm -sV --script=afp-path-vuln $_ip
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        $xterm --script=broadcast-avahi-dos $_ip
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        $xterm -sV --script clamav-exec $_ip
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        $xterm -p 3632 --script distcc-exec --script-args="distcc-exec.cmd='id'" $_ip
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        $xterm -sU -p 53 --script=dns-update --script-args=dns-update.hostname=foo.example.com,dns-update.ip=192.0.2.1 $_ip
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $_ip
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        $xterm -sV --script=ftp-libopie $_ip
+
+        cstate=1
+        ;;
+
+      08|8)
+
+        $xterm -p 21 --script ftp-proftpd-backdoor $_ip
+
+        cstate=1
+        ;;
+
+      09|9)
+
+        $xterm -p 21 --script ftp-vsftpd-backdoor $_ip
+
+        cstate=1
+        ;;
+
+      10)
+
+        $xterm -p $_port --script ftp-vuln-cve2010-4221 $_ip
+
+        cstate=1
+        ;;
+
+      11)
+
+        $xterm -p 80 --script http-adobe-coldfusion-apsa1301 --script-args basepath=/cf/adminapi/ $_ip
+
+        cstate=1
+        ;;
+
+      12)
+
+        $xterm --script http-debug --script-args http-aspnet-debug.path=/path $_ip
+
+        cstate=1
+        ;;
+
+      13)
+
+        $xterm -sV --script http-avaya-ipoffice-users $_ip
+
+        cstate=1
+        ;;
+
+      14)
+
+        $xterm -sV --script http-awstatstotals-exec.nse --script-args 'http-awstatstotals-exec.cmd="uname -a", http-awstatstotals-exec.uri=/awstats/index.php' $_ip
+
+        cstate=1
+        ;;
+
+      15)
+
+        $xterm -p 80 --script http-axis2-dir-traversal $_ip
+
+        cstate=1
+        ;;
+
+      16)
+
+        $xterm -p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $_ip
+
+        cstate=1
+        ;;
+
+      17)
+
+        $xterm -p 80 --script http-csrf.nse $_ip
+
+        cstate=1
+        ;;
+
+      18)
+
+        $xterm -sV --script http-dlink-backdoor $_ip
+
+        cstate=1
+        ;;
+
+      19)
+
+        $xterm -p 80 --script http-dombased-xss.nse $_ip
+
+        cstate=1
+        ;;
+
+      20)
+
+        $xterm -sV --script=http-enum $_ip
+
+        cstate=1
+        ;;
+
+      21)
+
+        $xterm -p 80 --script http-fileupload-exploiter.nse $_ip
+
+        cstate=1
+        ;;
+
+      22)
+
+        $xterm -p 80 --script=http-frontpage-login $_ip
+
+        cstate=1
+        ;;
+
+      23)
+
+        echo -en $okegreen " The query for which to return the results " ; tput sgr0
+        read _query
+
+        $xterm sV -sC $_ip
+
+        cstate=1
+        ;;
+
+      24)
+
+        $xterm -sV http-huawei-hg5xx-vuln $_ip
+
+        cstate=1
+        ;;
+
+      25)
+
+        $xterm -p 80,8080 --script http-iis-webdav-vuln $_ip
+
+        cstate=1
+        ;;
+
+      26)
+
+        $xterm --script http-internal-ip-disclosure --script-args http-internal-ip-disclosure.path=/path $_ip
+
+        cstate=1
+        ;;
+
+      27)
+
+        $xterm -p 80,8080 --script http-litespeed-sourcecode-download --script-args http-litespeed-sourcecode-download.uri=/phpinfo.php $_ip
+
+        cstate=1
+        ;;
+
+      28)
+
+        $xterm -p 80 --script http-majordomo2-dir-traversal $_ip
+
+        cstate=1
+        ;;
+
+      29)
+
+        $xterm -p 80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $_ip
+
+        cstate=1
+        ;;
+
+      30)
+
+        $xterm --script http-passwd --script-args http-passwd.root=/test/ $_ip
+
+        cstate=1
+        ;;
+
+      31)
+
+        $xterm -p 80 --script http-phpmyadmin-dir-traversal $_ip
+
+        cstate=1
+        ;;
+
+      32)
+
+        $xterm -sV --script http-self-xss $_ip
+
+        cstate=1
+        ;;
+
+      33)
+
+        $xterm -sV -p- --script http-shellshock --script-args uri=/cgi-bin/bin,cmd=ls $_ip
+
+        cstate=1
+        ;;
+
+      34)
+
+        $xterm --script http-slowloris-check $_ip
+
+        cstate=1
+        ;;
+
+      35)
+
+        $xterm -sV --script=http-sql-injection $_ip
+
+        cstate=1
+        ;;
+
+      36)
+
+        $xterm -p 80 --script http-stored-xss.nse $_ip
+
+        cstate=1
+        ;;
+
+      37)
+
+        $xterm -p 80 --script http-tplink-dir-traversal.nse --script-args rfile=/etc/topology.conf -d -n -Pn $_ip
+
+        cstate=1
+        ;;
+
+      38)
+
+        $xterm --script http-trace -d $_ip
+
+        cstate=1
+        ;;
+
+      39)
+
+        $xterm -p 80,443,8222,8333 --script http-vmware-path-vuln $_ip
+
+        cstate=1
+        ;;
+
+      40)
+
+        $xterm -p 80 --script http-vuln-cve2006-3392 --script-args http-vuln-cve2006-3392.file=/etc/shadow $_ip
+
+        cstate=1
+        ;;
+
+      41)
+
+        $xterm --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $_ip
+
+        cstate=1
+        ;;
+
+      42)
+
+        $xterm --script http-vuln-cve2010-2861 $_ip
+
+        cstate=1
+        ;;
+
+      43)
+
+        $xterm -pT:80,443 --script http-vuln-cve2011-3192.nse [--script-args http-vuln-cve2011-3192.hostname=nmap.scanme.org] $_ip
+
+        cstate=1
+        ;;
+
+      44)
+
+        $xterm --script http-vuln-cve2011-3368 $_ip
+
+        cstate=1
+        ;;
+
+      45)
+
+        $xterm -sV --script http-vuln-cve2012-1823 $_ip
+
+        cstate=1
+        ;;
+
+      46)
+
+        $xterm -sV --script http-vuln-cve2013-0156 $_ip
+
+        cstate=1
+        ;;
+
+      47)
+
+        $xterm -p80 --script http-rompager-xss $_ip
+
+        cstate=1
+        ;;
+
+      48)
+
+        $xterm -p 80 --script http-vuln-cve2013-7091 --script-args http-vuln-cve2013-7091=/ZimBra $_ip
+
+        cstate=1
+        ;;
+
+      49)
+
+        $xterm -p 443 --script http-vuln-cve2014-2126 $_ip
+
+        cstate=1
+        ;;
+
+      50)
+
+        $xterm -p 443 --script http-vuln-cve2014-2127 $_ip
+
+        cstate=1
+        ;;
+
+      51)
+
+        $xterm -p 443 --script http-vuln-cve2014-2128 $_ip
+
+        cstate=1
+        ;;
+
+      52)
+
+        $xterm -p 443 --script http-vuln-cve2014-2129 $_ip
+
+        cstate=1
+        ;;
+
+      53)
+
+        $xterm --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri="/drupal",http-vuln-cve2014-3704.cleanup=false $_ip
+
+        cstate=1
+        ;;
+
+      54)
+
+        $xterm --script http-vuln-cve2014-8877 --script-args http-vuln-cve2014-8877.cmd="whoami",http-vuln-cve2014-8877.uri="/wordpress" $_ip
+
+        cstate=1
+        ;;
+
+      55)
+
+        $xterm --script=http-vuln-cve2015-1427 --script-args command='ls' $_ip
+
+        cstate=1
+        ;;
+
+      56)
+
+        $xterm -sV --script http-vuln-cve2015-1635 --script-args uri='/anotheruri/' $_ip
+
+        cstate=1
+        ;;
+
+      57)
+
+        $xterm -p 7547 --script=http-vuln-misfortune-cookie $_ip
+
+        cstate=1
+        ;;
+
+      58)
+
+        $xterm -p 80 -sV --script http-vuln-wnr1000-creds $_ip
+
+        cstate=1
+        ;;
+
+      59)
+
+        $xterm -sV --script http-wordpress-users --script-args limit=50 $_ip
+
+        cstate=1
+        ;;
+
+      60)
+
+        $xterm -p 623 -sU --script ipmi-cipher-zero $_ip
+
+        cstate=1
+        ;;
+
+      61)
+
+        $xterm -p 6667 --script=irc-botnet-channels $_ip
+
+        cstate=1
+        ;;
+
+      62)
+
+        $xterm -sV --script=irc-unrealircd-backdoor $_ip
+
+        cstate=1
+        ;;
+
+      63)
+
+        $xterm -sV --script mysql-vuln-cve2012-2122 $_ip
+
+        cstate=1
+        ;;
+
+      64)
+
+        $xterm -p 12345 --script netbus-auth-bypass $_ip
+
+        cstate=1
+        ;;
+
+      65)
+
+        $xterm -p $_port --script qconn-exec --script-args qconn-exec.timeout=60,qconn-exec.bytes=1024,qconn-exec.cmd="uname -a" $_ip
+
+        cstate=1
+        ;;
+
+      66)
+
+        $xterm -p 3389 -sV --script=rdp-ms12-020 $_ip
+
+        cstate=1
+        ;;
+
+      67)
+
+        $xterm -p 1099 --script=rmi-vuln-classloader $_ip
+
+        cstate=1
+        ;;
+
+      68)
+
+        $xterm -p 139 --script=samba-vuln-cve-2012-1182 $_ip
+
+        cstate=1
+        ;;
+
+      69)
+
+        $xterm -p T:139 -sU --script smb-vuln-conficker.nse $_ip
+
+        cstate=1
+        ;;
+
+      70)
+
+        $xterm -p U:137,T:139 -sU --script smb-vuln-cve2009-3103.nse $_ip
+
+        cstate=1
+        ;;
+
+      71)
+
+        $xterm -p U:137,T:139 -sU --script smb-vuln-ms06-025.nse $_ip
+
+        cstate=1
+        ;;
+
+      72)
+
+        $xterm -p U:137,T:139 -sU --script smb-vuln-ms07-029.nse $_ip
+
+        cstate=1
+        ;;
+
+      73)
+
+        $xterm -p U:137 -sU --script smb-vuln-ms08-067.nse $_ip
+
+        cstate=1
+        ;;
+
+      74)
+
+        $xterm -p 445 --script=smb-vuln-ms10-054 --script-args unsafe $_ip
+
+        cstate=1
+        ;;
+
+      75)
+
+        $xterm -p 445 --script=smb-vuln-ms10-061 $_ip
+
+        cstate=1
+        ;;
+
+      76)
+
+        $xterm -p U:137,T:139 -sU --script smb-vuln-regsvc-dos.nse $_ip
+
+        cstate=1
+        ;;
+
+      77)
+
+        $xterm -pT:25,465,587 --script=smtp-vuln-cve2010-4344 --script-args="smtp-vuln-cve2010-4344.exploit" $_ip
+
+        cstate=1
+        ;;
+
+      78)
+
+        $xterm -pT:25,465,587 --script=smtp-vuln-cve2011-1720 --script-args='smtp.domain=<domain>' $_ip
+
+        cstate=1
+        ;;
+
+      79)
+
+        $xterm -pT:25,465,587 --script=smtp-vuln-cve2011-1764 $_ip
+
+        cstate=1
+        ;;
+
+      80)
+
+        $xterm -p 443 --script ssl-ccs-injection $_ip
+
+        cstate=1
+        ;;
+
+      81)
+
+        $xterm -p 443 --script ssl-cert-intaddr $_ip
+
+        cstate=1
+        ;;
+
+      82)
+
+        $xterm --script ssl-dh-params $_ip
+
+        cstate=1
+        ;;
+
+      83)
+
+        $xterm -p 443 --script ssl-heartbleed $_ip
+
+        cstate=1
+        ;;
+
+      84)
+
+        $xterm -p 443 --script ssl-known-key $_ip
+
+        cstate=1
+        ;;
+
+      85)
+
+        $xterm -p 443 -sV --version-light --script ssl-poodle $_ip
+
+        cstate=1
+        ;;
+
+      86)
+
+        $xterm -sV --script=sslv2-drown $_ip
+
+        cstate=1
+        ;;
+
+      87)
+
+        $xterm -p 49152 --script supermicro-ipmi-conf $_ip
+
+        cstate=1
+        ;;
+
+      88)
+
+        $xterm -sU -p 17185 --script wdb-version $_ip
+
+        cstate=1
+        ;;
+
+      clear)
+        menu_vuln
+        cstate="0" ;;
+      back)
+        menu_nse
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
-function vuln () {
+function menu_vuln () {
 
   clear
   echo
@@ -101,664 +777,6 @@ function vuln () {
   echo -e $white"    [$okegreen"86"$white]$cyan sslv2-drown "
   echo -e $white"    [$okegreen"87"$white]$cyan supermicro-ipmi-conf "
   echo -e $white"    [$okegreen"88"$white]$cyan wdb-version "
-  echo -e $white"    [$okegreen"89"$white]$cyan back "
   echo -e " "
-
-  echo -n -e $red'  \033[4mScreetsec@nse-vuln:\033[0m>> '; tput sgr0 #insert your choice
-  read vuln
-
-  if [[ $vuln -eq 1 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=afp-path-vuln $ip &
-
-  elif [[ $vuln -eq 2 ]] ; then
-
-  echo
-  $xterm --script=broadcast-avahi-dos &
-
-  elif [[ $vuln -eq 3 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script clamav-exec $ip &
-
-  elif [[ $vuln -eq 4 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 3632 $ip --script distcc-exec --script-args="distcc-exec.cmd='id'" &
-
-  elif [[ $vuln -eq 5 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU -p 53 --script=dns-update --script-args=dns-update.hostname=foo.example.com,dns-update.ip=192.0.2.1 $ip &
-
-  elif [[ $vuln -eq 6 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $ip &
-
-  elif [[ $vuln -eq 7 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=ftp-libopie $ip &
-
-  elif [[ $vuln -eq 8 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script ftp-proftpd-backdoor -p 21 $ip &
-
-  elif [[ $vuln -eq 9 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script ftp-vsftpd-backdoor -p 21 $ip &
-
-  elif [[ $vuln -eq 10 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  echo -ne $okegreen " What is your Port Target or Host: " ; tput sgr0
-  read port
-  $xterm --script ftp-vuln-cve2010-4221 -p $port $ip &
-
-  elif [[ $vuln -eq 11 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-adobe-coldfusion-apsa1301 --script-args basepath=/cf/adminapi/ $ip &
-
-  elif [[ $vuln -eq 12 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-debug --script-args http-aspnet-debug.path=/path $ip &
-
-  elif [[ $vuln -eq 13 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-avaya-ipoffice-users $ip &
-
-  elif [[ $vuln -eq 14 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-awstatstotals-exec.nse --script-args 'http-awstatstotals-exec.cmd="uname -a", http-awstatstotals-exec.uri=/awstats/index.php' $ip &
-
-  elif [[ $vuln -eq 15 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-axis2-dir-traversal $ip &
-
-  elif [[ $vuln -eq 16 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $ip &
-
-  elif [[ $vuln -eq 17 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-csrf.nse $ip &
-
-  elif [[ $vuln -eq 18 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-dlink-backdoor $ip &
-
-  elif [[ $vuln -eq 19 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-dombased-xss.nse $ip &
-
-  elif [[ $vuln -eq 20 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=http-enum $ip &
-
-  elif [[ $vuln -eq 21 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-fileupload-exploiter.nse $ip &
-
-  elif [[ $vuln -eq 22 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm $ip -p 80 --script=http-frontpage-login &
-
-  elif [[ $vuln -eq 23 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm sV -sC $ip &
-
-  elif [[ $vuln -eq 24 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV http-huawei-hg5xx-vuln $ip &
-
-  elif [[ $vuln -eq 25 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-iis-webdav-vuln -p 80,8080 $ip &
-
-  elif [[ $vuln -eq 26 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-internal-ip-disclosure --script-args http-internal-ip-disclosure.path=/path $ip &
-
-  elif [[ $vuln -eq 27 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80,8080 --script http-litespeed-sourcecode-download --script-args http-litespeed-sourcecode-download.uri=/phpinfo.php $ip &
-
-  elif [[ $vuln -eq 28 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-majordomo2-dir-traversal $ip &
-
-  elif [[ $vuln -eq 29 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $ip &
-
-  elif [[ $vuln -eq 30 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-passwd --script-args http-passwd.root=/test/ $ip &
-
-  elif [[ $vuln -eq 31 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-phpmyadmin-dir-traversal $ip &
-
-  elif [[ $vuln -eq 32 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-self-xss $ip &
-
-  elif [[ $vuln -eq 33 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV -p- --script http-shellshock --script-args uri=/cgi-bin/bin,cmd=ls $ip &
-
-  elif [[ $vuln -eq 34 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-slowloris-check $ip &
-
-  elif [[ $vuln -eq 35 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=http-sql-injection $ip &
-
-  elif [[ $vuln -eq 36 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 80 --script http-stored-xss.nse $ip &
-
-  elif [[ $vuln -eq 37 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-tplink-dir-traversal.nse --script-args rfile=/etc/topology.conf -d -n -Pn $ip &
-
-  elif [[ $vuln -eq 38 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-trace -d $ip &
-
-  elif [[ $vuln -eq 39 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-vmware-path-vuln -p80,443,8222,8333 $ip &
-
-  elif [[ $vuln -eq 40 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-vuln-cve2006-3392 --script-args http-vuln-cve2006-3392.file=/etc/shadow $ip &
-
-  elif [[ $vuln -eq 41 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $ip &
-
-  elif [[ $vuln -eq 42 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-vuln-cve2010-2861 $ip &
-
-  elif [[ $vuln -eq 43 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-vuln-cve2011-3192.nse [--script-args http-vuln-cve2011-3192.hostname=nmap.scanme.org] -pT:80,443 $ip &
-
-  elif [[ $vuln -eq 44 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-vuln-cve2011-3368 $ip &
-
-  elif [[ $vuln -eq 45 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-vuln-cve2012-1823 $ip &
-
-  elif [[ $vuln -eq 46 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-vuln-cve2013-0156 $ip &
-
-  elif [[ $vuln -eq 47 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-rompager-xss $ip &
-
-  elif [[ $vuln -eq 48 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p80 --script http-vuln-cve2013-7091 --script-args http-vuln-cve2013-7091=/ZimBra $ip &
-
-  elif [[ $vuln -eq 49 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 443 --script http-vuln-cve2014-2126 $ip &
-
-  elif [[ $vuln -eq 50 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 443 --script http-vuln-cve2014-2127 $ip &
-
-  elif [[ $vuln -eq 51 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 443 --script http-vuln-cve2014-2128 $ip &
-
-  elif [[ $vuln -eq 52 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 443 --script http-vuln-cve2014-2129 $ip &
-
-  elif [[ $vuln -eq 53 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri="/drupal",http-vuln-cve2014-3704.cleanup=false $ip &
-
-  elif [[ $vuln -eq 54 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script http-vuln-cve2014-8877 --script-args http-vuln-cve2014-8877.cmd="whoami",http-vuln-cve2014-8877.uri="/wordpress" $ip &
-
-  elif [[ $vuln -eq 55 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=http-vuln-cve2015-1427 --script-args command= 'ls' $ip &
-
-  elif [[ $vuln -eq 56 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-vuln-cve2015-1635 --script-args uri='/anotheruri/' $ip &
-
-  elif [[ $vuln -eq 57 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm $ip -p 7547 --script=http-vuln-misfortune-cookie &
-
-  elif [[ $vuln -eq 58 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-vuln-wnr1000-creds $ip -p 80 &
-
-  elif [[ $vuln -eq 59 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script http-wordpress-users --script-args limit=50 $ip &
-
-  elif [[ $vuln -eq 60 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script ipmi-cipher-zero -p 623 $ip &
-
-  elif [[ $vuln -eq 61 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 6667 --script=irc-botnet-channels $ip &
-
-  elif [[ $vuln -eq 62 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=irc-unrealircd-backdoor $ip &
-
-  elif [[ $vuln -eq 63 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script mysql-vuln-cve2012-2122 $ip &
-
-  elif [[ $vuln -eq 64 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 12345 --script netbus-auth-bypass $ip &
-
-  elif [[ $vuln -eq 65 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script qconn-exec --script-args qconn-exec.timeout=60,qconn-exec.bytes=1024,qconn-exec.cmd="uname -a" -p $port $ip &
-
-  elif [[ $vuln -eq 66 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=rdp-ms12-020 -p 3389 $ip &
-
-  elif [[ $vuln -eq 67 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=rmi-vuln-classloader -p 1099 $ip &
-
-  elif [[ $vuln -eq 68 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=samba-vuln-cve-2012-1182 -p 139 $ip &
-
-  elif [[ $vuln -eq 69 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script smb-vuln-conficker.nse -p T:139 $ip &
-
-  elif [[ $vuln -eq 70 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script smb-vuln-cve2009-3103.nse -p U:137,T:139 $ip &
-
-  elif [[ $vuln -eq 71 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script smb-vuln-ms06-025.nse -p U:137,T:139 $ip &
-
-  elif [[ $vuln -eq 72 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script smb-vuln-ms07-029.nse -p U:137,T:139 $ip &
-
-  elif [[ $vuln -eq 73 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script smb-vuln-ms08-067.nse -p U:137 $ip &
-
-  elif [[ $vuln -eq 74 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 445 $ip --script=smb-vuln-ms10-054 --script-args unsafe &
-
-  elif [[ $vuln -eq 75 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm  -p 445 $ip --script=smb-vuln-ms10-061 &
-
-  elif [[ $vuln -eq 76 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU --script smb-vuln-regsvc-dos.nse -p U:137,T:139 $ip &
-
-  elif [[ $vuln -eq 77 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=smtp-vuln-cve2010-4344 --script-args="smtp-vuln-cve2010-4344.exploit" -pT:25,465,587 $ip &
-
-  elif [[ $vuln -eq 78 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script=smtp-vuln-cve2011-1720 --script-args='smtp.domain=<domain>' -pT:25,465,587 $ip &
-
-  elif [[ $vuln -eq 79 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm  --script=smtp-vuln-cve2011-1764 -pT:25,465,587 $ip &
-
-  elif [[ $vuln -eq 80 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 443 --script ssl-ccs-injection $ip &
-
-  elif [[ $vuln -eq 81 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 443 --script ssl-cert-intaddr $ip &
-
-  elif [[ $vuln -eq 82 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script ssl-dh-params $ip &
-
-  elif [[ $vuln -eq 83 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p 443 --script ssl-heartbleed $ip &
-
-  elif [[ $vuln -eq 84 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm --script ssl-known-key -p 443 $ip &
-
-  elif [[ $vuln -eq 85 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --version-light --script ssl-poodle -p 443 $ip &
-
-  elif [[ $vuln -eq 86 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sV --script=sslv2-drown $ip &
-
-  elif [[ $vuln -eq 87 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -p49152 --script supermicro-ipmi-conf $ip &
-
-  elif [[ $vuln -eq 88 ]] ; then
-
-  echo
-  echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-  read ip
-  $xterm -sU -p 17185 --script wdb-version $ip &
-
-  elif [[ $vuln -eq 89 ]] ; then
-
-  nse
-
-  else
-
-    echo ""
-    echo -e $okegreen " Incorrect Number"
-
-  fi
-
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-  read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    menu
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    vuln
-
-  else
-
-    clear
-    vuln
-
-  fi
 
 }
