@@ -130,7 +130,7 @@ function _init_cli_brd() {
 
       15)
 
-        $xterm -e $_iface -sV --script=broadcast-novell-locate $_iface
+        $xterm -e $_iface -sV --script=broadcast-novell-locate
 
         cstate=1
         ;;
