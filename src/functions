@@ -11,6 +11,7 @@ _port=""
 _user=""
 _pass=""
 _iface=""
+_hwaddr=""
 
 
 ################################################################################
@@ -180,6 +181,8 @@ Options:
     port      set port number
     user      set user name
     pass      set user password
+    iface     set main interface
+    hwaddr    set interface hwaddr
 
 "
 
@@ -318,7 +321,7 @@ function credits {
 # Function name: _set_ip()
 #
 # Description:
-#   Gets the IP address.
+#   Set the IP address.
 #
 # Usage:
 #   _set_ip
@@ -355,7 +358,7 @@ function _set_ip() {
 # Function name: _set_port()
 #
 # Description:
-#   Gets the port number.
+#   Set the port number.
 #
 # Usage:
 #   _set_port
@@ -381,7 +384,7 @@ function _set_port() {
 # Function name: _set_user()
 #
 # Description:
-#   Gets the username.
+#   Set the username.
 #
 # Usage:
 #   _set_user
@@ -407,7 +410,7 @@ function _set_user() {
 # Function name: _set_pass()
 #
 # Description:
-#   Gets the password.
+#   Set the password.
 #
 # Usage:
 #   _set_pass
@@ -450,6 +453,32 @@ function _set_interface() {
   echo -en $cyan""
   echo -en "What is your interface: " ; tput sgr0
   read -ra _iface
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_hwaddr()
+#
+# Description:
+#   Set the mac address.
+#
+# Usage:
+#   _set_hwaddr
+#
+# Examples:
+#   _set_hwaddr
+#
+
+function _set_hwaddr() {
+
+  local _FUNCTION_ID="_set_hwaddr"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "What is your MAC address: " ; tput sgr0
+  read -ra _hwaddr
 
   return $_STATE
 
