@@ -32,49 +32,49 @@ function _init_cli_zenmapscript() {
 
       01|1)
 
-        $xterm -T4 -A -v $_ip
+        _init_cmd "$xterm -T4 -A -v $_ip"
 
         cstate=1
         ;;
 
       02|2)
 
-        $xterm -sS -sU -T4 -A -v $_ip
+        _init_cmd "$xterm -sS -sU -T4 -A -v $_ip"
 
         cstate=1
         ;;
 
       03|3)
 
-        $xterm -p 1-65535 -T4 -A -v $_ip
+        _init_cmd "$xterm -p 1-65535 -T4 -A -v $_ip"
 
         cstate=1
         ;;
 
       04|4)
 
-        $xterm -T4 -F $_ip
+        _init_cmd "$xterm -T4 -F $_ip"
 
         cstate=1
         ;;
 
       05|5)
 
-        $xterm -sV -T4 -O -F --version-light $_ip
+        _init_cmd "$xterm -sV -T4 -O -F --version-light $_ip"
 
         cstate=1
         ;;
 
       06|6)
 
-        $xterm -sN --traceroute $_ip
+        _init_cmd "$xterm -sN --traceroute $_ip"
 
         cstate=1
         ;;
 
       07|7)
 
-        $xterm -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" $_ip
+        _init_cmd "$xterm -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" $_ip"
 
         cstate=1
         ;;
