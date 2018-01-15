@@ -657,8 +657,6 @@ function show_session() {
   local _FUNCTION_ID="show_session"
   local _STATE=0
 
-  printf "%-12s %-12s %-20s\n" "ID" "VALUE" "DESCRIPTION"
-
   for _svar in "${_session_variables[@]}" ; do
 
     _key_var=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
@@ -670,11 +668,11 @@ function show_session() {
     # printf "%-8s %-8s %-8s [%-4s]\n" "_ip" "ip" "ip address" "127.0.0.1"
     if [[ -z "$_i" ]] ; then
 
-      printf "%-12s %-12s %-20s\n" "$_key_id" "" "$_key_description"
+      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "" "$_key_description"
 
     else
 
-      printf "%-12s %-12s %-20s\n" "$_key_id" "$_i" "$_key_description"
+      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "$_i" "$_key_description"
 
     fi
 
