@@ -749,6 +749,8 @@ function _init_cmd() {
 
   local _cmd="$1"
 
+  printf "\nCommand:\n> \e[0;30m%s\e[m\n" "$_cmd"
+
   # Execute command and exit save to file.
   $_cmd ; _state="$?"
 
