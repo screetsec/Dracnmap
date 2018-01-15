@@ -223,12 +223,8 @@ function _init_cli() {
         cstate="0" ;;
 
       exit)
-        clear
-        sleep 1
-        echo ""
-        echo -e $yellow"[*] Thank You For Using Dracnmap  =)."
-        echo ""
-        echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
+
+        _exit_
         cstate="0" ;;
 
       "")
@@ -355,6 +351,34 @@ function credits {
   read _credits_key
 
   menu
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _exit_()
+#
+# Description:
+#   Covers the default exit command.
+#
+# Usage:
+#   _exit_ value
+#
+# Examples:
+#   _exit_ 0
+#
+
+function _exit_() {
+
+  clear
+  sleep 1
+  
+  echo ""
+  echo -e $yellow"[*] Thank You For Using Dracnmap  =)."
+  echo ""
+  echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
+
+  _STATUS="$1"
+  exit "$_STATUS"
 
 }
 
@@ -574,6 +598,8 @@ function _set_db_credentials() {
 
   _set_pass
   _passdb="$_pass"
+
+  unset _user _pass
 
   return $_STATE
 
