@@ -1,5 +1,118 @@
 #!/usr/bin/env bash
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_scanoutput()
+#
+# Description:
+#   Starting the Dracnmap Output module.
+#
+# Usage:
+#   _init_cli_scanoutput
+#
+# Examples:
+#   _init_cli_scanoutput
+#
+
+function _init_cli_scanoutput() {
+
+  local _FUNCTION_ID="_init_cli_scanoutput"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="WebService"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        echo -ne $cyan"Path Location: /Dracnmap/Output/"
+        echo
+        echo -ne "Name of Report: "
+        read namafile
+
+        $xterm -A -O -oX Output/$namafile.xml $_ip
+        firefox Output/$namafile.xml
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        echo -ne $cyan"Path Location: /Dracnmap/Output/"
+        echo
+
+        echo -ne "Name of Report: "
+        read namafile
+
+        $xterm -A -O -oX Output/$namafile.xml $_ip
+        xsltproc Output/$namafile.xml -o Output/$namafile.html
+        firefox Output/$namafile.html
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        echo -ne $cyan"Path Location: /Dracnmap/Output/"
+        echo
+
+        echo -ne "Name of Report: "
+        read namafile
+
+        $xterm -F -oN Output/$namafile.txt $_ip
+        nano Output/$namafile.txt
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        echo -ne $cyan"Path Location: /Dracnmap/Output/"
+        echo
+
+        echo -ne "Name of Report: "
+        read namafile
+
+        $xterm -F -oG Output/$namafile.grep $_ip
+        nano Output/$namafile.grep
+
+        cstate=1
+        ;;
+
+      clear)
+        menu_scanoutput
+        cstate="0" ;;
+      back)
+        menu
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 ################################################
 # OUTPUT FILE
 ################################################
@@ -10,7 +123,7 @@
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
 #   - correcting indentation (transparent code)
-function scanoutput() {
+function menu_scanoutput() {
 
   echo -e $cyan " "
   clear
@@ -34,102 +147,6 @@ function scanoutput() {
   echo -e $white"    [$okegreen"02"$white]$okegreen  OUTPUT SCAN IN HTML FORMATS "
   echo -e $white"    [$okegreen"03"$white]$okegreen  OUTPUT SCAN IN NORMAL FORMATS  "
   echo -e $white"    [$okegreen"04"$white]$okegreen  OUTPUT SCAN IN GREPABLE FORMATS "
-  echo -e $white"    [$okegreen"05"$white]$okegreen  BACK  "
   echo -e " "
-
-  echo -n -e $red'  \033[4mScreetsec@Meoong:\033[0m>> '; tput sgr0 #insert your choice
-  read DrS
-
-  if [[ $DrS -eq 1 ]] ; then
-
-    echo
-    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-    echo
-    echo -ne "  Name of Report:"
-    read namafile
-    echo
-    echo -ne "  What is your IP Target or Host: "
-    read ip
-    echo
-    $xterm -A -O -oX Output/$namafile.xml $ip &
-    firefox Output/$namafile.xml
-
-  elif [[ $DrS -eq 2 ]] ; then
-
-    echo
-    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-    echo
-    echo -ne "  Name of Report:"
-    read namafile
-    echo
-    echo -ne "  What is your IP Target or Host: "
-    read ip
-    echo
-    $xterm -A -O -oX Output/$namafile.xml $ip &
-    xsltproc Output/$namafile.xml -o Output/$namafile.html
-    firefox Output/$namafile.html
-
-  elif [[ $DrS -eq 3 ]] ; then
-
-    echo
-    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-    echo
-    echo -ne "  Name of Report:"
-    read namafile
-    echo
-    echo -ne "  What is your IP Target or Host: "
-    read ip
-    echo
-    $xterm -F -oN Output/$namafile.txt $ip
-    nano Output/$namafile.txt
-
-  elif [[ $DrS -eq 4 ]] ; then
-
-    echo
-    echo -ne $cyan"  Path Location: /Dracnmap/Output/"
-    echo
-    echo -ne "  Name of Report:"
-    read namafile
-    echo
-    echo -ne "  What is your IP Target or Host: "
-    read ip
-    echo
-    $xterm -F -oG Output/$namafile.grep $ip &
-    nano Output/$namafile.grep
-
-  elif [[ $DrS -eq 5 ]] ; then
-
-    menu
-
-  else
-
-    echo -e "  Incorrect Number"
-
-  fi
-
-  echo -n -e "  Back to Last Menu? ( Yes / No ) :"
-  read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    menu
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    scanoutput
-
-  else
-
-    clear
-    scanoutput
-
-  fi
 
 }
