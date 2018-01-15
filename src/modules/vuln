@@ -32,154 +32,154 @@ function _init_cli_vuln() {
 
       01|1)
 
-        $xterm -sV --script=afp-path-vuln $_ip
+        _init_cmd "$xterm -sV --script=afp-path-vuln $_ip"
 
         cstate=1
         ;;
 
       02|2)
 
-        $xterm --script=broadcast-avahi-dos $_ip
+        _init_cmd "$xterm --script=broadcast-avahi-dos $_ip"
 
         cstate=1
         ;;
 
       03|3)
 
-        $xterm -sV --script clamav-exec $_ip
+        _init_cmd "$xterm -sV --script clamav-exec $_ip"
 
         cstate=1
         ;;
 
       04|4)
 
-        $xterm -p 3632 --script distcc-exec --script-args="distcc-exec.cmd='id'" $_ip
+        _init_cmd "$xterm -p 3632 --script distcc-exec --script-args="distcc-exec.cmd='id'" $_ip"
 
         cstate=1
         ;;
 
       05|5)
 
-        $xterm -sU -p 53 --script=dns-update --script-args=dns-update.hostname=foo.example.com,dns-update.ip=192.0.2.1 $_ip
+        _init_cmd "$xterm -sU -p 53 --script=dns-update --script-args=dns-update.hostname=foo.example.com,dns-update.ip=192.0.2.1 $_ip"
 
         cstate=1
         ;;
 
       06|6)
 
-        $xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $_ip
+        _init_cmd "$xterm --script firewall-bypass --script-args firewall-bypass.helper="ftp", firewall-bypass.targetport=22 $_ip"
 
         cstate=1
         ;;
 
       07|7)
 
-        $xterm -sV --script=ftp-libopie $_ip
+        _init_cmd "$xterm -sV --script=ftp-libopie $_ip"
 
         cstate=1
         ;;
 
       08|8)
 
-        $xterm -p 21 --script ftp-proftpd-backdoor $_ip
+        _init_cmd "$xterm -p 21 --script ftp-proftpd-backdoor $_ip"
 
         cstate=1
         ;;
 
       09|9)
 
-        $xterm -p 21 --script ftp-vsftpd-backdoor $_ip
+        _init_cmd "$xterm -p 21 --script ftp-vsftpd-backdoor $_ip"
 
         cstate=1
         ;;
 
       10)
 
-        $xterm -p $_port --script ftp-vuln-cve2010-4221 $_ip
+        _init_cmd "$xterm -p $_port --script ftp-vuln-cve2010-4221 $_ip"
 
         cstate=1
         ;;
 
       11)
 
-        $xterm -p 80 --script http-adobe-coldfusion-apsa1301 --script-args basepath=/cf/adminapi/ $_ip
+        _init_cmd "$xterm -p 80 --script http-adobe-coldfusion-apsa1301 --script-args basepath=/cf/adminapi/ $_ip"
 
         cstate=1
         ;;
 
       12)
 
-        $xterm --script http-debug --script-args http-aspnet-debug.path=/path $_ip
+        _init_cmd "$xterm --script http-debug --script-args http-aspnet-debug.path=/path $_ip"
 
         cstate=1
         ;;
 
       13)
 
-        $xterm -sV --script http-avaya-ipoffice-users $_ip
+        _init_cmd "$xterm -sV --script http-avaya-ipoffice-users $_ip"
 
         cstate=1
         ;;
 
       14)
 
-        $xterm -sV --script http-awstatstotals-exec.nse --script-args 'http-awstatstotals-exec.cmd="uname -a", http-awstatstotals-exec.uri=/awstats/index.php' $_ip
+        _init_cmd "$xterm -sV --script http-awstatstotals-exec.nse --script-args 'http-awstatstotals-exec.cmd="uname -a", http-awstatstotals-exec.uri=/awstats/index.php' $_ip"
 
         cstate=1
         ;;
 
       15)
 
-        $xterm -p 80 --script http-axis2-dir-traversal $_ip
+        _init_cmd "$xterm -p 80 --script http-axis2-dir-traversal $_ip"
 
         cstate=1
         ;;
 
       16)
 
-        $xterm -p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $_ip
+        _init_cmd "$xterm -p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $_ip"
 
         cstate=1
         ;;
 
       17)
 
-        $xterm -p 80 --script http-csrf.nse $_ip
+        _init_cmd "$xterm -p 80 --script http-csrf.nse $_ip"
 
         cstate=1
         ;;
 
       18)
 
-        $xterm -sV --script http-dlink-backdoor $_ip
+        _init_cmd "$xterm -sV --script http-dlink-backdoor $_ip"
 
         cstate=1
         ;;
 
       19)
 
-        $xterm -p 80 --script http-dombased-xss.nse $_ip
+        _init_cmd "$xterm -p 80 --script http-dombased-xss.nse $_ip"
 
         cstate=1
         ;;
 
       20)
 
-        $xterm -sV --script=http-enum $_ip
+        _init_cmd "$xterm -sV --script=http-enum $_ip"
 
         cstate=1
         ;;
 
       21)
 
-        $xterm -p 80 --script http-fileupload-exploiter.nse $_ip
+        _init_cmd "$xterm -p 80 --script http-fileupload-exploiter.nse $_ip"
 
         cstate=1
         ;;
 
       22)
 
-        $xterm -p 80 --script=http-frontpage-login $_ip
+        _init_cmd "$xterm -p 80 --script=http-frontpage-login $_ip"
 
         cstate=1
         ;;
@@ -189,462 +189,462 @@ function _init_cli_vuln() {
         echo -en $okegreen " The query for which to return the results " ; tput sgr0
         read _query
 
-        $xterm sV -sC $_ip
+        _init_cmd "$xterm sV -sC $_ip"
 
         cstate=1
         ;;
 
       24)
 
-        $xterm -sV http-huawei-hg5xx-vuln $_ip
+        _init_cmd "$xterm -sV http-huawei-hg5xx-vuln $_ip"
 
         cstate=1
         ;;
 
       25)
 
-        $xterm -p 80,8080 --script http-iis-webdav-vuln $_ip
+        _init_cmd "$xterm -p 80,8080 --script http-iis-webdav-vuln $_ip"
 
         cstate=1
         ;;
 
       26)
 
-        $xterm --script http-internal-ip-disclosure --script-args http-internal-ip-disclosure.path=/path $_ip
+        _init_cmd "$xterm --script http-internal-ip-disclosure --script-args http-internal-ip-disclosure.path=/path $_ip"
 
         cstate=1
         ;;
 
       27)
 
-        $xterm -p 80,8080 --script http-litespeed-sourcecode-download --script-args http-litespeed-sourcecode-download.uri=/phpinfo.php $_ip
+        _init_cmd "$xterm -p 80,8080 --script http-litespeed-sourcecode-download --script-args http-litespeed-sourcecode-download.uri=/phpinfo.php $_ip"
 
         cstate=1
         ;;
 
       28)
 
-        $xterm -p 80 --script http-majordomo2-dir-traversal $_ip
+        _init_cmd "$xterm -p 80 --script http-majordomo2-dir-traversal $_ip"
 
         cstate=1
         ;;
 
       29)
 
-        $xterm -p 80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $_ip
+        _init_cmd "$xterm -p 80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $_ip"
 
         cstate=1
         ;;
 
       30)
 
-        $xterm --script http-passwd --script-args http-passwd.root=/test/ $_ip
+        _init_cmd "$xterm --script http-passwd --script-args http-passwd.root=/test/ $_ip"
 
         cstate=1
         ;;
 
       31)
 
-        $xterm -p 80 --script http-phpmyadmin-dir-traversal $_ip
+        _init_cmd "$xterm -p 80 --script http-phpmyadmin-dir-traversal $_ip"
 
         cstate=1
         ;;
 
       32)
 
-        $xterm -sV --script http-self-xss $_ip
+        _init_cmd "$xterm -sV --script http-self-xss $_ip"
 
         cstate=1
         ;;
 
       33)
 
-        $xterm -sV -p- --script http-shellshock --script-args uri=/cgi-bin/bin,cmd=ls $_ip
+        _init_cmd "$xterm -sV -p- --script http-shellshock --script-args uri=/cgi-bin/bin,cmd=ls $_ip"
 
         cstate=1
         ;;
 
       34)
 
-        $xterm --script http-slowloris-check $_ip
+        _init_cmd "$xterm --script http-slowloris-check $_ip"
 
         cstate=1
         ;;
 
       35)
 
-        $xterm -sV --script=http-sql-injection $_ip
+        _init_cmd "$xterm -sV --script=http-sql-injection $_ip"
 
         cstate=1
         ;;
 
       36)
 
-        $xterm -p 80 --script http-stored-xss.nse $_ip
+        _init_cmd "$xterm -p 80 --script http-stored-xss.nse $_ip"
 
         cstate=1
         ;;
 
       37)
 
-        $xterm -p 80 --script http-tplink-dir-traversal.nse --script-args rfile=/etc/topology.conf -d -n -Pn $_ip
+        _init_cmd "$xterm -p 80 --script http-tplink-dir-traversal.nse --script-args rfile=/etc/topology.conf -d -n -Pn $_ip"
 
         cstate=1
         ;;
 
       38)
 
-        $xterm --script http-trace -d $_ip
+        _init_cmd "$xterm --script http-trace -d $_ip"
 
         cstate=1
         ;;
 
       39)
 
-        $xterm -p 80,443,8222,8333 --script http-vmware-path-vuln $_ip
+        _init_cmd "$xterm -p 80,443,8222,8333 --script http-vmware-path-vuln $_ip"
 
         cstate=1
         ;;
 
       40)
 
-        $xterm -p 80 --script http-vuln-cve2006-3392 --script-args http-vuln-cve2006-3392.file=/etc/shadow $_ip
+        _init_cmd "$xterm -p 80 --script http-vuln-cve2006-3392 --script-args http-vuln-cve2006-3392.file=/etc/shadow $_ip"
 
         cstate=1
         ;;
 
       41)
 
-        $xterm --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $_ip
+        _init_cmd "$xterm --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $_ip"
 
         cstate=1
         ;;
 
       42)
 
-        $xterm --script http-vuln-cve2010-2861 $_ip
+        _init_cmd "$xterm --script http-vuln-cve2010-2861 $_ip"
 
         cstate=1
         ;;
 
       43)
 
-        $xterm -pT:80,443 --script http-vuln-cve2011-3192.nse [--script-args http-vuln-cve2011-3192.hostname=nmap.scanme.org] $_ip
+        _init_cmd "$xterm -pT:80,443 --script http-vuln-cve2011-3192.nse [--script-args http-vuln-cve2011-3192.hostname=nmap.scanme.org] $_ip"
 
         cstate=1
         ;;
 
       44)
 
-        $xterm --script http-vuln-cve2011-3368 $_ip
+        _init_cmd "$xterm --script http-vuln-cve2011-3368 $_ip"
 
         cstate=1
         ;;
 
       45)
 
-        $xterm -sV --script http-vuln-cve2012-1823 $_ip
+        _init_cmd "$xterm -sV --script http-vuln-cve2012-1823 $_ip"
 
         cstate=1
         ;;
 
       46)
 
-        $xterm -sV --script http-vuln-cve2013-0156 $_ip
+        _init_cmd "$xterm -sV --script http-vuln-cve2013-0156 $_ip"
 
         cstate=1
         ;;
 
       47)
 
-        $xterm -p80 --script http-rompager-xss $_ip
+        _init_cmd "$xterm -p80 --script http-rompager-xss $_ip"
 
         cstate=1
         ;;
 
       48)
 
-        $xterm -p 80 --script http-vuln-cve2013-7091 --script-args http-vuln-cve2013-7091=/ZimBra $_ip
+        _init_cmd "$xterm -p 80 --script http-vuln-cve2013-7091 --script-args http-vuln-cve2013-7091=/ZimBra $_ip"
 
         cstate=1
         ;;
 
       49)
 
-        $xterm -p 443 --script http-vuln-cve2014-2126 $_ip
+        _init_cmd "$xterm -p 443 --script http-vuln-cve2014-2126 $_ip"
 
         cstate=1
         ;;
 
       50)
 
-        $xterm -p 443 --script http-vuln-cve2014-2127 $_ip
+        _init_cmd "$xterm -p 443 --script http-vuln-cve2014-2127 $_ip"
 
         cstate=1
         ;;
 
       51)
 
-        $xterm -p 443 --script http-vuln-cve2014-2128 $_ip
+        _init_cmd "$xterm -p 443 --script http-vuln-cve2014-2128 $_ip"
 
         cstate=1
         ;;
 
       52)
 
-        $xterm -p 443 --script http-vuln-cve2014-2129 $_ip
+        _init_cmd "$xterm -p 443 --script http-vuln-cve2014-2129 $_ip"
 
         cstate=1
         ;;
 
       53)
 
-        $xterm --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri="/drupal",http-vuln-cve2014-3704.cleanup=false $_ip
+        _init_cmd "$xterm --script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri="/drupal",http-vuln-cve2014-3704.cleanup=false $_ip"
 
         cstate=1
         ;;
 
       54)
 
-        $xterm --script http-vuln-cve2014-8877 --script-args http-vuln-cve2014-8877.cmd="whoami",http-vuln-cve2014-8877.uri="/wordpress" $_ip
+        _init_cmd "$xterm --script http-vuln-cve2014-8877 --script-args http-vuln-cve2014-8877.cmd="whoami",http-vuln-cve2014-8877.uri="/wordpress" $_ip"
 
         cstate=1
         ;;
 
       55)
 
-        $xterm --script=http-vuln-cve2015-1427 --script-args command='ls' $_ip
+        _init_cmd "$xterm --script=http-vuln-cve2015-1427 --script-args command='ls' $_ip"
 
         cstate=1
         ;;
 
       56)
 
-        $xterm -sV --script http-vuln-cve2015-1635 --script-args uri='/anotheruri/' $_ip
+        _init_cmd "$xterm -sV --script http-vuln-cve2015-1635 --script-args uri='/anotheruri/' $_ip"
 
         cstate=1
         ;;
 
       57)
 
-        $xterm -p 7547 --script=http-vuln-misfortune-cookie $_ip
+        _init_cmd "$xterm -p 7547 --script=http-vuln-misfortune-cookie $_ip"
 
         cstate=1
         ;;
 
       58)
 
-        $xterm -p 80 -sV --script http-vuln-wnr1000-creds $_ip
+        _init_cmd "$xterm -p 80 -sV --script http-vuln-wnr1000-creds $_ip"
 
         cstate=1
         ;;
 
       59)
 
-        $xterm -sV --script http-wordpress-users --script-args limit=50 $_ip
+        _init_cmd "$xterm -sV --script http-wordpress-users --script-args limit=50 $_ip"
 
         cstate=1
         ;;
 
       60)
 
-        $xterm -p 623 -sU --script ipmi-cipher-zero $_ip
+        _init_cmd "$xterm -p 623 -sU --script ipmi-cipher-zero $_ip"
 
         cstate=1
         ;;
 
       61)
 
-        $xterm -p 6667 --script=irc-botnet-channels $_ip
+        _init_cmd "$xterm -p 6667 --script=irc-botnet-channels $_ip"
 
         cstate=1
         ;;
 
       62)
 
-        $xterm -sV --script=irc-unrealircd-backdoor $_ip
+        _init_cmd "$xterm -sV --script=irc-unrealircd-backdoor $_ip"
 
         cstate=1
         ;;
 
       63)
 
-        $xterm -sV --script mysql-vuln-cve2012-2122 $_ip
+        _init_cmd "$xterm -sV --script mysql-vuln-cve2012-2122 $_ip"
 
         cstate=1
         ;;
 
       64)
 
-        $xterm -p 12345 --script netbus-auth-bypass $_ip
+        _init_cmd "$xterm -p 12345 --script netbus-auth-bypass $_ip"
 
         cstate=1
         ;;
 
       65)
 
-        $xterm -p $_port --script qconn-exec --script-args qconn-exec.timeout=60,qconn-exec.bytes=1024,qconn-exec.cmd="uname -a" $_ip
+        _init_cmd "$xterm -p $_port --script qconn-exec --script-args qconn-exec.timeout=60,qconn-exec.bytes=1024,qconn-exec.cmd="uname -a" $_ip"
 
         cstate=1
         ;;
 
       66)
 
-        $xterm -p 3389 -sV --script=rdp-ms12-020 $_ip
+        _init_cmd "$xterm -p 3389 -sV --script=rdp-ms12-020 $_ip"
 
         cstate=1
         ;;
 
       67)
 
-        $xterm -p 1099 --script=rmi-vuln-classloader $_ip
+        _init_cmd "$xterm -p 1099 --script=rmi-vuln-classloader $_ip"
 
         cstate=1
         ;;
 
       68)
 
-        $xterm -p 139 --script=samba-vuln-cve-2012-1182 $_ip
+        _init_cmd "$xterm -p 139 --script=samba-vuln-cve-2012-1182 $_ip"
 
         cstate=1
         ;;
 
       69)
 
-        $xterm -p T:139 -sU --script smb-vuln-conficker.nse $_ip
+        _init_cmd "$xterm -p T:139 -sU --script smb-vuln-conficker.nse $_ip"
 
         cstate=1
         ;;
 
       70)
 
-        $xterm -p U:137,T:139 -sU --script smb-vuln-cve2009-3103.nse $_ip
+        _init_cmd "$xterm -p U:137,T:139 -sU --script smb-vuln-cve2009-3103.nse $_ip"
 
         cstate=1
         ;;
 
       71)
 
-        $xterm -p U:137,T:139 -sU --script smb-vuln-ms06-025.nse $_ip
+        _init_cmd "$xterm -p U:137,T:139 -sU --script smb-vuln-ms06-025.nse $_ip"
 
         cstate=1
         ;;
 
       72)
 
-        $xterm -p U:137,T:139 -sU --script smb-vuln-ms07-029.nse $_ip
+        _init_cmd "$xterm -p U:137,T:139 -sU --script smb-vuln-ms07-029.nse $_ip"
 
         cstate=1
         ;;
 
       73)
 
-        $xterm -p U:137 -sU --script smb-vuln-ms08-067.nse $_ip
+        _init_cmd "$xterm -p U:137 -sU --script smb-vuln-ms08-067.nse $_ip"
 
         cstate=1
         ;;
 
       74)
 
-        $xterm -p 445 --script=smb-vuln-ms10-054 --script-args unsafe $_ip
+        _init_cmd "$xterm -p 445 --script=smb-vuln-ms10-054 --script-args unsafe $_ip"
 
         cstate=1
         ;;
 
       75)
 
-        $xterm -p 445 --script=smb-vuln-ms10-061 $_ip
+        _init_cmd "$xterm -p 445 --script=smb-vuln-ms10-061 $_ip"
 
         cstate=1
         ;;
 
       76)
 
-        $xterm -p U:137,T:139 -sU --script smb-vuln-regsvc-dos.nse $_ip
+        _init_cmd "$xterm -p U:137,T:139 -sU --script smb-vuln-regsvc-dos.nse $_ip"
 
         cstate=1
         ;;
 
       77)
 
-        $xterm -pT:25,465,587 --script=smtp-vuln-cve2010-4344 --script-args="smtp-vuln-cve2010-4344.exploit" $_ip
+        _init_cmd "$xterm -pT:25,465,587 --script=smtp-vuln-cve2010-4344 --script-args="smtp-vuln-cve2010-4344.exploit" $_ip"
 
         cstate=1
         ;;
 
       78)
 
-        $xterm -pT:25,465,587 --script=smtp-vuln-cve2011-1720 --script-args='smtp.domain=<domain>' $_ip
+        _init_cmd "$xterm -pT:25,465,587 --script=smtp-vuln-cve2011-1720 --script-args='smtp.domain=<domain>' $_ip"
 
         cstate=1
         ;;
 
       79)
 
-        $xterm -pT:25,465,587 --script=smtp-vuln-cve2011-1764 $_ip
+        _init_cmd "$xterm -pT:25,465,587 --script=smtp-vuln-cve2011-1764 $_ip"
 
         cstate=1
         ;;
 
       80)
 
-        $xterm -p 443 --script ssl-ccs-injection $_ip
+        _init_cmd "$xterm -p 443 --script ssl-ccs-injection $_ip"
 
         cstate=1
         ;;
 
       81)
 
-        $xterm -p 443 --script ssl-cert-intaddr $_ip
+        _init_cmd "$xterm -p 443 --script ssl-cert-intaddr $_ip"
 
         cstate=1
         ;;
 
       82)
 
-        $xterm --script ssl-dh-params $_ip
+        _init_cmd "$xterm --script ssl-dh-params $_ip"
 
         cstate=1
         ;;
 
       83)
 
-        $xterm -p 443 --script ssl-heartbleed $_ip
+        _init_cmd "$xterm -p 443 --script ssl-heartbleed $_ip"
 
         cstate=1
         ;;
 
       84)
 
-        $xterm -p 443 --script ssl-known-key $_ip
+        _init_cmd "$xterm -p 443 --script ssl-known-key $_ip"
 
         cstate=1
         ;;
 
       85)
 
-        $xterm -p 443 -sV --version-light --script ssl-poodle $_ip
+        _init_cmd "$xterm -p 443 -sV --version-light --script ssl-poodle $_ip"
 
         cstate=1
         ;;
 
       86)
 
-        $xterm -sV --script=sslv2-drown $_ip
+        _init_cmd "$xterm -sV --script=sslv2-drown $_ip"
 
         cstate=1
         ;;
 
       87)
 
-        $xterm -p 49152 --script supermicro-ipmi-conf $_ip
+        _init_cmd "$xterm -p 49152 --script supermicro-ipmi-conf $_ip"
 
         cstate=1
         ;;
 
       88)
 
-        $xterm -sU -p 17185 --script wdb-version $_ip
+        _init_cmd "$xterm -sU -p 17185 --script wdb-version $_ip"
 
         cstate=1
         ;;
