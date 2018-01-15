@@ -1,17 +1,123 @@
 #!/usr/bin/env bash
-  
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_zenmapscript()
+#
+# Description:
+#   Starting the Dracnmap Zenmap module.
+#
+# Usage:
+#   _init_cli_zenmapscript
+#
+# Examples:
+#   _init_cli_zenmapscript
+#
+
+function _init_cli_zenmapscript() {
+
+  local _FUNCTION_ID="_init_cli_zenmapscript"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="Headshot"
+
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        $xterm -T4 -A -v $_ip
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        $xterm -sS -sU -T4 -A -v $_ip
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        $xterm -p 1-65535 -T4 -A -v $_ip
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        $xterm -T4 -F $_ip
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        $xterm -sV -T4 -O -F --version-light $_ip
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        $xterm -sN --traceroute $_ip
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        $xterm -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" $_ip
+
+        cstate=1
+        ;;
+
+      clear)
+        menu_zenmapscript
+        cstate="0" ;;
+      back)
+        menu
+        cstate="0" ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
 ###############################################
 # ZENMAP
 ###############################################
-  
+
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
 #   - replaced 'test' to '[[ ]]'
 #   - changed comparison operator (-eq)
 #   - protection against giving an illegal value
-function zenmapscript() {
-  
+function menu_zenmapscript() {
+
   clear
   clear
   echo ""
@@ -43,97 +149,6 @@ function zenmapscript() {
   echo -e $white"    [$okegreen"05"$white]$cyan  QUICK SCAN PLUS PLUS "
   echo -e $white"    [$okegreen"06"$white]$cyan  QUICK TRACEROUT   "
   echo -e $white"    [$okegreen"07"$white]$cyan  COMPREHENSIVE SCAN [BEST]  "
-  echo -e $white"    [$okegreen"08"$white]$cyan  BACK  "
   echo -e   " "
-
-  echo -n -e $red'  \033[4mScreetsec@Headshot:\033[0m>> '; tput sgr0 #insert your choice
-  read Scanning
-
-  if [[ $Scanning -eq 1 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -T4 -A -v $ip &
-
-  elif [[ $Scanning -eq 2 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sS -sU -T4 -A -v $ip &
-
-  elif [[ $Scanning -eq 3 ]] ; then
-
-    echo
-    echo -ne  $okegreen" What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -p 1-65535 -T4 -A -v $ip &
-
-  elif [[ $Scanning -eq 4 ]] ; then
-
-    echo
-    echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-    read ip
-    $xterm -T4 -F $ip &
-
-  elif [[ $Scanning -eq 5 ]] ; then
-
-    echo
-    echo -ne  $okegreen" What is your IP Target or Host: "; tput sgr0
-    read ip
-    $xterm -sV -T4 -O -F --version-light $ip &
-
-  elif [[ $Scanning -eq 6 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: "; tput sgr0
-    read ip
-    $xterm -sn --traceroute $ip &
-
-  elif [[ $Scanning -eq 7 ]] ; then
-
-    echo
-    echo -ne $okegreen " What is your IP Target or Host: " ; tput sgr0
-    read ip
-    $xterm -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" $ip &
-
-  elif [[ $Scanning -eq 8 ]] ; then
-
-    menu
-
-  else
-
-    echo ""
-    echo -e $okegreen " Incorrect Number"
-
-  fi
-
-  echo ""
-  echo ""
-  echo -n -e $red " Back to Last Menu? ( Yes / No ) :"
-  read back
-
-  if [ $back != 'n' ] && \
-     [ $back != 'N' ] && \
-     [ $back != 'no' ] && \
-     [ $back != 'No' ] ; then
-
-    clear
-    menu
-
-  elif [ $back != 'y' ] && \
-       [ $back != 'Y' ] && \
-       [ $back != 'yes' ] && \
-       [ $back != 'Yes' ] ; then
-
-    zenmapscript
-
-  else
-
-    clear
-    zenmapscript
-
-  fi
 
 }
