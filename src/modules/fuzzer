@@ -32,21 +32,21 @@ function _init_cli_fuzzer() {
 
       01|1)
 
-        _init_cmd "$xterm -sU --script dns-fuzz --script-args timelimit=2h $_ipaddr"
+        _init_cmd "-sU --script dns-fuzz --script-args timelimit=2h $_ipaddr"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "$xterm -p 80 --script http-form-fuzzer --script-args 'http-form-fuzzer.targets={1={path=/},2={path=/register.html}}' $_ipaddr"
+        _init_cmd "-p 80 --script http-form-fuzzer --script-args 'http-form-fuzzer.targets={1={path=/},2={path=/register.html}}' $_ipaddr"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "$xterm -p80 --script=http-phpself-xss $_ipaddr"
+        _init_cmd "-p80 --script=http-phpself-xss $_ipaddr"
 
         cstate=1
         ;;

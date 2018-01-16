@@ -32,126 +32,126 @@ function _init_cli_brd() {
 
       01|1)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-ataoe-discover"
+        _init_cmd "-e $_iface --script broadcast-ataoe-discover"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "$xterm -e $_iface --script=broadcast-avahi-dos"
+        _init_cmd "-e $_iface --script=broadcast-avahi-dos"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-bjnp-discover"
+        _init_cmd "-e $_iface --script broadcast-bjnp-discover"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "$xterm -e $_iface --script db2-discover"
+        _init_cmd "-e $_iface --script db2-discover"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-dhcp-discover"
+        _init_cmd "-e $_iface --script broadcast-dhcp-discover"
 
         cstate=1
         ;;
 
       06|6)
 
-        _init_cmd "$xterm -e $_iface -6 --script broadcast-dhcp6-discover"
+        _init_cmd "-e $_iface -6 --script broadcast-dhcp6-discover"
 
         cstate=1
         ;;
 
       07|7)
 
-        _init_cmd "$xterm -e $_iface --script=broadcast-dns-service-discovery"
+        _init_cmd "-e $_iface --script=broadcast-dns-service-discovery"
 
         cstate=1
         ;;
 
       08|8)
 
-        _init_cmd "$xterm -e $_iface --script=broadcast-dropbox-listener --script-args=newtargets -Pn"
+        _init_cmd "-e $_iface --script=broadcast-dropbox-listener --script-args=newtargets -Pn"
 
         cstate=1
         ;;
 
       09|9)
 
-        _init_cmd "$xterm -e $_iface --script=broadcast-eigrp-discovery $_ipaddr"
+        _init_cmd "-e $_iface --script=broadcast-eigrp-discovery $_ipaddr"
 
         cstate=1
         ;;
 
       10)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-igmp-discovery"
+        _init_cmd "-e $_iface --script broadcast-igmp-discovery"
 
         cstate=1
         ;;
 
       11)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-listener"
+        _init_cmd "-e $_iface --script broadcast-listener"
 
         cstate=1
         ;;
 
       12)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-ms-sql-discover"
+        _init_cmd "-e $_iface --script broadcast-ms-sql-discover"
 
         cstate=1
         ;;
 
       13)
 
-        _init_cmd "$xterm -e $_iface --script=broadcast-netbios-master-browser"
+        _init_cmd "-e $_iface --script=broadcast-netbios-master-browser"
 
         cstate=1
         ;;
 
       14)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-networker-discover"
+        _init_cmd "-e $_iface --script broadcast-networker-discover"
 
         cstate=1
         ;;
 
       15)
 
-        _init_cmd "$xterm -e $_iface -sV --script=broadcast-novell-locate"
+        _init_cmd "-e $_iface -sV --script=broadcast-novell-locate"
 
         cstate=1
         ;;
 
       16)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-pc-anywhere"
+        _init_cmd "-e $_iface --script broadcast-pc-anywhere"
 
         cstate=1
         ;;
 
       17)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-pc-duo"
+        _init_cmd "-e $_iface --script broadcast-pc-duo"
 
         cstate=1
         ;;
 
       18)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-pim-discovery"
+        _init_cmd "-e $_iface --script broadcast-pim-discovery"
 
         cstate=1
         ;;
@@ -170,112 +170,112 @@ function _init_cli_brd() {
         echo -ne $okegreen "Number specifying how many ICMP probes should be sent (default 1): " ; tput sgr0
         read _np
 
-        _init_cmd "$xterm -e $_iface [--ttl "$_ttl"] [--data-length "$_payload"] --script broadcast-ping [--script-args [broadcast-ping.timeout="$_ti"],[num-probes="$_np"]]]"
+        _init_cmd "-e $_iface [--ttl "$_ttl"] [--data-length "$_payload"] --script broadcast-ping [--script-args [broadcast-ping.timeout="$_ti"],[num-probes="$_np"]]]"
 
         cstate=1
         ;;
 
       20)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-pppoe-discover"
+        _init_cmd "-e $_iface --script broadcast-pppoe-discover"
 
         cstate=1
         ;;
 
       21)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-rip-discover"
+        _init_cmd "-e $_iface --script broadcast-rip-discover"
 
         cstate=1
         ;;
 
       22)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-ripng-discover"
+        _init_cmd "-e $_iface --script broadcast-ripng-discover"
 
         cstate=1
         ;;
 
       23)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-sonicwall-discover"
+        _init_cmd "-e $_iface --script broadcast-sonicwall-discover"
 
         cstate=1
         ;;
 
       24)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-sybase-asa-discover"
+        _init_cmd "-e $_iface --script broadcast-sybase-asa-discover"
 
         cstate=1
         ;;
 
       25)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-tellstick-discover"
+        _init_cmd "-e $_iface --script broadcast-tellstick-discover"
 
         cstate=1
         ;;
 
       26)
 
-        _init_cmd "$xterm -e $_iface -sV --script=broadcast-upnp-info"
+        _init_cmd "-e $_iface -sV --script=broadcast-upnp-info"
 
         cstate=1
         ;;
 
       27)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-versant-locate"
+        _init_cmd "-e $_iface --script broadcast-versant-locate"
 
         cstate=1
         ;;
 
       28)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-wake-on-lan --script-args broadcast-wake-on-lan.MAC="$_hwaddr""
+        _init_cmd "-e $_iface --script broadcast-wake-on-lan --script-args broadcast-wake-on-lan.MAC="$_hwaddr""
 
         cstate=1
         ;;
 
       29)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-wpad-discover"
+        _init_cmd "-e $_iface --script broadcast-wpad-discover"
 
         cstate=1
         ;;
 
       30)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-wsdd-discover"
+        _init_cmd "-e $_iface --script broadcast-wsdd-discover"
 
         cstate=1
         ;;
 
       31)
 
-        _init_cmd "$xterm -e $_iface --script broadcast-xdmcp-discover"
+        _init_cmd "-e $_iface --script broadcast-xdmcp-discover"
 
         cstate=1
         ;;
 
       32)
 
-        _init_cmd "$xterm -e $_iface --script eap-info [--script-args=eap-info.identity=0-user,eap-info.scan={13,50}] $_ipaddr"
+        _init_cmd "-e $_iface --script eap-info [--script-args=eap-info.identity=0-user,eap-info.scan={13,50}] $_ipaddr"
 
         cstate=1
         ;;
 
       33)
 
-        _init_cmd "$xterm -e $_iface --script=ipv6-multicast-mld-list"
+        _init_cmd "-e $_iface --script=ipv6-multicast-mld-list"
 
         cstate=1
         ;;
 
       34)
 
-        _init_cmd "$xterm -e $_iface --script knx-gateway-discover"
+        _init_cmd "-e $_iface --script knx-gateway-discover"
 
         cstate=1
         ;;
@@ -285,21 +285,21 @@ function _init_cli_brd() {
         echo -ne $okegreen "Hostname to resolve: " ; tput sgr0
         read _hostname
 
-        _init_cmd "$xterm -e $_iface --script llmnr-resolve --script-args llmnr-resolve.hostname="$_hostname""
+        _init_cmd "-e $_iface --script llmnr-resolve --script-args llmnr-resolve.hostname="$_hostname""
 
         cstate=1
         ;;
 
       36)
 
-        _init_cmd "$xterm -e $_iface --script lltd-discovery"
+        _init_cmd "-e $_iface --script lltd-discovery"
 
         cstate=1
         ;;
 
       37)
 
-        _init_cmd "$xterm -e $_iface --script mrinfo"
+        _init_cmd "-e $_iface --script mrinfo"
 
         cstate=1
         ;;
@@ -309,42 +309,42 @@ function _init_cli_brd() {
         echo -ne $okegreen "Source address from which to traceroute: " ; tput sgr0
         read _rt
 
-        _init_cmd "$xterm -e $_iface --script mtrace --script-args mtrace.fromip="$_rt""
+        _init_cmd "-e $_iface --script mtrace --script-args mtrace.fromip="$_rt""
 
         cstate=1
         ;;
 
       39)
 
-        _init_cmd "$xterm --script=targets-ipv6-multicast-echo.nse --script-args newtargets,interface="$_iface" -sL"
+        _init_cmd "--script=targets-ipv6-multicast-echo.nse --script-args newtargets,interface="$_iface" -sL"
 
         cstate=1
         ;;
 
       40)
 
-        _init_cmd "$xterm --script=targets-ipv6-multicast-invalid-dst.nse --script-args newtargets,interface="$_iface" -sP"
+        _init_cmd "--script=targets-ipv6-multicast-invalid-dst.nse --script-args newtargets,interface="$_iface" -sP"
 
         cstate=1
         ;;
 
       41)
 
-        _init_cmd "$xterm --script=targets-ipv6-multicast-mld.nse --script-args newtargets,interface="$_iface""
+        _init_cmd "--script=targets-ipv6-multicast-mld.nse --script-args newtargets,interface="$_iface""
 
         cstate=1
         ;;
 
       42)
 
-        _init_cmd "$xterm --script targets-ipv6-multicast-slaac --script-args newtargets,interface="$_iface" -sP"
+        _init_cmd "--script targets-ipv6-multicast-slaac --script-args newtargets,interface="$_iface" -sP"
 
         cstate=1
         ;;
 
       43)
 
-        _init_cmd "$xterm -sL --script=targets-sniffer --script-args=newtargets,targets-sniffer.timeout=5s,targets-sniffer.iface="$_iface""
+        _init_cmd "-sL --script=targets-sniffer --script-args=newtargets,targets-sniffer.timeout=5s,targets-sniffer.iface="$_iface""
 
         cstate=1
         ;;

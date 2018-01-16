@@ -36,78 +36,78 @@ function _init_cli_webservice() {
 
       01|1)
 
-        _init_cmd "$xterm --script firewall-bypass --script-args firewall-bypass.helper='ftp',firewall-bypass.targetport=22 $_ipaddr"
+        _init_cmd "--script firewall-bypass --script-args firewall-bypass.helper='ftp',firewall-bypass.targetport=22 $_ipaddr"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "$xterm -sS -sU -T4 -A -v $_ipaddr"
-        _init_cmd "$xterm -p80 --script http-methods,http-trace --script-args http-methods.retest $_ipaddr"
+        _init_cmd "-sS -sU -T4 -A -v $_ipaddr"
+        _init_cmd "-p80 --script http-methods,http-trace --script-args http-methods.retest $_ipaddr"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "$xterm -sV --script smtp-open-relay -v $_ipaddr"
+        _init_cmd "-sV --script smtp-open-relay -v $_ipaddr"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "$xterm -sV --script smtp-strangeport $_ipaddr"
+        _init_cmd "-sV --script smtp-strangeport $_ipaddr"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "$xterm -p80 --script http-phpself-xss,http-unsafe-output-escaping $_ipaddr"
+        _init_cmd "-p80 --script http-phpself-xss,http-unsafe-output-escaping $_ipaddr"
 
         cstate=1
         ;;
 
       06|6)
 
-        _init_cmd "$xterm -p25 –script smtp-enum-users $_ipaddr"
+        _init_cmd "-p25 –script smtp-enum-users $_ipaddr"
 
         cstate=1
         ;;
 
       07|7)
 
-        _init_cmd "$xterm -p80 --script http-slowloris --max-parallelism 300 $_ipaddr"
+        _init_cmd "-p80 --script http-slowloris --max-parallelism 300 $_ipaddr"
 
         cstate=1
         ;;
 
       08|8)
 
-        _init_cmd "$xterm -p80 --script http-sql-injection $_ipaddr"
+        _init_cmd "-p80 --script http-sql-injection $_ipaddr"
 
         cstate=1
         ;;
 
       09|9)
 
-        _init_cmd "$xterm -Pn -p80 --script ip-geolocation-* $_ipaddr"
+        _init_cmd "-Pn -p80 --script ip-geolocation-* $_ipaddr"
 
         cstate=1
         ;;
 
       10)
 
-        _init_cmd "$xterm -sn --script whois-ip --script-args whois.whodb=nocache $_ipaddr"
+        _init_cmd "-sn --script whois-ip --script-args whois.whodb=nocache $_ipaddr"
 
         cstate=1
         ;;
 
       11)
 
-        _init_cmd "$xterm -p80 --script http-google-email,http-email-harvest $_ipaddr"
+        _init_cmd "-p80 --script http-google-email,http-email-harvest $_ipaddr"
 
         cstate=1
         ;;

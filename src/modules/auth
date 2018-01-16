@@ -32,154 +32,154 @@ function _init_cli_auth() {
 
       01|1)
 
-        _init_cmd "$xterm -p 8009 --script ajp-auth [--script-args ajp-auth.path=/login] $_ipaddr"
+        _init_cmd "-p 8009 --script ajp-auth [--script-args ajp-auth.path=/login] $_ipaddr"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "$xterm -sV -sC $_ipaddr"
+        _init_cmd "-sV -sC $_ipaddr"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "$xterm -p 2050 --script domcon-cmd --script-args domcon-cmd.cmd='show server' domcon-cmd.user="$_user",domcon-cmd.pass="$_pass" $_ipaddr"
+        _init_cmd "-p 2050 --script domcon-cmd --script-args domcon-cmd.cmd='show server' domcon-cmd.user="$_user",domcon-cmd.pass="$_pass" $_ipaddr"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "$xterm -p 1352 --script domino-enum-users $_ipaddr"
+        _init_cmd "-p 1352 --script domino-enum-users $_ipaddr"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "$xterm -sV -sC $_ipaddr"
+        _init_cmd "-sV -sC $_ipaddr"
 
         cstate=1
         ;;
 
       06|6)
 
-        _init_cmd "$xterm -p 80 --script http-auth [--script-args http-auth.path=/login] $_ipaddr"
+        _init_cmd "-p 80 --script http-auth [--script-args http-auth.path=/login] $_ipaddr"
 
         cstate=1
         ;;
 
       07|7)
 
-        _init_cmd "$xterm -p "$_port" --script http-barracuda-dir-traversal --script-args http-max-cache-size=5000000 $_ipaddr"
+        _init_cmd "-p "$_port" --script http-barracuda-dir-traversal --script-args http-max-cache-size=5000000 $_ipaddr"
 
         cstate=1
         ;;
 
       08|8)
 
-        _init_cmd "$xterm --script=http-config-backup $_ipaddr"
+        _init_cmd "--script=http-config-backup $_ipaddr"
 
         cstate=1
         ;;
 
       09|9)
 
-        _init_cmd "$xterm -p 80 --script http-default-accounts $_ipaddr"
+        _init_cmd "-p 80 --script http-default-accounts $_ipaddr"
 
         cstate=1
         ;;
 
       10)
 
-        _init_cmd "$xterm -p 80 --script domino-enum-passwords --script-args domino-enum-passwords.username="$_user",domino-enum-passwords.password="$_pass" $_ipaddr"
+        _init_cmd "-p 80 --script domino-enum-passwords --script-args domino-enum-passwords.username="$_user",domino-enum-passwords.password="$_pass" $_ipaddr"
 
         cstate=1
         ;;
 
       11)
 
-        _init_cmd "$xterm -p 80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $_ipaddr"
+        _init_cmd "-p 80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' $_ipaddr"
 
         cstate=1
         ;;
 
       12)
 
-        _init_cmd "$xterm -sV --script=http-userdir-enum $_ipaddr"
+        _init_cmd "-sV --script=http-userdir-enum $_ipaddr"
 
         cstate=1
         ;;
 
       13)
 
-        _init_cmd "$xterm --script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $_ipaddr"
+        _init_cmd "--script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' $_ipaddr"
 
         cstate=1
         ;;
 
       14)
 
-        _init_cmd "$xterm -sV --script http-wordpress-users --script-args limit=50 $_ipaddr"
+        _init_cmd "-sV --script http-wordpress-users --script-args limit=50 $_ipaddr"
 
         cstate=1
         ;;
 
       15)
 
-        _init_cmd "$xterm -p 9088 --script informix-query --script-args informix-query.username="$_user",informix-query.password="$_pass" $_ipaddr"
+        _init_cmd "-p 9088 --script informix-query --script-args informix-query.username="$_user",informix-query.password="$_pass" $_ipaddr"
 
         cstate=1
         ;;
 
       16)
 
-        _init_cmd "$xterm -p 9088 --script informix-tables --script-args informix-tables.username="$_user",informix-tables.password="$_pass" $_ipaddr"
+        _init_cmd "-p 9088 --script informix-tables --script-args informix-tables.username="$_user",informix-tables.password="$_pass" $_ipaddr"
 
         cstate=1
         ;;
 
       17)
 
-        _init_cmd "$xterm -p 88 --script krb5-enum-users --script-args krb5-enum-users.realm='test' $_ipaddr"
+        _init_cmd "-p 88 --script krb5-enum-users --script-args krb5-enum-users.realm='test' $_ipaddr"
 
         cstate=1
         ;;
 
       18)
 
-        _init_cmd "$xterm -p 1433 --script ms-sql-dump-hashes $_ipaddr"
+        _init_cmd "-p 1433 --script ms-sql-dump-hashes $_ipaddr"
 
         cstate=1
         ;;
 
       19)
 
-        _init_cmd "$xterm -p "$_port" --script ms-sql-empty-password --script-args mssql.instance-all $_ipaddr"
+        _init_cmd "-p "$_port" --script ms-sql-empty-password --script-args mssql.instance-all $_ipaddr"
 
         cstate=1
         ;;
 
       20)
 
-        _init_cmd "$xterm -p 1433 --script ms-sql-hasdbaccess --script-args mssql.username="$_user",mssql.password="$_pass" $_ipaddr"
+        _init_cmd "-p 1433 --script ms-sql-hasdbaccess --script-args mssql.username="$_user",mssql.password="$_pass" $_ipaddr"
 
         cstate=1
         ;;
 
       21)
 
-        _init_cmd "$xterm -p 3306 --script mysql-dump-hashes --script-args="username=$_user,password=$_pass" $_ipaddr"
+        _init_cmd "-p 3306 --script mysql-dump-hashes --script-args="username=$_user,password=$_pass" $_ipaddr"
 
         cstate=1
         ;;
 
       22)
 
-        _init_cmd "$xterm -sV --script=mysql-empty-password $_ipaddr"
+        _init_cmd "-sV --script=mysql-empty-password $_ipaddr"
 
         cstate=1
         ;;
@@ -189,77 +189,77 @@ function _init_cli_auth() {
         echo -en $okegreen " The query for which to return the results: " ; tput sgr0
         read _query
 
-        _init_cmd "$xterm -p 3306 --script mysql-query --script-args="query="$_query"[,username=$_username,password=$_pass]" $_ipaddr"
+        _init_cmd "-p 3306 --script mysql-query --script-args="query="$_query"[,username=$_username,password=$_pass]" $_ipaddr"
 
         cstate=1
         ;;
 
       24)
 
-        _init_cmd "$xterm -sV --script=mysql-users $_ipaddr"
+        _init_cmd "-sV --script=mysql-users $_ipaddr"
 
         cstate=1
         ;;
 
       25)
 
-        _init_cmd "$xterm -sV --script=ncp-enum-users $_ipaddr"
+        _init_cmd "-sV --script=ncp-enum-users $_ipaddr"
 
         cstate=1
         ;;
 
       26)
 
-        _init_cmd "$xterm -p 12345 --script netbus-auth-bypass $_ipaddr"
+        _init_cmd "-p 12345 --script netbus-auth-bypass $_ipaddr"
 
         cstate=1
         ;;
 
       27)
 
-        _init_cmd "$xterm -p 1521-1560 --script oracle-enum-users --script-args oracle-enum-users.sid=ORCL,userdb=orausers.txt $_ipaddr"
+        _init_cmd "-p 1521-1560 --script oracle-enum-users --script-args oracle-enum-users.sid=ORCL,userdb=orausers.txt $_ipaddr"
 
         cstate=1
         ;;
 
       28)
 
-        _init_cmd "$xterm -sV -sC $_ipaddr"
+        _init_cmd "-sV -sC $_ipaddr"
 
         cstate=1
         ;;
 
       29)
 
-        _init_cmd "$xterm -p 5060 --script=sip-enum-users -sU $_ipaddr"
+        _init_cmd "-p 5060 --script=sip-enum-users -sU $_ipaddr"
 
         cstate=1
         ;;
 
       30)
 
-        _init_cmd "$xterm -p 445 --script smb-enum-users.nse $_ipaddr"
+        _init_cmd "-p 445 --script smb-enum-users.nse $_ipaddr"
 
         cstate=1
         ;;
 
       31)
 
-        _init_cmd "$xterm -p 25,465,587 --script smtp-enum-users.nse [--script-args smtp-enum-users.methods={EXPN,...},...] $_ipaddr"
+        _init_cmd "-p 25,465,587 --script smtp-enum-users.nse [--script-args smtp-enum-users.methods={EXPN,...},...] $_ipaddr"
 
         cstate=1
         ;;
 
       32)
 
-        _init_cmd "$xterm -sU -p 161 --script=snmp-win32-users $_ipaddr"
+        _init_cmd "-sU -p 161 --script=snmp-win32-users $_ipaddr"
 
         cstate=1
         ;;
 
       33)
 
-        _init_cmd "$xterm --sV -sC $_ipaddr"
+        _init_cmd "--sV -sC $_ipaddr"
 
         cstate=1
         ;;
