@@ -53,7 +53,7 @@ function _init_cli() {
 
   input_array=()
 
-  while [ "${input_array[0]}" != "exit" ] ; do
+  while [[ "${input_array[0]}" != "exit" ]] ; do
 
     cstate="1"
 
@@ -155,7 +155,7 @@ function _init_cli() {
 
       show)
 
-        if [ ${input_array[1]} ] ; then
+        if [[ ${input_array[1]} ]] ; then
 
           case ${input_array[1]} in
 
@@ -178,7 +178,7 @@ function _init_cli() {
 
       set)
 
-        if [ ${input_array[1]} ] ; then
+        if [[ ${input_array[1]} ]] ; then
 
           case ${input_array[1]} in
 
@@ -322,7 +322,7 @@ function credits {
   clear
   echo -e "
   \033[31m##########################################################################\033[m
-                  Credits To
+                                      Credits To
   \033[31m##########################################################################\033[m"
   echo
   echo -e $white "Special thanks to:"
