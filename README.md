@@ -9,7 +9,7 @@
 **Nmap** command comes with lots of options that can make the utility more robust and difficult to follow for new users.
 Hence **Dracnmap** is designed to perform fast scaning with the utilizing script engine of **Nmap** and **Nmap** can perform various automatic scanning techniques with the advanced commands.
 
-## Versions
+## Version
 
 Stable release: **v2.1**  
 Testing release: **testing (v3.0.0)**
