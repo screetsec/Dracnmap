@@ -230,3 +230,9 @@ menu
 _init_cli
 
 trap _get_trap_SIG EXIT
+
+# An array as an argument to a function call __main__,
+# is required if we want to operate on arguments of type $1, $2, ...
+__main__ "${__script_params[@]}"
+
+_exit_ 0
