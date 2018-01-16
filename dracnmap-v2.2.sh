@@ -215,7 +215,7 @@ function __main__() {
 
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
-  readonly commands=(basename asd dirname stat date grep egrep cut sed \
+  readonly commands=(basename dirname stat date grep egrep cut sed \
                      nmap ping)
 
   # If you intend to specify the full path to the command we do it like:
