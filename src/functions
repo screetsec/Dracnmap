@@ -65,7 +65,7 @@ function _init_cli() {
 
       01|1)
 
-        $xterm $_ipaddr
+        _init_cmd "$xterm $_ipaddr"
 
         cstate=1
         ;;
@@ -85,7 +85,7 @@ function _init_cli() {
 
         if [[ $? -eq 0 ]] ; then
 
-          $xterm ${_ipaddr_list[@]}
+          _init_cmd "$xterm ${_ipaddr_list[@]}"
 
         fi
 
@@ -94,21 +94,21 @@ function _init_cli() {
 
       03|3)
 
-        $xterm -sV -T4 -O -F --version-light 1 $_ipaddr
+        _init_cmd "$xterm -sV -T4 -O -F --version-light 1 $_ipaddr"
 
         cstate=1
         ;;
 
       04|4)
 
-        $xterm -sA $_ipaddr
+        _init_cmd "$xterm -sA $_ipaddr"
 
         cstate=1
         ;;
 
       05|5)
 
-        $xterm -sS -P0 $_ipaddr
+        _init_cmd "$xterm -sS -P0 $_ipaddr"
 
         cstate=1
         ;;
