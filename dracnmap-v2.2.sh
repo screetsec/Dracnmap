@@ -11,21 +11,21 @@
 #============================================================================================================
 
 
-# Bebeku
 if [[ $EUID -ne 0 ]] ; then
 
- echo "ERROR! Run this script with root user!"
- exit 1
+ echo "ERROR! Run this script with root user."
+ _exit_ 1
 
 fi
 
 if [ -z "${DISPLAY:-}" ]; then
 
   echo -e "\e[1;31mThe script should be executed inside a X (graphical) session."$transparent""
-  exit 1
+  _exit_ 1
 
 fi
- resize -s 50 84 > /dev/null
+resize -s 50 84 > /dev/null
+
 
 ################################################################################
 ######################## Global variables and functions ########################
@@ -185,12 +185,12 @@ function __main__() {
     elif [[ -z "$_mpath" ]] ; then
 
       printf "incorrectly loaded '$_mpath' file (incorrect filename)"
-      exit 1
+      _exit_ 1
 
     else
 
       printf "incorrectly loaded '$_mpath' file (does not exist?)"
-      exit 1
+      _exit_ 1
 
     fi
 
@@ -213,59 +213,92 @@ function __main__() {
   echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >  ]=+ -- -- '
   echo -e " "
 
-  if [ $(id -u) != "0" ]; then
+  # We place here used commands at script runtime, as strings to anything
+  # unnecessarily run.
+  readonly commands=(basename asd dirname stat date grep egrep cut sed \
+                     nmap ping)
 
-    echo [!]::[Check Dependencies] ;
-    sleep 2
-    echo [✔]::[Check User]: $USER ;
-    sleep 1
-    echo [x]::[not root]: you need to be [root] to run this script.;
-    echo ""
-    sleep 1
+  # If you intend to specify the full path to the command we do it like:
+  # readonly exec_gzip="/bin/gzip"
 
-    exit
+  # Stores the names of the missing commands.
+  missing_hash=
+  missing_counter=0
 
-  else
+  tput sgr0
 
-    echo [!]::[Check Dependencies]: ;
-    sleep 1
-    echo [✔]::[Check User]: $USER ;
+  printf "\n:: [\e[1;39m%s\e[m] ::\n\n" "SYSTEM INFO"
 
-  fi
+  _os_info=$(uname -a)
 
-  ping -c 1 google.com > /dev/null 2>&1
-  if [ "$?" != 0 ] ; then
+  if [[ -z "$_os_info" ]] ; then
 
-    echo [✔]::[Internet Connection]: DONE!;
-    echo [x]::[warning]: This Script Needs An Active Internet Connection;
-    sleep 2
+    printf "    %-10s\n" "unknown"
+    sleep 0.2
 
   else
 
-    echo [✔]::[Internet Connection]: connected!;
-    sleep 2
+    printf "    %-10s\n" "$_os_info"
+    sleep 0.2
 
   fi
 
-  # Check nmap if exists.
-  which nmap > /dev/null 2>&1
-  if [ "$?" -eq "0" ]; then
+  printf "\n:: [\e[1;39m%s\e[m] ::\n\n" "CHECK COMMANDS"
 
-    echo [✔]::[nmap]: installation found!;
+  for i in "${commands[@]}" ; do
+
+    if [[ ! -z "$i" ]] ; then
+
+      hash "$i" >/dev/null 2>&1 ; state="$?"
+
+      # If the command was not found put it in the array
+      if [[ "$state" -ne 0 ]] ; then
+
+        printf "    %-18s \e[0;31m%-4s\e[m\n" "$i" "x"
+        sleep 0.2
+
+      else
+
+        printf "    %-18s \e[0;32m%-4s\e[m\n" "$i" "✔"
+        sleep 0.2
+
+      fi
+
+    fi
+
+  done
+
+  printf "\n:: [\e[1;39m%s\e[m] ::\n\n" "CHECK NMAP VERSION"
+
+  _nmap_version=$(nmap --version | grep version)
+
+  if [[ -z "$_nmap_version" ]] ; then
+
+    printf "    %-10s\n" "unknown"
+    sleep 0.2
 
   else
 
-    echo [x]::[warning]:this script require Nmap ;
-    echo ""
-    echo [!]::[please wait]: please install .... ;
-    apt-get update
-    apt-get install nmap
-    echo ""
-    sleep
-
-    exit
+    printf "    %-10s\n" "$_nmap_version"
+    sleep 0.2
 
   fi
+
+  printf "\n:: [\e[1;39m%s\e[m] ::\n\n" "CHECK TCP/IP"
+
+  timeout 1 bash -c "</dev/tcp/8.8.8.8/53" >/dev/null 2>&1
+  _kstate="$?"
+
+  if [[ "$_kstate" -eq 0 ]] ; then
+
+    printf "    %-18s \e[0;32m%-10s\e[m\n" "tcp:8.8.8.8:53" "connected"
+
+  else
+
+    printf "    %-10s \e[0;31m%-10s\e[m\n" "tcp:8.8.8.8:53" "not connected"
+
+  fi
+
   sleep 2
 
   # Init menu.
