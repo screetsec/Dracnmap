@@ -95,6 +95,31 @@ for _filename in "$_functions_file" "${_modules_stack[@]}" "$_config_file" ; do
 
 done
 
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _get_trap_SIG()
+#
+# Description:
+#   Ensuring they always perform necessary cleanup operations,
+#   even when something unexpected goes wrong.
+#
+# Usage:
+#   trap _get_trap_SIG SIGNAL
+#
+# Examples:
+#   trap _get_trap_SIG EXIT
+#
+
+function _get_trap_SIG() {
+
+  local _FUNCTION_ID="_get_trap_SIG"
+  local _STATE="${_STATUS:-}"
+
+  if [ -z "$_STATE" ] ; then _STATE=255 ; fi
+
+  return $_STATE
+
+}
+
 trap ctrl_c INT
 ctrl_c() {
 
@@ -203,3 +228,5 @@ menu
 
 # Init Dracnmap CLI.
 _init_cli
+
+trap _get_trap_SIG EXIT
