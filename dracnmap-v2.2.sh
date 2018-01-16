@@ -67,7 +67,7 @@ readonly _config_file="${_init_directory}/config"
 
 readonly _modules_stack=("brutense" "auth" "brd" \
                          "exploit" "fuzzer" "malware" "vuln" "nse" \
-                         "zenmapscript" "WebService" "pingbebeb")
+                         "zenmapscript" "webservice" "pingbebeb")
 
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: _exit_()
