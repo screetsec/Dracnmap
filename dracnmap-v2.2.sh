@@ -46,8 +46,8 @@ yellow='\e[1;33m'
 BlueF='\e[1;34m'
 
 # Script info.
-Version='2.1'
-Codename='Redline'
+Version='3.0.0 (testing)'
+Codename='Sartorius'
 
 readonly __cli_prompt="Screetsec@"
 __cli_banner=""
@@ -208,8 +208,9 @@ function __main__() {
   echo -e $okegreen "     \/            \/     \/        \/      \/     \/|__|    $red\/             \/ ";
   echo
   echo -e $okegreen"-------------------------------------------------------------------------------"
-  echo -e $lightgreen'-- -- +=[(c) 2016-2017 | dracos-linux.org | Linuxsec.org | Pentester Indonesia '
+  echo -e $lightgreen'-- -- +=[(c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia '
   echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >  ]=+ -- -- '
+  echo -e $cyan'-- -- +=[ v3.0.0 Release: trimstray (contact@nslab.at)  ]=+ -- -- '
   echo -e " "
 
   # We place here used commands at script runtime, as strings to anything
