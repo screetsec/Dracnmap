@@ -155,7 +155,7 @@ function _init_cli_pingbebeb() {
 
       nmap)
 
-        _init_cmd "nmap ${input_array[@]:1}"
+        _init_cmd "${input_array[@]:1}"
         cstate="0" ;;
 
       exit)
