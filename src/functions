@@ -12,6 +12,8 @@ _user=""
 _pass=""
 _iface=""
 _hwaddr=""
+_output_type=""
+_output_path=""
 
 _session_variables=(\
                       "_ip:IP address:ip" \
@@ -22,7 +24,8 @@ _session_variables=(\
                       "_hwaddr:MAC address:hwaddr" \
                       "_domain:Domain name:domain" \
                       "_userdb:Database user name:userdb" \
-                      "_passdb:Database user password:passdb")
+                      "_passdb:Database user password:passdb" \
+                      "_output:Output file:output")
 
 
 ################################################################################
@@ -599,6 +602,36 @@ function _set_db_credentials() {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_output()
+#
+# Description:
+#   Set Nmap output.
+#
+# Usage:
+#   _set_output
+#
+# Examples:
+#   _set_output
+#
+
+function _set_output() {
+
+  local _FUNCTION_ID="_set_output"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "Type [xml,html,normal,grep]: " ; tput sgr0
+  read -ra _output_type
+
+  echo -en $cyan""
+  echo -en "Path: " ; tput sgr0
+  read -ra _output_path
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
 # Function name: _help_()
 #
 # Description:
@@ -627,7 +660,6 @@ function _help_() {
 
   show/set:
     session             show session values
-    output              show output values
 
   show/set:session:
     ip                  new ip address
@@ -638,6 +670,7 @@ function _help_() {
     hwaddr              hwaddr (MAC)
     domain              domain name
     db                  database (user + pass)
+    output              output file
 
 "
 
