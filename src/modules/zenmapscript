@@ -139,17 +139,28 @@ function _init_cli_zenmapscript() {
         cstate="0" ;;
 
       clear)
+
         menu_zenmapscript
         _init_cli_zenmapscript
         cstate="0" ;;
+
       back)
+
         menu
         _init_cli
         cstate="0" ;;
+
       main)
+
         menu
         _init_cli
         cstate="0" ;;
+
+      nmap)
+
+        _init_cmd "nmap ${input_array[@]:1}"
+        cstate="0" ;;
+
       exit)
         _exit_ 0 ;;
       "")
