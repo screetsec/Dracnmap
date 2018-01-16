@@ -198,27 +198,6 @@ else
 fi
 sleep 2
 
-# check urxvt if exists
-which xterm > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-
-  echo [✔]::[xterm]: installation found!;
-
-else
-
-  echo [x]::[warning]:this script require xterm ;
-  echo ""
-  echo [!]::[please wait]: please install .... ;
-  apt-get update
-  apt-get install xterm
-  echo ""
-  sleep 2
-
-  exit
-
-fi
-sleep 2
-
 # Init menu.
 menu
 
