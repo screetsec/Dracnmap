@@ -806,7 +806,7 @@ function _init_cmd() {
   printf "\nCommand:\n> \e[0;30m%s\e[m\n" "$_cmd"
 
   # Execute command and exit save to file.
-  $_cmd ; _state="$?"
+  nmap $_cmd ; _state="$?"
 
   if [[ "$_state" -eq 0 ]] ; then
 
