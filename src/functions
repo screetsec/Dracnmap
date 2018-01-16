@@ -747,7 +747,7 @@ function _init_cmd() {
   local _FUNCTION_ID="_init_cmd"
   local _STATE=0
 
-  local _cmd="$1"
+  local _cmd="$@"
 
   printf "\nCommand:\n> \e[0;30m%s\e[m\n" "$_cmd"
 
