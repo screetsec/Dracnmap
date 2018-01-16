@@ -12,6 +12,8 @@ _user=""
 _pass=""
 _iface=""
 _hwaddr=""
+_userdb=""
+_passdb=""
 _output_type=""
 _output_path=""
 
