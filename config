@@ -1,6 +1,48 @@
 # shellcheck shell=bash
 
-# Specifies the type of terminal (with nmap command).
+# Specifies the default ip address.
 # Examples:
-#   - xterm='xterm -hold -fa monaco -fs 13 -bg black -e nmap'
-xterm="nmap"
+#   - _ipaddr="127.0.0.1"
+_ipaddr="127.0.0.1"
+
+# Specifies the default port number.
+# Examples:
+#   - _port="80"
+_port="80"
+
+# Specifies the default username.
+# Examples:
+#   - _user="admin"
+_user="admin"
+
+# Specifies the default user name password.
+# Examples:
+#   - _pass=$(pwgen 18)
+_pass=""
+
+# Specifies the default MAC address.
+# Examples:
+#   - _iface="eth0"
+_iface="eth0"
+
+# Specifies the default network interface.
+# Examples:
+#   - _hwaddr="00:01:02:03:04:05"
+_hwaddr=""
+
+# Specifies the default database user name.
+# Examples:
+#   - _userdb="admin"
+_userdb="admin"
+
+# Specifies the default database user password.
+# Examples:
+#   - _passdb=$(pwgen 18)
+_passdb=""
+
+# Specifies the default output type and path.
+# Examples:
+#   - _output_type="html"
+#   - _output_path="/tmp/nmap/scan.output"
+_output_type=""
+_output_path=""
