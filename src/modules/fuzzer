@@ -58,13 +58,21 @@ function _init_cli_fuzzer() {
 
       show)
 
-        if [ ${input_array[1]} ] ; then
+        if [[ ${input_array[1]} ]] ; then
 
           case ${input_array[1]} in
 
             session)
 
-              show_session
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
               ;;
 
             *)
@@ -81,19 +89,19 @@ function _init_cli_fuzzer() {
 
       set)
 
-        if [ ${input_array[1]} ] ; then
+        if [[ ${input_array[1]} ]] ; then
 
           case ${input_array[1]} in
 
             session)
 
-              if [ ${input_array[2]} ] ; then
+              if [[ ${input_array[2]} ]] ; then
 
                 set_session "${input_array[2]}"
 
               else
 
-                printf "stdout: %s\n" "invalid session params"
+                printf "stdout: %s\n" "invalid session params or null"
 
               fi
               ;;
