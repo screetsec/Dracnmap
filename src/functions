@@ -718,11 +718,11 @@ function show_session() {
     # printf "%-8s %-8s %-8s [%-4s]\n" "_ip" "ip" "ip address" "127.0.0.1"
     if [[ -z "$_i" ]] ; then
 
-      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "$_key_description" ""
+      printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
 
     else
 
-      printf "{\"%s\"}:{\"%s\"}:{\"%s\"}\n" "$_key_id" "$_key_description" "$_i"
+      printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
 
     fi
 
