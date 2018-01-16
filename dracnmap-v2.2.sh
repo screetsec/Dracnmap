@@ -56,7 +56,7 @@ readonly _modules_directory="${_src_directory}/modules"
 
 readonly _config_file="${_init_directory}/config"
 
-readonly _modules_stack=("scanoutput" "brutense" "auth" "brd" \
+readonly _modules_stack=("brutense" "auth" "brd" \
                          "exploit" "fuzzer" "malware" "vuln" "nse" \
                          "zenmapscript" "WebService" "pingbebeb")
 
