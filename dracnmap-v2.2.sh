@@ -11,6 +11,22 @@
 #============================================================================================================
 
 
+# Bebeku
+if [[ $EUID -ne 0 ]] ; then
+
+ echo "ERROR! Run this script with root user!"
+ exit 1
+
+fi
+
+if [ -z "${DISPLAY:-}" ]; then
+
+  echo -e "\e[1;31mThe script should be executed inside a X (graphical) session."$transparent""
+  exit 1
+
+fi
+ resize -s 50 84 > /dev/null
+
 ################################################################################
 ######################## Global variables and functions ########################
 ################################################################################
@@ -143,22 +159,6 @@ function __main__() {
 
   local _FUNCTION_ID="__main__"
   local _STATE=0
-
-  # Bebeku
-  if [[ $EUID -ne 0 ]]; then
-
-   echo "ERROR! Run this script with root user!"
-   exit 1
-
-  fi
-
-  if [ -z "${DISPLAY:-}" ]; then
-
-    echo -e "\e[1;31mThe script should be executed inside a X (graphical) session."$transparent""
-    exit 1
-
-  fi
-  resize -s 50 84 > /dev/null
 
   # Load modules, functions and config file.
   for _filename in "$_functions_file" "${_modules_stack[@]}" "$_config_file" ; do
