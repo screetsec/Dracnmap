@@ -155,21 +155,6 @@ function _get_trap_SIG() {
 
 }
 
-trap ctrl_c INT
-ctrl_c() {
-
-  clear
-  echo -e $red"[*] (Ctrl + C ) Detected, Trying To Exit ..."
-  sleep 1
-  echo ""
-  echo -e $yellow"[*] Thank You For Using Dracnmap  =)."
-  echo ""
-  echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
-
-  exit
-
-}
-
 # Bebeku
 if [[ $EUID -ne 0 ]]; then
 
