@@ -88,7 +88,7 @@ function _init_cli_brd() {
 
       09|9)
 
-        _init_cmd "$xterm -e $_iface --script=broadcast-eigrp-discovery $_ip"
+        _init_cmd "$xterm -e $_iface --script=broadcast-eigrp-discovery $_ipaddr"
 
         cstate=1
         ;;
@@ -261,7 +261,7 @@ function _init_cli_brd() {
 
       32)
 
-        _init_cmd "$xterm -e $_iface --script eap-info [--script-args=eap-info.identity=0-user,eap-info.scan={13,50}] $_ip"
+        _init_cmd "$xterm -e $_iface --script eap-info [--script-args=eap-info.identity=0-user,eap-info.scan={13,50}] $_ipaddr"
 
         cstate=1
         ;;

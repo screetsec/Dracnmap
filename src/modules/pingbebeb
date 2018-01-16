@@ -36,42 +36,42 @@ function _init_cli_pingbebeb() {
 
       01|1)
 
-        _init_cmd "$xterm --script broadcast-ping --script-args broadcast-ping.num_probes=5 $_ip"
+        _init_cmd "$xterm --script broadcast-ping --script-args broadcast-ping.num_probes=5 $_ipaddr"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "$xterm -sP -PS $_ip"
+        _init_cmd "$xterm -sP -PS $_ipaddr"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "$xterm -sP -PA $_ip"
+        _init_cmd "$xterm -sP -PA $_ipaddr"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "$xterm -sP -PU $_ip"
+        _init_cmd "$xterm -sP -PU $_ipaddr"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "$xterm -sP -PE $_ip"
+        _init_cmd "$xterm -sP -PE $_ipaddr"
 
         cstate=1
         ;;
 
       06|6)
 
-        _init_cmd "$xterm -sP -PO --packet-trace $_ip"
+        _init_cmd "$xterm -sP -PO --packet-trace $_ipaddr"
 
         cstate=1
         ;;
