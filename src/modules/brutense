@@ -583,17 +583,28 @@ function _init_cli_brutense() {
         cstate="0" ;;
 
       clear)
+
         menu_brutense
         _init_cli_brutense
         cstate="0" ;;
+
       back)
+
         menu_nse
         _init_cli_nse
         cstate="0" ;;
+
       main)
+
         menu
         _init_cli
         cstate="0" ;;
+
+      nmap)
+
+        _init_cmd "nmap ${input_array[@]:1}"
+        cstate="0" ;;
+
       exit)
         _exit_ 0 ;;
       "")
