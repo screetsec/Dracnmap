@@ -803,7 +803,7 @@ function _init_cmd() {
 
   local _cmd="$@"
 
-  printf "\nCommand:\n> \e[0;30m%s\e[m\n" "$_cmd"
+  printf "\nNmap args:\n> \e[0;30m%s\e[m\n" "$_cmd"
 
   # Execute command and exit save to file.
   nmap $_cmd ; _state="$?"
