@@ -8,6 +8,8 @@
 #                     Tested On Kali Linux and Dracos
 #       contact me in screetsec@gmail.com or screetsec@dracos-linux.org
 #          OS Penetration From Indonesia : https://dracos-linux.org/
+#
+#            v3.0.0 (testing), trimstray (contact@nslab.at)
 #============================================================================================================
 
 
