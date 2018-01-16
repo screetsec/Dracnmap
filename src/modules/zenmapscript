@@ -74,7 +74,7 @@ function _init_cli_zenmapscript() {
 
       07|7)
 
-        _init_cmd "$xterm -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script "default or (discovery and safe)" $_ip"
+        _init_cmd "$xterm -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script \"default or (discovery and safe)\" $_ip"
 
         cstate=1
         ;;
