@@ -620,13 +620,21 @@ function _set_output() {
   local _FUNCTION_ID="_set_output"
   local _STATE=0
 
-  echo -en $cyan""
-  echo -en "Type [xml,html,normal,grep]: " ; tput sgr0
-  read -ra _output_type
+  local _arg="$1"
 
-  echo -en $cyan""
-  echo -en "Path: " ; tput sgr0
-  read -ra _output_path
+  if [[ "$_arg" == "type" ]] ; then
+
+    echo -en $cyan""
+    echo -en "Type [*xml,html,normal,grep]: " ; tput sgr0
+    read -ra _output_type
+
+  elif [[ "$_arg" == "path" ]] ; then
+
+    echo -en $cyan""
+    echo -en "Path: " ; tput sgr0
+    read -ra _output_path
+
+  fi
 
   return $_STATE
 
@@ -670,8 +678,10 @@ function _help_() {
     iface               interface
     hwaddr              hwaddr (MAC)
     domain              domain name
-    db                  database (user + pass)
-    output              output file
+    dbuser              database user
+    dbpass              database password
+    outtype             output file type
+    outpath             output file path
 
 "
 
@@ -760,6 +770,10 @@ function set_session() {
       _set_domain ;;
     db)
       _set_db_credentials ;;
+    outtype)
+      _set_output "type";;
+    outpath)
+      _set_output "path";;
     *)
       printf "stdout: %s\n" "unknown key" ;;
 
