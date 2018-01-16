@@ -25,7 +25,8 @@ _session_variables=(\
                       "_domain:Domain name:domain" \
                       "_userdb:Database user name:userdb" \
                       "_passdb:Database user password:passdb" \
-                      "_output:Output file:output")
+                      "_output_type:Output file type:outtype" \
+                      "_output_path:Output file path:outpath")
 
 
 ################################################################################
