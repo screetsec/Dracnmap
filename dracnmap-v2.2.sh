@@ -57,11 +57,11 @@ readonly _init_name="$(basename "$0")"
 readonly _init_directory="$(dirname "$(readlink -f "$0")")"
 
 readonly _src_directory="${_init_directory}/src"
+readonly _modules_directory="${_src_directory}/modules"
+readonly _output_directory="${_init_directory}/output"
 
 # Store functions (not modules).
 readonly _functions_file="${_src_directory}/functions"
-
-readonly _modules_directory="${_src_directory}/modules"
 
 readonly _config_file="${_init_directory}/config"
 

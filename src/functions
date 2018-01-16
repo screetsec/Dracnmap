@@ -598,7 +598,7 @@ function _set_output() {
   if [[ "$_arg" == "type" ]] ; then
 
     echo -en $cyan""
-    echo -en "Type [*xml,html,normal,grep]: " ; tput sgr0
+    echo -en "Type [standard,xml,grep]: " ; tput sgr0
     read -ra _output_type
 
   elif [[ "$_arg" == "path" ]] ; then
@@ -774,17 +774,30 @@ function _init_cmd() {
   local _FUNCTION_ID="_init_cmd"
   local _STATE=0
 
-  local _cmd="$@"
+  local _cmd=("$@")
 
-  printf "\nNmap args:\n> \e[0;30m%s\e[m\n" "$_cmd"
+  if [[ ! -z "$_output_type" ]] ; then
 
-  # Execute command and exit save to file.
-  nmap $_cmd ; _state="$?"
+    case $_output_type in
+
+      standard) _output_targ=" -oN ${_output_directory}/scan.$(date +%s).nmap" ;;
+      xml) _output_targ=" -oX ${_output_directory}/scan.$(date +%s).xml" ;;
+      grep) _output_targ=" -oG ${_output_directory}/scan.$(date +%s).grep" ;;
+      *) true ;;
+
+    esac
+
+  fi
+
+  printf "\nNmap args:\n> \e[0;30m%s\e[m\n" "${_cmd[@]}"
+
+  # Execute command and exit.
+  nmap ${_cmd[@]} "${_output_targ}" ; _state="$?"
 
   if [[ "$_state" -eq 0 ]] ; then
 
-    printf "\nResult: \e[0;32m%s\e[m\n\n" "pass"
-
+    printf "\nResult: \e[0;32m%s\e[m\n" "pass"
+    printf "Report file:%s\n\n" "$_output_targ"
   else
 
     printf "\nResult: \e[0;31m%s\e[m\n\n" "fail"
