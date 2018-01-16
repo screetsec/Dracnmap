@@ -89,10 +89,9 @@ function _exit_() {
 
   clear
 
+  echo -e $yellow"[*] Thank You For Using Dracnmap =)"
   echo ""
-  echo -e $yellow"[*] Thank You For Using Dracnmap  =)"
-  echo ""
-  echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P"
+  echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia =P"
 
   _STATUS="$1"
   exit "$_STATUS"
