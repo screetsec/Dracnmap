@@ -14,8 +14,7 @@ _iface=""
 _hwaddr=""
 _userdb=""
 _passdb=""
-_output_type=""
-_output_path=""
+_report=""
 
 _session_variables=(\
                       "_ipaddr:IP address:ipaddr" \
@@ -27,8 +26,7 @@ _session_variables=(\
                       "_domain:Domain name:domain" \
                       "_userdb:Database user name:userdb" \
                       "_passdb:Database user password:passdb" \
-                      "_output_type:Output file type:outtype" \
-                      "_output_path:Output file path:outpath")
+                      "_report:Report type:report")
 
 
 ################################################################################
@@ -576,38 +574,26 @@ function _set_db_credentials() {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: _set_output()
+# Function name: _set_report()
 #
 # Description:
 #   Set Nmap output.
 #
 # Usage:
-#   _set_output
+#   _set_report
 #
 # Examples:
-#   _set_output
+#   _set_report
 #
 
-function _set_output() {
+function _set_report() {
 
-  local _FUNCTION_ID="_set_output"
+  local _FUNCTION_ID="_set_report"
   local _STATE=0
 
-  local _arg="$1"
-
-  if [[ "$_arg" == "type" ]] ; then
-
-    echo -en $cyan""
-    echo -en "Type [standard,xml,grep]: " ; tput sgr0
-    read -ra _output_type
-
-  elif [[ "$_arg" == "path" ]] ; then
-
-    echo -en $cyan""
-    echo -en "Path: " ; tput sgr0
-    read -ra _output_path
-
-  fi
+  echo -en $cyan""
+  echo -en "Type [standard,xml,grep]: " ; tput sgr0
+  read -ra _report
 
   return $_STATE
 
@@ -653,8 +639,7 @@ function _help_() {
     domain              domain name
     dbuser              database user
     dbpass              database password
-    outtype             output file type
-    outpath             output file path
+    report              report type
 
 "
 
@@ -743,10 +728,8 @@ function set_session() {
       _set_domain ;;
     db)
       _set_db_credentials ;;
-    outtype)
-      _set_output "type";;
-    outpath)
-      _set_output "path";;
+    report)
+      _set_report "type";;
     *)
       printf "stdout: %s\n" "unknown key" ;;
 
@@ -776,28 +759,51 @@ function _init_cmd() {
 
   local _cmd=("$@")
 
-  if [[ ! -z "$_output_type" ]] ; then
+  if [[ ! -z "$_report" ]] ; then
 
-    case $_output_type in
+    case $_report in
 
-      standard) _output_targ=" -oN ${_output_directory}/scan.$(date +%s).nmap" ;;
-      xml) _output_targ=" -oX ${_output_directory}/scan.$(date +%s).xml" ;;
-      grep) _output_targ=" -oG ${_output_directory}/scan.$(date +%s).grep" ;;
+      standard)
+
+        _output_opt="-oN"
+        _output_path="${_output_directory}/scan.$(date +%s).nmap"
+        _output_targ=" ${_output_opt} ${_output_path}" ;;
+
+      xml)
+
+        _output_opt="-oX"
+        _output_path="${_output_directory}/scan.$(date +%s).xml"
+        _output_targ=" ${_output_opt} ${_output_path}" ;;
+
+      grep)
+
+        _output_opt="-oG"
+        _output_path="${_output_directory}/scan.$(date +%s).grep"
+        _output_targ=" ${_output_opt} ${_output_path}" ;;
+
       *) true ;;
 
     esac
 
   fi
 
-  printf "\nNmap args:\n> \e[0;30m%s\e[m\n" "${_cmd[@]}"
+  if [[ -z "$_output_path" ]] ; then
+
+    printf "\nNmap args:\n> \e[0;30m%s\e[m\n" "${_cmd[@]}"
+
+  else
+
+    printf "\nNmap args:\n> \e[0;30m%s\e[m\n> \e[0;30m%s\e[m\n" "${_cmd[@]}" "$_output_path"
+
+  fi
 
   # Execute command and exit.
   nmap ${_cmd[@]} "${_output_targ}" ; _state="$?"
 
   if [[ "$_state" -eq 0 ]] ; then
 
-    printf "\nResult: \e[0;32m%s\e[m\n" "pass"
-    printf "Report file:%s\n\n" "$_output_targ"
+    printf "\nResult: \e[0;32m%s\e[m\n\n" "pass"
+
   else
 
     printf "\nResult: \e[0;31m%s\e[m\n\n" "fail"
