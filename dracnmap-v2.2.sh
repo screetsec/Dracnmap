@@ -165,17 +165,11 @@ function _get_trap_SIG() {
 
     if [[ ${#_nmap_processes[@]} -ne 0 ]] ; then
 
-      for i in "${_nmap_processes[@]}" ; do
-
-        kill -9 $i >/dev/null 2&1
-
-      done
-
       _STATE=0
 
     else
 
-    _STATE=130
+      _STATE=130
 
     fi
 
