@@ -57,7 +57,7 @@ function _init_cli() {
 
     cstate="1"
 
-    __cli_banner="dracnmap-v3.0.0"
+    __cli_banner="dracnmap"
 
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 

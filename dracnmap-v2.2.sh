@@ -46,8 +46,8 @@ yellow='\e[1;33m'
 BlueF='\e[1;34m'
 
 # Script info.
-Version='3.0.0 (testing)'
-Codename='Sartorius'
+Version='3.0.0'
+Codename='Blackhawk'
 
 readonly __cli_prompt="Screetsec@"
 __cli_banner=""
