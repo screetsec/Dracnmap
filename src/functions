@@ -304,7 +304,6 @@ function menu() {
   echo -e $white"    [$okegreen"07"$white]$cyan  Web Applications"
   echo -e $white"    [$okegreen"08"$white]$cyan  Nmap Script Engine (NSE)"
   echo -e $white"    [$okegreen"09"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
-  echo -e $white"    [$okegreen"10"$white]$cyan  Scanning target with output files"
   echo -e $white"    [$okegreen"11"$white]$cyan  Credits"
   echo -e " "
 
