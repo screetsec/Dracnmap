@@ -17,16 +17,16 @@ _dbpass=""
 _report=""
 
 _session_variables=(\
-                      "_ipaddr:IP address:ipaddr" \
-                      "_port:Service port number:port" \
-                      "_user:Username:user" \
-                      "_pass:User password:pass" \
-                      "_iface:Network interface:iface" \
-                      "_hwaddr:MAC address:hwaddr" \
-                      "_domain:Domain name:domain" \
-                      "_dbuser:Database user name:userdb" \
-                      "_dbpass:Database user password:passdb" \
-                      "_report:Report type:report")
+                      "IP address:ipaddr:_ipaddr" \
+                      "Service port number:port:_port" \
+                      "Username:user:_user" \
+                      "User password:pass:_pass" \
+                      "Network interface:iface:_iface" \
+                      "MAC address:hwaddr:_hwaddr" \
+                      "Domain name:domain:_domain" \
+                      "Database user name:userdb:_dbuser" \
+                      "Database user password:passdb:_dbpass" \
+                      "Report type:report:_report")
 
 
 ################################################################################
@@ -297,7 +297,7 @@ function menu() {
   echo -e $cyan"    Codename            $white":" $red $Codename "
   echo -e $cyan"    Follow me on Github $white":" $red @Screetsec "
   echo -e $cyan"    Dracos Linux        $white":" $red dracos-linux.org "
-  echo -e $cyan"    v3.0.0 Release      $white":" $red trimstray (contact@nslab.at)"
+  echo -e $cyan"    v3.0.0 (testing)    $white":" $red trimstray (contact@nslab.at)"
   echo -e $cyan ""
   echo -e $okegreen"    =========================================================    ";
   echo -e $white " "
@@ -678,9 +678,9 @@ function show_session() {
 
   for _svar in "${_session_variables[@]}" ; do
 
-    _key_var=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
-    _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $2}')
-    _key_id=$(echo "$_svar" | awk -v FS="(:|:)" '{print $3}')
+    _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
+    _key_id=$(echo "$_svar" | awk -v FS="(:|:)" '{print $2}')
+    _key_var=$(echo "$_svar" | awk -v FS="(:|:)" '{print $3}')
 
     if [[ -z "$_key_id" ]] ; then
 

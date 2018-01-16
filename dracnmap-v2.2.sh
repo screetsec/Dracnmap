@@ -209,8 +209,8 @@ function __main__() {
   echo
   echo -e $okegreen"-------------------------------------------------------------------------------"
   echo -e $lightgreen'-- -- +=[(c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia '
-  echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >  ]=+ -- -- '
-  echo -e $cyan'-- -- +=[ v3.0.0 Release: trimstray (contact@nslab.at)  ]=+ -- -- '
+  echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >                                 ]=+ -- -- '
+  echo -e $cyan'-- -- +=[ v3.0.0 (testing): trimstray (contact@nslab.at)                   ]=+ -- -- '
   echo -e " "
 
   # We place here used commands at script runtime, as strings to anything
