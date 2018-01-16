@@ -16,7 +16,7 @@ _output_type=""
 _output_path=""
 
 _session_variables=(\
-                      "_ipaddr:IP address:ip" \
+                      "_ipaddr:IP address:ipaddr" \
                       "_port:Service port number:port" \
                       "_user:Username:user" \
                       "_pass:User password:pass" \
