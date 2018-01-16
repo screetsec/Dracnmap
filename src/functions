@@ -353,34 +353,6 @@ function credits {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: _exit_()
-#
-# Description:
-#   Covers the default exit command.
-#
-# Usage:
-#   _exit_ value
-#
-# Examples:
-#   _exit_ 0
-#
-
-function _exit_() {
-
-  clear
-  sleep 1
-
-  echo ""
-  echo -e $yellow"[*] Thank You For Using Dracnmap  =)."
-  echo ""
-  echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
-
-  _STATUS="$1"
-  exit "$_STATUS"
-
-}
-
-# ``````````````````````````````````````````````````````````````````````````````
 # Function name: _set_ipaddr()
 #
 # Description:

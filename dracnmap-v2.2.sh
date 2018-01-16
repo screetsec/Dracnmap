@@ -100,6 +100,37 @@ for _filename in "$_functions_file" "${_modules_stack[@]}" "$_config_file" ; do
 done
 
 # ``````````````````````````````````````````````````````````````````````````````
+# Function name: _exit_()
+#
+# Description:
+#   Covers the default exit command.
+#
+# Usage:
+#   _exit_ value
+#
+# Examples:
+#   _exit_ 0
+#
+
+function _exit_() {
+
+  local _FUNCTION_ID="_exit_"
+  local _STATE=0
+
+  clear
+  sleep 1
+
+  echo ""
+  echo -e $yellow"[*] Thank You For Using Dracnmap  =)"
+  echo ""
+  echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P"
+
+  _STATUS="$1"
+  exit "$_STATUS"
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
 # Function name: _get_trap_SIG()
 #
 # Description:
