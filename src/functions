@@ -644,9 +644,9 @@ function _help_() {
     session             show session values
 
   show/set:session:
-    ip                  new ip address
+    ipaddr              new ip address
     port                new port number
-    user                username
+    user                user name
     pass                user password
     iface               interface
     hwaddr              hwaddr (MAC)
