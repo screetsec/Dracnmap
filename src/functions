@@ -622,6 +622,7 @@ function _help_() {
     help                show this message
     show                show the builtin keys
     set                 set the builtin keys
+    nmap                nmap command (full options)
     back                back to previous menu
     exit                exit from Dracnmap
 
