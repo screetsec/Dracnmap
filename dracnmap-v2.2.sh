@@ -64,7 +64,12 @@ readonly _modules_stack=("brutense" "auth" "brd" \
                          "exploit" "fuzzer" "malware" "vuln" "nse" \
                          "zenmapscript" "WebService" "pingbebeb")
 
-for _filename in "$_functions_file" "${_modules_stack[@]}" "$_config_file" ; do
+function __main__() {
+
+  local _FUNCTION_ID="__main__"
+  local _STATE=0
+
+  for _filename in "$_functions_file" "${_modules_stack[@]}" "$_config_file" ; do
 
   if [[ "$_filename" == *"/functions"* ]] ; then
 
@@ -118,7 +123,6 @@ function _exit_() {
   local _STATE=0
 
   clear
-  sleep 1
 
   echo ""
   echo -e $yellow"[*] Thank You For Using Dracnmap  =)"
@@ -148,6 +152,38 @@ function _get_trap_SIG() {
 
   local _FUNCTION_ID="_get_trap_SIG"
   local _STATE="${_STATUS:-}"
+
+  local _signal="$1"
+
+  if [[ "$_signal" == "EXIT" ]] ; then
+
+    _STATE=0
+
+  elif [[ "$_signal" == "SIG" ]] ; then
+
+    _nmap_processes=($(pidof nmap))
+
+    if [[ ${#_nmap_processes[@]} -ne 0 ]] ; then
+
+      for i in "${_nmap_processes[@]}" ; do
+
+        kill -9 $i >/dev/null 2&1
+
+      done
+
+      _STATE=0
+
+    else
+
+    _STATE=130
+
+    fi
+
+  else
+
+    _STATE=0
+
+  fi
 
   if [ -z "$_STATE" ] ; then _STATE=255 ; fi
 
@@ -249,7 +285,10 @@ menu
 # Init Dracnmap CLI.
 _init_cli
 
-trap _get_trap_SIG EXIT
+}
+
+trap "_get_trap_SIG EXIT" EXIT
+trap "_get_trap_SIG SIG" SIGHUP SIGTERM SIGKILL SIGINT
 
 # An array as an argument to a function call __main__,
 # is required if we want to operate on arguments of type $1, $2, ...
