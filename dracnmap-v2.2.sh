@@ -159,7 +159,7 @@ function _get_trap_SIG() {
 
     _STATE=0
 
-  elif [[ "$_signal" == "SIG" ]] ; then
+  elif [[ "$_signal" == "SIGS" ]] ; then
 
     _nmap_processes=($(pidof nmap))
 
@@ -282,7 +282,7 @@ _init_cli
 }
 
 trap "_get_trap_SIG EXIT" EXIT
-trap "_get_trap_SIG SIG" SIGHUP SIGTERM SIGKILL SIGINT
+trap "_get_trap_SIG SIGS" SIGHUP SIGTERM SIGKILL SIGINT
 
 # An array as an argument to a function call __main__,
 # is required if we want to operate on arguments of type $1, $2, ...
