@@ -254,12 +254,12 @@ function __main__() {
       # If the command was not found put it in the array
       if [[ "$state" -ne 0 ]] ; then
 
-        printf "    %-18s \e[0;31m%-4s\e[m\n" "$i" "x"
+        printf "    %-18s \e[0;31m%-4s\e[m\n" "$i" "fail"
         sleep 0.2
 
       else
 
-        printf "    %-18s \e[0;32m%-4s\e[m\n" "$i" "✔"
+        printf "    %-18s \e[0;32m%-4s\e[m\n" "$i" "pass"
         sleep 0.2
 
       fi
