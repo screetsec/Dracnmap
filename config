@@ -42,7 +42,5 @@ _passdb=""
 
 # Specifies the default output type and path.
 # Examples:
-#   - _output_type="html"
-#   - _output_path="/tmp/nmap/scan.output"
-_output_type=""
-_output_path=""
+#   - _report="html"
+_report=""
