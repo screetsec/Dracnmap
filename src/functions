@@ -139,12 +139,6 @@ function _init_cli() {
 
       10)
 
-        menu_scanoutput
-        _init_cli_scanoutput
-        ;;
-
-      11)
-
         credits
         cstate="0" ;;
 
@@ -313,7 +307,7 @@ function menu() {
   echo -e $white"    [$okegreen"07"$white]$cyan  Web Applications"
   echo -e $white"    [$okegreen"08"$white]$cyan  Nmap Script Engine (NSE)"
   echo -e $white"    [$okegreen"09"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
-  echo -e $white"    [$okegreen"11"$white]$cyan  Credits"
+  echo -e $white"    [$okegreen"10"$white]$cyan  Credits"
   echo -e " "
 
 }
@@ -351,6 +345,9 @@ function credits() {
   echo
   echo -e $red "Big Thanks to : http://www.github.com/"
   echo
+  echo -e $white "v3.0.0 (testing), trimstray (contact@nslab.at)"
+
+  tput sgr0
 
   echo -en "Press key to back main menu"
   read _credits_key
