@@ -12,8 +12,8 @@ _user=""
 _pass=""
 _iface=""
 _hwaddr=""
-_userdb=""
-_passdb=""
+_dbuser=""
+_dbpass=""
 _report=""
 
 _session_variables=(\
@@ -24,8 +24,8 @@ _session_variables=(\
                       "_iface:Network interface:iface" \
                       "_hwaddr:MAC address:hwaddr" \
                       "_domain:Domain name:domain" \
-                      "_userdb:Database user name:userdb" \
-                      "_passdb:Database user password:passdb" \
+                      "_dbuser:Database user name:userdb" \
+                      "_dbpass:Database user password:passdb" \
                       "_report:Report type:report")
 
 
@@ -161,7 +161,15 @@ function _init_cli() {
 
             session)
 
-              show_session
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
               ;;
 
             *)
@@ -184,13 +192,13 @@ function _init_cli() {
 
             session)
 
-              if [ ${input_array[2]} ] ; then
+              if [[ ${input_array[2]} ]] ; then
 
                 set_session "${input_array[2]}"
 
               else
 
-                printf "stdout: %s\n" "invalid session params"
+                printf "stdout: %s\n" "invalid session params or null"
 
               fi
               ;;
@@ -563,10 +571,10 @@ function _set_db_credentials() {
   local _STATE=0
 
   _set_user
-  _userdb="$_user"
+  _dbuser="$_user"
 
   _set_pass
-  _passdb="$_pass"
+  _dbpass="$_pass"
 
   unset _user _pass
 
@@ -666,22 +674,45 @@ function show_session() {
   local _FUNCTION_ID="show_session"
   local _STATE=0
 
+  local _session_arg="$1"
+
   for _svar in "${_session_variables[@]}" ; do
 
     _key_var=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
     _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $2}')
     _key_id=$(echo "$_svar" | awk -v FS="(:|:)" '{print $3}')
 
+    if [[ -z "$_key_id" ]] ; then
+
+      printf "stdout: %s\n" "invalid session param"
+
+    fi
+
     _i="" ; eval _i='$'$_key_var
 
-    # printf "%-8s %-8s %-8s [%-4s]\n" "_ipaddr" "ip" "ip address" "127.0.0.1"
-    if [[ -z "$_i" ]] ; then
+    if [[ "$_session_arg" == "$_key_id" ]] ; then
 
-      printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
+      if [[ -z "$_i" ]] ; then
 
-    else
+        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
 
-      printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+      else
+
+        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+
+      fi
+
+    elif [[ -z "$_session_arg" ]] ; then
+
+      if [[ -z "$_i" ]] ; then
+
+        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
+
+      else
+
+        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+
+      fi
 
     fi
 
