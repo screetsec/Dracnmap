@@ -10,6 +10,10 @@
 #          OS Penetration From Indonesia : https://dracos-linux.org/
 #============================================================================================================
 
+# The tables that store call parameters.
+__init_params=()
+__script_params=("$@")
+
 # This colour
 cyan='\e[0;36m'
 green='\e[0;34m'
