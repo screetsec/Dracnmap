@@ -144,21 +144,6 @@ function _init_cli() {
         credits
         cstate="0" ;;
 
-      clear|main)
-
-        menu
-        _init_cli
-        cstate="0" ;;
-
-      nmap)
-
-        _init_cmd "nmap ${input_array[@]:1}"
-        cstate="0" ;;
-
-      back)
-
-        printf "stdout: %s\n" "you are in root level" ;;
-
       help)
 
         _help_
@@ -216,6 +201,21 @@ function _init_cli() {
           printf "stdout: %s\n" "unknown argument"
 
         fi
+        cstate="0" ;;
+
+      clear|main)
+
+        menu
+        _init_cli
+        cstate="0" ;;
+
+      back)
+
+        printf "stdout: %s\n" "you are in root level" ;;
+
+      nmap)
+
+        _init_cmd "nmap ${input_array[@]:1}"
         cstate="0" ;;
 
       exit)
