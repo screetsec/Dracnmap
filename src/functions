@@ -292,11 +292,11 @@ function menu() {
   echo "   \____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/ ";
   echo "        \/            \/     \/        \/      \/     \/|__|    ";
   echo ""
-  echo -e $cyan"    Script by           $white":" $red Edo Maland (Screetsec) "
-  echo -e $cyan"    Version             $white":" $red $Version  "
-  echo -e $cyan"    Codename            $white":" $red $Codename "
-  echo -e $cyan"    Follow me on Github $white":" $red @Screetsec "
-  echo -e $cyan"    Dracos Linux        $white":" $red dracos-linux.org "
+  echo -e $cyan"    Script by           $white":" $red Edo Maland (Screetsec)"
+  echo -e $cyan"    Version             $white":" $red $Version"
+  echo -e $cyan"    Codename            $white":" $red $Codename"
+  echo -e $cyan"    Follow me on Github $white":" $red @Screetsec"
+  echo -e $cyan"    Dracos Linux        $white":" $red dracos-linux.org"
   echo -e $cyan"    v3.0.0 (testing)    $white":" $red trimstray (contact@nslab.at)"
   echo -e $cyan ""
   echo -e $okegreen"    =========================================================    ";
@@ -325,7 +325,7 @@ function menu() {
 # Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
 #   - removed blank spaces/tabs
 #   - correcting indentation (transparent code)
-function credits {
+function credits() {
 
   clear
   echo -e "
