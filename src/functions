@@ -579,12 +579,12 @@ function _set_db_credentials() {
 
   local _arg="$1"
 
-  if [[ "$_arg" == "userdb" ]] ; then
+  if [[ "$_arg" == "dbuser" ]] ; then
 
   _set_user
   _dbuser="$_user"
 
-  elif [[ "$_arg" == "passdb" ]] ; then
+  elif [[ "$_arg" == "dbpass" ]] ; then
 
   _set_pass
   _dbpass="$_pass"
@@ -774,10 +774,10 @@ function set_session() {
       _set_hwaddr ;;
     domain)
       _set_domain ;;
-    userdb)
-      _set_db_credentials "userdb" ;;
-    passdb)
-      _set_db_credentials "passdb" ;;
+    dbuser)
+      _set_db_credentials "dbuser" ;;
+    dbuser)
+      _set_db_credentials "dbuser" ;;
     report)
       _set_report "type";;
     *)
