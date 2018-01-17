@@ -839,6 +839,7 @@ function _init_cmd() {
   local _STATE=0
 
   local _cmd=("$@")
+  local _full_command=()
 
   if [[ ! -z "$_report" ]] ; then
 
@@ -868,19 +869,25 @@ function _init_cmd() {
 
   fi
 
+  if [[ "$_tor" == "true" ]] ; then
+
+    _full_command=("proxychains " "${_cmd_tmp[@]}")
+
+  fi
+
   if [[ -z "$_output_path" ]] ; then
 
-    printf "\n\e[1;39m%s\e[m:\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_cmd[*]}"
+    printf "\n\e[1;39m%s\e[m:\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_full_command[*]}"
 
     # Execute command and exit.
-    nmap ${_cmd[@]} ; _state="$?"
+    nmap ${_full_command[@]} ; _state="$?"
 
   else
 
-    printf "\n\e[1;39m%s\e[m:\n>\e[0;30m%s\e[m\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_cmd[*]}" "$_output_path"
+    printf "\n\e[1;39m%s\e[m:\n>\e[0;30m%s\e[m\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_full_command[*]}" "$_output_path"
 
     # Execute command and exit.
-    nmap ${_cmd[@]} "${_output_targ}" ; _state="$?"
+    nmap ${_full_command[@]} "${_output_targ}" ; _state="$?"
 
   fi
 
