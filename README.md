@@ -1,4 +1,4 @@
-# What is dracnmap?
+# What is Dracnmap?
 
 [![Version](https://img.shields.io/badge/Dracnmap-3.0.0-brightgreen.svg?maxAge=259200)]()
 [![Version](https://img.shields.io/badge/Codename-Blackhawk-red.svg?maxAge=259200)]()
@@ -14,23 +14,9 @@ Hence **Dracnmap** is designed to perform fast scaning with the utilizing script
 Stable release: **v2.2**  
 Testing release: **testing (v3.0.0)**
 
-## Donate
+## Screenshot
 
-- If this project very help you to penetration testing and u want support me, you can give me a cup of coffee :)
-- **Edo Maland**: [![Donation](https://img.shields.io/badge/bitcoin-donate-yellow.svg)](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
-
-# Screenshots
 ![dracnmap_main_menu_01](doc/img/dracnmap_main_menu_01.png)  
-
-# -----------------------------------------------------------------------
-
-![dracnmap_regular_scan_01](doc/img/dracnmap_regular_scan_01.png){:height="50%" width="50%"}
-
-![dracnmap_ping_01](doc/img/dracnmap_ping_01.png){:height="50%" width="50%"}
-
-![dracnmap_webservice_01](doc/img/dracnmap_webservice_01.png){:height="50%" width="50%"}
-
-![dracnmap_zenmap_01](doc/img/dracnmap_zenmap_01.png){:height="50%" width="50%"}
 
 # Getting started
 
@@ -75,8 +61,7 @@ Author of changes: **trimstray** ([contact@nslab.at](mailto:contact@nslab.at), <
 # Requirements
 
 - We recommend Kali Linux 2 or Kali 2016.3 rolling/Cyborg/Parrot/Dracos/BackTrack/Backbox and another GNU/Linux operating system
-
-- Must install **Nmap** 
+- [Nmap](https://nmap.org/)
 
 # Tutorial or another tool?
 
@@ -86,9 +71,9 @@ You can visit my channel: https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxF
 
 # Bugs
 
-- Please Submit new issue 
+- See Issues page
 
-- Contact
+- Contact:
 
   - **Edo Maland** (Screetsec) - author of the stable release (v2.2)
 
@@ -102,12 +87,10 @@ Be sure to check out the **CHANGELOG.md**.
 
 # Donations
 
-- Donation: Send to [bitcoin](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
+- If this project very help you to penetration testing and u want support author, you can give me a cup of coffee :)
+- **Edo Maland**: [![Donation](https://img.shields.io/badge/bitcoin-donate-yellow.svg)](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
 
-- Addres Bitcoin : 1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS
-
-  <img src="https://cloud.githubusercontent.com/assets/17976841/25007109/75380fa6-2089-11e7-8a4a-4a8ae9c06e24.png" width="30%"></img>
-
+<img src="https://cloud.githubusercontent.com/assets/17976841/25007109/75380fa6-2089-11e7-8a4a-4a8ae9c06e24.png" width="30%"></img>
 
 # Credits
 
@@ -121,7 +104,7 @@ Be sure to check out the **CHANGELOG.md**.
 
 - And another open sources tool in github
 
-- Uptodate new tools hacking visit http://www.kitploit.com
+- Up to date new tools hacking visit http://www.kitploit.com
 
 - Contributors:
 
