@@ -192,22 +192,12 @@ function _init_cli_zenmapscript() {
 
 }
 
-###############################################
-# ZENMAP
-###############################################
-
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
-#   - replaced 'test' to '[[ ]]'
-#   - changed comparison operator (-eq)
-#   - protection against giving an illegal value
 function menu_zenmapscript() {
 
   clear
   clear
   echo ""
-  echo -e $okegreen"    =================================================================="
+  echo -e $okegreen"    ==============================================================="
   echo -e $cyan""
   echo "           +--^----------,--------,-----,--------^-, "
   echo -e "           | $red |||||||||   --------      |         O "
@@ -221,9 +211,9 @@ function menu_zenmapscript() {
   echo "           (________(   "
   echo -e "            ------'        $red DOUBLE KILL !! GO GO GO !!  "
   echo ""
-  echo -e $okegreen"    ==================================================================="
-  echo -e $cyan "       Scanning Target with $red'advanced command  (Zenmap Command)     "
-  echo -e $okegreen"    ==================================================================="
+  echo -e $okegreen"    ================================================================"
+  echo -e $cyan "       Scanning Target with $red'advanced command  (Zenmap Command)    "
+  echo -e $okegreen"    ================================================================"
   echo ""
 
   echo -e $white"     ID                    DESCRIPTION"

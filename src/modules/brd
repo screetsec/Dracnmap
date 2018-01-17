@@ -462,12 +462,6 @@ function _init_cli_brd() {
 
 }
 
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
-#   - replaced 'test' to '[[ ]]'
-#   - changed comparison operator (-eq)
-#   - protection against giving an illegal value
 function menu_brd() {
 
   clear

@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-################################################
-# PSCANNING FOR WEB SERVICE
-################################################
-
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: _init_cli_webservice()
 #
@@ -219,12 +215,6 @@ function _init_cli_webservice() {
 
 }
 
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
-#   - replaced 'test' to '[[ ]]'
-#   - changed comparison operator (-eq)
-#   - protection against giving an illegal value
 function menu_webservice() {
 
   clear
@@ -237,7 +227,7 @@ function menu_webservice() {
   echo "   \        /\  ___/| \_\ \  /        \  ___/|  | \/\   /|  \  \__\  ___/ ";
   echo "    \__/\  /  \___  >___  / /_______  /\___  >__|    \_/ |__|\___  >___  >";
   echo -e $okegreen
-  echo "   -----------------------------------------------------------------------"
+  echo "  ------------------------------------------------------------------------"
   echo ""
 
   echo -e $white"     ID                    DESCRIPTION"

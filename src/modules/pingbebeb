@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-################################################
-# PING PING BEBEB
-################################################
-
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: _init_cli_pingbebeb()
 #
@@ -189,12 +185,6 @@ function _init_cli_pingbebeb() {
 
 }
 
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
-#   - replaced 'test' to '[[ ]]'
-#   - changed comparison operator (-eq)
-#   - protection against giving an illegal value
 function menu_pingbebeb() {
 
   echo -e $okegreen " "

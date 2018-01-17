@@ -4,7 +4,7 @@
 # Function name: _init_cli_brutense()
 #
 # Description:
-#   Starting the Dracnmap Brutense module.
+#   Starting the Dracnmap Bruteforce module.
 #
 # Usage:
 #   _init_cli_brutense
@@ -636,17 +636,6 @@ function _init_cli_brutense() {
 
 }
 
-################################################
-# NSE SCRIPT FOR BRUTEFORCE
-################################################
-
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed leading and trailing whitespaces
-#   - added smart tabs
-#   - replaced 'test' to '[[ ]]'
-#   - changed comparison operator (-eq)
-#   - protection against giving an illegal value
-#   - correcting indentation (transparent code)
 function menu_brutense() {
 
   clear

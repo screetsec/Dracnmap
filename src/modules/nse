@@ -199,26 +199,20 @@ function _init_cli_nse() {
 
 }
 
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
-#   - replaced 'test' to '[[ ]]'
-#   - changed comparison operator (-eq)
-#   - protection against giving an illegal value
 function menu_nse() {
 
   clear
   echo -e $okegreen " "
-  echo "       )   *           (      (         (   (   (            ";
-  echo "    ( /( (  \     (     )\ )   )\ )  (   )\ ))\ ))\ )  *   ) ";
-  echo "    )\()))\))(   )\   (()/(  (()/(  )\ (()/(()/(()/(\  )  /( ";
-  echo "   ((_)\((_)()((((_)(  /(_))  /(_)|((_) /(_))(_))(_))( )(_)) ";
-  echo "    _((_|_()((_)\ _ )\(_))   (_)) )\___(_))(_))(_)) (_(_())  ";
-  echo "   | \| |  \/  (_)_\(_) _ \  / __((/ __| _ \_ _| _ \|_   _|  ";
-  echo "   | .\ | |\/| |/ _ \ |  _/  \__ \| (__|   /| ||  _/  | |    ";
-  echo "   |_|\_|_|  |_/_/ \_\|_|    |___/ \___|_|_\___|_|    |_|    ";
+  echo "        )   *           (      (         (   (   (            ";
+  echo "     ( /( (  \     (     )\ )   )\ )  (   )\ ))\ ))\ )  *   ) ";
+  echo "     )\()))\))(   )\   (()/(  (()/(  )\ (()/(()/(()/(\  )  /( ";
+  echo "    ((_)\((_)()((((_)(  /(_))  /(_)|((_) /(_))(_))(_))( )(_)) ";
+  echo "     _((_|_()((_)\ _ )\(_))   (_)) )\___(_))(_))(_)) (_(_())  ";
+  echo "    | \| |  \/  (_)_\(_) _ \  / __((/ __| _ \_ _| _ \|_   _|  ";
+  echo "    | .\ | |\/| |/ _ \ |  _/  \__ \| (__|   /| ||  _/  | |    ";
+  echo "    |_|\_|_|  |_/_/ \_\|_|    |___/ \___|_|_\___|_|    |_|    ";
   echo "                                                             ";
-  echo -e $red"   Nmap Script Engine - Advanced Scanning with Nmap Script"
+  echo -e $red"    Nmap Script Engine - Advanced Scanning with Nmap Script"
 
   echo -e $white " "
   echo -e $white"     ID                    DESCRIPTION"
