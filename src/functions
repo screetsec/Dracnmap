@@ -249,16 +249,19 @@ function _init_cli() {
 
 }
 
-###################################################
-# Function Menu
-###################################################
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: menu()
+#
+# Description:
+#   Show main menu.
+#
+# Usage:
+#   menu
+#
+# Examples:
+#   menu
+#
 
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
-#   - replaced 'test' to '[[ ]]'
-#   - changed comparison operator (-eq)
-#   - protection against giving an illegal value
 function menu() {
 
   clear
@@ -312,13 +315,19 @@ function menu() {
 
 }
 
-#######################################################
-# CREDITS
-#######################################################
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: credits()
+#
+# Description:
+#   Show credits.
+#
+# Usage:
+#   credits
+#
+# Examples:
+#   credits
+#
 
-# Author of changes: trimstray (contact@nslab.at, https://github.com/trimstray)
-#   - removed blank spaces/tabs
-#   - correcting indentation (transparent code)
 function credits() {
 
   clear
