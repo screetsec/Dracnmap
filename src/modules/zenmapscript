@@ -207,7 +207,7 @@ function menu_zenmapscript() {
   clear
   clear
   echo ""
-  echo -e $okegreen" ===================================================================="
+  echo -e $okegreen"    =================================================================="
   echo -e $cyan""
   echo "           +--^----------,--------,-----,--------^-, "
   echo -e "           | $red |||||||||   --------      |         O "
@@ -221,9 +221,9 @@ function menu_zenmapscript() {
   echo "           (________(   "
   echo -e "            ------'        $red DOUBLE KILL !! GO GO GO !!  "
   echo ""
-  echo -e $okegreen" ====================================================================="
-  echo -e $cyan "       Scanning Target with $red'advanced command  ( Zenmap Command )  "
-  echo -e $okegreen" ====================================================================="
+  echo -e $okegreen"    ==================================================================="
+  echo -e $cyan "       Scanning Target with $red'advanced command  (Zenmap Command)     "
+  echo -e $okegreen"    ==================================================================="
   echo ""
 
   echo -e $white"     ID                    DESCRIPTION"
