@@ -203,23 +203,20 @@ function __main__() {
 
   done
 
-  ###############################################
-  # Checking gaannss
-  ###############################################
   clear
-  echo -e $okegreen ""
-  echo -e $okegreen "                ___                    __                           $red,_____     "
-  echo -e $okegreen "               /   \_ __ __ _  ___  /\ \ \_ __ ___   __ _ _ ____   _$red|___ /     "
-  echo -e $okegreen "              / /\ / '__/ _\` |/ __|/  \/ / '_ \` _ \ / _\` | '_ \ \ / /$red |_ \  "
-  echo -e $okegreen "             / /_//| | | (_| | (__/ /\  /| | | | | | (_| | |_) \ V /$red ___) |    "
-  echo -e $okegreen "            /___,' |_|  \__,_|\___\_\ \/ |_| |_| |_|\__,_| .__/ \_/ $red|____/     "
-  echo -e $okegreen "                                                         |_|                       "
-  echo -e $okegreen ""
-  echo -e $okegreen"-----------------------------------------------------------------------------------------"
-  echo -e $white'-- -- +=[ (c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia ]=+ -- --'
-  echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >                                      ]=+ -- --'
-  echo -e $cyan'-- -- +=[ Contributors: trimstray (contact@nslab.at)                            ]=+ -- --'
-  echo -e " "
+
+  echo -e "$okegreen                ___                    __                           $red,_____     "
+  echo -e "$okegreen               /   \_ __ __ _  ___  /\ \ \_ __ ___   __ _ _ ____   _$red|___ /     "
+  echo -e "$okegreen              / /\ / '__/ _\` |/ __|/  \/ / '_ \` _ \ / _\` | '_ \ \ / /$red |_ \  "
+  echo -e "$okegreen             / /_//| | | (_| | (__/ /\  /| | | | | | (_| | |_) \ V /$red ___) |    "
+  echo -e "$okegreen            /___,' |_|  \__,_|\___\_\ \/ |_| |_| |_|\__,_| .__/ \_/ $red|____/     "
+  echo -e "$okegreen                                                         |_|                       "
+  echo -e "$okegreen"
+  echo -e "$okegreen-----------------------------------------------------------------------------------------"
+  echo -e "$white"'-- -- +=[ (c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia ]=+ -- --'
+  echo -e "$cyan"'-- -- +=[ Author: Screetsec < Edo Maland >                                      ]=+ -- --'
+  echo -e "$cyan"'-- -- +=[ Contributors: trimstray (contact@nslab.at)                            ]=+ -- --'
+  echo -e ""
 
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
