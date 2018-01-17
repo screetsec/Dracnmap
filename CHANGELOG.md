@@ -1,6 +1,6 @@
 # 3.0.0 (testing release)
 
-Author of changes: **trimstray** ([contact@nslab.at](mailto:contact@nslab.at), <https://github.com/trimstray>)
+Author of changes: **[trimstray](https://github.com/trimstray)**
 
 ## Fixes
 
