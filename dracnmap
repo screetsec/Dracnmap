@@ -256,12 +256,12 @@ function __main__() {
       # If the command was not found put it in the array
       if [[ "$state" -ne 0 ]] ; then
 
-        printf "    %-18s \e[0;31m%-4s\e[m\n" "$i" "fail"
+        printf "    %-18s [\e[0;31m%-4s\e[m]\n" "$i" "fail"
         sleep 0.2
 
       else
 
-        printf "    %-18s \e[0;32m%-4s\e[m\n" "$i" "pass"
+        printf "    %-18s [\e[0;32m%-4s\e[m]\n" "$i" "pass"
         sleep 0.2
 
       fi
@@ -288,16 +288,16 @@ function __main__() {
 
   printf "\n:: [\e[1;39m%s\e[m] ::\n\n" "CHECK TCP/IP"
 
-  timeout 1 bash -c "</dev/tcp/8.8.8.8/53" >/dev/null 2>&1
+  timeout 5 bash -c "</dev/tcp/8.8.8.8/53" >/dev/null 2>&1
   _kstate="$?"
 
   if [[ "$_kstate" -eq 0 ]] ; then
 
-    printf "    %-18s \e[0;32m%-10s\e[m\n" "tcp:8.8.8.8:53" "connected"
+    printf "    %-18s [\e[0;32m%s\e[m]\n" "tcp:8.8.8.8:53" "connected"
 
   else
 
-    printf "    %-10s \e[0;31m%-10s\e[m\n" "tcp:8.8.8.8:53" "not connected"
+    printf "    %-10s [\e[0;31m%-10s\e[m]\n" "tcp:8.8.8.8:53" "not connected"
 
   fi
 
