@@ -24,8 +24,8 @@ _session_variables=(\
                       "Network interface:iface:_iface" \
                       "MAC address:hwaddr:_hwaddr" \
                       "Domain name:domain:_domain" \
-                      "Database user name:userdb:_dbuser" \
-                      "Database user password:passdb:_dbpass" \
+                      "Database user name:dbuser:_dbuser" \
+                      "Database user password:dbpass:_dbpass" \
                       "Report type:report:_report")
 
 
@@ -567,11 +567,19 @@ function _set_db_credentials() {
   local _FUNCTION_ID="_set_db_credentials"
   local _STATE=0
 
+  local _arg="$1"
+
+  if [[ "$_arg" == "userdb" ]] ; then
+
   _set_user
   _dbuser="$_user"
 
+  elif [[ "$_arg" == "passdb" ]] ; then
+
   _set_pass
   _dbpass="$_pass"
+
+  fi
 
   unset _user _pass
 
@@ -741,7 +749,7 @@ function set_session() {
 
   case ${input_array[2]} in
 
-    ip)
+    ipaddr)
       _set_ipaddr ;;
     port)
       _set_port ;;
@@ -755,8 +763,10 @@ function set_session() {
       _set_hwaddr ;;
     domain)
       _set_domain ;;
-    db)
-      _set_db_credentials ;;
+    userdb)
+      _set_db_credentials "userdb" ;;
+    passdb)
+      _set_db_credentials "passdb" ;;
     report)
       _set_report "type";;
     *)
