@@ -378,16 +378,17 @@ function _set_ipaddr() {
   echo -en "What is your IP Target or Host: " ; tput sgr0
   read -ra _ipaddr
 
-  if [[ $_ipaddr =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
+  # Enable IP validation (but hostnames not working).
+  # if [[ $_ipaddr =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
 
-    _STATE=0
+  #  _STATE=0
 
-  else
+  #else
 
-    printf "stdout: %s\n" "invalid ip address"
-    _STATE=1
+  #  printf "stdout: %s\n" "invalid ip address"
+  #  _STATE=1
 
-  fi
+  #fi
 
   return $_STATE
 
