@@ -644,6 +644,7 @@ function _help_() {
   printf "%s" "
   Built-in:
     help                show this message
+    clear               clear terminal
     show                show the builtin keys
     set                 set the builtin keys
     nmap                nmap command (full options)
