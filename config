@@ -2,8 +2,8 @@
 
 # Specifies the default ip address.
 # Examples:
-#   - _ipaddr="127.0.0.1"
-_ipaddr="127.0.0.1"
+#   - _ipaddr=("127.0.0.1" "8.8.8.8")
+_ipaddr=("127.0.0.1")
 
 # Specifies the default port number.
 # Examples:
