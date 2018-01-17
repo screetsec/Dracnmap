@@ -291,7 +291,7 @@ function menu() {
   echo -e $cyan"    Codename            $white":" $red $Codename"
   echo -e $cyan"    Follow me on Github $white":" $red @Screetsec"
   echo -e $cyan"    Dracos Linux        $white":" $red dracos-linux.org"
-  echo -e $cyan"    v3.0.0 (testing)    $white":" $red trimstray (contact@nslab.at)"
+  echo -e $cyan"    Contributors        $white":" $red trimstray (contact@nslab.at), v3.0.0 (testing)"
   echo -e $cyan ""
   echo -e $okegreen"    =========================================================    ";
   echo -e $white " "
