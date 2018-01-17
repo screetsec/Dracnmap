@@ -28,7 +28,7 @@ function _init_cli_webservice() {
 
     cstate="1"
 
-    __cli_banner="WebService"
+    __cli_banner="webservice"
 
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
