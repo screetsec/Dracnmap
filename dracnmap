@@ -37,24 +37,26 @@ fi
 ################################################################################
 
 # The arrays that store call parameters.
+# shellcheck disable=SC2034
 __init_params=()
 __script_params=("$@")
 
 # Color table.
-cyan='\e[0;36m'
-green='\e[0;34m'
-okegreen='\033[92m'
-lightgreen='\e[1;32m'
-white='\e[1;37m'
-red='\e[1;31m'
-yellow='\e[1;33m'
-BlueF='\e[1;34m'
+export cyan='\e[0;36m'
+export green='\e[0;34m'
+export okegreen='\033[92m'
+export lightgreen='\e[1;32m'
+export white='\e[1;37m'
+export red='\e[1;31m'
+export yellow='\e[1;33m'
+export BlueF='\e[1;34m'
 
 # Script info.
-Version='3.0.0'
-Codename='Blackhawk'
+export Version='3.0.0'
+export Codename='Blackhawk'
 
 readonly __cli_prompt="Screetsec@"
+# shellcheck disable=SC2034
 __cli_banner=""
 
 # Store the name of the script and directory call.
@@ -94,9 +96,8 @@ function _exit_() {
 
   clear
 
-  echo -e $yellow"[*] Thank You For Using Dracnmap =)"
-  echo ""
-  echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia =P"
+  echo -en "$yellow[*] Thank You For Using Dracnmap =)\n"
+  echo -en "$yellow[*] Check Dracos Linux LFS, Penetration OS From Indonesia =P\n"
 
   _STATUS="$1"
   exit "$_STATUS"
