@@ -331,7 +331,7 @@ function credits() {
   echo
   echo -e $red "\t* Big Thanks to : http://www.github.com/"
   echo
-  echo -e $white "\t* Contributors: v3.0.0 (testing) - trimstray (contact@nslab.at)"
+  echo -e $white "\t* Contributors: v3.0.0 (testing release) - trimstray (contact@nslab.at)"
 
   tput sgr0
 
