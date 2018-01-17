@@ -214,7 +214,7 @@ function __main__() {
   echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >                                      ]=+ -- --'
   echo -e $cyan'-- -- +=[ Contributors: trimstray (contact@nslab.at)                            ]=+ -- --'
   echo -e " "
-read
+
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
   readonly commands=(basename dirname stat date grep \
@@ -231,7 +231,7 @@ read
 
   printf "\n:: [\e[1;39m%s\e[m] ::\n\n" "SYSTEM INFO"
 
-  _os_info=$(uname -a)
+  _os_info=$(uname -ov)
 
   if [[ -z "$_os_info" ]] ; then
 
