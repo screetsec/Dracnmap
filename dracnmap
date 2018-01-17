@@ -317,7 +317,7 @@ function __main__() {
 }
 
 trap "_get_trap_SIG EXIT" EXIT
-trap "_get_trap_SIG SIGS" SIGHUP SIGTERM SIGKILL SIGINT
+trap "_get_trap_SIG SIGS" SIGHUP SIGTERM SIGINT
 
 # An array as an argument to a function call __main__,
 # is required if we want to operate on arguments of type $1, $2, ...
