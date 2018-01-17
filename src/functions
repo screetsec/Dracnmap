@@ -15,6 +15,7 @@ _hwaddr=""
 _dbuser=""
 _dbpass=""
 _report=""
+_tor=""
 
 _session_variables=(\
                       "IP address:ipaddr:_ipaddr" \
@@ -26,7 +27,8 @@ _session_variables=(\
                       "Domain name:domain:_domain" \
                       "Database user name:dbuser:_dbuser" \
                       "Database user password:dbpass:_dbpass" \
-                      "Report type:report:_report")
+                      "Report type:report:_report" \
+                      "Pass through TOR:tor:_tor")
 
 
 ################################################################################
@@ -665,6 +667,7 @@ function _help_() {
     dbuser              database user
     dbpass              database password
     report              report type
+    tor                 set tor (with proxychains)
 
 "
 
@@ -780,6 +783,8 @@ function set_session() {
       _set_db_credentials "dbuser" ;;
     report)
       _set_report "type";;
+    tor)
+      _set_tor ;;
     *)
       printf "stdout: %s\n" "unknown key" ;;
 
