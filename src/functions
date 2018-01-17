@@ -839,17 +839,17 @@ function _init_cmd() {
 
   if [[ -z "$_output_path" ]] ; then
 
-    printf "\n\e[1;39m%s\e[m:\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_cmd[@]}"
+    printf "\n\e[1;39m%s\e[m:\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_cmd[*]}"
 
     # Execute command and exit.
-    nmap ${_cmd[@]} ; _state="$?"
+    nmap "${_cmd[@]}" ; _state="$?"
 
   else
 
-    printf "\n\e[1;39m%s\e[m:\n>\e[0;30m%s\e[m\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_cmd[@]}" "$_output_path"
+    printf "\n\e[1;39m%s\e[m:\n>\e[0;30m%s\e[m\n> \e[0;30m%s\e[m\n" "Full command" "nmap ${_cmd[*]}" "$_output_path"
 
     # Execute command and exit.
-    nmap ${_cmd[@]} "${_output_targ}" ; _state="$?"
+    nmap "${_cmd[@]}" "${_output_targ}" ; _state="$?"
 
   fi
 
