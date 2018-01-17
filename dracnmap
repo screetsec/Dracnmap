@@ -26,7 +26,7 @@ if [ -z "${DISPLAY:-}" ]; then
   _exit_ 1
 
 fi
-resize -s 50 84 > /dev/null
+resize -s 50 89 > /dev/null
 
 
 ################################################################################
@@ -202,19 +202,19 @@ function __main__() {
   ###############################################
   clear
   echo -e $okegreen ""
-  echo -e $okegreen "         .___                     _______                         $red       ________  ";
-  echo -e $okegreen "       __| _/___________    ____  \      \   _____ _____  ______  $red ___  _\_____  \ ";
-  echo -e $okegreen "      / __ |\_  __ \__  \ _/ ___\ /   |   \ /     \\__  \ \____  \ $red \  \/ //  ____/  ";
-  echo -e $okegreen "     / /_/ | |  | \// __ \\  \___/     |    \  Y Y  \/ __ \|  |_> >$red  \   //       \  ";
-  echo -e $okegreen "     \____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/ $red/\ \_/ \_______ \ ";
-  echo -e $okegreen "          \/            \/     \/        \/      \/     \/|__|    $red\/             \/ ";
-  echo
-  echo -e $okegreen"-------------------------------------------------------------------------------------------"
-  echo -e $lightgreen'-- -- +=[ (c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia ]=+ -- --'
+  echo -e $okegreen "                ___                    __                           $red,_____     "
+  echo -e $okegreen "               /   \_ __ __ _  ___  /\ \ \_ __ ___   __ _ _ ____   _$red|___ /     "
+  echo -e $okegreen "              / /\ / '__/ _\` |/ __|/  \/ / '_ \` _ \ / _\` | '_ \ \ / /$red |_ \  "
+  echo -e $okegreen "             / /_//| | | (_| | (__/ /\  /| | | | | | (_| | |_) \ V /$red ___) |    "
+  echo -e $okegreen "            /___,' |_|  \__,_|\___\_\ \/ |_| |_| |_|\__,_| .__/ \_/ $red|____/     "
+  echo -e $okegreen "                                                         |_|                       "
+  echo -e $okegreen ""
+  echo -e $okegreen"-----------------------------------------------------------------------------------------"
+  echo -e $white'-- -- +=[ (c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia ]=+ -- --'
   echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >                                      ]=+ -- --'
   echo -e $cyan'-- -- +=[ Contributors: trimstray (contact@nslab.at)                            ]=+ -- --'
   echo -e " "
-
+read
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
   readonly commands=(basename dirname stat date grep \
