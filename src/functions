@@ -4,7 +4,7 @@
 ############################### Global variables ###############################
 ################################################################################
 
-_ipaddr=""
+_ipaddr=()
 _port=""
 _user=""
 _pass=""
@@ -712,30 +712,71 @@ function show_session() {
 
       _i="" ; eval _i='$'$_key_var
 
+    else
+
+      _i="true"
+
     fi
 
+    # Show specific key.
     if [[ "$_session_arg" == "$_key_id" ]] ; then
 
+      # Print without key value.
       if [[ -z "$_i" ]] ; then
-
 
         printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
 
+      # Print with key value.
       else
 
-        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+        if [[ "$_key_id" == "ipaddr" ]] ; then
+
+          printf "{\"%s\":\n" "$_key_description"
+
+          for i in "${_ipaddr[@]}" ; do
+
+            printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
+
+          done
+
+          printf "}\n"
+
+        else
+
+          printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+
+        fi
 
       fi
 
+    # Show all keys.
     elif [[ -z "$_session_arg" ]] ; then
 
+      # Print without key value.
       if [[ -z "$_i" ]] ; then
 
         printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
 
+      # Print with key value.
       else
 
-        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+        if [[ "$_key_id" == "ipaddr" ]] ; then
+
+          printf "{\"%s\":\n" "$_key_description"
+
+          for i in "${_ipaddr[@]}" ; do
+
+            printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
+
+          done
+
+          printf "}\n"
+
+        else
+
+          printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+
+        fi
 
       fi
 
