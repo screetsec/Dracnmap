@@ -15,18 +15,21 @@
 
 if [[ $EUID -ne 0 ]] ; then
 
- echo "ERROR! Run this script with root user."
- _exit_ 1
+  echo -en "ERROR! Run this script with root user.\n"
+  _exit_ 1
 
 fi
 
 if [ -z "${DISPLAY:-}" ]; then
 
-  echo -e "\e[1;31mThe script should be executed inside a X (graphical) session."$transparent""
+  echo -en "The script should be executed inside a X (graphical) session.\n"
   _exit_ 1
 
+else
+
+  resize -s 50 89 > /dev/null
+
 fi
-resize -s 50 89 > /dev/null
 
 
 ################################################################################
