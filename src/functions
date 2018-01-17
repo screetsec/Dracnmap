@@ -626,6 +626,32 @@ function _set_report() {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_tor()
+#
+# Description:
+#   Set TOR (with proxychains).
+#
+# Usage:
+#   _set_tor
+#
+# Examples:
+#   _set_tor
+#
+
+function _set_tor() {
+
+  local _FUNCTION_ID="_set_tor"
+  local _STATE=0
+
+  echo -en $cyan""
+  echo -en "TOR [true,false]: " ; tput sgr0
+  read -ra _tor
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
 # Function name: _help_()
 #
 # Description:
