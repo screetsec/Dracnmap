@@ -32,448 +32,448 @@ function _init_cli_brutense() {
 
       01|1)
 
-        _init_cmd "-p $port --script afp-brute $_ipaddr"
+        _init_cmd "-p $port --script afp-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "-p $_port --script ajp-brute $_ipaddr"
+        _init_cmd "-p $_port --script ajp-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "-sU --script backorifice-brute --script-args backorifice-brute.ports=$_port $_ipaddr"
+        _init_cmd "-sU --script backorifice-brute --script-args backorifice-brute.ports=$_port ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "-p 9160 --script=cassandra-brute $_ipaddr"
+        _init_cmd "-p 9160 --script=cassandra-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "-p 23 --script=cics-enum $_ipaddr"
+        _init_cmd "-p 23 --script=cics-enum ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       06|6)
 
-        _init_cmd "-p 23 --script=cics-user-enum $_ipaddr"
+        _init_cmd "-p 23 --script=cics-user-enum ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       07|7)
 
-        _init_cmd "-p 80,443,8080 --script=citrix-brute-xml --script-args=userdb=$_userdb,passdb=$_passdb,ntdomain=$_domain $_ipaddr"
+        _init_cmd "-p 80,443,8080 --script=citrix-brute-xml --script-args=userdb=$_userdb,passdb=$_passdb,ntdomain=$_domain ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       08|8)
 
-        _init_cmd "-p 2401 --script cvs-brute $_ipaddr"
+        _init_cmd "-p 2401 --script cvs-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       09|9)
 
-        _init_cmd "-p 2401 --script cvs-brute-repository $_ipaddr"
+        _init_cmd "-p 2401 --script cvs-brute-repository ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       10)
 
-        _init_cmd "-p 2050 --script domcon-brute $_ipaddr"
+        _init_cmd "-p 2050 --script domcon-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       11)
 
-        _init_cmd "-p 8770 --script dpap-brute $_ipaddr"
+        _init_cmd "-p 8770 --script dpap-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       12)
 
-        _init_cmd "-p 50000 --script drda-brute $_ipaddr"
+        _init_cmd "-p 50000 --script drda-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       13)
 
-        _init_cmd "-p $_port --script ftp-brute $_ipaddr"
+        _init_cmd "-p $_port --script ftp-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       14)
 
-        _init_cmd "-p 80 --script http-form-brute $_ipaddr"
+        _init_cmd "-p 80 --script http-form-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       15)
 
-        _init_cmd "-p $_port --script http-brute $_ipaddr"
+        _init_cmd "-p $_port --script http-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       16)
 
-        _init_cmd "-p 80 --script http-crossdomainxml --script-args http.domain-lookup=true $_ipaddr"
+        _init_cmd "-p 80 --script http-crossdomainxml --script-args http.domain-lookup=true ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       17)
 
-        _init_cmd "-sV --script http-joomla-brute $_ipaddr"
+        _init_cmd "-sV --script http-joomla-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       18)
 
-        _init_cmd "-p 8080 --script http-proxy-brute $_ipaddr"
+        _init_cmd "-p 8080 --script http-proxy-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       19)
 
-        _init_cmd "-sV --script http-wordpress-brute $_ipaddr"
+        _init_cmd "-sV --script http-wordpress-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       20)
 
-        _init_cmd "-sU -p 4569 --script iax2-brute $_ipaddr"
+        _init_cmd "-sU -p 4569 --script iax2-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       21)
 
-        _init_cmd "-p 9088 --script informix-brute $_ipaddr"
+        _init_cmd "-p 9088 --script informix-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       22)
 
-        _init_cmd "-sU -p 623 --script ipmi-brute $_ipaddr"
+        _init_cmd "-sU -p 623 --script ipmi-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       23)
 
-        _init_cmd "-p 6667 --script irc-brute $_ipaddr"
+        _init_cmd "-p 6667 --script irc-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       24)
 
-        _init_cmd "-p 6667 --script irc-sasl-brute $_ipaddr"
+        _init_cmd "-p 6667 --script irc-sasl-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       25)
 
-        _init_cmd "-sV --script=iscsi-brute $_ipaddr"
+        _init_cmd "-sV --script=iscsi-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       26)
 
-        _init_cmd "-p 389 --script ldap-brute --script-args ldap.base='"cn=users,dc=cqure,dc=net"' $_ipaddr"
+        _init_cmd "-p 389 --script ldap-brute --script-args ldap.base='"cn=users,dc=cqure,dc=net"' ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       27)
 
-        _init_cmd "-p 143,993 --script imap-brute $_ipaddr"
+        _init_cmd "-p 143,993 --script imap-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       28)
 
-        _init_cmd "-p 11211 --script membase-brute $_ipaddr"
+        _init_cmd "-p 11211 --script membase-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       29)
 
-        _init_cmd "-p 51010 --script mmouse-brute $_ipaddr"
+        _init_cmd "-p 51010 --script mmouse-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       30)
 
-        _init_cmd "-p 27017 --script mongodb-brute $_ipaddr"
+        _init_cmd "-p 27017 --script mongodb-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       31)
 
-        _init_cmd "-p 445 --script ms-sql-brute --script-args mssql.instance-all,userdb=customuser.txt,passdb=custompass.txt $_ipaddr"
+        _init_cmd "-p 445 --script ms-sql-brute --script-args mssql.instance-all,userdb=customuser.txt,passdb=custompass.txt ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       32)
 
-        _init_cmd "--script=mysql-brute $_ipaddr"
+        _init_cmd "--script=mysql-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       33)
 
-        _init_cmd "--script=mysql-enum $_ipaddr"
+        _init_cmd "--script=mysql-enum ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       34)
 
-        _init_cmd "-p 27017 --script mongodb-brute $_ipaddr"
+        _init_cmd "-p 27017 --script mongodb-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       35)
 
-        _init_cmd "-p 55553 --script metasploit-msgrpc-brute $_ipaddr"
+        _init_cmd "-p 55553 --script metasploit-msgrpc-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       36)
 
-        _init_cmd "-p 55553 --script metasploit-xmlrpc-brute $_ipaddr"
+        _init_cmd "-p 55553 --script metasploit-xmlrpc-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       37)
 
-        _init_cmd "-p 8728 --script mikrotik-routeros-brute $_ipaddr"
+        _init_cmd "-p 8728 --script mikrotik-routeros-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       38)
 
-        _init_cmd "-sV --script=nessus-xmlrpc-brute $_ipaddr"
+        _init_cmd "-sV --script=nessus-xmlrpc-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       39)
 
-        _init_cmd "-p 12345 --script netbus-brut $_ipaddr"
+        _init_cmd "-p 12345 --script netbus-brut ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       40)
 
-        _init_cmd "-p 3780 --script nexpose-brute $_ipaddr"
+        _init_cmd "-p 3780 --script nexpose-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       41)
 
-        _init_cmd "-sV --script=nje-node-brute $_ipaddr"
+        _init_cmd "-sV --script=nje-node-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       42)
 
-        _init_cmd "-p 175 --script=nje-pass-brute --script-args=ohost='POTATO',rhost='CACTUS',sleep=5 $_ipaddr"
+        _init_cmd "-p 175 --script=nje-pass-brute --script-args=ohost='POTATO',rhost='CACTUS',sleep=5 ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       43)
 
-        _init_cmd "-p 9929 --script nping-brute $_ipaddr"
+        _init_cmd "-p 9929 --script nping-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       44)
 
-        _init_cmd "-p 1241 --script nessus-brute $_ipaddr"
+        _init_cmd "-p 1241 --script nessus-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       45)
 
-        _init_cmd "-p 9390 --script omp2-brute $_ipaddr"
+        _init_cmd "-p 9390 --script omp2-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       46)
 
-        _init_cmd "-sV --script=openvas-otp-brute $_ipaddr"
+        _init_cmd "-sV --script=openvas-otp-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       47)
 
-        _init_cmd "-p 1521 --script oracle-brute --script-args oracle-brute.sid=ORCL $_ipaddr"
+        _init_cmd "-p 1521 --script oracle-brute --script-args oracle-brute.sid=ORCL ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       48)
 
-        _init_cmd "-p 1521 --script oracle-brute-stealth --script-args oracle-brute-stealth.sid=ORCL $_ipaddr"
+        _init_cmd "-p 1521 --script oracle-brute-stealth --script-args oracle-brute-stealth.sid=ORCL ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       49)
 
-        _init_cmd "-p 1521-1560 --script=oracle-sid-brute $_ipaddr"
+        _init_cmd "-p 1521-1560 --script=oracle-sid-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       50)
 
-        _init_cmd "--script=pcanywhere-brute $_ipaddr"
+        _init_cmd "--script=pcanywhere-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       51)
 
-        _init_cmd "-p 5432 --script pgsql-brute $_ipaddr"
+        _init_cmd "-p 5432 --script pgsql-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       52)
 
-        _init_cmd "-sV --script=pop3-brute $_ipaddr"
+        _init_cmd "-sV --script=pop3-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       53)
 
-        _init_cmd "-p 6379 --script redis-brute $_ipaddr"
+        _init_cmd "-p 6379 --script redis-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       54)
 
-        _init_cmd "-p 512 --script rexec-brute $_ipaddr"
+        _init_cmd "-p 512 --script rexec-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       55)
 
-        _init_cmd "-p 513 --script rlogin-brute $_ipaddr"
+        _init_cmd "-p 513 --script rlogin-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       56)
 
-        _init_cmd "-p 2002 $ip --script rpcap-brute $_ipaddr"
+        _init_cmd "-p 2002 $ip --script rpcap-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       57)
 
-        _init_cmd "-p 873 --script rsync-brute --script-args 'rsync-brute.module=www' $_ipaddr"
+        _init_cmd "-p 873 --script rsync-brute --script-args 'rsync-brute.module=www' ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       58)
 
-        _init_cmd "-p 554 --script rtsp-url-brute $_ipaddr"
+        _init_cmd "-p 554 --script rtsp-url-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       59)
 
-        _init_cmd "-sU -p 5060 $ip --script=sip-brute $_ipaddr"
+        _init_cmd "-sU -p 5060 $ip --script=sip-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       60)
 
-        _init_cmd "-p 1080 --script socks-brute $_ipaddr"
+        _init_cmd "-p 1080 --script socks-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       61)
 
-        _init_cmd "-p 3690 --script svn-brute --script-args svn-brute.repo=/svn/ $_ipaddr"
+        _init_cmd "-p 3690 --script svn-brute --script-args svn-brute.repo=/svn/ ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       62)
 
-        _init_cmd "-p 23 --script=tso-enum $_ipaddr"
+        _init_cmd "-p 23 --script=tso-enum ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       63)
 
-        _init_cmd "-sU -sS -p U:137,T:139 --script smb-brute.nse $_ipaddr"
+        _init_cmd "-sU -sS -p U:137,T:139 --script smb-brute.nse ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       64)
 
-        _init_cmd "-p 25 --script smtp-brute $_ipaddr"
+        _init_cmd "-p 25 --script smtp-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
@@ -483,42 +483,42 @@ function _init_cli_brutense() {
         echo -ne $okegreen "Located Wordlist ?: " ; tput sgr0
         read _wordlist
 
-        _init_cmd "-sU --script snmp-brute [--script-args snmp-brute.communitiesdb="$_wordlist"] $_ipaddr"
+        _init_cmd "-sU --script snmp-brute [--script-args snmp-brute.communitiesdb="$_wordlist"] ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       66)
 
-        _init_cmd "-p $port --script telnet-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,telnet-brute.timeout=8s $_ipaddr"
+        _init_cmd "-p $port --script telnet-brute --script-args userdb=myusers.lst,passdb=mypwds.lst,telnet-brute.timeout=8s ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       67)
 
-        _init_cmd "-p 23 --script vtam-enum $_ipaddr"
+        _init_cmd "-p 23 --script vtam-enum ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       68)
 
-        _init_cmd "-p 902 --script vmauthd-brute $_ipaddr"
+        _init_cmd "-p 902 --script vmauthd-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       69)
 
-        _init_cmd "-p 5900 --script vnc-brute $_ipaddr"
+        _init_cmd "-p 5900 --script vnc-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       70)
 
-        _init_cmd "-p 5222 --script xmpp-brute $_ipaddr"
+        _init_cmd "-p 5222 --script xmpp-brute ${_ipaddr[@]}"
 
         cstate=1
         ;;

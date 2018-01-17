@@ -65,28 +65,28 @@ function _init_cli() {
 
       01|1)
 
-        _init_cmd "$_ipaddr"
+        _init_cmd "${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "-sV -T4 -O -F --version-light 1 $_ipaddr"
+        _init_cmd "-sV -T4 -O -F --version-light 1 ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "-sA $_ipaddr"
+        _init_cmd "-sA ${_ipaddr[@]}"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "-sS -P0 $_ipaddr"
+        _init_cmd "-sS -P0 ${_ipaddr[@]}"
 
         cstate=1
         ;;
