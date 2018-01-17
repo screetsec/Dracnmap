@@ -708,11 +708,16 @@ function show_session() {
 
     fi
 
-    _i="" ; eval _i='$'$_key_var
+    if [[ "$_key_id" != "ipaddr" ]] ; then
+
+      _i="" ; eval _i='$'$_key_var
+
+    fi
 
     if [[ "$_session_arg" == "$_key_id" ]] ; then
 
       if [[ -z "$_i" ]] ; then
+
 
         printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
 
