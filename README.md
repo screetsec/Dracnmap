@@ -29,7 +29,7 @@ Testing release: **testing (v3.0.0)**
 
 ## Testing release (v3.0.0)
 
-Author of changes: **trimstray** ([contact@nslab.at](mailto:contact@nslab.at), <https://github.com/trimstray>)
+Author of changes: **[trimstray](https://github.com/trimstray)**
 
 - removed blank spaces/tabs
 - correcting indentation (transparent code)
@@ -79,7 +79,7 @@ You can visit my channel: https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxF
 
     Hey sup? do you want ask about all my tools? You can join me in [telegram.me/offscreetsec](telegram.me/offscreetsec)
 
-  - **trimstray** (contact@nslab.at) - author of the testing release (v.3.0.0)
+  - **[trimstray](https://github.com/trimstray)** - author of the testing release (v.3.0.0)
 
 # Changelog
 
@@ -114,7 +114,7 @@ Be sure to check out the **CHANGELOG.md**.
   - **Boy Suganda Sinaga** [dragz17]
 
 
-  - v3.0.0 (testing) - **trimstray** (contact@nslab.at)
+  - **v3.0.0** (testing) - **[trimstray](https://github.com/trimstray)**
 
 # Books for Nmap
 
