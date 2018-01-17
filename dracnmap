@@ -162,6 +162,7 @@ function _get_trap_SIG() {
 
 function __main__() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="__main__"
   local _STATE=0
 
@@ -228,7 +229,9 @@ function __main__() {
   # readonly exec_gzip="/bin/gzip"
 
   # Stores the names of the missing commands.
+  # shellcheck disable=SC2034
   missing_hash=
+  # shellcheck disable=SC2034
   missing_counter=0
 
   tput sgr0
