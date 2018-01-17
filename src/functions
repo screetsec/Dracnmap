@@ -323,33 +323,33 @@ function credits() {
 
   clear
   echo -e "
-  \033[31m##########################################################################\033[m
-                                      Credits To
-  \033[31m##########################################################################\033[m"
+  \033[31m#########################################################################\033[m
+                                 Credits
+  \033[31m#########################################################################\033[m"
   echo
-  echo -e $white "Special thanks to:"
+  echo -e $white " Special thanks to:"
   echo
-  echo -e $red "Dracos Linux ( www.dracos-linux.org )"
+  echo -e $red "\t* Dracos Linux ( www.dracos-linux.org )"
   echo
-  echo -e $okegreen "Offensive Security for the awesome OS"
+  echo -e $okegreen "\t* Offensive Security for the awesome OS"
   echo
-  echo -e $green "http://www.offensive-security.com/"
+  echo -e $green "\t* http://www.offensive-security.com/"
   echo
-  echo -e $yellow "http://www.kali.org/"
+  echo -e $yellow "\t* http://www.kali.org/"
   echo
-  echo -e $cyan "http://www.kitploit.com/"
+  echo -e $cyan "\t* http://www.kitploit.com/"
   echo
-  echo -e $white "http://www.linuxsec.org/"
+  echo -e $white "\t* http://www.linuxsec.org/"
   echo
-  echo -e $okegreen "My Friend for helpme ( Boy Suganda )"
+  echo -e $okegreen "\t* My Friend for helpme ( Boy Suganda )"
   echo
-  echo -e $red "Big Thanks to : http://www.github.com/"
+  echo -e $red "\t* Big Thanks to : http://www.github.com/"
   echo
-  echo -e $white "Contributors: v3.0.0 (testing) - trimstray (contact@nslab.at)"
+  echo -e $white "\t* Contributors: v3.0.0 (testing) - trimstray (contact@nslab.at)"
 
   tput sgr0
 
-  echo -en "Press key to back main menu"
+  echo -en "\n\n  Press key to back main menu..."
   read _credits_key
 
   menu
