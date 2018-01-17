@@ -4,8 +4,6 @@
 ############################### Global variables ###############################
 ################################################################################
 
-_ipaddr_list=()
-_ipaddr_multi=""
 _ipaddr=""
 _port=""
 _user=""
@@ -74,72 +72,50 @@ function _init_cli() {
 
       02|2)
 
-        echo -en $cyan""
-        echo -en "How many addresses do you want to scan? " ; tput sgr0
-        read -ra _ipaddr_multi
-
-        for i in $(seq 1 $_ipaddr_multi) ; do
-
-          _set_ipaddr
-          _ipaddr_list+=("$_ipaddr")
-
-        done
-
-        if [[ $? -eq 0 ]] ; then
-
-          _init_cmd "${_ipaddr_list[@]}"
-
-        fi
+        _init_cmd "-sV -T4 -O -F --version-light 1 $_ipaddr"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "-sV -T4 -O -F --version-light 1 $_ipaddr"
+        _init_cmd "-sA $_ipaddr"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "-sA $_ipaddr"
+        _init_cmd "-sS -P0 $_ipaddr"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "-sS -P0 $_ipaddr"
-
-        cstate=1
-        ;;
-
-      06|6)
-
         menu_pingbebeb
         _init_cli_pingbebeb
         ;;
 
-      07|7)
+      06|6)
 
         menu_webservice
         _init_cli_webservice
         ;;
 
-      08|8)
+      07|7)
 
         menu_nse
         _init_cli_nse
         ;;
 
-      09|9)
+      08|8)
 
         menu_zenmapscript
         _init_cli_zenmapscript
         ;;
 
-      10)
+      09|9)
 
         credits
         cstate="0" ;;
@@ -304,15 +280,14 @@ function menu() {
   echo -e $white"     ID                    DESCRIPTION"
   echo -e $white"    ---------------------------------------------------------"
   echo -e $white"    [$okegreen"01"$white]$cyan  Regular scan"
-  echo -e $white"    [$okegreen"02"$white]$cyan  Multiple scan"
-  echo -e $white"    [$okegreen"03"$white]$cyan  OS detection and Trace"
-  echo -e $white"    [$okegreen"04"$white]$cyan  Find out if a host is protected firewall"
-  echo -e $white"    [$okegreen"05"$white]$cyan  Evading firewalls"
-  echo -e $white"    [$okegreen"06"$white]$cyan  Ping Ping!!"
-  echo -e $white"    [$okegreen"07"$white]$cyan  Web Applications"
-  echo -e $white"    [$okegreen"08"$white]$cyan  Nmap Script Engine (NSE)"
-  echo -e $white"    [$okegreen"09"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
-  echo -e $white"    [$okegreen"10"$white]$cyan  Credits"
+  echo -e $white"    [$okegreen"02"$white]$cyan  OS detection and Trace"
+  echo -e $white"    [$okegreen"03"$white]$cyan  Find out if a host is protected firewall"
+  echo -e $white"    [$okegreen"04"$white]$cyan  Evading firewalls"
+  echo -e $white"    [$okegreen"05"$white]$cyan  Ping Ping!!"
+  echo -e $white"    [$okegreen"06"$white]$cyan  Web Applications"
+  echo -e $white"    [$okegreen"07"$white]$cyan  Nmap Script Engine (NSE)"
+  echo -e $white"    [$okegreen"08"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
+  echo -e $white"    [$okegreen"09"$white]$cyan  Credits"
   echo -e " "
 
 }
