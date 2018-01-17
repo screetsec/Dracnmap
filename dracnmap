@@ -202,17 +202,17 @@ function __main__() {
   ###############################################
   clear
   echo -e $okegreen ""
-  echo -e $okegreen "    .___                     _______                         $red       ________  ";
-  echo -e $okegreen "  __| _/___________    ____  \      \   _____ _____  ______  $red ___  _\_____  \ ";
-  echo -e $okegreen " / __ |\_  __ \__  \ _/ ___\ /   |   \ /     \\__  \ \____  \ $red \  \/ //  ____/  ";
-  echo -e $okegreen "/ /_/ | |  | \// __ \\  \___/     |    \  Y Y  \/ __ \|  |_> >$red  \   //       \  ";
-  echo -e $okegreen "\____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/ $red/\ \_/ \_______ \ ";
-  echo -e $okegreen "     \/            \/     \/        \/      \/     \/|__|    $red\/             \/ ";
+  echo -e $okegreen "         .___                     _______                         $red       ________  ";
+  echo -e $okegreen "       __| _/___________    ____  \      \   _____ _____  ______  $red ___  _\_____  \ ";
+  echo -e $okegreen "      / __ |\_  __ \__  \ _/ ___\ /   |   \ /     \\__  \ \____  \ $red \  \/ //  ____/  ";
+  echo -e $okegreen "     / /_/ | |  | \// __ \\  \___/     |    \  Y Y  \/ __ \|  |_> >$red  \   //       \  ";
+  echo -e $okegreen "     \____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/ $red/\ \_/ \_______ \ ";
+  echo -e $okegreen "          \/            \/     \/        \/      \/     \/|__|    $red\/             \/ ";
   echo
-  echo -e $okegreen"-------------------------------------------------------------------------------"
-  echo -e $lightgreen'-- -- +=[(c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia '
-  echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >                           ]=+ -- -- '
-  echo -e $cyan'-- -- +=[ v3.0.0 (testing): trimstray (contact@nslab.at)             ]=+ -- -- '
+  echo -e $okegreen"-------------------------------------------------------------------------------------------"
+  echo -e $lightgreen'-- -- +=[ (c) 2016-2018 | dracos-linux.org | Linuxsec.org | Pentester Indonesia ]=+ -- --'
+  echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >                                      ]=+ -- --'
+  echo -e $cyan'-- -- +=[ Contributors: trimstray (contact@nslab.at), v3.0.0 (testing)"         ]=+ -- --'
   echo -e " "
 
   # We place here used commands at script runtime, as strings to anything
