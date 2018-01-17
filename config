@@ -44,3 +44,8 @@ _passdb=""
 # Examples:
 #   - _report="html"
 _report=""
+
+# Specifies the TOR connection.
+# Examples:
+#   - _tor="true"
+_tor=""
