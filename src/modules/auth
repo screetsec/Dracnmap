@@ -195,7 +195,8 @@ function _init_cli_auth() {
         echo -en "$okegreen  The query for which to return the results: " ; tput sgr0
         read -ra _query
 
-        _init_cmd "-p 3306 --script mysql-query --script-args="query="$_query"[,username=$_username,password=$_pass]" ${_ipaddr[*]}"
+        # shellcheck disable=SC2154
+        _init_cmd "-p 3306 --script mysql-query --script-args='query=\"$_query\"[,username=\"$_username\",password=\"$_pass\"]' ${_ipaddr[*]}"
 
         cstate=1
         ;;
