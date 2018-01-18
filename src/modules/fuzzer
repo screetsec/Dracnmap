@@ -169,11 +169,11 @@ function menu_fuzzer() {
   echo
   echo
 
-  echo -e $white"     ID                    DESCRIPTION"
-  echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$cyan File dns-fuzz"
-  echo -e $white"    [$okegreen"02"$white]$cyan File http-form-fuzzer"
-  echo -e $white"    [$okegreen"03"$white]$cyan File http-phpself-xss"
+  echo -e "${white}     ID                    DESCRIPTION"
+  echo -e "${white}    ---------------------------------------------------------"
+  echo -e "${white}    [${okegreen}01${white}]${cyan} File dns-fuzz"
+  echo -e "${white}    [${okegreen}02${white}]${cyan} File http-form-fuzzer"
+  echo -e "${white}    [${okegreen}03${white}]${cyan} File http-phpself-xss"
   echo -e " "
 
 }
