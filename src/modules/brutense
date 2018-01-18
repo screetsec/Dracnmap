@@ -488,7 +488,7 @@ function _init_cli_brutense() {
 
         # shellcheck disable=SC2154
         echo -ne "$okegreen Located Wordlist ?: " ; tput sgr0
-        read _wordlist
+        read -ra _wordlist
 
         _init_cmd "-sU --script snmp-brute [--script-args snmp-brute.communitiesdb="$_wordlist"] ${_ipaddr[*]}"
 
