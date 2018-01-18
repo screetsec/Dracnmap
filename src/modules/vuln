@@ -191,7 +191,7 @@ function _init_cli_vuln() {
       23)
 
         # shellcheck disable=SC2154
-        echo -en $okegreen " The query for which to return the results " ; tput sgr0
+        echo -en "${okegreen}  The query for which to return the results " ; tput sgr0
         read _query
 
         _init_cmd "sV -sC ${_ipaddr[*]}"
