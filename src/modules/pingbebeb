@@ -187,6 +187,7 @@ function _init_cli_pingbebeb() {
 
 function menu_pingbebeb() {
 
+  # shellcheck disable=SC2154
   echo -e "${okegreen}"
   clear
   echo ""
@@ -196,21 +197,36 @@ function menu_pingbebeb() {
   echo "        / /|\     "
   echo "       _L_         "
   echo "     ,     .         "
+  # shellcheck disable=SC2154
   echo -e "${okegreen} (\ /  O O  \ /)  ${red} ______ _______ _______ _______      __ __    "
+  # shellcheck disable=SC2154
   echo -e "${okegreen}  \|    _    |/   ${red} |   __ \_     _|    |  |     __|    |  |  |  "
+  # shellcheck disable=SC2154
   echo -e "${okegreen}    \  (_)  /     ${red} |    __/_|   |_|       |    |  |    |__|__|  "
+  # shellcheck disable=SC2154
   echo -e "${okegreen}    _/.___,\_     ${red} |___|  |_______|__|____|_______|    |__|__|  "
-  echo -e "${okegreen}   (_/ alf \_)         "
+  # shellcheck disable=SC2154
+  echo -e "${okegreen}   (_/ alf \_)"
+  # shellcheck disable=SC2154
   echo -e "${white}"
 
+  # shellcheck disable=SC2154
   echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
   echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}01${white}]${cyan}  Broadcast Ping"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}02${white}]${cyan}  TCP/SYN Ping"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}03${white}]${cyan}  TCP/ACK Ping"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}04${white}]${cyan}  UDP Ping"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}05${white}]${cyan}  ICMP Ping"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}06${white}]${cyan}  IP Protocol Ping"
+  # shellcheck disable=SC2154
   echo -e " "
 
 }
