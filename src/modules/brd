@@ -15,6 +15,7 @@
 
 function _init_cli_brd() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="_init_cli_brd"
   local _STATE=0
 
