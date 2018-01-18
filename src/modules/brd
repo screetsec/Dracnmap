@@ -162,16 +162,20 @@ function _init_cli_brd() {
 
       19)
 
-        echo -ne $okegreen "Default value for TTL is 64 & the length of the payload is 0: " ; tput sgr0
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Default value for TTL is 64 & the length of the payload is 0: " ; tput sgr0
         read _ttl
 
-        echo -ne $okegreen "The payload is consisted of random bytes: " ; tput sgr0
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen The payload is consisted of random bytes: " ; tput sgr0
         read _payload
 
-        echo -ne $okegreen "Timespec specifying how long to wait for response (default 3s): " ; tput sgr0
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Timespec specifying how long to wait for response (default 3s): " ; tput sgr0
         read _ti
 
-        echo -ne $okegreen "Number specifying how many ICMP probes should be sent (default 1): " ; tput sgr0
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Number specifying how many ICMP probes should be sent (default 1): " ; tput sgr0
         read _np
 
         _init_cmd "-e $_iface [--ttl \"$_ttl\"] [--data-length \"$_payload\"] --script broadcast-ping [--script-args [broadcast-ping.timeout=\"$_ti\"],[num-probes=\"$_np\"]]]"
@@ -286,6 +290,7 @@ function _init_cli_brd() {
 
       35)
 
+        # shellcheck disable=SC2086
         echo -ne $okegreen "Hostname to resolve: " ; tput sgr0
         read _hostname
 
@@ -310,7 +315,8 @@ function _init_cli_brd() {
 
       38)
 
-        echo -ne $okegreen "Source address from which to traceroute: " ; tput sgr0
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Source address from which to traceroute: " ; tput sgr0
         read _rt
 
         _init_cmd "-e $_iface --script mtrace --script-args mtrace.fromip=\"$_rt\""
@@ -472,51 +478,51 @@ function menu_brd() {
   echo
   echo
 
-  echo -e $white"     ID                    DESCRIPTION"
-  echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$cyan broadcast-ataoe-discover "
-  echo -e $white"    [$okegreen"02"$white]$cyan broadcast-avahi-dos  "
-  echo -e $white"    [$okegreen"03"$white]$cyan broadcast-bjnp-discover "
-  echo -e $white"    [$okegreen"04"$white]$cyan broadcast-db2-discover "
-  echo -e $white"    [$okegreen"05"$white]$cyan broadcast-dhcp-discover  "
-  echo -e $white"    [$okegreen"06"$white]$cyan broadcast-dhcp6-discover "
-  echo -e $white"    [$okegreen"07"$white]$cyan broadcast-dns-service-discovery  "
-  echo -e $white"    [$okegreen"08"$white]$cyan broadcast-dropbox-listener "
-  echo -e $white"    [$okegreen"09"$white]$cyan broadcast-eigrp-discovery  "
-  echo -e $white"    [$okegreen"10"$white]$cyan broadcast-igmp-discovery "
-  echo -e $white"    [$okegreen"11"$white]$cyan broadcast-listener "
-  echo -e $white"    [$okegreen"12"$white]$cyan broadcast-ms-sql-discover  "
-  echo -e $white"    [$okegreen"13"$white]$cyan broadcast-netbios-master-browser "
-  echo -e $white"    [$okegreen"14"$white]$cyan broadcast-networker-discover "
-  echo -e $white"    [$okegreen"15"$white]$cyan broadcast-novell-locate  "
-  echo -e $white"    [$okegreen"16"$white]$cyan broadcast-pc-anywhere  "
-  echo -e $white"    [$okegreen"17"$white]$cyan broadcast-pc-duo "
-  echo -e $white"    [$okegreen"18"$white]$cyan broadcast-pim-discovery  "
-  echo -e $white"    [$okegreen"19"$white]$cyan broadcast-ping "
-  echo -e $white"    [$okegreen"20"$white]$cyan broadcast-pppoe-discover "
-  echo -e $white"    [$okegreen"21"$white]$cyan broadcast-rip-discover "
-  echo -e $white"    [$okegreen"22"$white]$cyan broadcast-ripng-discover "
-  echo -e $white"    [$okegreen"23"$white]$cyan broadcast-sonicwall-discover "
-  echo -e $white"    [$okegreen"24"$white]$cyan broadcast-sybase-asa-discover  "
-  echo -e $white"    [$okegreen"25"$white]$cyan broadcast-tellstick-discover "
-  echo -e $white"    [$okegreen"26"$white]$cyan broadcast-upnp-info  "
-  echo -e $white"    [$okegreen"27"$white]$cyan broadcast-versant-locate "
-  echo -e $white"    [$okegreen"28"$white]$cyan broadcast-wake-on-lan  "
-  echo -e $white"    [$okegreen"29"$white]$cyan broadcast-wpad-discover  "
-  echo -e $white"    [$okegreen"30"$white]$cyan broadcast-wsdd-discover  "
-  echo -e $white"    [$okegreen"31"$white]$cyan broadcast-xdmcp-discover "
-  echo -e $white"    [$okegreen"32"$white]$cyan eap-info "
-  echo -e $white"    [$okegreen"33"$white]$cyan ipv6-multicast-mld-list  "
-  echo -e $white"    [$okegreen"34"$white]$cyan knx-gateway-discover "
-  echo -e $white"    [$okegreen"35"$white]$cyan llmnr-resolve  "
-  echo -e $white"    [$okegreen"36"$white]$cyan lltd-discovery "
-  echo -e $white"    [$okegreen"37"$white]$cyan mrinfo "
-  echo -e $white"    [$okegreen"38"$white]$cyan mtrace "
-  echo -e $white"    [$okegreen"39"$white]$cyan targets-ipv6-multicast-echo  "
-  echo -e $white"    [$okegreen"40"$white]$cyan targets-ipv6-multicast-invalid-dst "
-  echo -e $white"    [$okegreen"41"$white]$cyan targets-ipv6-multicast-mld "
-  echo -e $white"    [$okegreen"42"$white]$cyan targets-ipv6-multicast-slaac "
-  echo -e $white"    [$okegreen"43"$white]$cyan targets-sniffer  "
-  echo -e " "
+  echo -e "${white}     ID                    DESCRIPTION"
+  echo -e "${white}    ---------------------------------------------------------"
+  echo -e "${white}    [${okegreen}01${white}]${cyan} broadcast-ataoe-discover "
+  echo -e "${white}    [${okegreen}02${white}]${cyan} broadcast-avahi-dos  "
+  echo -e "${white}    [${okegreen}03${white}]${cyan} broadcast-bjnp-discover "
+  echo -e "${white}    [${okegreen}04${white}]${cyan} broadcast-db2-discover "
+  echo -e "${white}    [${okegreen}05${white}]${cyan} broadcast-dhcp-discover  "
+  echo -e "${white}    [${okegreen}06${white}]${cyan} broadcast-dhcp6-discover "
+  echo -e "${white}    [${okegreen}07${white}]${cyan} broadcast-dns-service-discovery  "
+  echo -e "${white}    [${okegreen}08${white}]${cyan} broadcast-dropbox-listener "
+  echo -e "${white}    [${okegreen}09${white}]${cyan} broadcast-eigrp-discovery  "
+  echo -e "${white}    [${okegreen}10${white}]${cyan} broadcast-igmp-discovery "
+  echo -e "${white}    [${okegreen}11${white}]${cyan} broadcast-listener "
+  echo -e "${white}    [${okegreen}12${white}]${cyan} broadcast-ms-sql-discover  "
+  echo -e "${white}    [${okegreen}13${white}]${cyan} broadcast-netbios-master-browser "
+  echo -e "${white}    [${okegreen}14${white}]${cyan} broadcast-networker-discover "
+  echo -e "${white}    [${okegreen}15${white}]${cyan} broadcast-novell-locate  "
+  echo -e "${white}    [${okegreen}16${white}]${cyan} broadcast-pc-anywhere  "
+  echo -e "${white}    [${okegreen}17${white}]${cyan} broadcast-pc-duo "
+  echo -e "${white}    [${okegreen}18${white}]${cyan} broadcast-pim-discovery  "
+  echo -e "${white}    [${okegreen}19${white}]${cyan} broadcast-ping "
+  echo -e "${white}    [${okegreen}20${white}]${cyan} broadcast-pppoe-discover "
+  echo -e "${white}    [${okegreen}21${white}]${cyan} broadcast-rip-discover "
+  echo -e "${white}    [${okegreen}22${white}]${cyan} broadcast-ripng-discover "
+  echo -e "${white}    [${okegreen}23${white}]${cyan} broadcast-sonicwall-discover "
+  echo -e "${white}    [${okegreen}24${white}]${cyan} broadcast-sybase-asa-discover  "
+  echo -e "${white}    [${okegreen}25${white}]${cyan} broadcast-tellstick-discover "
+  echo -e "${white}    [${okegreen}26${white}]${cyan} broadcast-upnp-info  "
+  echo -e "${white}    [${okegreen}27${white}]${cyan} broadcast-versant-locate "
+  echo -e "${white}    [${okegreen}28${white}]${cyan} broadcast-wake-on-lan  "
+  echo -e "${white}    [${okegreen}29${white}]${cyan} broadcast-wpad-discover  "
+  echo -e "${white}    [${okegreen}30${white}]${cyan} broadcast-wsdd-discover  "
+  echo -e "${white}    [${okegreen}31${white}]${cyan} broadcast-xdmcp-discover "
+  echo -e "${white}    [${okegreen}32${white}]${cyan} eap-info "
+  echo -e "${white}    [${okegreen}33${white}]${cyan} ipv6-multicast-mld-list  "
+  echo -e "${white}    [${okegreen}34${white}]${cyan} knx-gateway-discover "
+  echo -e "${white}    [${okegreen}35${white}]${cyan} llmnr-resolve  "
+  echo -e "${white}    [${okegreen}36${white}]${cyan} lltd-discovery "
+  echo -e "${white}    [${okegreen}37${white}]${cyan} mrinfo "
+  echo -e "${white}    [${okegreen}38${white}]${cyan} mtrace "
+  echo -e "${white}    [${okegreen}39${white}]${cyan} targets-ipv6-multicast-echo  "
+  echo -e "${white}    [${okegreen}40${white}]${cyan} targets-ipv6-multicast-invalid-dst "
+  echo -e "${white}    [${okegreen}41${white}]${cyan} targets-ipv6-multicast-mld "
+  echo -e "${white}    [${okegreen}42${white}]${cyan} targets-ipv6-multicast-slaac "
+  echo -e "${white}    [${okegreen}43${white}]${cyan} targets-sniffer  "
+  echo -e ""
 
 }
