@@ -32,42 +32,42 @@ function _init_cli_pingbebeb() {
 
       01|1)
 
-        _init_cmd "--script broadcast-ping --script-args broadcast-ping.num_probes=5 ${_ipaddr[@]}"
+        _init_cmd "--script broadcast-ping --script-args broadcast-ping.num_probes=5 ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "-sP -PS ${_ipaddr[@]}"
+        _init_cmd "-sP -PS ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "-sP -PA ${_ipaddr[@]}"
+        _init_cmd "-sP -PA ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "-sP -PU ${_ipaddr[@]}"
+        _init_cmd "-sP -PU ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "-sP -PE ${_ipaddr[@]}"
+        _init_cmd "-sP -PE ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       06|6)
 
-        _init_cmd "-sP -PO --packet-trace ${_ipaddr[@]}"
+        _init_cmd "-sP -PO --packet-trace ${_ipaddr[*]}"
 
         cstate=1
         ;;
