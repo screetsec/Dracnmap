@@ -15,6 +15,7 @@
 
 function _init_cli_brutense() {
 
+  # shellcheck disable=SC2154,SC2034
   local _FUNCTION_ID="_init_cli_brutense"
   local _STATE=0
 
@@ -26,12 +27,14 @@ function _init_cli_brutense() {
 
     __cli_banner="nse-brute"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
 
       01|1)
 
+        # shellcheck disable=SC2154
         _init_cmd "-p $port --script afp-brute ${_ipaddr[*]}"
 
         cstate=1
@@ -39,6 +42,7 @@ function _init_cli_brutense() {
 
       02|2)
 
+        # shellcheck disable=SC2154
         _init_cmd "-p $_port --script ajp-brute ${_ipaddr[*]}"
 
         cstate=1
@@ -74,6 +78,7 @@ function _init_cli_brutense() {
 
       07|7)
 
+        # shellcheck disable=SC2154
         _init_cmd "-p 80,443,8080 --script=citrix-brute-xml --script-args=userdb=$_userdb,passdb=$_passdb,ntdomain=$_domain ${_ipaddr[*]}"
 
         cstate=1
@@ -417,6 +422,7 @@ function _init_cli_brutense() {
 
       56)
 
+        # shellcheck disable=SC2154
         _init_cmd "-p 2002 $ip --script rpcap-brute ${_ipaddr[*]}"
 
         cstate=1
@@ -480,7 +486,8 @@ function _init_cli_brutense() {
 
       65)
 
-        echo -ne $okegreen "Located Wordlist ?: " ; tput sgr0
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Located Wordlist ?: " ; tput sgr0
         read _wordlist
 
         _init_cmd "-sU --script snmp-brute [--script-args snmp-brute.communitiesdb="$_wordlist"] ${_ipaddr[*]}"
@@ -640,78 +647,151 @@ function menu_brutense() {
 
   clear
   echo "";
+  # shellcheck disable=SC2154
   echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
   echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}01${white}]${cyan}  afp-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}02${white}]${cyan}  ajp-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}03${white}]${cyan}  backorifice-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}04${white}]${cyan}  cassandra-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}05${white}]${cyan}  cics-enum"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}06${white}]${cyan}  cics-user-enum"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}07${white}]${cyan}  citrix-brute-xml"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}08${white}]${cyan}  cvs-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}09${white}]${cyan}  cvs-brute-repository"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}10${white}]${cyan}  domcon-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}11${white}]${cyan}  dpap-enum"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}12${white}]${cyan}  drda-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}13${white}]${cyan}  ftp-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}14${white}]${cyan}  http-from-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}15${white}]${cyan}  http-iis-short-name-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}16${white}]${cyan}  http-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}17${white}]${cyan}  http-joomla-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}18${white}]${cyan}  http-proxy-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}19${white}]${cyan}  http-wordpress-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}20${white}]${cyan}  iax2-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}21${white}]${cyan}  informix-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}22${white}]${cyan}  ipmi-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}23${white}]${cyan}  irc-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}24${white}]${cyan}  irc-sasl-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}25${white}]${cyan}  iscsi-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}26${white}]${cyan}  ldap-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}27${white}]${cyan}  imap-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}28${white}]${cyan}  membase-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}29${white}]${cyan}  mmouse-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}30${white}]${cyan}  mongodb-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}31${white}]${cyan}  ms-sql-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}32${white}]${cyan}  mysql-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}33${white}]${cyan}  mysql-enum"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}34${white}]${cyan}  mongodb-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}35${white}]${cyan}  metasploit-msgrpc-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}36${white}]${cyan}  metasploit-xmlrpc-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}37${white}]${cyan}  mikrotik-routeros-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}38${white}]${cyan}  nessus-xmlrpc-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}39${white}]${cyan}  netbus-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}40${white}]${cyan}  nexpose-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}41${white}]${cyan}  nje-node-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}42${white}]${cyan}  nje-pass-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}43${white}]${cyan}  nping-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}44${white}]${cyan}  nessus-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}45${white}]${cyan}  omp2-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}46${white}]${cyan}  openvas-otp-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}47${white}]${cyan}  oracle-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}48${white}]${cyan}  oracle-brute-stealth"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}49${white}]${cyan}  oracle-sid-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}50${white}]${cyan}  pcanywhere-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}51${white}]${cyan}  pgsql-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}52${white}]${cyan}  pop3-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}53${white}]${cyan}  redis-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}54${white}]${cyan}  rexec-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}55${white}]${cyan}  rlogin-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}56${white}]${cyan}  rpcap-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}57${white}]${cyan}  rsync-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}58${white}]${cyan}  rtsp-url-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}59${white}]${cyan}  sip-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}60${white}]${cyan}  socks-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}61${white}]${cyan}  svn-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}62${white}]${cyan}  tso-enum"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}63${white}]${cyan}  smb-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}64${white}]${cyan}  smtp-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}65${white}]${cyan}  snmp-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}66${white}]${cyan}  telnet-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}67${white}]${cyan}  vtam-enum"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}68${white}]${cyan}  vmauthd-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}69${white}]${cyan}  vnc-brute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}70${white}]${cyan}  xmpp-brute"
+  # shellcheck disable=SC2154
   echo -e ""
 
 }
