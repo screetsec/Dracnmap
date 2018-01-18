@@ -361,7 +361,7 @@ function credits() {
   tput sgr0
 
   echo -en "\n\n  Press key to back main menu..."
-  read _credits_key
+  read -ra _credits_key
 
   menu
 
