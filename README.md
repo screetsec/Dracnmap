@@ -35,14 +35,19 @@ Author of changes: **[trimstray](https://github.com/trimstray)**
 - correcting indentation (transparent code)
 - separated comparison operator
 - protection against giving an illegal value
-- separated modules into files
+- fixes in user interface
+- changed in the dependency checking mechanism (before init user interface)
+- added modules and separated them into files
+- resolved of reported errors by **shellcheck**
 - added headings to the menu (id, description)
 - added simple **CLI** (the ability to run pure **Nmap**)
 - load config from file
 - added `set/show` commands
-- added **help**
-- fixes in user interface
-- changed in the dependency checking mechanism (before init user interface)
+- added **help** (and `help` command)
+- **TOR** support (with proxychains)
+- added multiple IP scan for all existing **Nmap** commands
+
+
 - minor fixes and more
 
 > For more information about changes please see in **CHANGELOG.md**.
