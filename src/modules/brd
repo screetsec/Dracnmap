@@ -170,7 +170,7 @@ function _init_cli_brd() {
         echo -ne $okegreen "Number specifying how many ICMP probes should be sent (default 1): " ; tput sgr0
         read _np
 
-        _init_cmd "-e $_iface [--ttl "$_ttl"] [--data-length "$_payload"] --script broadcast-ping [--script-args [broadcast-ping.timeout="$_ti"],[num-probes="$_np"]]]"
+        _init_cmd "-e $_iface [--ttl \"$_ttl\"] [--data-length \"$_payload\"] --script broadcast-ping [--script-args [broadcast-ping.timeout=\"$_ti\"],[num-probes=\"$_np\"]]]"
 
         cstate=1
         ;;
@@ -233,7 +233,7 @@ function _init_cli_brd() {
 
       28)
 
-        _init_cmd "-e $_iface --script broadcast-wake-on-lan --script-args broadcast-wake-on-lan.MAC="$_hwaddr""
+        _init_cmd "-e $_iface --script broadcast-wake-on-lan --script-args broadcast-wake-on-lan.MAC=\"$_hwaddr\""
 
         cstate=1
         ;;
@@ -285,7 +285,7 @@ function _init_cli_brd() {
         echo -ne $okegreen "Hostname to resolve: " ; tput sgr0
         read _hostname
 
-        _init_cmd "-e $_iface --script llmnr-resolve --script-args llmnr-resolve.hostname="$_hostname""
+        _init_cmd "-e $_iface --script llmnr-resolve --script-args llmnr-resolve.hostname=\"$_hostname\""
 
         cstate=1
         ;;
@@ -309,42 +309,42 @@ function _init_cli_brd() {
         echo -ne $okegreen "Source address from which to traceroute: " ; tput sgr0
         read _rt
 
-        _init_cmd "-e $_iface --script mtrace --script-args mtrace.fromip="$_rt""
+        _init_cmd "-e $_iface --script mtrace --script-args mtrace.fromip=\"$_rt\""
 
         cstate=1
         ;;
 
       39)
 
-        _init_cmd "--script=targets-ipv6-multicast-echo.nse --script-args newtargets,interface="$_iface" -sL"
+        _init_cmd "--script=targets-ipv6-multicast-echo.nse --script-args newtargets,interface=\"$_iface\" -sL"
 
         cstate=1
         ;;
 
       40)
 
-        _init_cmd "--script=targets-ipv6-multicast-invalid-dst.nse --script-args newtargets,interface="$_iface" -sP"
+        _init_cmd "--script=targets-ipv6-multicast-invalid-dst.nse --script-args newtargets,interface=\"$_iface\" -sP"
 
         cstate=1
         ;;
 
       41)
 
-        _init_cmd "--script=targets-ipv6-multicast-mld.nse --script-args newtargets,interface="$_iface""
+        _init_cmd "--script=targets-ipv6-multicast-mld.nse --script-args newtargets,interface=\"$_iface\""
 
         cstate=1
         ;;
 
       42)
 
-        _init_cmd "--script targets-ipv6-multicast-slaac --script-args newtargets,interface="$_iface" -sP"
+        _init_cmd "--script targets-ipv6-multicast-slaac --script-args newtargets,interface=\"$_iface\" -sP"
 
         cstate=1
         ;;
 
       43)
 
-        _init_cmd "-sL --script=targets-sniffer --script-args=newtargets,targets-sniffer.timeout=5s,targets-sniffer.iface="$_iface""
+        _init_cmd "-sL --script=targets-sniffer --script-args=newtargets,targets-sniffer.timeout=5s,targets-sniffer.iface=\"$_iface\""
 
         cstate=1
         ;;
