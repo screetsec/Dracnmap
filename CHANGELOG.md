@@ -11,6 +11,7 @@ Author of changes: **[trimstray](https://github.com/trimstray)**
 * fixes in user interface
 * changed in the dependency checking mechanism (before init user interface)
 * added modules and separated them into files
+* resolved of reported errors by **shellcheck**
 * minor fixes
 
 ## Features
@@ -20,6 +21,8 @@ Author of changes: **[trimstray](https://github.com/trimstray)**
 - load config from file
 - added `set/show` commands
 - added **help** (and `help` command)
+- **TOR** support (with proxychains)
+- added multiple IP scan for all existing **Nmap** commands
 
 # 2.0
 
