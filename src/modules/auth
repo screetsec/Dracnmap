@@ -46,7 +46,7 @@ function _init_cli_auth() {
 
       03|3)
 
-        _init_cmd "-p 2050 --script domcon-cmd --script-args domcon-cmd.cmd='show server' domcon-cmd.user="$_user",domcon-cmd.pass="$_pass" ${_ipaddr[*]}"
+        _init_cmd "-p 2050 --script domcon-cmd --script-args domcon-cmd.cmd='show server' domcon-cmd.user=\"$_user\",domcon-cmd.pass=\"$_pass\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
@@ -74,7 +74,7 @@ function _init_cli_auth() {
 
       07|7)
 
-        _init_cmd "-p "$_port" --script http-barracuda-dir-traversal --script-args http-max-cache-size=5000000 ${_ipaddr[*]}"
+        _init_cmd "-p \"$_port\" --script http-barracuda-dir-traversal --script-args http-max-cache-size=5000000 ${_ipaddr[*]}"
 
         cstate=1
         ;;
@@ -95,7 +95,7 @@ function _init_cli_auth() {
 
       10)
 
-        _init_cmd "-p 80 --script domino-enum-passwords --script-args domino-enum-passwords.username="$_user",domino-enum-passwords.password="$_pass" ${_ipaddr[*]}"
+        _init_cmd "-p 80 --script domino-enum-passwords --script-args domino-enum-passwords.username=\"$_user\",domino-enum-passwords.password=\"$_pass\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
@@ -130,14 +130,14 @@ function _init_cli_auth() {
 
       15)
 
-        _init_cmd "-p 9088 --script informix-query --script-args informix-query.username="$_user",informix-query.password="$_pass" ${_ipaddr[*]}"
+        _init_cmd "-p 9088 --script informix-query --script-args informix-query.username=\"$_user\",informix-query.password=\"$_pass\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       16)
 
-        _init_cmd "-p 9088 --script informix-tables --script-args informix-tables.username="$_user",informix-tables.password="$_pass" ${_ipaddr[*]}"
+        _init_cmd "-p 9088 --script informix-tables --script-args informix-tables.username=\"$_user\,informix-tables.password=\"$_pass\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
@@ -158,21 +158,21 @@ function _init_cli_auth() {
 
       19)
 
-        _init_cmd "-p "$_port" --script ms-sql-empty-password --script-args mssql.instance-all ${_ipaddr[*]}"
+        _init_cmd "-p \"$_port\" --script ms-sql-empty-password --script-args mssql.instance-all ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       20)
 
-        _init_cmd "-p 1433 --script ms-sql-hasdbaccess --script-args mssql.username="$_user",mssql.password="$_pass" ${_ipaddr[*]}"
+        _init_cmd "-p 1433 --script ms-sql-hasdbaccess --script-args mssql.username=\"$_user\",mssql.password=\"$_pass\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       21)
 
-        _init_cmd "-p 3306 --script mysql-dump-hashes --script-args="username=$_user,password=$_pass" ${_ipaddr[*]}"
+        _init_cmd "-p 3306 --script mysql-dump-hashes --script-args=\"username=$_user,password=$_pass\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
@@ -186,7 +186,7 @@ function _init_cli_auth() {
 
       23)
 
-        echo -en $okegreen " The query for which to return the results: " ; tput sgr0
+        echo -en "$okegreen  The query for which to return the results: " ; tput sgr0
         read _query
 
         _init_cmd "-p 3306 --script mysql-query --script-args="query="$_query"[,username=$_username,password=$_pass]" ${_ipaddr[*]}"
@@ -382,41 +382,41 @@ function menu_auth() {
   echo
   echo
 
-  echo -e $white"     ID                    DESCRIPTION"
-  echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$cyan ajp-auth"
-  echo -e $white"    [$okegreen"02"$white]$cyan creds-summary"
-  echo -e $white"    [$okegreen"03"$white]$cyan domcon-cmd"
-  echo -e $white"    [$okegreen"04"$white]$cyan domino-enum-users"
-  echo -e $white"    [$okegreen"05"$white]$cyan ftp-anon"
-  echo -e $white"    [$okegreen"06"$white]$cyan http-auth"
-  echo -e $white"    [$okegreen"07"$white]$cyan http-barracuda-dir-traversal"
-  echo -e $white"    [$okegreen"08"$white]$cyan http-config-backup"
-  echo -e $white"    [$okegreen"09"$white]$cyan http-default-accounts"
-  echo -e $white"    [$okegreen"10"$white]$cyan http-domino-enum-passwords"
-  echo -e $white"    [$okegreen"11"$white]$cyan http-method-tamper"
-  echo -e $white"    [$okegreen"12"$white]$cyan http-userdir-enum"
-  echo -e $white"    [$okegreen"13"$white]$cyan http-vuln-cve2010-0738"
-  echo -e $white"    [$okegreen"14"$white]$cyan http-wordpress-users"
-  echo -e $white"    [$okegreen"15"$white]$cyan informix-query"
-  echo -e $white"    [$okegreen"16"$white]$cyan informix-tables"
-  echo -e $white"    [$okegreen"17"$white]$cyan krb5-enum-users"
-  echo -e $white"    [$okegreen"18"$white]$cyan ms-sql-dump-hashes"
-  echo -e $white"    [$okegreen"19"$white]$cyan ms-sql-empty-password"
-  echo -e $white"    [$okegreen"20"$white]$cyan ms-sql-hasdbaccess"
-  echo -e $white"    [$okegreen"21"$white]$cyan mysql-dump-hashes"
-  echo -e $white"    [$okegreen"22"$white]$cyan mysql-empty-password"
-  echo -e $white"    [$okegreen"23"$white]$cyan mysql-query"
-  echo -e $white"    [$okegreen"24"$white]$cyan mysql-users"
-  echo -e $white"    [$okegreen"25"$white]$cyan ncp-enum-users"
-  echo -e $white"    [$okegreen"26"$white]$cyan netbus-auth-bypass"
-  echo -e $white"    [$okegreen"27"$white]$cyan oracle-enum-users"
-  echo -e $white"    [$okegreen"28"$white]$cyan realvnc-auth-bypass"
-  echo -e $white"    [$okegreen"29"$white]$cyan sip-enum-users"
-  echo -e $white"    [$okegreen"30"$white]$cyan smb-enum-users"
-  echo -e $white"    [$okegreen"31"$white]$cyan smtp-enum-users"
-  echo -e $white"    [$okegreen"32"$white]$cyan snmp-win32-users"
-  echo -e $white"    [$okegreen"33"$white]$cyan x11-access"
-  echo -e " "
+  echo -e "${white}     ID                    DESCRIPTION"
+  echo -e "${white}    ---------------------------------------------------------"
+  echo -e "${white}    [${okegreen}01${white}]$cyan ajp-auth"
+  echo -e "${white}    [${okegreen}02${white}]$cyan creds-summary"
+  echo -e "${white}    [${okegreen}03${white}]$cyan domcon-cmd"
+  echo -e "${white}    [${okegreen}04${white}]$cyan domino-enum-users"
+  echo -e "${white}    [${okegreen}05${white}]$cyan ftp-anon"
+  echo -e "${white}    [${okegreen}06${white}]$cyan http-auth"
+  echo -e "${white}    [${okegreen}07${white}]$cyan http-barracuda-dir-traversal"
+  echo -e "${white}    [${okegreen}08${white}]$cyan http-config-backup"
+  echo -e "${white}    [${okegreen}09${white}]$cyan http-default-accounts"
+  echo -e "${white}    [${okegreen}10${white}]$cyan http-domino-enum-passwords"
+  echo -e "${white}    [${okegreen}11${white}]$cyan http-method-tamper"
+  echo -e "${white}    [${okegreen}12${white}]$cyan http-userdir-enum"
+  echo -e "${white}    [${okegreen}13${white}]$cyan http-vuln-cve2010-0738"
+  echo -e "${white}    [${okegreen}14${white}]$cyan http-wordpress-users"
+  echo -e "${white}    [${okegreen}15${white}]$cyan informix-query"
+  echo -e "${white}    [${okegreen}16${white}]$cyan informix-tables"
+  echo -e "${white}    [${okegreen}17${white}]$cyan krb5-enum-users"
+  echo -e "${white}    [${okegreen}18${white}]$cyan ms-sql-dump-hashes"
+  echo -e "${white}    [${okegreen}19${white}]$cyan ms-sql-empty-password"
+  echo -e "${white}    [${okegreen}20${white}]$cyan ms-sql-hasdbaccess"
+  echo -e "${white}    [${okegreen}21${white}]$cyan mysql-dump-hashes"
+  echo -e "${white}    [${okegreen}22${white}]$cyan mysql-empty-password"
+  echo -e "${white}    [${okegreen}23${white}]$cyan mysql-query"
+  echo -e "${white}    [${okegreen}24${white}]$cyan mysql-users"
+  echo -e "${white}    [${okegreen}25${white}]$cyan ncp-enum-users"
+  echo -e "${white}    [${okegreen}26${white}]$cyan netbus-auth-bypass"
+  echo -e "${white}    [${okegreen}27${white}]$cyan oracle-enum-users"
+  echo -e "${white}    [${okegreen}28${white}]$cyan realvnc-auth-bypass"
+  echo -e "${white}    [${okegreen}29${white}]$cyan sip-enum-users"
+  echo -e "${white}    [${okegreen}30${white}]$cyan smb-enum-users"
+  echo -e "${white}    [${okegreen}31${white}]$cyan smtp-enum-users"
+  echo -e "${white}    [${okegreen}32${white}]$cyan snmp-win32-users"
+  echo -e "${white}    [${okegreen}33${white}]$cyan x11-access"
+  echo -e ""
 
 }
