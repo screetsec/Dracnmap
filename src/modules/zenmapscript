@@ -15,6 +15,7 @@
 
 function _init_cli_zenmapscript() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="_init_cli_zenmapscript"
   local _STATE=0
 
@@ -26,12 +27,14 @@ function _init_cli_zenmapscript() {
 
     __cli_banner="Headshot"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
 
       01|1)
 
+        # shellcheck disable=SC2154
         _init_cmd "-T4 -A -v ${_ipaddr[*]}"
 
         cstate=1
@@ -197,34 +200,61 @@ function menu_zenmapscript() {
   clear
   clear
   echo ""
+  # shellcheck disable=SC2154
   echo -e "${okegreen}    ==============================================================="
+  # shellcheck disable=SC2154
   echo -e "${cyan}"
+  # shellcheck disable=SC2154
   echo "           +--^----------,--------,-----,--------^-, "
+  # shellcheck disable=SC2154
   echo -e "           | ${red} |||||||||   --------      |         O "
+  # shellcheck disable=SC2154
   echo -e "${cyan}           +---------------------------^----------| "
+  # shellcheck disable=SC2154
   echo -e "${cyan}            \_,---------,---------,--------------' "
+  # shellcheck disable=SC2154
   echo -e "              / ${red}XXXXXX${cyan} /'|       /' "
+  # shellcheck disable=SC2154
   echo -e "             / ${red}XXXXXX${cyan} /   \    /' "
+  # shellcheck disable=SC2154
   echo -e "            / ${red}XXXXXX${cyan} / _______/ "
+  # shellcheck disable=SC2154
   echo -e "           / ${red}XXXXXX${cyan} / "
+  # shellcheck disable=SC2154
   echo -e "           / ${red}XXXXXX${cyan} / "
+  # shellcheck disable=SC2154
   echo "           (________(   "
   echo -e "            ------'        ${red} DOUBLE KILL !! GO GO GO !!  "
+  # shellcheck disable=SC2154
   echo ""
+  # shellcheck disable=SC2154
   echo -e "${okegreen}    ================================================================"
+  # shellcheck disable=SC2154
   echo -e "${cyan}         Scanning Target with ${red}'advanced command  (Zenmap Command) "
+  # shellcheck disable=SC2154
   echo -e "${okegreen}    ================================================================"
+  # shellcheck disable=SC2154
   echo ""
 
+  # shellcheck disable=SC2154
   echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
   echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}01${white}]${cyan}  Intense Scan"
-  echo -e "${white}    [${okegreen}02${white}]${cyan}  Intense Scan + UDP "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}02${white}]${cyan}  Intense Scan + UDP"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}03${white}]${cyan}  Intense Scan All TCP Ports"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}04${white}]${cyan}  Quick Scan"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}05${white}]${cyan}  Quick Scan Plus Plus"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}06${white}]${cyan}  Quick Traceroute"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}07${white}]${cyan}  Comprehensive Scan [BEST]"
-  echo -e   " "
+  # shellcheck disable=SC2154
+  echo -e ""
 
 }
