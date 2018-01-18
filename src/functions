@@ -361,6 +361,7 @@ function credits() {
   tput sgr0
 
   echo -en "\n\n  Press key to back main menu..."
+  # shellcheck disable=SC2034
   read -ra _credits_key
 
   menu
@@ -387,6 +388,7 @@ function _set_ipaddr() {
 
   echo -en "$cyan"
   echo -en "What is your IP Target or Host: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _ipaddr
 
   # Enable IP validation (but hostnames not working).
@@ -425,6 +427,7 @@ function _set_port() {
 
   echo -en "$cyan"
   echo -en "What is your Port Target: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _port
 
   return $_STATE
@@ -451,6 +454,7 @@ function _set_user() {
 
   echo -en "$cyan"
   echo -en "What is your cmd user: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _user
 
   return $_STATE
@@ -477,6 +481,7 @@ function _set_pass() {
 
   echo -en "$cyan"
   echo -en "What is your cmd pass: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _pass
 
   return $_STATE
@@ -503,6 +508,7 @@ function _set_interface() {
 
   echo -en "$cyan"
   echo -en "What is your interface: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _iface
 
   return $_STATE
@@ -529,6 +535,7 @@ function _set_hwaddr() {
 
   echo -en "$cyan"
   echo -en "What is your MAC address: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _hwaddr
 
   return $_STATE
@@ -555,6 +562,7 @@ function _set_domain() {
 
   echo -en "$cyan"
   echo -en "What is your domain name: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _domain
 
   return $_STATE
@@ -584,11 +592,13 @@ function _set_db_credentials() {
   if [[ "$_arg" == "dbuser" ]] ; then
 
   _set_user
+  # shellcheck disable=SC2034
   _dbuser="$_user"
 
   elif [[ "$_arg" == "dbpass" ]] ; then
 
   _set_pass
+  # shellcheck disable=SC2034
   _dbpass="$_pass"
 
   fi
@@ -619,6 +629,7 @@ function _set_report() {
 
   echo -en "$cyan"
   echo -en "Type [standard,xml,grep]: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _report
 
   return $_STATE
@@ -645,6 +656,7 @@ function _set_tor() {
 
   echo -en "$cyan"
   echo -en "TOR [true,false]: " ; tput sgr0
+  # shellcheck disable=SC2034
   read -ra _tor
 
   return $_STATE
@@ -881,6 +893,7 @@ function set_session() {
 
 function _init_cmd() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="_init_cmd"
   local _STATE=0
 
