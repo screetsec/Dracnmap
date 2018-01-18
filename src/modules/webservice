@@ -15,6 +15,7 @@
 
 function _init_cli_webservice() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="_init_cli_webservice"
   local _STATE=0
 
@@ -26,12 +27,14 @@ function _init_cli_webservice() {
 
     __cli_banner="webservice"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
 
       01|1)
 
+        # shellcheck disable=SC2154
         _init_cmd "--script firewall-bypass --script-args firewall-bypass.helper='ftp',firewall-bypass.targetport=22 ${_ipaddr[*]}"
 
         cstate=1
@@ -219,30 +222,47 @@ function menu_webservice() {
 
   clear
 
+  # shellcheck disable=SC2154
   echo -e "${cyan}"
   echo ""
+  # shellcheck disable=SC2154
   echo -e "${red}   __      __      ___.       _________                  .__     ";
   echo "  /  \    /  \ ____\_ |__    /   _____/ ______________  _|__| ____  ____  ";
   echo "  \   \/\/   // __ \| __ \   \_____  \_/ __ \_  __ \  \/ /  |/ ___\/ __ \ ";
   echo "   \        /\  ___/| \_\ \  /        \  ___/|  | \/\   /|  \  \__\  ___/ ";
   echo "    \__/\  /  \___  >___  / /_______  /\___  >__|    \_/ |__|\___  >___  >";
+  # shellcheck disable=SC2154
   echo -e "${okegreen}"
   echo "  ------------------------------------------------------------------------"
   echo ""
 
+  # shellcheck disable=SC2154
   echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
   echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}01${white}]${cyan}  Detecting Web Application Firewall (WAF)"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}02${white}]${cyan}  Detecting Possible XST Vulnerabiliteis"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}03${white}]${cyan}  Detectin Open Relays"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}04${white}]${cyan}  Detecting Backdoor SMTP Servers"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}05${white}]${cyan}  Detecting Cross Site Scripting Vulnerabilities"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}06${white}]${cyan}  Enumarting Users in an SMTP Servers"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}07${white}]${cyan}  Detecting Web Servers Vulnerable to Slowloris DDOS"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}08${white}]${cyan}  Finding SQL Injection Vulnerabilities"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}09${white}]${cyan}  Check IP Geolocation (NSE)"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}10${white}]${cyan}  Gathering Information from Whois (NSE)"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}11${white}]${cyan}  Collecting Valid Email Address"
+  # shellcheck disable=SC2154
   echo -e " "
 
 }
