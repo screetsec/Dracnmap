@@ -15,6 +15,7 @@
 
 function _init_cli_pingbebeb() {
 
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="_init_cli_pingbebeb"
   local _STATE=0
 
@@ -26,12 +27,14 @@ function _init_cli_pingbebeb() {
 
     __cli_banner="PING!"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
 
       01|1)
 
+        # shellcheck disable=SC2154
         _init_cmd "--script broadcast-ping --script-args broadcast-ping.num_probes=5 ${_ipaddr[*]}"
 
         cstate=1
