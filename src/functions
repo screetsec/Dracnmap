@@ -59,6 +59,7 @@ function _init_cli() {
 
     __cli_banner="dracnmap"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
@@ -243,6 +244,7 @@ function _init_cli() {
 function menu() {
 
   clear
+  # shellcheck disable=SC2154
   echo -e $red ""
   echo "             80G08        "
   echo "                8G#G@8  "
@@ -260,6 +262,7 @@ function menu() {
   echo "                  G##088          80G##G080   "
   echo "                    88000000008880#      000    "
   echo "                          9               0 "
+  # shellcheck disable=SC2154
   echo -e $okegreen"       .___                     _______                         ";
   echo "     __| _/___________    ____  \      \   _____ _____  ______  ";
   echo "    / __ |\_  __ \__  \ _/ ___\ /   |   \ /     \\__  \ \____  \ ";
@@ -267,27 +270,47 @@ function menu() {
   echo "   \____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/ ";
   echo "        \/            \/     \/        \/      \/     \/|__|    ";
   echo ""
+  # shellcheck disable=SC2154
   echo -e $cyan"    Script by           $white":" $red Edo Maland (Screetsec)"
+  # shellcheck disable=SC2154
   echo -e $cyan"    Version             $white":" $red $Version"
+  # shellcheck disable=SC2154
   echo -e $cyan"    Codename            $white":" $red $Codename"
+  # shellcheck disable=SC2154
   echo -e $cyan"    Follow me on Github $white":" $red @Screetsec"
+  # shellcheck disable=SC2154
   echo -e $cyan"    Dracos Linux        $white":" $red dracos-linux.org"
+  # shellcheck disable=SC2154
   echo -e $cyan"    Contributors        $white":" $red trimstray (contact@nslab.at)"
+  # shellcheck disable=SC2154
   echo -e $cyan ""
+  # shellcheck disable=SC2154
   echo -e $okegreen"    =========================================================    ";
+  # shellcheck disable=SC2154
   echo -e $white " "
-
+  # shellcheck disable=SC2154
   echo -e $white"     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
   echo -e $white"    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"01"$white]$cyan  Regular scan"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"02"$white]$cyan  OS detection and Trace"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"03"$white]$cyan  Find out if a host is protected firewall"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"04"$white]$cyan  Evading firewalls"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"05"$white]$cyan  Ping Ping!!"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"06"$white]$cyan  Web Applications"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"07"$white]$cyan  Nmap Script Engine (NSE)"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"08"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
+  # shellcheck disable=SC2154
   echo -e $white"    [$okegreen"09"$white]$cyan  Credits"
+  # shellcheck disable=SC2154
   echo -e " "
 
 }
@@ -319,8 +342,10 @@ function credits() {
   echo
   echo -e $okegreen "\t* Offensive Security for the awesome OS"
   echo
+  # shellcheck disable=SC2154
   echo -e $green "\t* http://www.offensive-security.com/"
   echo
+  # shellcheck disable=SC2154
   echo -e $yellow "\t* http://www.kali.org/"
   echo
   echo -e $cyan "\t* http://www.kitploit.com/"
@@ -877,6 +902,7 @@ function _init_cmd() {
       standard)
 
         _output_opt="-oN"
+        # shellcheck disable=SC2154
         _output_path="${_output_directory}/scan.$(date +%s).nmap"
         _output_targ=" ${_output_opt} ${_output_path}" ;;
 
