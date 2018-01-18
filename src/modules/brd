@@ -26,12 +26,14 @@ function _init_cli_brd() {
 
     __cli_banner="nse-broadcast"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
 
       01|1)
 
+        # shellcheck disable=SC2154
         _init_cmd "-e $_iface --script broadcast-ataoe-discover"
 
         cstate=1
@@ -88,6 +90,7 @@ function _init_cli_brd() {
 
       09|9)
 
+        # shellcheck disable=SC2154
         _init_cmd "-e $_iface --script=broadcast-eigrp-discovery ${_ipaddr[*]}"
 
         cstate=1
