@@ -27,12 +27,14 @@ function _init_cli_fuzzer() {
 
     __cli_banner="nse-fuzzer"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
 
       01|1)
 
+        # shellcheck disable=SC2154
         _init_cmd "-sU --script dns-fuzz --script-args timelimit=2h ${_ipaddr[*]}"
 
         cstate=1
@@ -170,11 +172,17 @@ function menu_fuzzer() {
   echo
   echo
 
+  # shellcheck disable=SC2154
   echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
   echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}01${white}]${cyan} File dns-fuzz"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}02${white}]${cyan} File http-form-fuzzer"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}03${white}]${cyan} File http-phpself-xss"
+  # shellcheck disable=SC2154
   echo -e " "
 
 }
