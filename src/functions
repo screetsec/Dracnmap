@@ -245,7 +245,7 @@ function menu() {
 
   clear
   # shellcheck disable=SC2154
-  echo -e $red ""
+  echo -e "$red"
   echo "             80G08        "
   echo "                8G#G@8  "
   echo "                  8##0  "
@@ -263,53 +263,53 @@ function menu() {
   echo "                    88000000008880#      000    "
   echo "                          9               0 "
   # shellcheck disable=SC2154
-  echo -e $okegreen"       .___                     _______                         ";
-  echo "     __| _/___________    ____  \      \   _____ _____  ______  ";
+  echo -e "$okegreen       .___                     _______              ";
+  echo "     __| _/___________    ____  \      \   _____ _____  ______   ";
   echo "    / __ |\_  __ \__  \ _/ ___\ /   |   \ /     \\__  \ \____  \ ";
   echo "   / /_/ | |  | \// __ \\  \___/     |    \  Y Y  \/ __ \|  |_> >";
-  echo "   \____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/ ";
-  echo "        \/            \/     \/        \/      \/     \/|__|    ";
+  echo "   \____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/  ";
+  echo "        \/            \/     \/        \/      \/     \/|__|     ";
   echo ""
   # shellcheck disable=SC2154
-  echo -e $cyan"    Script by           $white":" $red Edo Maland (Screetsec)"
+  echo -e "$cyan    Script by           $white: $red Edo Maland (Screetsec)"
   # shellcheck disable=SC2154
-  echo -e $cyan"    Version             $white":" $red $Version"
+  echo -e "$cyan    Version             $white: $red $Version"
   # shellcheck disable=SC2154
-  echo -e $cyan"    Codename            $white":" $red $Codename"
+  echo -e "$cyan    Codename            $white: $red $Codename"
   # shellcheck disable=SC2154
-  echo -e $cyan"    Follow me on Github $white":" $red @Screetsec"
+  echo -e "$cyan    Follow me on Github $white: $red @Screetsec"
   # shellcheck disable=SC2154
-  echo -e $cyan"    Dracos Linux        $white":" $red dracos-linux.org"
+  echo -e "$cyan    Dracos Linux        $white: $red dracos-linux.org"
   # shellcheck disable=SC2154
-  echo -e $cyan"    Contributors        $white":" $red trimstray (contact@nslab.at)"
+  echo -e "$cyan    Contributors        $white: $red trimstray (contact@nslab.at)"
   # shellcheck disable=SC2154
-  echo -e $cyan ""
+  echo -e "$cyan"
   # shellcheck disable=SC2154
-  echo -e $okegreen"    =========================================================    ";
+  echo -e "$okegreen    =========================================================";
   # shellcheck disable=SC2154
-  echo -e $white " "
+  echo -e "$white"
   # shellcheck disable=SC2154
-  echo -e $white"     ID                    DESCRIPTION"
+  echo -e "$white     ID                    DESCRIPTION"
   # shellcheck disable=SC2154
-  echo -e $white"    ---------------------------------------------------------"
+  echo -e "$white    ---------------------------------------------------------"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"01"$white]$cyan  Regular scan"
+  echo -e "$white    [$okegreen"01"$white]$cyan  Regular scan"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"02"$white]$cyan  OS detection and Trace"
+  echo -e "$white    [$okegreen"02"$white]$cyan  OS detection and Trace"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"03"$white]$cyan  Find out if a host is protected firewall"
+  echo -e "$white    [$okegreen"03"$white]$cyan  Find out if a host is protected firewall"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"04"$white]$cyan  Evading firewalls"
+  echo -e "$white    [$okegreen"04"$white]$cyan  Evading firewalls"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"05"$white]$cyan  Ping Ping!!"
+  echo -e "$white    [$okegreen"05"$white]$cyan  Ping Ping!!"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"06"$white]$cyan  Web Applications"
+  echo -e "$white    [$okegreen"06"$white]$cyan  Web Applications"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"07"$white]$cyan  Nmap Script Engine (NSE)"
+  echo -e "$white    [$okegreen"07"$white]$cyan  Nmap Script Engine (NSE)"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"08"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
+  echo -e "$white    [$okegreen"08"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
   # shellcheck disable=SC2154
-  echo -e $white"    [$okegreen"09"$white]$cyan  Credits"
+  echo -e "$white    [$okegreen"09"$white]$cyan  Credits"
   # shellcheck disable=SC2154
   echo -e " "
 
@@ -336,27 +336,27 @@ function credits() {
                                  Credits
   \033[31m#########################################################################\033[m"
   echo
-  echo -e $white " Special thanks to:"
+  echo -e "$white  Special thanks to:"
   echo
-  echo -e $red "\t* Dracos Linux ( www.dracos-linux.org )"
+  echo -e "$red \t* Dracos Linux ( www.dracos-linux.org )"
   echo
-  echo -e $okegreen "\t* Offensive Security for the awesome OS"
-  echo
-  # shellcheck disable=SC2154
-  echo -e $green "\t* http://www.offensive-security.com/"
+  echo -e "$okegreen \t* Offensive Security for the awesome OS"
   echo
   # shellcheck disable=SC2154
-  echo -e $yellow "\t* http://www.kali.org/"
+  echo -e "$green \t* http://www.offensive-security.com/"
   echo
-  echo -e $cyan "\t* http://www.kitploit.com/"
+  # shellcheck disable=SC2154
+  echo -e "$yellow \t* http://www.kali.org/"
   echo
-  echo -e $white "\t* http://www.linuxsec.org/"
+  echo -e "$cyan \t* http://www.kitploit.com/"
   echo
-  echo -e $okegreen "\t* My Friend for helpme ( Boy Suganda )"
+  echo -e "$white \t* http://www.linuxsec.org/"
   echo
-  echo -e $red "\t* Big Thanks to : http://www.github.com/"
+  echo -e "$okegreen \t* My Friend for helpme ( Boy Suganda )"
   echo
-  echo -e $white "\t* Contributors: v3.0.0 (testing release) - trimstray (contact@nslab.at)"
+  echo -e "$red \t* Big Thanks to : http://www.github.com/"
+  echo
+  echo -e "$white \t* Contributors: v3.0.0 (testing release) - trimstray (contact@nslab.at)"
 
   tput sgr0
 
@@ -385,7 +385,7 @@ function _set_ipaddr() {
   local _FUNCTION_ID="_set_ipaddr"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "What is your IP Target or Host: " ; tput sgr0
   read -ra _ipaddr
 
@@ -423,7 +423,7 @@ function _set_port() {
   local _FUNCTION_ID="_set_port"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "What is your Port Target: " ; tput sgr0
   read -ra _port
 
@@ -449,7 +449,7 @@ function _set_user() {
   local _FUNCTION_ID="_set_user"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "What is your cmd user: " ; tput sgr0
   read -ra _user
 
@@ -475,7 +475,7 @@ function _set_pass() {
   local _FUNCTION_ID="_set_pass"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "What is your cmd pass: " ; tput sgr0
   read -ra _pass
 
@@ -501,7 +501,7 @@ function _set_interface() {
   local _FUNCTION_ID="_set_interface"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "What is your interface: " ; tput sgr0
   read -ra _iface
 
@@ -527,7 +527,7 @@ function _set_hwaddr() {
   local _FUNCTION_ID="_set_hwaddr"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "What is your MAC address: " ; tput sgr0
   read -ra _hwaddr
 
@@ -553,7 +553,7 @@ function _set_domain() {
   local _FUNCTION_ID="_set_domain"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "What is your domain name: " ; tput sgr0
   read -ra _domain
 
@@ -617,7 +617,7 @@ function _set_report() {
   local _FUNCTION_ID="_set_report"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "Type [standard,xml,grep]: " ; tput sgr0
   read -ra _report
 
@@ -643,7 +643,7 @@ function _set_tor() {
   local _FUNCTION_ID="_set_tor"
   local _STATE=0
 
-  echo -en $cyan""
+  echo -en "$cyan"
   echo -en "TOR [true,false]: " ; tput sgr0
   read -ra _tor
 
@@ -735,7 +735,7 @@ function show_session() {
 
     if [[ "$_key_id" != "ipaddr" ]] ; then
 
-      _i="" ; eval _i='$'$_key_var
+      _i="" ; eval _i='$'"$_key_var"
 
     else
 
