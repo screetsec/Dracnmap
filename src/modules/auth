@@ -15,7 +15,7 @@
 
 function _init_cli_auth() {
 
-  # shellcheck disable=SC2154
+  # shellcheck disable=SC2034
   local _FUNCTION_ID="_init_cli_auth"
   local _STATE=0
 
