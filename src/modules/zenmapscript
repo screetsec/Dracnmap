@@ -32,49 +32,49 @@ function _init_cli_zenmapscript() {
 
       01|1)
 
-        _init_cmd "-T4 -A -v ${_ipaddr[@]}"
+        _init_cmd "-T4 -A -v ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       02|2)
 
-        _init_cmd "-sS -sU -T4 -A -v ${_ipaddr[@]}"
+        _init_cmd "-sS -sU -T4 -A -v ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       03|3)
 
-        _init_cmd "-p 1-65535 -T4 -A -v ${_ipaddr[@]}"
+        _init_cmd "-p 1-65535 -T4 -A -v ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       04|4)
 
-        _init_cmd "-T4 -F ${_ipaddr[@]}"
+        _init_cmd "-T4 -F ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       05|5)
 
-        _init_cmd "-sV -T4 -O -F --version-light ${_ipaddr[@]}"
+        _init_cmd "-sV -T4 -O -F --version-light ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       06|6)
 
-        _init_cmd "-sN --traceroute ${_ipaddr[@]}"
+        _init_cmd "-sN --traceroute ${_ipaddr[*]}"
 
         cstate=1
         ;;
 
       07|7)
 
-        _init_cmd "-sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script \"default or (discovery and safe)\" ${_ipaddr[@]}"
+        _init_cmd "-sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script \"default or (discovery and safe)\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
