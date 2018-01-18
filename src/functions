@@ -947,6 +947,9 @@ function _init_cmd() {
   printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "${_full_command[*]}"
 
   # Execute command and exit.
+  # For shellcheck code:
+  #   - after closing the array with double quotes, some commands are not executed properly
+  # shellcheck disable=SC2068
   ${_full_command[@]} ; _state="$?"
 
   if [[ "$_state" -eq 0 ]] ; then
