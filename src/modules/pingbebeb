@@ -187,7 +187,7 @@ function _init_cli_pingbebeb() {
 
 function menu_pingbebeb() {
 
-  echo -e $okegreen " "
+  echo -e "${okegreen}"
   clear
   echo ""
   echo ""
@@ -196,21 +196,21 @@ function menu_pingbebeb() {
   echo "        / /|\     "
   echo "       _L_         "
   echo "     ,     .         "
-  echo -e $okegreen" (\ /  O O  \ /)  $red ______ _______ _______ _______      __ __    "
-  echo -e $okegreen"  \|    _    |/   $red |   __ \_     _|    |  |     __|    |  |  |  "
-  echo -e $okegreen"    \  (_)  /     $red |    __/_|   |_|       |    |  |    |__|__|  "
-  echo -e $okegreen"    _/.___,\_     $red |___|  |_______|__|____|_______|    |__|__|  "
-  echo -e $okegreen"   (_/ alf \_)         "
-  echo -e $white " "
+  echo -e "${okegreen} (\ /  O O  \ /)  ${red} ______ _______ _______ _______      __ __    "
+  echo -e "${okegreen}  \|    _    |/   ${red} |   __ \_     _|    |  |     __|    |  |  |  "
+  echo -e "${okegreen}    \  (_)  /     ${red} |    __/_|   |_|       |    |  |    |__|__|  "
+  echo -e "${okegreen}    _/.___,\_     ${red} |___|  |_______|__|____|_______|    |__|__|  "
+  echo -e "${okegreen}   (_/ alf \_)         "
+  echo -e "${white}"
 
-  echo -e $white"     ID                    DESCRIPTION"
-  echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$cyan  Broadcast Ping"
-  echo -e $white"    [$okegreen"02"$white]$cyan  TCP/SYN Ping"
-  echo -e $white"    [$okegreen"03"$white]$cyan  TCP/ACK Ping"
-  echo -e $white"    [$okegreen"04"$white]$cyan  UDP Ping"
-  echo -e $white"    [$okegreen"05"$white]$cyan  ICMP Ping"
-  echo -e $white"    [$okegreen"06"$white]$cyan  IP Protocol Ping"
+  echo -e "${white}     ID                    DESCRIPTION"
+  echo -e "${white}    ---------------------------------------------------------"
+  echo -e "${white}    [${okegreen}01${white}]${cyan}  Broadcast Ping"
+  echo -e "${white}    [${okegreen}02${white}]${cyan}  TCP/SYN Ping"
+  echo -e "${white}    [${okegreen}03${white}]${cyan}  TCP/ACK Ping"
+  echo -e "${white}    [${okegreen}04${white}]${cyan}  UDP Ping"
+  echo -e "${white}    [${okegreen}05${white}]${cyan}  ICMP Ping"
+  echo -e "${white}    [${okegreen}06${white}]${cyan}  IP Protocol Ping"
   echo -e " "
 
 }
