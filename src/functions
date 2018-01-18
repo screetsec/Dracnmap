@@ -293,25 +293,25 @@ function menu() {
   # shellcheck disable=SC2154
   echo -e "$white    ---------------------------------------------------------"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"01"$white]$cyan  Regular scan"
+  echo -e "$white    [${okegreen}01${white}]$cyan  Regular scan"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"02"$white]$cyan  OS detection and Trace"
+  echo -e "$white    [${okegreen}02${white}]$cyan  OS detection and Trace"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"03"$white]$cyan  Find out if a host is protected firewall"
+  echo -e "$white    [${okegreen}03${white}]$cyan  Find out if a host is protected firewall"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"04"$white]$cyan  Evading firewalls"
+  echo -e "$white    [${okegreen}04${white}]$cyan  Evading firewalls"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"05"$white]$cyan  Ping Ping!!"
+  echo -e "$white    [${okegreen}05${white}]$cyan  Ping Ping!!"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"06"$white]$cyan  Web Applications"
+  echo -e "$white    [${okegreen}06${white}]$cyan  Web Applications"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"07"$white]$cyan  Nmap Script Engine (NSE)"
+  echo -e "$white    [${okegreen}07${white}]$cyan  Nmap Script Engine (NSE)"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"08"$white]$cyan  Advanced Nmap scannings (Zenmap commands)"
+  echo -e "$white    [${okegreen}08${white}]$cyan  Advanced Nmap scannings (Zenmap commands)"
   # shellcheck disable=SC2154
-  echo -e "$white    [$okegreen"09"$white]$cyan  Credits"
+  echo -e "$white    [${okegreen}09${white}]$cyan  Credits"
   # shellcheck disable=SC2154
-  echo -e " "
+  echo -e ""
 
 }
 
