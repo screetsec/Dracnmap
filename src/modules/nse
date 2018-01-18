@@ -203,7 +203,7 @@ function _init_cli_nse() {
 function menu_nse() {
 
   clear
-  echo -e $okegreen " "
+  echo -e "${okegreen}"
   echo "        )   *           (      (         (   (   (            ";
   echo "     ( /( (  \     (     )\ )   )\ )  (   )\ ))\ ))\ )  *   ) ";
   echo "     )\()))\))(   )\   (()/(  (()/(  )\ (()/(()/(()/(\  )  /( ";
@@ -213,18 +213,18 @@ function menu_nse() {
   echo "    | .\ | |\/| |/ _ \ |  _/  \__ \| (__|   /| ||  _/  | |    ";
   echo "    |_|\_|_|  |_/_/ \_\|_|    |___/ \___|_|_\___|_|    |_|    ";
   echo "                                                             ";
-  echo -e $red"    Nmap Script Engine - Advanced Scanning with Nmap Script"
+  echo -e "${red}    Nmap Script Engine - Advanced Scanning with Nmap Script"
 
-  echo -e $white " "
-  echo -e $white"     ID                    DESCRIPTION"
-  echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$cyan  auth-category"
-  echo -e $white"    [$okegreen"02"$white]$cyan  broadcast-category"
-  echo -e $white"    [$okegreen"03"$white]$cyan  brute-category"
-  echo -e $white"    [$okegreen"04"$white]$cyan  exploit-category"
-  echo -e $white"    [$okegreen"05"$white]$cyan  fuzzer-category"
-  echo -e $white"    [$okegreen"06"$white]$cyan  malware-category"
-  echo -e $white"    [$okegreen"07"$white]$cyan  vuln-category"
+  echo -e "${white}"
+  echo -e "${white}     ID                    DESCRIPTION"
+  echo -e "${white}    ---------------------------------------------------------"
+  echo -e "${white}    [${okegreen}01${white}]${cyan}  auth-category"
+  echo -e "${white}    [${okegreen}02${white}]${cyan}  broadcast-category"
+  echo -e "${white}    [${okegreen}03${white}]${cyan}  brute-category"
+  echo -e "${white}    [${okegreen}04${white}]${cyan}  exploit-category"
+  echo -e "${white}    [${okegreen}05${white}]${cyan}  fuzzer-category"
+  echo -e "${white}    [${okegreen}06${white}]${cyan}  malware-category"
+  echo -e "${white}    [${okegreen}07${white}]${cyan}  vuln-category"
   echo
 
 }
