@@ -164,19 +164,19 @@ function _init_cli_brd() {
 
         # shellcheck disable=SC2154
         echo -ne "$okegreen Default value for TTL is 64 & the length of the payload is 0: " ; tput sgr0
-        read _ttl
+        read -ra _ttl
 
         # shellcheck disable=SC2154
         echo -ne "$okegreen The payload is consisted of random bytes: " ; tput sgr0
-        read _payload
+        read -ra _payload
 
         # shellcheck disable=SC2154
         echo -ne "$okegreen Timespec specifying how long to wait for response (default 3s): " ; tput sgr0
-        read _ti
+        read -ra _ti
 
         # shellcheck disable=SC2154
         echo -ne "$okegreen Number specifying how many ICMP probes should be sent (default 1): " ; tput sgr0
-        read _np
+        read -ra _np
 
         _init_cmd "-e $_iface [--ttl \"$_ttl\"] [--data-length \"$_payload\"] --script broadcast-ping [--script-args [broadcast-ping.timeout=\"$_ti\"],[num-probes=\"$_np\"]]]"
 
@@ -293,7 +293,7 @@ function _init_cli_brd() {
 
         # shellcheck disable=SC2086
         echo -ne $okegreen "Hostname to resolve: " ; tput sgr0
-        read _hostname
+        read -ra _hostname
 
         _init_cmd "-e $_iface --script llmnr-resolve --script-args llmnr-resolve.hostname=\"$_hostname\""
 
@@ -318,7 +318,7 @@ function _init_cli_brd() {
 
         # shellcheck disable=SC2154
         echo -ne "$okegreen Source address from which to traceroute: " ; tput sgr0
-        read _rt
+        read -ra _rt
 
         _init_cmd "-e $_iface --script mtrace --script-args mtrace.fromip=\"$_rt\""
 
