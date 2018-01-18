@@ -212,7 +212,7 @@ function _init_cli_brutense() {
 
       26)
 
-        _init_cmd "-p 389 --script ldap-brute --script-args ldap.base='"cn=users,dc=cqure,dc=net"' ${_ipaddr[*]}"
+        _init_cmd "-p 389 --script ldap-brute --script-args ldap.base=\"cn=users,dc=cqure,dc=net\" ${_ipaddr[*]}"
 
         cstate=1
         ;;
@@ -490,7 +490,7 @@ function _init_cli_brutense() {
         echo -ne "$okegreen Located Wordlist ?: " ; tput sgr0
         read -ra _wordlist
 
-        _init_cmd "-sU --script snmp-brute [--script-args snmp-brute.communitiesdb="$_wordlist"] ${_ipaddr[*]}"
+        _init_cmd "-sU --script snmp-brute [--script-args snmp-brute.communitiesdb=\"$_wordlist\"] ${_ipaddr[*]}"
 
         cstate=1
         ;;
