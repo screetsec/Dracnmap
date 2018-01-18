@@ -219,30 +219,30 @@ function menu_webservice() {
 
   clear
 
-  echo -e $cyan ""
+  echo -e "${cyan}"
   echo ""
-  echo -e $red "   __      __      ___.       _________                  .__      ";
+  echo -e "${red}   __      __      ___.       _________                  .__     ";
   echo "  /  \    /  \ ____\_ |__    /   _____/ ______________  _|__| ____  ____  ";
   echo "  \   \/\/   // __ \| __ \   \_____  \_/ __ \_  __ \  \/ /  |/ ___\/ __ \ ";
   echo "   \        /\  ___/| \_\ \  /        \  ___/|  | \/\   /|  \  \__\  ___/ ";
   echo "    \__/\  /  \___  >___  / /_______  /\___  >__|    \_/ |__|\___  >___  >";
-  echo -e $okegreen
+  echo -e "${okegreen}"
   echo "  ------------------------------------------------------------------------"
   echo ""
 
-  echo -e $white"     ID                    DESCRIPTION"
-  echo -e $white"    ---------------------------------------------------------"
-  echo -e $white"    [$okegreen"01"$white]$cyan  Detecting Web Application Firewall (WAF)"
-  echo -e $white"    [$okegreen"02"$white]$cyan  Detecting Possible XST Vulnerabiliteis"
-  echo -e $white"    [$okegreen"03"$white]$cyan  Detectin Open Relays"
-  echo -e $white"    [$okegreen"04"$white]$cyan  Detecting Backdoor SMTP Servers"
-  echo -e $white"    [$okegreen"05"$white]$cyan  Detecting Cross Site Scripting Vulnerabilities"
-  echo -e $white"    [$okegreen"06"$white]$cyan  Enumarting Users in an SMTP Servers"
-  echo -e $white"    [$okegreen"07"$white]$cyan  Detecting Web Servers Vulnerable to Slowloris DDOS"
-  echo -e $white"    [$okegreen"08"$white]$cyan  Finding SQL Injection Vulnerabilities"
-  echo -e $white"    [$okegreen"09"$white]$cyan  Check IP Geolocation (NSE)"
-  echo -e $white"    [$okegreen"10"$white]$cyan  Gathering Information from Whois (NSE)"
-  echo -e $white"    [$okegreen"11"$white]$cyan  Collecting Valid Email Address"
+  echo -e "${white}     ID                    DESCRIPTION"
+  echo -e "${white}    ---------------------------------------------------------"
+  echo -e "${white}    [${okegreen}01${white}]${cyan}  Detecting Web Application Firewall (WAF)"
+  echo -e "${white}    [${okegreen}02${white}]${cyan}  Detecting Possible XST Vulnerabiliteis"
+  echo -e "${white}    [${okegreen}03${white}]${cyan}  Detectin Open Relays"
+  echo -e "${white}    [${okegreen}04${white}]${cyan}  Detecting Backdoor SMTP Servers"
+  echo -e "${white}    [${okegreen}05${white}]${cyan}  Detecting Cross Site Scripting Vulnerabilities"
+  echo -e "${white}    [${okegreen}06${white}]${cyan}  Enumarting Users in an SMTP Servers"
+  echo -e "${white}    [${okegreen}07${white}]${cyan}  Detecting Web Servers Vulnerable to Slowloris DDOS"
+  echo -e "${white}    [${okegreen}08${white}]${cyan}  Finding SQL Injection Vulnerabilities"
+  echo -e "${white}    [${okegreen}09${white}]${cyan}  Check IP Geolocation (NSE)"
+  echo -e "${white}    [${okegreen}10${white}]${cyan}  Gathering Information from Whois (NSE)"
+  echo -e "${white}    [${okegreen}11${white}]${cyan}  Collecting Valid Email Address"
   echo -e " "
 
 }
