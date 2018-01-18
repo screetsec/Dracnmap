@@ -27,6 +27,7 @@ function _init_cli_nse() {
 
     __cli_banner="nse"
 
+    # shellcheck disable=SC2154
     printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
 
     case ${input_array[0]} in
@@ -203,6 +204,7 @@ function _init_cli_nse() {
 function menu_nse() {
 
   clear
+  # shellcheck disable=SC2154
   echo -e "${okegreen}"
   echo "        )   *           (      (         (   (   (            ";
   echo "     ( /( (  \     (     )\ )   )\ )  (   )\ ))\ ))\ )  *   ) ";
@@ -212,19 +214,31 @@ function menu_nse() {
   echo "    | \| |  \/  (_)_\(_) _ \  / __((/ __| _ \_ _| _ \|_   _|  ";
   echo "    | .\ | |\/| |/ _ \ |  _/  \__ \| (__|   /| ||  _/  | |    ";
   echo "    |_|\_|_|  |_/_/ \_\|_|    |___/ \___|_|_\___|_|    |_|    ";
-  echo "                                                             ";
+  echo "                                                              ";
+  # shellcheck disable=SC2154
   echo -e "${red}    Nmap Script Engine - Advanced Scanning with Nmap Script"
 
+  # shellcheck disable=SC2154
   echo -e "${white}"
+  # shellcheck disable=SC2154
   echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
   echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}01${white}]${cyan}  auth-category"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}02${white}]${cyan}  broadcast-category"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}03${white}]${cyan}  brute-category"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}04${white}]${cyan}  exploit-category"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}05${white}]${cyan}  fuzzer-category"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}06${white}]${cyan}  malware-category"
+  # shellcheck disable=SC2154
   echo -e "${white}    [${okegreen}07${white}]${cyan}  vuln-category"
+  # shellcheck disable=SC2154
   echo
 
 }
