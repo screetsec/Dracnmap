@@ -70,7 +70,7 @@ function _init_cli_vuln() {
 
       06|6)
 
-        _init_cmd "--script firewall-bypass --script-args firewall-bypass.helper=\"ftp\", firewall-bypass.targetport=22 ${_ipaddr[*]}"
+        _init_cmd "--script firewall-bypass --script-args firewall-bypass.helper=\"ftp\",firewall-bypass.targetport=22 ${_ipaddr[*]}"
 
         cstate=1
         ;;
