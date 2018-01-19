@@ -350,7 +350,7 @@ function about() {
   echo -en "\n\n"
   echo -e "$white     Special thanks to:"
   echo
-  echo -e "$red \t* Dracos Linux ( www.dracos-linux.org )"
+  echo -e "$red \t* Dracos Linux (www.dracos-linux.org)"
   echo
   echo -e "$okegreen \t* Offensive Security for the awesome OS"
   echo
@@ -364,11 +364,12 @@ function about() {
   echo
   echo -e "$white \t* http://www.linuxsec.org/"
   echo
-  echo -e "$okegreen \t* My Friend for helpme ( Boy Suganda )"
-  echo
   echo -e "$red \t* Big Thanks to : http://www.github.com/"
   echo
   echo -en "$white \t* Contributors:\n\n"
+  echo -e "$white \t    v2.* (stable release)"
+  echo -e "$white \t    - @nullrndtx"
+  echo -e "$white \t    - Boy Suganda Sinaga [dragz17]"
   echo -e "$white \t    v3.0.0 (testing release)"
   echo -e "$white \t    - trimstray (contact@nslab.at)"
 
