@@ -13,6 +13,10 @@
 #============================================================================================================
 
 
+################################################################################
+############################# Prepare environment ##############################
+################################################################################
+
 if [[ $EUID -ne 0 ]] ; then
 
   echo -en "ERROR! Run this script with root user.\n"
@@ -63,6 +67,7 @@ __cli_banner=""
 readonly _init_name="$(basename "$0")"
 readonly _init_directory="$(dirname "$(readlink -f "$0")")"
 
+# Set of directories.
 readonly _src_directory="${_init_directory}/src"
 readonly _modules_directory="${_src_directory}/modules"
 readonly _output_directory="${_init_directory}/output"
@@ -70,11 +75,12 @@ readonly _output_directory="${_init_directory}/output"
 # Store functions (not modules).
 readonly _functions_file="${_src_directory}/functions"
 
+# External configuration file.
 readonly _config_file="${_init_directory}/config"
 
-readonly _modules_stack=("brutense" "auth" "brd" \
-                         "exploit" "fuzzer" "malware" "vuln" "nse" \
-                         "zenmapscript" "webservice" "pingbebeb")
+# Set of modules. The configuration of each of them is in src/modules directory.
+readonly _modules_stack=("brutense" "auth" "brd" "exploit" "fuzzer" "malware" \
+                         "vuln" "nse" "zenmapscript" "webservice" "pingbebeb")
 
 # ``````````````````````````````````````````````````````````````````````````````
 # Function name: _exit_()
@@ -94,12 +100,15 @@ function _exit_() {
   local _FUNCTION_ID="_exit_"
   local _STATE=0
 
-  clear
-
-  echo -en "$yellow[*] Thank You For Using Dracnmap =)\n"
-  echo -en "$yellow[*] Check Dracos Linux LFS, Penetration OS From Indonesia =P\n"
-
   _STATUS="$1"
+
+  if [[ "$_STATUS" -eq 1 ]] ; then
+
+    echo -en "$yellow[*] Thank You For Using Dracnmap =)\n"
+    echo -en "$yellow[*] Check Dracos Linux LFS, Penetration OS From Indonesia =P\n"
+
+  fi
+
   exit "$_STATUS"
 
 }
@@ -127,7 +136,7 @@ function _get_trap_SIG() {
 
   if [[ "$_signal" == "EXIT" ]] ; then
 
-    _STATE=0
+    _STATE="${_STATUS:-}"
 
   elif [[ "$_signal" == "SIGS" ]] ; then
 
@@ -135,17 +144,21 @@ function _get_trap_SIG() {
 
     if [[ ${#_nmap_processes[@]} -ne 0 ]] ; then
 
-      _STATE=0
+      _STATE="${_STATUS:-}"
 
     else
 
-      _STATE=130
+      # In this block the kill command was originally used,
+      # however, it suspended the operation of dracnmap.
+      # The lack of this command terminates the process
+      # and does not cause the above problems.
+      _STATE=254
 
     fi
 
   else
 
-    _STATE=0
+    _STATE="${_STATUS:-}"
 
   fi
 
@@ -166,7 +179,7 @@ function __main__() {
   local _FUNCTION_ID="__main__"
   local _STATE=0
 
-  # Load modules, functions and config file.
+  # Use of one construction to load modules, functions and config file.
   for _filename in "$_functions_file" "${_modules_stack[@]}" "$_config_file" ; do
 
     if [[ "$_filename" == *"/functions"* ]] ; then
@@ -192,12 +205,12 @@ function __main__() {
     elif [[ -z "$_mpath" ]] ; then
 
       printf "incorrectly loaded '%s' file (incorrect filename)" "$_mpath"
-      _exit_ 1
+      _exit_ 2
 
     else
 
       printf "incorrectly loaded '%s' file (does not exist?)" "$_mpath"
-      _exit_ 1
+      _exit_ 2
 
     fi
 
@@ -205,6 +218,7 @@ function __main__() {
 
   clear
 
+  echo -e ""
   echo -e "$okegreen                ___                    __                           $red,_____     "
   echo -e "$okegreen               /   \_ __ __ _  ___  /\ \ \_ __ ___   __ _ _ ____   _$red|___ /     "
   echo -e "$okegreen              / /\ / '__/ _\` |/ __|/  \/ / '_ \` _ \ / _\` | '_ \ \ / /$red |_ \  "
@@ -220,8 +234,7 @@ function __main__() {
 
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
-  readonly commands=(basename dirname stat date grep \
-                     nmap ping proxychains)
+  readonly commands=(basename dirname stat date grep awk nmap proxychains)
 
   # If you intend to specify the full path to the command we do it like:
   # readonly exec_gzip="/bin/gzip"
@@ -263,6 +276,11 @@ function __main__() {
 
         printf "    %-18s [\e[0;31m%-4s\e[m]\n" "$i" "fail"
         sleep 0.2
+
+        # It is a good idea to terminate the script at this stage
+        # with information for the user to fix the errors.
+        printf "\n    \e[1;31m%s\e[m\n\n" "Before start please fix errors."
+        _exit_ 2
 
       else
 
@@ -308,11 +326,16 @@ function __main__() {
 
   sleep 2
 
-  # Init menu.
+  ####################### User interface initialization ########################
+  # ````````````````````````````````````````````````````````````````````````````
+
+  # Load the main menu.
   menu
 
-  # Init Dracnmap CLI.
+  # Load the command line iinterface.
   _init_cli
+
+  # ````````````````````````````````````````````````````````````````````````````
 
 }
 
