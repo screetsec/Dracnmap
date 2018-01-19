@@ -689,6 +689,7 @@ function _help_() {
     set                 set the builtin keys
     nmap                nmap command (full options)
     back                back to previous menu
+    main                back to main menu
     exit                exit from Dracnmap
 
   show/set:
