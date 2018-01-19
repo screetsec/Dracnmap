@@ -939,6 +939,12 @@ function _init_cmd() {
 
   fi
 
+  if [[ "$_terminal" == "external" ]] ; then
+
+    _full_command+=("${_xterm}")
+
+  fi
+
   _full_command+=("nmap" "${_cmd[@]}")
 
   if [[ ! -z "$_report" ]] ; then
