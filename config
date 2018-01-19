@@ -49,3 +49,8 @@ _report=""
 # Examples:
 #   - _tor="true"
 _tor=""
+
+# Specifies the terminal type.
+# Examples:
+#   - _terminal="internal"
+_terminal="internal"
