@@ -35,6 +35,12 @@ else
 
 fi
 
+# Setting permissions in the script environment:
+#   0022 - less restrictive settings (default value)
+#   0027 - for better security than above
+#   0077 - only for user access (more restrictive)
+umask 0027
+
 
 ################################################################################
 ######################## Global variables and functions ########################
