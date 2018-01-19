@@ -14,6 +14,7 @@ export _dbuser=""
 export _dbpass=""
 export _report=""
 export _tor=""
+export _terminal=""
 
 export _session_variables=(\
                       "IP address:ipaddr:_ipaddr" \
@@ -26,7 +27,8 @@ export _session_variables=(\
                       "Database user name:dbuser:_dbuser" \
                       "Database user password:dbpass:_dbpass" \
                       "Report type:report:_report" \
-                      "Pass through TOR:tor:_tor")
+                      "Pass through TOR:tor:_tor" \
+                      "Terminal type:terminal:_terminal")
 
 
 ################################################################################
@@ -664,6 +666,33 @@ function _set_tor() {
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_terminal()
+#
+# Description:
+#   Set TOR (with proxychains).
+#
+# Usage:
+#   _set_terminal
+#
+# Examples:
+#   _set_terminal
+#
+
+function _set_terminal() {
+
+  local _FUNCTION_ID="_set_terminal"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "Terminal [internal,external]: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _terminal
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
 # Function name: _help_()
 #
 # Description:
@@ -707,6 +736,7 @@ function _help_() {
     dbpass              database password
     report              report type
     tor                 set tor (with proxychains)
+    terminal            set terminal type (internal, external)
 
 "
 
@@ -870,6 +900,8 @@ function set_session() {
       _set_report "type";;
     tor)
       _set_tor ;;
+    terminal)
+      _set_terminal ;;
     *)
       printf "stdout: %s\n" "unknown key" ;;
 
