@@ -120,7 +120,7 @@ function _init_cli() {
 
       09|9)
 
-        credits
+        about
         cstate="0" ;;
 
       help)
@@ -311,34 +311,44 @@ function menu() {
   # shellcheck disable=SC2154
   echo -e "$white    [${okegreen}08${white}]$cyan  Advanced Nmap scannings (Zenmap commands)"
   # shellcheck disable=SC2154
-  echo -e "$white    [${okegreen}09${white}]$cyan  Credits"
+  echo -e "$white    [${okegreen}09${white}]$cyan  About Dracnmap"
   # shellcheck disable=SC2154
   echo -e ""
 
 }
 
 # ``````````````````````````````````````````````````````````````````````````````
-# Function name: credits()
+# Function name: about()
 #
 # Description:
-#   Show credits.
+#   Show info about Dracnmap + credits.
 #
 # Usage:
-#   credits
+#   about
 #
 # Examples:
-#   credits
+#   about
 #
 
-function credits() {
+function about() {
 
   clear
   echo -e "
-  \033[31m#########################################################################\033[m
-                                 Credits
-  \033[31m#########################################################################\033[m"
+  \033[31m########################################################################\033[m
+                              About Dracnmap
+  \033[31m########################################################################\033[m"
   echo
-  echo -e "$white  Special thanks to:"
+  printf "
+        Dracnmap is an open source program which is using to exploit
+        the network and gathering information with Nmap help.
+        Nmap command comes with lots of options that can make the
+        utilitymore robust and difficult to follow for new users.
+        Hence Dracnmap is designed to perform fast scaning with the
+        utilizing script engine of Nmap and Nmap can perform various
+        automatic scanning techniques with the advanced commands."
+
+  echo -en "\n\n"
+  echo -e "$white     Special thanks to:"
   echo
   echo -e "$red \t* Dracos Linux ( www.dracos-linux.org )"
   echo
@@ -358,13 +368,15 @@ function credits() {
   echo
   echo -e "$red \t* Big Thanks to : http://www.github.com/"
   echo
-  echo -e "$white \t* Contributors: v3.0.0 (testing release) - trimstray (contact@nslab.at)"
+  echo -en "$white \t* Contributors:\n\n"
+  echo -e "$white \t    v3.0.0 (testing release)"
+  echo -e "$white \t    - trimstray (contact@nslab.at)"
 
   tput sgr0
 
   echo -en "\n\n  Press key to back main menu..."
   # shellcheck disable=SC2034
-  read -ra _credits_key
+  read -ra _about_key
 
   menu
 
@@ -941,13 +953,13 @@ function _init_cmd() {
 
   if [[ "$_terminal" == "external" ]] ; then
 
-    printf "\n\e[1;39m%s\e[m:\n" "terminal" 
+    printf "\n\e[1;39m%s\e[m:\n" "terminal"
     printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "$_terminal"
     _full_command+=("${_xterm}")
 
   else
 
-    printf "\n\e[1;39m%s\e[m:\n" "terminal" 
+    printf "\n\e[1;39m%s\e[m:\n" "terminal"
     printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "internal"
 
   fi
