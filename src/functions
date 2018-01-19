@@ -941,7 +941,14 @@ function _init_cmd() {
 
   if [[ "$_terminal" == "external" ]] ; then
 
+    printf "\n\e[1;39m%s\e[m:\n" "terminal" 
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "$_terminal"
     _full_command+=("${_xterm}")
+
+  else
+
+    printf "\n\e[1;39m%s\e[m:\n" "terminal" 
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "internal"
 
   fi
 
@@ -982,22 +989,40 @@ function _init_cmd() {
 
   fi
 
-  printf "\n\e[1;39m%s\e[m:\n" "command"
-  printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "${_full_command[*]}"
+  if [[ "$_terminal" == "external" ]] ; then
+
+    printf "\n\e[1;39m%s\e[m:\n" "command"
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n\n" ">" "${_full_command[*]}"
+
+  else
+
+    printf "\n\e[1;39m%s\e[m:\n" "command"
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "${_full_command[*]}"
+
+  fi
 
   # Execute command and exit.
   # For shellcheck code:
   #   - after closing the array with double quotes, some commands are not executed properly
-  # shellcheck disable=SC2068
-  ${_full_command[@]} ; _state="$?"
+  if [[ "$_terminal" == "external" ]] ; then
 
-  if [[ "$_state" -eq 0 ]] ; then
-
-    printf "\n\e[1;39m%s\e[m: \e[0;32m%s\e[m\n\n" "Result" "pass"
+    # shellcheck disable=SC2068
+    ${_full_command[@]} &
 
   else
 
-    printf "\n\e[1;39m%s\e[m: \e[0;31m%s\e[m\n\n" "Result" "fail"
+    # shellcheck disable=SC2068
+    ${_full_command[@]} ; _state="$?"
+
+    if [[ "$_state" -eq 0 ]] ; then
+
+      printf "\n\e[1;39m%s\e[m: \e[0;32m%s\e[m\n\n" "Result" "pass"
+
+    else
+
+      printf "\n\e[1;39m%s\e[m: \e[0;31m%s\e[m\n\n" "Result" "fail"
+
+    fi
 
   fi
 
