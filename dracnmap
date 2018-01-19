@@ -76,6 +76,9 @@ readonly __cli_prompt="Screetsec@"
 # shellcheck disable=SC2034
 __cli_banner=""
 
+# Store xterm params (for external type of terminal).
+readonly _xterm="xterm -hold -fa monaco -fs 10 -bg black -e"
+
 # Store the name of the script and directory call.
 readonly _init_name="$(basename "$0")"
 readonly _init_directory="$(dirname "$(readlink -f "$0")")"
