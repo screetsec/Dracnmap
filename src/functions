@@ -4,18 +4,18 @@
 ############################### Global variables ###############################
 ################################################################################
 
-_ipaddr=()
-_port=""
-_user=""
-_pass=""
-_iface=""
-_hwaddr=""
-_dbuser=""
-_dbpass=""
-_report=""
-_tor=""
+export _ipaddr=()
+export _port=""
+export _user=""
+export _pass=""
+export _iface=""
+export _hwaddr=""
+export _dbuser=""
+export _dbpass=""
+export _report=""
+export _tor=""
 
-_session_variables=(\
+export _session_variables=(\
                       "IP address:ipaddr:_ipaddr" \
                       "Service port number:port:_port" \
                       "Username:user:_user" \

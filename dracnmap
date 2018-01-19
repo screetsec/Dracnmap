@@ -345,7 +345,7 @@ function __main__() {
   # Load the main menu.
   menu
 
-  # Load the command line iinterface.
+  # Load the command line interface.
   _init_cli
 
   # ````````````````````````````````````````````````````````````````````````````
