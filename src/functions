@@ -37,7 +37,7 @@ export _session_variables=(\
 # Function name: _init_cli()
 #
 # Description:
-#   Starting the Dracnmap command interpreter.
+#   Starting the Dracnmap command line interface.
 #
 # Usage:
 #   _init_cli
@@ -51,7 +51,7 @@ function _init_cli() {
   local _FUNCTION_ID="_init_cli"
   local _STATE=0
 
-  input_array=()
+  local input_array=()
 
   while [[ "${input_array[0]}" != "exit" ]] ; do
 
