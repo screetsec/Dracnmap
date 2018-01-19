@@ -57,7 +57,7 @@ Author of changes: **[trimstray](https://github.com/trimstray)**
 3. ```chmod +x dracnmap```
 4. ```sudo ./dracnmap or sudo su ./dracnmap```
 
-### Environment
+### Testing environment
 
 * `4.13.0-kali1-amd64 #1 SMP Debian 4.13.13-1kali1 (2017-11-17) x86_64 GNU/Linux`
 * `GNU bash, version 4.4.12(1)-release`
@@ -67,6 +67,7 @@ Author of changes: **[trimstray](https://github.com/trimstray)**
 
 - We recommend Kali Linux 2 or Kali 2016.3 rolling/Cyborg/Parrot/Dracos/BackTrack/Backbox and another GNU/Linux operating system
 - [Nmap](https://nmap.org/)
+- [Proxychains](http://proxychains.sourceforge.net/)
 
 # Tutorial or another tool?
 
