@@ -23,7 +23,7 @@ Author of changes: **[trimstray](https://github.com/trimstray)**
 - added **help** (and `help` command)
 - **TOR** support (with proxychains)
 - added multiple IP scan for all existing **Nmap** commands
-- added Travis CI
+- added Travis CI (shellcheck tests)
 
 # 2.0
 
