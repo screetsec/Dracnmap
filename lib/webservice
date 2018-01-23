@@ -1,0 +1,268 @@
+#!/usr/bin/env bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_webservice()
+#
+# Description:
+#   Starting the Dracnmap Webservice module.
+#
+# Usage:
+#   _init_cli_webservice
+#
+# Examples:
+#   _init_cli_webservice
+#
+
+function _init_cli_webservice() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_init_cli_webservice"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="webservice"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        # shellcheck disable=SC2154
+        _init_cmd "--script firewall-bypass --script-args firewall-bypass.helper='ftp',firewall-bypass.targetport=22 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _init_cmd "-sS -sU -T4 -A -v ${_ipaddr[*]}"
+        _init_cmd "-p80 --script http-methods,http-trace --script-args http-methods.retest ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        _init_cmd "-sV --script smtp-open-relay -v ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _init_cmd "-sV --script smtp-strangeport ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        _init_cmd "-p80 --script http-phpself-xss,http-unsafe-output-escaping ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        _init_cmd "-p25 –script smtp-enum-users ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        _init_cmd "-p80 --script http-slowloris --max-parallelism 300 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      08|8)
+
+        _init_cmd "-p80 --script http-sql-injection ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      09|9)
+
+        _init_cmd "-Pn -p80 --script ip-geolocation-* ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      10)
+
+        _init_cmd "-sn --script whois-ip --script-args whois.whodb=nocache ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      11)
+
+        _init_cmd "-p80 --script http-google-email,http-email-harvest ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params or null"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      clear)
+
+        menu_webservice
+        _init_cli_webservice
+        cstate="0" ;;
+
+      back|main)
+
+        menu
+        _init_cli
+        cstate="0" ;;
+
+      nmap)
+
+        _init_cmd "${input_array[@]:1}"
+        cstate="0" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
+function menu_webservice() {
+
+  clear
+
+  # shellcheck disable=SC2154
+  echo -e "${cyan}"
+  echo ""
+  # shellcheck disable=SC2154
+  echo -e "${red}   __      __      ___.       _________                  .__     ";
+  echo "  /  \    /  \ ____\_ |__    /   _____/ ______________  _|__| ____  ____  ";
+  echo "  \   \/\/   // __ \| __ \   \_____  \_/ __ \_  __ \  \/ /  |/ ___\/ __ \ ";
+  echo "   \        /\  ___/| \_\ \  /        \  ___/|  | \/\   /|  \  \__\  ___/ ";
+  echo "    \__/\  /  \___  >___  / /_______  /\___  >__|    \_/ |__|\___  >___  >";
+  # shellcheck disable=SC2154
+  echo -e "${okegreen}"
+  echo "  ------------------------------------------------------------------------"
+  echo ""
+
+  # shellcheck disable=SC2154
+  echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
+  echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}01${white}]${cyan}  Detecting Web Application Firewall (WAF)"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}02${white}]${cyan}  Detecting Possible XST Vulnerabiliteis"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}03${white}]${cyan}  Detectin Open Relays"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}04${white}]${cyan}  Detecting Backdoor SMTP Servers"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}05${white}]${cyan}  Detecting Cross Site Scripting Vulnerabilities"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}06${white}]${cyan}  Enumarting Users in an SMTP Servers"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}07${white}]${cyan}  Detecting Web Servers Vulnerable to Slowloris DDOS"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}08${white}]${cyan}  Finding SQL Injection Vulnerabilities"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}09${white}]${cyan}  Check IP Geolocation (NSE)"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}10${white}]${cyan}  Gathering Information from Whois (NSE)"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}11${white}]${cyan}  Collecting Valid Email Address"
+  # shellcheck disable=SC2154
+  echo -e " "
+
+}

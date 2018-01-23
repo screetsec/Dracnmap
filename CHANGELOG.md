@@ -1,3 +1,32 @@
+# 3.0.0
+
+Author of changes: **[trimstray](https://github.com/trimstray)**
+
+## Fixes
+
+* removed blank spaces/tabs
+* correcting indentation (transparent code)
+* separated comparison operator
+* protection against giving an illegal value
+* fixes in user interface
+* changed in the dependency checking mechanism (before init user interface)
+* added modules and separated them into files
+* resolved of reported errors by **shellcheck**
+* minor fixes
+
+## Features
+
+- added headings to the menu (id, description)
+- added simple **CLI** (the ability to run pure **Nmap**)
+- load config from file
+- added `set/show` commands
+- added **help** (and `help` command)
+- **TOR** support (with proxychains)
+- added multiple IP scan for all existing **Nmap** commands
+- added Travis CI (shellcheck tests)
+
+# 2.0
+
 * v2.2 - add multi task in dracnmap when scan 
 * v2.2 - the output file will be in root / on folder dracnmap
 * v2.1 - Fixed bug ( typo and double function )

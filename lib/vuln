@@ -1,0 +1,959 @@
+#!/usr/bin/env bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_vuln()
+#
+# Description:
+#   Starting the Dracnmap Vuln module.
+#
+# Usage:
+#   _init_cli_vuln
+#
+# Examples:
+#   _init_cli_vuln
+#
+
+function _init_cli_vuln() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_init_cli_vuln"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="nse-vuln"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-sV --script=afp-path-vuln ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _init_cmd "--script=broadcast-avahi-dos ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        _init_cmd "-sV --script clamav-exec ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _init_cmd "-p 3632 --script distcc-exec --script-args="distcc-exec.cmd='id'" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        _init_cmd "-sU -p 53 --script=dns-update --script-args=dns-update.hostname=foo.example.com,dns-update.ip=192.0.2.1 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        _init_cmd "--script firewall-bypass --script-args firewall-bypass.helper=\"ftp\",firewall-bypass.targetport=22 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        _init_cmd "-sV --script=ftp-libopie ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      08|8)
+
+        _init_cmd "-p 21 --script ftp-proftpd-backdoor ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      09|9)
+
+        _init_cmd "-p 21 --script ftp-vsftpd-backdoor ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      10)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-p $_port --script ftp-vuln-cve2010-4221 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      11)
+
+        _init_cmd "-p 80 --script http-adobe-coldfusion-apsa1301 --script-args basepath=/cf/adminapi/ ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      12)
+
+        _init_cmd "--script http-debug --script-args http-aspnet-debug.path=/path ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      13)
+
+        _init_cmd "-sV --script http-avaya-ipoffice-users ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      14)
+
+        _init_cmd "-sV --script http-awstatstotals-exec.nse --script-args 'http-awstatstotals-exec.cmd="uname -a", http-awstatstotals-exec.uri=/awstats/index.php' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      15)
+
+        _init_cmd "-p 80 --script http-axis2-dir-traversal ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      16)
+
+        _init_cmd "-p 80 --script http-crossdomainxml --script-args http.domain-lookup=true ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      17)
+
+        _init_cmd "-p 80 --script http-csrf.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      18)
+
+        _init_cmd "-sV --script http-dlink-backdoor ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      19)
+
+        _init_cmd "-p 80 --script http-dombased-xss.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      20)
+
+        _init_cmd "-sV --script=http-enum ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      21)
+
+        _init_cmd "-p 80 --script http-fileupload-exploiter.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      22)
+
+        _init_cmd "-p 80 --script=http-frontpage-login ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      23)
+
+        # shellcheck disable=SC2154
+        echo -en "${okegreen}  The query for which to return the results " ; tput sgr0
+        # shellcheck disable=SC2034
+        read -ra _query
+
+        _init_cmd "sV -sC ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      24)
+
+        _init_cmd "-sV http-huawei-hg5xx-vuln ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      25)
+
+        _init_cmd "-p 80,8080 --script http-iis-webdav-vuln ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      26)
+
+        _init_cmd "--script http-internal-ip-disclosure --script-args http-internal-ip-disclosure.path=/path ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      27)
+
+        _init_cmd "-p 80,8080 --script http-litespeed-sourcecode-download --script-args http-litespeed-sourcecode-download.uri=/phpinfo.php ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      28)
+
+        _init_cmd "-p 80 --script http-majordomo2-dir-traversal ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      29)
+
+        _init_cmd "-p 80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      30)
+
+        _init_cmd "--script http-passwd --script-args http-passwd.root=/test/ ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      31)
+
+        _init_cmd "-p 80 --script http-phpmyadmin-dir-traversal ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      32)
+
+        _init_cmd "-sV --script http-self-xss ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      33)
+
+        _init_cmd "-sV -p- --script http-shellshock --script-args uri=/cgi-bin/bin,cmd=ls ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      34)
+
+        _init_cmd "--script http-slowloris-check ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      35)
+
+        _init_cmd "-sV --script=http-sql-injection ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      36)
+
+        _init_cmd "-p 80 --script http-stored-xss.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      37)
+
+        _init_cmd "-p 80 --script http-tplink-dir-traversal.nse --script-args rfile=/etc/topology.conf -d -n -Pn ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      38)
+
+        _init_cmd "--script http-trace -d ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      39)
+
+        _init_cmd "-p 80,443,8222,8333 --script http-vmware-path-vuln ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      40)
+
+        _init_cmd "-p 80 --script http-vuln-cve2006-3392 --script-args http-vuln-cve2006-3392.file=/etc/shadow ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      41)
+
+        _init_cmd "--script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      42)
+
+        _init_cmd "--script http-vuln-cve2010-2861 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      43)
+
+        _init_cmd "-pT:80,443 --script http-vuln-cve2011-3192.nse [--script-args http-vuln-cve2011-3192.hostname=nmap.scanme.org] ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      44)
+
+        _init_cmd "--script http-vuln-cve2011-3368 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      45)
+
+        _init_cmd "-sV --script http-vuln-cve2012-1823 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      46)
+
+        _init_cmd "-sV --script http-vuln-cve2013-0156 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      47)
+
+        _init_cmd "-p80 --script http-rompager-xss ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      48)
+
+        _init_cmd "-p 80 --script http-vuln-cve2013-7091 --script-args http-vuln-cve2013-7091=/ZimBra ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      49)
+
+        _init_cmd "-p 443 --script http-vuln-cve2014-2126 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      50)
+
+        _init_cmd "-p 443 --script http-vuln-cve2014-2127 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      51)
+
+        _init_cmd "-p 443 --script http-vuln-cve2014-2128 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      52)
+
+        _init_cmd "-p 443 --script http-vuln-cve2014-2129 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      53)
+
+        _init_cmd "--script http-vuln-cve2014-3704 --script-args http-vuln-cve2014-3704.uri=\"/drupal\",http-vuln-cve2014-3704.cleanup=false ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      54)
+
+        _init_cmd "--script http-vuln-cve2014-8877 --script-args http-vuln-cve2014-8877.cmd=\"whoami\",http-vuln-cve2014-8877.uri=\"/wordpress\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      55)
+
+        _init_cmd "--script=http-vuln-cve2015-1427 --script-args command='ls' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      56)
+
+        _init_cmd "-sV --script http-vuln-cve2015-1635 --script-args uri='/anotheruri/' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      57)
+
+        _init_cmd "-p 7547 --script=http-vuln-misfortune-cookie ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      58)
+
+        _init_cmd "-p 80 -sV --script http-vuln-wnr1000-creds ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      59)
+
+        _init_cmd "-sV --script http-wordpress-users --script-args limit=50 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      60)
+
+        _init_cmd "-p 623 -sU --script ipmi-cipher-zero ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      61)
+
+        _init_cmd "-p 6667 --script=irc-botnet-channels ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      62)
+
+        _init_cmd "-sV --script=irc-unrealircd-backdoor ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      63)
+
+        _init_cmd "-sV --script mysql-vuln-cve2012-2122 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      64)
+
+        _init_cmd "-p 12345 --script netbus-auth-bypass ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      65)
+
+        _init_cmd "-p $_port --script qconn-exec --script-args qconn-exec.timeout=60,qconn-exec.bytes=1024,qconn-exec.cmd="uname -a" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      66)
+
+        _init_cmd "-p 3389 -sV --script=rdp-ms12-020 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      67)
+
+        _init_cmd "-p 1099 --script=rmi-vuln-classloader ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      68)
+
+        _init_cmd "-p 139 --script=samba-vuln-cve-2012-1182 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      69)
+
+        _init_cmd "-p T:139 -sU --script smb-vuln-conficker.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      70)
+
+        _init_cmd "-p U:137,T:139 -sU --script smb-vuln-cve2009-3103.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      71)
+
+        _init_cmd "-p U:137,T:139 -sU --script smb-vuln-ms06-025.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      72)
+
+        _init_cmd "-p U:137,T:139 -sU --script smb-vuln-ms07-029.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      73)
+
+        _init_cmd "-p U:137 -sU --script smb-vuln-ms08-067.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      74)
+
+        _init_cmd "-p 445 --script=smb-vuln-ms10-054 --script-args unsafe ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      75)
+
+        _init_cmd "-p 445 --script=smb-vuln-ms10-061 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      76)
+
+        _init_cmd "-p U:137,T:139 -sU --script smb-vuln-regsvc-dos.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      77)
+
+        _init_cmd "-pT:25,465,587 --script=smtp-vuln-cve2010-4344 --script-args=\"smtp-vuln-cve2010-4344.exploit\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      78)
+
+        _init_cmd "-pT:25,465,587 --script=smtp-vuln-cve2011-1720 --script-args='smtp.domain=<domain>' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      79)
+
+        _init_cmd "-pT:25,465,587 --script=smtp-vuln-cve2011-1764 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      80)
+
+        _init_cmd "-p 443 --script ssl-ccs-injection ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      81)
+
+        _init_cmd "-p 443 --script ssl-cert-intaddr ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      82)
+
+        _init_cmd "--script ssl-dh-params ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      83)
+
+        _init_cmd "-p 443 --script ssl-heartbleed ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      84)
+
+        _init_cmd "-p 443 --script ssl-known-key ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      85)
+
+        _init_cmd "-p 443 -sV --version-light --script ssl-poodle ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      86)
+
+        _init_cmd "-sV --script=sslv2-drown ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      87)
+
+        _init_cmd "-p 49152 --script supermicro-ipmi-conf ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      88)
+
+        _init_cmd "-sU -p 17185 --script wdb-version ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params or null"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      clear)
+
+        menu_vuln
+        _init_cli_vuln
+        cstate="0" ;;
+
+      back)
+
+        menu_nse
+        _init_cli_nse
+        cstate="0" ;;
+
+      main)
+
+        menu
+        _init_cli_nse
+        cstate="0" ;;
+
+      nmap)
+
+        _init_cmd "${input_array[@]:1}"
+        cstate="0" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
+function menu_vuln() {
+
+  clear
+  echo
+
+  # shellcheck disable=SC2154
+  echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
+  echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}01${white}]${cyan} afp-path-vuln"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}02${white}]${cyan} broadcast-avahi-dos"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}03${white}]${cyan} clamav-exec"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}04${white}]${cyan} distcc-cve2004-2687"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}05${white}]${cyan} dns-update"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}06${white}]${cyan} firewall-bypass"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}07${white}]${cyan} ftp-libopie"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}08${white}]${cyan} ftp-proftpd-backdoor"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}09${white}]${cyan} ftp-vsftpd-backdoor"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}10${white}]${cyan} ftp-vuln-cve2010-4221"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}11${white}]${cyan} http-adobe-coldfusion-apsa1301"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}12${white}]${cyan} http-aspnet-debug"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}13${white}]${cyan} http-avaya-ipoffice-users"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}14${white}]${cyan} http-awstatstotals-exec"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}15${white}]${cyan} http-axis2-dir-traversal"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}16${white}]${cyan} http-cross-domain-policy"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}17${white}]${cyan} http-csrf"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}18${white}]${cyan} http-dlink-backdoor"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}19${white}]${cyan} http-dombased-xss"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}20${white}]${cyan} http-enum"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}21${white}]${cyan} http-fileupload-exploiter"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}22${white}]${cyan} http-frontpage-login"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}23${white}]${cyan} http-git"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}24${white}]${cyan} http-huawei-hg5xx-vuln"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}25${white}]${cyan} http-iis-webdav-vuln"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}26${white}]${cyan} http-internal-ip-disclosure"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}27${white}]${cyan} http-litespeed-sourcecode-download"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}28${white}]${cyan} http-majordomo2-dir-traversal"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}29${white}]${cyan} http-method-tamper"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}30${white}]${cyan} http-passwd"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}31${white}]${cyan} http-phpmyadmin-dir-traversal"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}32${white}]${cyan} http-phpself-xss"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}33${white}]${cyan} http-shellshock"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}34${white}]${cyan} http-slowloris-check"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}35${white}]${cyan} http-sql-injection"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}36${white}]${cyan} http-stored-xss"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}37${white}]${cyan} http-tplink-dir-traversal"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}38${white}]${cyan} http-trace"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}39${white}]${cyan} http-vmware-path-vuln"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}40${white}]${cyan} http-vuln-cve2006-3392"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}41${white}]${cyan} http-vuln-cve2010-0738"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}42${white}]${cyan} http-vuln-cve2010-2861"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}43${white}]${cyan} http-vuln-cve2011-3192"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}44${white}]${cyan} http-vuln-cve2011-3368"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}45${white}]${cyan} http-vuln-cve2012-1823"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}46${white}]${cyan} http-vuln-cve2013-0156"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}47${white}]${cyan} http-vuln-cve2013-6786"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}48${white}]${cyan} http-vuln-cve2013-7091"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}49${white}]${cyan} http-vuln-cve2014-2126"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}50${white}]${cyan} http-vuln-cve2014-2127"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}51${white}]${cyan} http-vuln-cve2014-2128"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}52${white}]${cyan} http-vuln-cve2014-2129"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}53${white}]${cyan} http-vuln-cve2014-3704"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}54${white}]${cyan} http-vuln-cve2014-8877"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}55${white}]${cyan} http-vuln-cve2015-1427"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}56${white}]${cyan} http-vuln-cve2015-1635"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}57${white}]${cyan} http-vuln-misfortune-cookie"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}58${white}]${cyan} http-vuln-wnr1000-creds"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}59${white}]${cyan} http-wordpress-users"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}60${white}]${cyan} ipmi-cipher-zero"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}61${white}]${cyan} irc-botnet-channels"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}62${white}]${cyan} irc-unrealircd-backdoor"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}63${white}]${cyan} mysql-vuln-cve2012-2122"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}64${white}]${cyan} netbus-auth-bypass"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}65${white}]${cyan} qconn-exec"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}66${white}]${cyan} rdp-vuln-ms12-020"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}67${white}]${cyan} rmi-vuln-classloader"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}68${white}]${cyan} samba-vuln-cve-2012-1182"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}69${white}]${cyan} smb-vuln-conficker"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}70${white}]${cyan} smb-vuln-cve2009-3103"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}71${white}]${cyan} smb-vuln-ms06-025"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}72${white}]${cyan} smb-vuln-ms07-029"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}73${white}]${cyan} smb-vuln-ms08-067"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}74${white}]${cyan} smb-vuln-ms10-054"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}75${white}]${cyan} smb-vuln-ms10-061"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}76${white}]${cyan} smb-vuln-regsvc-dos"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}77${white}]${cyan} smtp-vuln-cve2010-4344"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}78${white}]${cyan} smtp-vuln-cve2011-1720"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}79${white}]${cyan} smtp-vuln-cve2011-1764"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}80${white}]${cyan} ssl-ccs-injection"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}81${white}]${cyan} ssl-cert-intaddr"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}82${white}]${cyan} ssl-dh-params"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}83${white}]${cyan} ssl-heartbleed"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}84${white}]${cyan} ssl-known-key"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}85${white}]${cyan} ssl-poodle"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}86${white}]${cyan} sslv2-drown"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}87${white}]${cyan} supermicro-ipmi-conf"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}88${white}]${cyan} wdb-version"
+  # shellcheck disable=SC2154
+  echo -e ""
+
+}

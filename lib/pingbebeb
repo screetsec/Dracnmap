@@ -1,0 +1,235 @@
+#!/usr/bin/env bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_pingbebeb()
+#
+# Description:
+#   Starting the Dracnmap Ping module.
+#
+# Usage:
+#   _init_cli_pingbebeb
+#
+# Examples:
+#   _init_cli_pingbebeb
+#
+
+function _init_cli_pingbebeb() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_init_cli_pingbebeb"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="PING!"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        # shellcheck disable=SC2154
+        _init_cmd "--script broadcast-ping --script-args broadcast-ping.num_probes=5 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _init_cmd "-sP -PS ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        _init_cmd "-sP -PA ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _init_cmd "-sP -PU ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        _init_cmd "-sP -PE ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        _init_cmd "-sP -PO --packet-trace ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params or null"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      clear)
+
+        menu_pingbebeb
+        _init_cli_pingbebeb
+        cstate="0" ;;
+
+      back)
+
+        menu
+        _init_cli
+        cstate="0" ;;
+
+      main)
+
+        menu
+        _init_cli
+        cstate="0" ;;
+
+      nmap)
+
+        _init_cmd "${input_array[@]:1}"
+        cstate="0" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
+function menu_pingbebeb() {
+
+  # shellcheck disable=SC2154
+  echo -e "${okegreen}"
+  clear
+  echo ""
+  echo ""
+  echo "          \|/  "
+  echo "         .-*-   "
+  echo "        / /|\     "
+  echo "       _L_         "
+  echo "     ,     .         "
+  # shellcheck disable=SC2154
+  echo -e "${okegreen} (\ /  O O  \ /)  ${red} ______ _______ _______ _______      __ __    "
+  # shellcheck disable=SC2154
+  echo -e "${okegreen}  \|    _    |/   ${red} |   __ \_     _|    |  |     __|    |  |  |  "
+  # shellcheck disable=SC2154
+  echo -e "${okegreen}    \  (_)  /     ${red} |    __/_|   |_|       |    |  |    |__|__|  "
+  # shellcheck disable=SC2154
+  echo -e "${okegreen}    _/.___,\_     ${red} |___|  |_______|__|____|_______|    |__|__|  "
+  # shellcheck disable=SC2154
+  echo -e "${okegreen}   (_/ alf \_)"
+  # shellcheck disable=SC2154
+  echo -e "${white}"
+
+  # shellcheck disable=SC2154
+  echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
+  echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}01${white}]${cyan}  Broadcast Ping"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}02${white}]${cyan}  TCP/SYN Ping"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}03${white}]${cyan}  TCP/ACK Ping"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}04${white}]${cyan}  UDP Ping"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}05${white}]${cyan}  ICMP Ping"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}06${white}]${cyan}  IP Protocol Ping"
+  # shellcheck disable=SC2154
+  echo -e " "
+
+}
