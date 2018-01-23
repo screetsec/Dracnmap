@@ -606,15 +606,15 @@ function _set_db_credentials() {
 
   if [[ "$_arg" == "dbuser" ]] ; then
 
-  _set_user
-  # shellcheck disable=SC2034
-  _dbuser="$_user"
+    _set_user
+    # shellcheck disable=SC2034
+    _dbuser="$_user"
 
   elif [[ "$_arg" == "dbpass" ]] ; then
 
-  _set_pass
-  # shellcheck disable=SC2034
-  _dbpass="$_pass"
+    _set_pass
+    # shellcheck disable=SC2034
+    _dbpass="$_pass"
 
   fi
 
@@ -907,8 +907,8 @@ function set_session() {
       _set_domain ;;
     dbuser)
       _set_db_credentials "dbuser" ;;
-    dbuser)
-      _set_db_credentials "dbuser" ;;
+    dbpass)
+      _set_db_credentials "dbpass" ;;
     report)
       _set_report "type";;
     tor)
