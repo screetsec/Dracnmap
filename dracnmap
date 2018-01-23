@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#============================================================================================================
+#===============================================================================
 #                         Dracnmap for dracos
 #
 #                      Welcome and dont disclaimer
@@ -9,8 +9,8 @@
 #       contact me in screetsec@gmail.com or screetsec@dracos-linux.org
 #          OS Penetration From Indonesia : https://dracos-linux.org/
 #
-#        v3.0.0 (testing release), trimstray (contact@nslab.at)
-#============================================================================================================
+#                 v3.0.0, trimstray (contact@nslab.at)
+#===============================================================================
 
 
 ################################################################################
@@ -30,17 +30,17 @@ set -o pipefail
 #   0077 - only for user access (more restrictive)
 umask 0027
 
-if [[ $EUID -ne 0 ]] ; then
+if [[ "$EUID" -ne 0 ]] ; then
 
   echo -en "ERROR! Run this script with root user.\n"
-  _exit_ 1
+  _exit_ "1"
 
 fi
 
 if [ -z "${DISPLAY:-}" ]; then
 
   echo -en "The script should be executed inside a X (graphical) session.\n"
-  _exit_ 1
+  _exit_ "1"
 
 else
 
@@ -180,7 +180,7 @@ function _get_trap_SIG() {
 
   if [ -z "$_STATE" ] ; then _STATE=255 ; fi
 
-  return $_STATE
+  return "$_STATE"
 
 }
 
@@ -216,17 +216,17 @@ function __main__() {
 
       # If the file exists is loaded.
       # shellcheck disable=SC1090
-      . "$_mpath"
+      source "$_mpath"
 
     elif [[ -z "$_mpath" ]] ; then
 
       printf "incorrectly loaded '%s' file (incorrect filename)" "$_mpath"
-      _exit_ 2
+      _exit_ "2"
 
     else
 
       printf "incorrectly loaded '%s' file (does not exist?)" "$_mpath"
-      _exit_ 2
+      _exit_ "2"
 
     fi
 
@@ -365,4 +365,4 @@ trap "_get_trap_SIG SIGS" SIGHUP SIGTERM SIGKILL SIGINT
 # is required if we want to operate on arguments of type $1, $2, ...
 __main__ "${__script_params[@]}"
 
-_exit_ 0
+_exit_ "0"
