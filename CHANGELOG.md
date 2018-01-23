@@ -1,4 +1,4 @@
-# 3.0.0 (testing release)
+# 3.0.0
 
 Author of changes: **[trimstray](https://github.com/trimstray)**
 
@@ -23,6 +23,7 @@ Author of changes: **[trimstray](https://github.com/trimstray)**
 - added **help** (and `help` command)
 - **TOR** support (with proxychains)
 - added multiple IP scan for all existing **Nmap** commands
+- added Travis CI
 
 # 2.0
 
