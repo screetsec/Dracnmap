@@ -1,0 +1,574 @@
+#!/usr/bin/env bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_brd()
+#
+# Description:
+#   Starting the Dracnmap Broadcast module.
+#
+# Usage:
+#   _init_cli_brd
+#
+# Examples:
+#   _init_cli_brd
+#
+
+function _init_cli_brd() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_init_cli_brd"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="nse-broadcast"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-e $_iface --script broadcast-ataoe-discover"
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _init_cmd "-e $_iface --script=broadcast-avahi-dos"
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        _init_cmd "-e $_iface --script broadcast-bjnp-discover"
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _init_cmd "-e $_iface --script db2-discover"
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        _init_cmd "-e $_iface --script broadcast-dhcp-discover"
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        _init_cmd "-e $_iface -6 --script broadcast-dhcp6-discover"
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        _init_cmd "-e $_iface --script=broadcast-dns-service-discovery"
+
+        cstate=1
+        ;;
+
+      08|8)
+
+        _init_cmd "-e $_iface --script=broadcast-dropbox-listener --script-args=newtargets -Pn"
+
+        cstate=1
+        ;;
+
+      09|9)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-e $_iface --script=broadcast-eigrp-discovery ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      10)
+
+        _init_cmd "-e $_iface --script broadcast-igmp-discovery"
+
+        cstate=1
+        ;;
+
+      11)
+
+        _init_cmd "-e $_iface --script broadcast-listener"
+
+        cstate=1
+        ;;
+
+      12)
+
+        _init_cmd "-e $_iface --script broadcast-ms-sql-discover"
+
+        cstate=1
+        ;;
+
+      13)
+
+        _init_cmd "-e $_iface --script=broadcast-netbios-master-browser"
+
+        cstate=1
+        ;;
+
+      14)
+
+        _init_cmd "-e $_iface --script broadcast-networker-discover"
+
+        cstate=1
+        ;;
+
+      15)
+
+        _init_cmd "-e $_iface -sV --script=broadcast-novell-locate"
+
+        cstate=1
+        ;;
+
+      16)
+
+        _init_cmd "-e $_iface --script broadcast-pc-anywhere"
+
+        cstate=1
+        ;;
+
+      17)
+
+        _init_cmd "-e $_iface --script broadcast-pc-duo"
+
+        cstate=1
+        ;;
+
+      18)
+
+        _init_cmd "-e $_iface --script broadcast-pim-discovery"
+
+        cstate=1
+        ;;
+
+      19)
+
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Default value for TTL is 64 & the length of the payload is 0: " ; tput sgr0
+        read -ra _ttl
+
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen The payload is consisted of random bytes: " ; tput sgr0
+        read -ra _payload
+
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Timespec specifying how long to wait for response (default 3s): " ; tput sgr0
+        read -ra _ti
+
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Number specifying how many ICMP probes should be sent (default 1): " ; tput sgr0
+        read -ra _np
+
+        _init_cmd "-e $_iface [--ttl \"$_ttl\"] [--data-length \"$_payload\"] --script broadcast-ping [--script-args [broadcast-ping.timeout=\"$_ti\"],[num-probes=\"$_np\"]]]"
+
+        cstate=1
+        ;;
+
+      20)
+
+        _init_cmd "-e $_iface --script broadcast-pppoe-discover"
+
+        cstate=1
+        ;;
+
+      21)
+
+        _init_cmd "-e $_iface --script broadcast-rip-discover"
+
+        cstate=1
+        ;;
+
+      22)
+
+        _init_cmd "-e $_iface --script broadcast-ripng-discover"
+
+        cstate=1
+        ;;
+
+      23)
+
+        _init_cmd "-e $_iface --script broadcast-sonicwall-discover"
+
+        cstate=1
+        ;;
+
+      24)
+
+        _init_cmd "-e $_iface --script broadcast-sybase-asa-discover"
+
+        cstate=1
+        ;;
+
+      25)
+
+        _init_cmd "-e $_iface --script broadcast-tellstick-discover"
+
+        cstate=1
+        ;;
+
+      26)
+
+        _init_cmd "-e $_iface -sV --script=broadcast-upnp-info"
+
+        cstate=1
+        ;;
+
+      27)
+
+        _init_cmd "-e $_iface --script broadcast-versant-locate"
+
+        cstate=1
+        ;;
+
+      28)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-e $_iface --script broadcast-wake-on-lan --script-args broadcast-wake-on-lan.MAC=\"$_hwaddr\""
+
+        cstate=1
+        ;;
+
+      29)
+
+        _init_cmd "-e $_iface --script broadcast-wpad-discover"
+
+        cstate=1
+        ;;
+
+      30)
+
+        _init_cmd "-e $_iface --script broadcast-wsdd-discover"
+
+        cstate=1
+        ;;
+
+      31)
+
+        _init_cmd "-e $_iface --script broadcast-xdmcp-discover"
+
+        cstate=1
+        ;;
+
+      32)
+
+        _init_cmd "-e $_iface --script eap-info [--script-args=eap-info.identity=0-user,eap-info.scan={13,50}] ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      33)
+
+        _init_cmd "-e $_iface --script=ipv6-multicast-mld-list"
+
+        cstate=1
+        ;;
+
+      34)
+
+        _init_cmd "-e $_iface --script knx-gateway-discover"
+
+        cstate=1
+        ;;
+
+      35)
+
+        # shellcheck disable=SC2086
+        echo -ne $okegreen "Hostname to resolve: " ; tput sgr0
+        read -ra _hostname
+
+        _init_cmd "-e $_iface --script llmnr-resolve --script-args llmnr-resolve.hostname=\"$_hostname\""
+
+        cstate=1
+        ;;
+
+      36)
+
+        _init_cmd "-e $_iface --script lltd-discovery"
+
+        cstate=1
+        ;;
+
+      37)
+
+        _init_cmd "-e $_iface --script mrinfo"
+
+        cstate=1
+        ;;
+
+      38)
+
+        # shellcheck disable=SC2154
+        echo -ne "$okegreen Source address from which to traceroute: " ; tput sgr0
+        read -ra _rt
+
+        _init_cmd "-e $_iface --script mtrace --script-args mtrace.fromip=\"$_rt\""
+
+        cstate=1
+        ;;
+
+      39)
+
+        _init_cmd "--script=targets-ipv6-multicast-echo.nse --script-args newtargets,interface=\"$_iface\" -sL"
+
+        cstate=1
+        ;;
+
+      40)
+
+        _init_cmd "--script=targets-ipv6-multicast-invalid-dst.nse --script-args newtargets,interface=\"$_iface\" -sP"
+
+        cstate=1
+        ;;
+
+      41)
+
+        _init_cmd "--script=targets-ipv6-multicast-mld.nse --script-args newtargets,interface=\"$_iface\""
+
+        cstate=1
+        ;;
+
+      42)
+
+        _init_cmd "--script targets-ipv6-multicast-slaac --script-args newtargets,interface=\"$_iface\" -sP"
+
+        cstate=1
+        ;;
+
+      43)
+
+        _init_cmd "-sL --script=targets-sniffer --script-args=newtargets,targets-sniffer.timeout=5s,targets-sniffer.iface=\"$_iface\""
+
+        cstate=1
+        ;;
+
+       help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params or null"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      clear)
+
+        menu_brd
+        _init_cli_brd
+        cstate="0" ;;
+
+      back)
+
+        menu_nse
+        _init_cli_nse
+        cstate="0" ;;
+
+      main)
+
+        menu
+        _init_cli
+        cstate="0" ;;
+
+      nmap)
+
+        _init_cmd "${input_array[@]:1}"
+        cstate="0" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
+function menu_brd() {
+
+  clear
+  echo
+  echo
+
+  # shellcheck disable=SC2154
+  echo -e "${white}     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
+  echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}01${white}]${cyan} broadcast-ataoe-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}02${white}]${cyan} broadcast-avahi-dos  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}03${white}]${cyan} broadcast-bjnp-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}04${white}]${cyan} broadcast-db2-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}05${white}]${cyan} broadcast-dhcp-discover  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}06${white}]${cyan} broadcast-dhcp6-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}07${white}]${cyan} broadcast-dns-service-discovery  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}08${white}]${cyan} broadcast-dropbox-listener "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}09${white}]${cyan} broadcast-eigrp-discovery  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}10${white}]${cyan} broadcast-igmp-discovery "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}11${white}]${cyan} broadcast-listener "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}12${white}]${cyan} broadcast-ms-sql-discover  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}13${white}]${cyan} broadcast-netbios-master-browser "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}14${white}]${cyan} broadcast-networker-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}15${white}]${cyan} broadcast-novell-locate  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}16${white}]${cyan} broadcast-pc-anywhere  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}17${white}]${cyan} broadcast-pc-duo "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}18${white}]${cyan} broadcast-pim-discovery  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}19${white}]${cyan} broadcast-ping "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}20${white}]${cyan} broadcast-pppoe-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}21${white}]${cyan} broadcast-rip-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}22${white}]${cyan} broadcast-ripng-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}23${white}]${cyan} broadcast-sonicwall-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}24${white}]${cyan} broadcast-sybase-asa-discover  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}25${white}]${cyan} broadcast-tellstick-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}26${white}]${cyan} broadcast-upnp-info  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}27${white}]${cyan} broadcast-versant-locate "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}28${white}]${cyan} broadcast-wake-on-lan  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}29${white}]${cyan} broadcast-wpad-discover  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}30${white}]${cyan} broadcast-wsdd-discover  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}31${white}]${cyan} broadcast-xdmcp-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}32${white}]${cyan} eap-info "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}33${white}]${cyan} ipv6-multicast-mld-list  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}34${white}]${cyan} knx-gateway-discover "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}35${white}]${cyan} llmnr-resolve  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}36${white}]${cyan} lltd-discovery "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}37${white}]${cyan} mrinfo "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}38${white}]${cyan} mtrace "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}39${white}]${cyan} targets-ipv6-multicast-echo  "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}40${white}]${cyan} targets-ipv6-multicast-invalid-dst "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}41${white}]${cyan} targets-ipv6-multicast-mld "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}42${white}]${cyan} targets-ipv6-multicast-slaac "
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}43${white}]${cyan} targets-sniffer  "
+  echo -e ""
+
+}

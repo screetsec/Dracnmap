@@ -1,0 +1,1046 @@
+#!/usr/bin/env bash
+
+################################################################################
+############################### Global variables ###############################
+################################################################################
+
+export _ipaddr=()
+export _port=""
+export _user=""
+export _pass=""
+export _iface=""
+export _hwaddr=""
+export _dbuser=""
+export _dbpass=""
+export _report=""
+export _tor=""
+export _terminal=""
+
+export _session_variables=(\
+                      "IP address:ipaddr:_ipaddr" \
+                      "Service port number:port:_port" \
+                      "Username:user:_user" \
+                      "User password:pass:_pass" \
+                      "Network interface:iface:_iface" \
+                      "MAC address:hwaddr:_hwaddr" \
+                      "Domain name:domain:_domain" \
+                      "Database user name:dbuser:_dbuser" \
+                      "Database user password:dbpass:_dbpass" \
+                      "Report type:report:_report" \
+                      "Pass through TOR:tor:_tor" \
+                      "Terminal type:terminal:_terminal")
+
+
+################################################################################
+######################## Definitions of user functions #########################
+################################################################################
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli()
+#
+# Description:
+#   Starting the Dracnmap command line interface.
+#
+# Usage:
+#   _init_cli
+#
+# Examples:
+#   _init_cli
+#
+
+function _init_cli() {
+
+  local _FUNCTION_ID="_init_cli"
+  local _STATE=0
+
+  local input_array=()
+
+  while [[ "${input_array[0]}" != "exit" ]] ; do
+
+    cstate="1"
+
+    __cli_banner="dracnmap"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        _init_cmd "${_ipaddr[@]}"
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _init_cmd "-sV -T4 -O -F --version-light 1 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        _init_cmd "-sA ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _init_cmd "-sS -P0 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        menu_pingbebeb
+        _init_cli_pingbebeb
+        ;;
+
+      06|6)
+
+        menu_webservice
+        _init_cli_webservice
+        ;;
+
+      07|7)
+
+        menu_nse
+        _init_cli_nse
+        ;;
+
+      08|8)
+
+        menu_zenmapscript
+        _init_cli_zenmapscript
+        ;;
+
+      09|9)
+
+        about
+        cstate="0" ;;
+
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params or null"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      clear|main)
+
+        menu
+        _init_cli
+        cstate="0" ;;
+
+      back)
+
+        printf "stdout: %s\n" "you are in root level" ;;
+
+      nmap)
+
+        _init_cmd "${input_array[@]:1}"
+        cstate="0" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+
+        echo -en ""
+        cstate="0" ;;
+
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: %s\n" "unknown command"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: menu()
+#
+# Description:
+#   Show main menu.
+#
+# Usage:
+#   menu
+#
+# Examples:
+#   menu
+#
+
+function menu() {
+
+  clear
+  # shellcheck disable=SC2154
+  echo -e "$red"
+  echo "             80G08        "
+  echo "                8G#G@8  "
+  echo "                  8##0  "
+  echo "                   0##G8    "
+  echo "                     ####08 "
+  echo "                      8#####8   "
+  echo "                        G#####8   "
+  echo "                         8G#####8   "
+  echo "      #8#########0         #######8   "
+  echo "          8#######0          0#88#####    "
+  echo "            8G####8         8 8#8@@8###   "
+  echo "               8###        G8   8@G######   "
+  echo "                8##88       8     8######8    "
+  echo "                  G##088          80G##G080   "
+  echo "                    88000000008880#      000    "
+  echo "                          9               0 "
+  # shellcheck disable=SC2154
+  echo -e "$okegreen       .___                     _______              ";
+  echo "     __| _/___________    ____  \      \   _____ _____  ______   ";
+  echo "    / __ |\_  __ \__  \ _/ ___\ /   |   \ /     \\__  \ \____  \ ";
+  echo "   / /_/ | |  | \// __ \\  \___/     |    \  Y Y  \/ __ \|  |_> >";
+  echo "   \____ | |__|  (____  /\___  >____|__  /__|_|  (____  /   __/  ";
+  echo "        \/            \/     \/        \/      \/     \/|__|     ";
+  echo ""
+  # shellcheck disable=SC2154
+  echo -e "$cyan    Script by           $white: $red Edo Maland (Screetsec)"
+  # shellcheck disable=SC2154
+  echo -e "$cyan    Version             $white: $red $Version"
+  # shellcheck disable=SC2154
+  echo -e "$cyan    Codename            $white: $red $Codename"
+  # shellcheck disable=SC2154
+  echo -e "$cyan    Follow me on Github $white: $red @Screetsec"
+  # shellcheck disable=SC2154
+  echo -e "$cyan    Dracos Linux        $white: $red dracos-linux.org"
+  # shellcheck disable=SC2154
+  echo -e "$cyan    Contributors        $white: $red trimstray (contact@nslab.at)"
+  # shellcheck disable=SC2154
+  echo -e "$cyan"
+  # shellcheck disable=SC2154
+  echo -e "$okegreen    =========================================================";
+  # shellcheck disable=SC2154
+  echo -e "$white"
+  # shellcheck disable=SC2154
+  echo -e "$white     ID                    DESCRIPTION"
+  # shellcheck disable=SC2154
+  echo -e "$white    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}01${white}]$cyan  Regular scan"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}02${white}]$cyan  OS detection and Trace"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}03${white}]$cyan  Find out if a host is protected firewall"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}04${white}]$cyan  Evading firewalls"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}05${white}]$cyan  Ping Ping!!"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}06${white}]$cyan  Web Applications"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}07${white}]$cyan  Nmap Script Engine (NSE)"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}08${white}]$cyan  Advanced Nmap scannings (Zenmap commands)"
+  # shellcheck disable=SC2154
+  echo -e "$white    [${okegreen}09${white}]$cyan  About Dracnmap"
+  # shellcheck disable=SC2154
+  echo -e ""
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: about()
+#
+# Description:
+#   Show info about Dracnmap + credits.
+#
+# Usage:
+#   about
+#
+# Examples:
+#   about
+#
+
+function about() {
+
+  clear
+  echo -e "
+  \033[31m########################################################################\033[m
+                              About Dracnmap
+  \033[31m########################################################################\033[m"
+  echo
+  printf "
+        Dracnmap is an open source program which is using to exploit
+        the network and gathering information with Nmap help.
+        Nmap command comes with lots of options that can make the
+        utilitymore robust and difficult to follow for new users.
+        Hence Dracnmap is designed to perform fast scaning with the
+        utilizing script engine of Nmap and Nmap can perform various
+        automatic scanning techniques with the advanced commands."
+
+  echo -en "\n\n"
+  echo -e "$white     Special thanks to:"
+  echo
+  echo -e "$red \t* Dracos Linux (www.dracos-linux.org)"
+  echo
+  echo -e "$okegreen \t* Offensive Security for the awesome OS"
+  echo
+  # shellcheck disable=SC2154
+  echo -e "$green \t* http://www.offensive-security.com/"
+  echo
+  # shellcheck disable=SC2154
+  echo -e "$yellow \t* http://www.kali.org/"
+  echo
+  echo -e "$cyan \t* http://www.kitploit.com/"
+  echo
+  echo -e "$white \t* http://www.linuxsec.org/"
+  echo
+  echo -e "$red \t* Big Thanks to : http://www.github.com/"
+  echo
+  echo -en "$white \t* Contributors:\n\n"
+  echo -e "$white \t    v2.*"
+  echo -e "$white \t    - @nullrndtx"
+  echo -e "$white \t    - Boy Suganda Sinaga [dragz17]"
+  echo -e "$white \t    v3.0.0"
+  echo -e "$white \t    - trimstray (contact@nslab.at)"
+
+  tput sgr0
+
+  echo -en "\n\n  Press key to back main menu..."
+  # shellcheck disable=SC2034
+  read -ra _about_key
+
+  menu
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_ipaddr()
+#
+# Description:
+#   Set the IP address.
+#
+# Usage:
+#   _set_ipaddr
+#
+# Examples:
+#   _set_ipaddr
+#
+
+function _set_ipaddr() {
+
+  local _FUNCTION_ID="_set_ipaddr"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "What is your IP Target or Host: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _ipaddr
+
+  # Enable IP validation (but hostnames not working).
+  # if [[ $_ipaddr =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
+
+  #  _STATE=0
+
+  #else
+
+  #  printf "stdout: %s\n" "invalid ip address"
+  #  _STATE=1
+
+  #fi
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_port()
+#
+# Description:
+#   Set the port number.
+#
+# Usage:
+#   _set_port
+#
+# Examples:
+#   _set_port
+#
+
+function _set_port() {
+
+  local _FUNCTION_ID="_set_port"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "What is your Port Target: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _port
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_user()
+#
+# Description:
+#   Set the username.
+#
+# Usage:
+#   _set_user
+#
+# Examples:
+#   _set_user
+#
+
+function _set_user() {
+
+  local _FUNCTION_ID="_set_user"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "What is your cmd user: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _user
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_pass()
+#
+# Description:
+#   Set the password.
+#
+# Usage:
+#   _set_pass
+#
+# Examples:
+#   _set_pass
+#
+
+function _set_pass() {
+
+  local _FUNCTION_ID="_set_pass"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "What is your cmd pass: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _pass
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_interface()
+#
+# Description:
+#   Set the main network interface.
+#
+# Usage:
+#   _set_interface
+#
+# Examples:
+#   _set_interface
+#
+
+function _set_interface() {
+
+  local _FUNCTION_ID="_set_interface"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "What is your interface: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _iface
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_hwaddr()
+#
+# Description:
+#   Set the mac address.
+#
+# Usage:
+#   _set_hwaddr
+#
+# Examples:
+#   _set_hwaddr
+#
+
+function _set_hwaddr() {
+
+  local _FUNCTION_ID="_set_hwaddr"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "What is your MAC address: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _hwaddr
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_domain()
+#
+# Description:
+#   Set the domain.
+#
+# Usage:
+#   _set_domain
+#
+# Examples:
+#   _set_domain
+#
+
+function _set_domain() {
+
+  local _FUNCTION_ID="_set_domain"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "What is your domain name: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _domain
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_db_credentials()
+#
+# Description:
+#   Set the database credentials.
+#
+# Usage:
+#   _set_db_credentials
+#
+# Examples:
+#   _set_db_credentials
+#
+
+function _set_db_credentials() {
+
+  local _FUNCTION_ID="_set_db_credentials"
+  local _STATE=0
+
+  local _arg="$1"
+
+  if [[ "$_arg" == "dbuser" ]] ; then
+
+    _set_user
+    # shellcheck disable=SC2034
+    _dbuser="$_user"
+
+  elif [[ "$_arg" == "dbpass" ]] ; then
+
+    _set_pass
+    # shellcheck disable=SC2034
+    _dbpass="$_pass"
+
+  fi
+
+  unset _user _pass
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_report()
+#
+# Description:
+#   Set Nmap output.
+#
+# Usage:
+#   _set_report
+#
+# Examples:
+#   _set_report
+#
+
+function _set_report() {
+
+  local _FUNCTION_ID="_set_report"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "Type [standard,xml,grep]: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _report
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_tor()
+#
+# Description:
+#   Set TOR (with proxychains).
+#
+# Usage:
+#   _set_tor
+#
+# Examples:
+#   _set_tor
+#
+
+function _set_tor() {
+
+  local _FUNCTION_ID="_set_tor"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "TOR [true,false]: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _tor
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _set_terminal()
+#
+# Description:
+#   Set TOR (with proxychains).
+#
+# Usage:
+#   _set_terminal
+#
+# Examples:
+#   _set_terminal
+#
+
+function _set_terminal() {
+
+  local _FUNCTION_ID="_set_terminal"
+  local _STATE=0
+
+  echo -en "$cyan"
+  echo -en "Terminal [internal,external]: " ; tput sgr0
+  # shellcheck disable=SC2034
+  read -ra _terminal
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _help_()
+#
+# Description:
+#   Help message.
+#
+# Usage:
+#   _help_
+#
+# Examples:
+#   _help_
+#
+
+function _help_() {
+
+  local _FUNCTION_ID="_help_"
+  local _STATE=0
+
+  printf "%s" "
+  Built-in:
+    help                show this message
+    clear               clear terminal
+    show                show the builtin keys
+    set                 set the builtin keys
+    nmap                nmap command (full options)
+    back                back to previous menu
+    main                back to main menu
+    exit                exit from Dracnmap
+
+  show/set:
+    session             show session values
+
+  show/set:session:
+    ipaddr              new ip address
+    port                new port number
+    user                user name
+    pass                user password
+    iface               interface
+    hwaddr              hwaddr (MAC)
+    domain              domain name
+    dbuser              database user
+    dbpass              database password
+    report              report type
+    tor                 set tor (with proxychains)
+    terminal            set terminal type (internal, external)
+
+"
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: show_session()
+#
+# Description:
+#   Show session configuration.
+#
+# Usage:
+#   show_session
+#
+# Examples:
+#   show_session
+#
+
+function show_session() {
+
+  local _FUNCTION_ID="show_session"
+  local _STATE=0
+
+  local _session_arg="$1"
+
+  for _svar in "${_session_variables[@]}" ; do
+
+    _key_description=$(echo "$_svar" | awk -v FS="(:|:)" '{print $1}')
+    _key_id=$(echo "$_svar" | awk -v FS="(:|:)" '{print $2}')
+    _key_var=$(echo "$_svar" | awk -v FS="(:|:)" '{print $3}')
+
+    if [[ -z "$_key_id" ]] ; then
+
+      printf "stdout: %s\n" "invalid session param"
+
+    fi
+
+    if [[ "$_key_id" != "ipaddr" ]] ; then
+
+      _i="" ; eval _i='$'"$_key_var"
+
+    else
+
+      _i="true"
+
+    fi
+
+    # Show specific key.
+    if [[ "$_session_arg" == "$_key_id" ]] ; then
+
+      # Print without key value.
+      if [[ -z "$_i" ]] ; then
+
+        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
+
+      # Print with key value.
+      else
+
+        if [[ "$_key_id" == "ipaddr" ]] ; then
+
+          printf "{\"%s\":\n" "$_key_description"
+
+          for i in "${_ipaddr[@]}" ; do
+
+            printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
+
+          done
+
+          printf "}\n"
+
+        else
+
+          printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+
+        fi
+
+      fi
+
+    # Show all keys.
+    elif [[ -z "$_session_arg" ]] ; then
+
+      # Print without key value.
+      if [[ -z "$_i" ]] ; then
+
+        printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" ""
+
+      # Print with key value.
+      else
+
+        if [[ "$_key_id" == "ipaddr" ]] ; then
+
+          printf "{\"%s\":\n" "$_key_description"
+
+          for i in "${_ipaddr[@]}" ; do
+
+            printf "  {\"%s\":\"%s\"}\n" "$_key_id" "$i"
+
+          done
+
+          printf "}\n"
+
+        else
+
+          printf "{\"%s\":\n  {\"%s\":\"%s\"}\n}\n" "$_key_description" "$_key_id" "$_i"
+
+        fi
+
+      fi
+
+    fi
+
+  done
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: set_session()
+#
+# Description:
+#   Set session configuration.
+#
+# Usage:
+#   set_session
+#
+# Examples:
+#   set_session
+#
+
+function set_session() {
+
+  local _FUNCTION_ID="set_session"
+  local _STATE=0
+
+  local _session_arg="$1"
+
+  case ${input_array[2]} in
+
+    ipaddr)
+      _set_ipaddr ;;
+    port)
+      _set_port ;;
+    user)
+      _set_user ;;
+    pass)
+      _set_pass ;;
+    iface)
+      _set_interface ;;
+    hwaddr)
+      _set_hwaddr ;;
+    domain)
+      _set_domain ;;
+    dbuser)
+      _set_db_credentials "dbuser" ;;
+    dbpass)
+      _set_db_credentials "dbpass" ;;
+    report)
+      _set_report "type";;
+    tor)
+      _set_tor ;;
+    terminal)
+      _set_terminal ;;
+    *)
+      printf "stdout: %s\n" "unknown key" ;;
+
+  esac
+
+  return $_STATE
+
+}
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cmd()
+#
+# Description:
+#   Function executing given as a command parameter.
+#
+# Usage:
+#   _init_cmd "parameter"
+#
+# Examples:
+#   _init_cmd "eval cd /etc/init.d && ls"
+#
+
+function _init_cmd() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_init_cmd"
+  local _STATE=0
+
+  local _cmd=("$@")
+  local _full_command=()
+
+  if [[ "$_tor" == "true" ]] ; then
+
+    _full_command+=("proxychains")
+
+  fi
+
+  if [[ "$_terminal" == "external" ]] ; then
+
+    printf "\n\e[1;39m%s\e[m:\n" "terminal"
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "$_terminal"
+    _full_command+=("${_xterm}")
+
+  else
+
+    printf "\n\e[1;39m%s\e[m:\n" "terminal"
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "internal"
+
+  fi
+
+  _full_command+=("nmap" "${_cmd[@]}")
+
+  if [[ ! -z "$_report" ]] ; then
+
+    case $_report in
+
+      standard)
+
+        _output_opt="-oN"
+        # shellcheck disable=SC2154
+        _output_path="${_output_directory}/scan.$(date +%s).nmap"
+        _output_targ=" ${_output_opt} ${_output_path}" ;;
+
+      xml)
+
+        _output_opt="-oX"
+        _output_path="${_output_directory}/scan.$(date +%s).xml"
+        _output_targ=" ${_output_opt} ${_output_path}" ;;
+
+      grep)
+
+        _output_opt="-oG"
+        _output_path="${_output_directory}/scan.$(date +%s).grep"
+        _output_targ=" ${_output_opt} ${_output_path}" ;;
+
+      *) true ;;
+
+    esac
+
+  fi
+
+  if [[ ! -z "$_output_path" ]] ; then
+
+    _full_command+=("$_output_targ")
+
+  fi
+
+  if [[ "$_terminal" == "external" ]] ; then
+
+    printf "\n\e[1;39m%s\e[m:\n" "command"
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n\n" ">" "${_full_command[*]}"
+
+  else
+
+    printf "\n\e[1;39m%s\e[m:\n" "command"
+    printf "\e[1;39m%c\e[m \e[0;30m%s\e[m\n" ">" "${_full_command[*]}"
+
+  fi
+
+  # Execute command and exit.
+  # For shellcheck code:
+  #   - after closing the array with double quotes, some commands are not executed properly
+  if [[ "$_terminal" == "external" ]] ; then
+
+    # shellcheck disable=SC2068
+    ${_full_command[@]} &
+
+  else
+
+    # shellcheck disable=SC2068
+    ${_full_command[@]} ; _state="$?"
+
+    if [[ "$_state" -eq 0 ]] ; then
+
+      printf "\n\e[1;39m%s\e[m: \e[0;32m%s\e[m\n\n" "Result" "pass"
+
+    else
+
+      printf "\n\e[1;39m%s\e[m: \e[0;31m%s\e[m\n\n" "Result" "fail"
+
+    fi
+
+  fi
+
+  _STATE=$_state
+
+  return $_STATE
+
+}

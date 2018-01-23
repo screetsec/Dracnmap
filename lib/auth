@@ -1,0 +1,431 @@
+#!/usr/bin/env bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _init_cli_auth()
+#
+# Description:
+#   Starting the Dracnmap Auth module.
+#
+# Usage:
+#   _init_cli_auth
+#
+# Examples:
+#   _init_cli_auth
+#
+
+function _init_cli_auth() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_init_cli_auth"
+  local _STATE=0
+
+  input_array=()
+
+  while [ "${input_array[0]}" != "back" ] ; do
+
+    cstate="1"
+
+    __cli_banner="nse-auth"
+
+    # shellcheck disable=SC2154
+    printf "\e[1;31m%s\e[m " "${__cli_prompt}${__cli_banner}>" && read -ra input_array
+
+    case ${input_array[0]} in
+
+      01|1)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-p 8009 --script ajp-auth [--script-args ajp-auth.path=/login] ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      02|2)
+
+        _init_cmd "-sV -sC ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      03|3)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-p 2050 --script domcon-cmd --script-args domcon-cmd.cmd='show server' domcon-cmd.user=\"$_user\",domcon-cmd.pass=\"$_pass\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      04|4)
+
+        _init_cmd "-p 1352 --script domino-enum-users ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      05|5)
+
+        _init_cmd "-sV -sC ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      06|6)
+
+        _init_cmd "-p 80 --script http-auth [--script-args http-auth.path=/login] ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      07|7)
+
+        # shellcheck disable=SC2154
+        _init_cmd "-p \"$_port\" --script http-barracuda-dir-traversal --script-args http-max-cache-size=5000000 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      08|8)
+
+        _init_cmd "--script=http-config-backup ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      09|9)
+
+        _init_cmd "-p 80 --script http-default-accounts ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      10)
+
+        _init_cmd "-p 80 --script domino-enum-passwords --script-args domino-enum-passwords.username=\"$_user\",domino-enum-passwords.password=\"$_pass\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      11)
+
+        _init_cmd "-p 80 --script http-method-tamper --script-args 'http-method-tamper.paths={/protected/db.php,/protected/index.php}' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      12)
+
+        _init_cmd "-sV --script=http-userdir-enum ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      13)
+
+        _init_cmd "--script=http-vuln-cve2010-0738 --script-args 'http-vuln-cve2010-0738.paths={/path1/,/path2/}' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      14)
+
+        _init_cmd "-sV --script http-wordpress-users --script-args limit=50 ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      15)
+
+        _init_cmd "-p 9088 --script informix-query --script-args informix-query.username=\"$_user\",informix-query.password=\"$_pass\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      16)
+
+        _init_cmd "-p 9088 --script informix-tables --script-args informix-tables.username=\"$_user\,informix-tables.password=\"$_pass\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      17)
+
+        _init_cmd "-p 88 --script krb5-enum-users --script-args krb5-enum-users.realm='test' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      18)
+
+        _init_cmd "-p 1433 --script ms-sql-dump-hashes ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      19)
+
+        _init_cmd "-p \"$_port\" --script ms-sql-empty-password --script-args mssql.instance-all ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      20)
+
+        _init_cmd "-p 1433 --script ms-sql-hasdbaccess --script-args mssql.username=\"$_user\",mssql.password=\"$_pass\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      21)
+
+        _init_cmd "-p 3306 --script mysql-dump-hashes --script-args=\"username=$_user,password=$_pass\" ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      22)
+
+        _init_cmd "-sV --script=mysql-empty-password ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      23)
+
+        # shellcheck disable=SC2154
+        echo -en "$okegreen  The query for which to return the results: " ; tput sgr0
+        read -ra _query
+
+        # shellcheck disable=SC2154
+        _init_cmd "-p 3306 --script mysql-query --script-args='query=\"$_query\"[,username=\"$_username\",password=\"$_pass\"]' ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      24)
+
+        _init_cmd "-sV --script=mysql-users ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      25)
+
+        _init_cmd "-sV --script=ncp-enum-users ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      26)
+
+        _init_cmd "-p 12345 --script netbus-auth-bypass ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      27)
+
+        _init_cmd "-p 1521-1560 --script oracle-enum-users --script-args oracle-enum-users.sid=ORCL,userdb=orausers.txt ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      28)
+
+        _init_cmd "-sV -sC ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      29)
+
+        _init_cmd "-p 5060 --script=sip-enum-users -sU ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      30)
+
+        _init_cmd "-p 445 --script smb-enum-users.nse ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      31)
+
+        _init_cmd "-p 25,465,587 --script smtp-enum-users.nse [--script-args smtp-enum-users.methods={EXPN,...},...] ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      32)
+
+        _init_cmd "-sU -p 161 --script=snmp-win32-users ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      33)
+
+        _init_cmd "--sV -sC ${_ipaddr[*]}"
+
+        cstate=1
+        ;;
+
+      help)
+
+        _help_
+        cstate="0" ;;
+
+      show)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                show_session "${input_array[2]}"
+
+              else
+
+                show_session
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      set)
+
+        if [[ ${input_array[1]} ]] ; then
+
+          case ${input_array[1]} in
+
+            session)
+
+              if [[ ${input_array[2]} ]] ; then
+
+                set_session "${input_array[2]}"
+
+              else
+
+                printf "stdout: %s\n" "invalid session params or null"
+
+              fi
+              ;;
+
+            *)
+              printf "stdout: %s\n" "unknown command" ;;
+
+          esac
+
+        else
+
+          printf "stdout: %s\n" "unknown argument"
+
+        fi
+        cstate="0" ;;
+
+      clear)
+
+        menu_auth
+        cstate="0" ;;
+
+      back)
+
+        menu_nse
+        _init_cli_nse
+        cstate="0" ;;
+
+      main)
+
+        menu
+        _init_cli
+        cstate="0" ;;
+
+      nmap)
+
+        _init_cmd "${input_array[@]:1}"
+        cstate="0" ;;
+
+      exit)
+        _exit_ 0 ;;
+      "")
+        echo -en ""
+        cstate="0" ;;
+      *)
+
+        if [ "$cstate" -eq "1" ] ; then
+
+          printf "stdout: unknown command\n"
+
+        fi
+
+      ;;
+
+    esac
+
+  done
+
+  return $_STATE
+
+}
+
+function menu_auth() {
+
+  clear
+  echo
+  echo
+
+  # shellcheck disable=SC2154
+  echo -e "${white}     ID                    DESCRIPTION"
+  echo -e "${white}    ---------------------------------------------------------"
+  # shellcheck disable=SC2154
+  echo -e "${white}    [${okegreen}01${white}]${cyan} ajp-auth"
+  echo -e "${white}    [${okegreen}02${white}]${cyan} creds-summary"
+  echo -e "${white}    [${okegreen}03${white}]${cyan} domcon-cmd"
+  echo -e "${white}    [${okegreen}04${white}]${cyan} domino-enum-users"
+  echo -e "${white}    [${okegreen}05${white}]${cyan} ftp-anon"
+  echo -e "${white}    [${okegreen}06${white}]${cyan} http-auth"
+  echo -e "${white}    [${okegreen}07${white}]${cyan} http-barracuda-dir-traversal"
+  echo -e "${white}    [${okegreen}08${white}]${cyan} http-config-backup"
+  echo -e "${white}    [${okegreen}09${white}]${cyan} http-default-accounts"
+  echo -e "${white}    [${okegreen}10${white}]${cyan} http-domino-enum-passwords"
+  echo -e "${white}    [${okegreen}11${white}]${cyan} http-method-tamper"
+  echo -e "${white}    [${okegreen}12${white}]${cyan} http-userdir-enum"
+  echo -e "${white}    [${okegreen}13${white}]${cyan} http-vuln-cve2010-0738"
+  echo -e "${white}    [${okegreen}14${white}]${cyan} http-wordpress-users"
+  echo -e "${white}    [${okegreen}15${white}]${cyan} informix-query"
+  echo -e "${white}    [${okegreen}16${white}]${cyan} informix-tables"
+  echo -e "${white}    [${okegreen}17${white}]${cyan} krb5-enum-users"
+  echo -e "${white}    [${okegreen}18${white}]${cyan} ms-sql-dump-hashes"
+  echo -e "${white}    [${okegreen}19${white}]${cyan} ms-sql-empty-password"
+  echo -e "${white}    [${okegreen}20${white}]${cyan} ms-sql-hasdbaccess"
+  echo -e "${white}    [${okegreen}21${white}]${cyan} mysql-dump-hashes"
+  echo -e "${white}    [${okegreen}22${white}]${cyan} mysql-empty-password"
+  echo -e "${white}    [${okegreen}23${white}]${cyan} mysql-query"
+  echo -e "${white}    [${okegreen}24${white}]${cyan} mysql-users"
+  echo -e "${white}    [${okegreen}25${white}]${cyan} ncp-enum-users"
+  echo -e "${white}    [${okegreen}26${white}]${cyan} netbus-auth-bypass"
+  echo -e "${white}    [${okegreen}27${white}]${cyan} oracle-enum-users"
+  echo -e "${white}    [${okegreen}28${white}]${cyan} realvnc-auth-bypass"
+  echo -e "${white}    [${okegreen}29${white}]${cyan} sip-enum-users"
+  echo -e "${white}    [${okegreen}30${white}]${cyan} smb-enum-users"
+  echo -e "${white}    [${okegreen}31${white}]${cyan} smtp-enum-users"
+  echo -e "${white}    [${okegreen}32${white}]${cyan} snmp-win32-users"
+  echo -e "${white}    [${okegreen}33${white}]${cyan} x11-access"
+  echo -e ""
+
+}
