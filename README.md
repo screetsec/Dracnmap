@@ -23,11 +23,273 @@ Testing release: **testing**
 1. ```chmod +x dracnmap```
 2. ```sudo ./dracnmap or sudo su ./dracnmap```
 
-# Testing environment
+## Set session environment
 
-* `4.13.0-kali1-amd64 #1 SMP Debian 4.13.13-1kali1 (2017-11-17) x86_64 GNU/Linux`
-* `GNU bash, version 4.4.12(1)-release`
-* `Nmap version 7.60 ( https://nmap.org )`
+It is a good idea to prepare the environment before scanning. You can do this from the cli level or using the configuration file.
+
+### IP Address
+
+To set the single or multiple IP addresses:
+
+``````
+Screetsec@dracnmap> set session ipaddr
+What is your IP Target or Host: 8.8.8.8
+Screetsec@dracnmap> show session ipaddr
+{"IP address":
+  {"ipaddr":"8.8.8.8"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default ip address.
+# Examples:
+#   - _ipaddr=("127.0.0.1" "8.8.8.8")
+_ipaddr=("127.0.0.1")
+``````
+
+### Port number
+
+To set the port number:
+
+``````
+Screetsec@dracnmap> set session port
+What is your Port Target: 443
+Screetsec@dracnmap> show session port
+{"Service port number":
+  {"port":"443"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default port number.
+# Examples:
+#   - _port="80"
+_port="80"
+``````
+
+### User
+
+To set the user name:
+
+``````
+Screetsec@dracnmap> set session user
+What is your cmd user: root
+Screetsec@dracnmap> show session user
+{"Username":
+  {"user":"root"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default username.
+# Examples:
+#   - _user="admin"
+_user="admin"
+``````
+
+### Password
+
+To set the password:
+
+``````
+Screetsec@dracnmap> set session pass
+What is your cmd pass: aephahDi6euk
+Screetsec@dracnmap> show session pass
+{"User password":
+  {"pass":"aephahDi6euk"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default user name password.
+# Examples:
+#   - _pass=$(pwgen 18)
+_pass=""
+``````
+
+### Interface
+
+To set the interface:
+
+``````
+Screetsec@dracnmap> set session iface
+What is your interface: wlan0
+Screetsec@dracnmap> show session iface
+{"Network interface":
+  {"iface":"wlan0"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default MAC address.
+# Examples:
+#   - _iface="eth0"
+_iface="eth0"
+``````
+
+### MAC Address
+
+To set the mac address:
+
+``````
+Screetsec@dracnmap> set session hwaddr
+What is your MAC address: 00:00:00:00:00:00
+Screetsec@dracnmap> show session hwaddr
+{"MAC address":
+  {"hwaddr":"00:00:00:00:00:00"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default network interface.
+# Examples:
+#   - _hwaddr="00:01:02:03:04:05"
+_hwaddr=""
+``````
+
+### Domain
+
+To set the domain name:
+
+``````
+Screetsec@dracnmap> set session domain
+What is your domain name: example.com
+Screetsec@dracnmap> show session domain
+{"Domain name":
+  {"domain":"example.com"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default domain name.
+# Examples:
+#   - _domain="example.com"
+_domain="example.com"
+``````
+
+### Database user
+
+To set the database user:
+
+``````
+Screetsec@dracnmap> set session dbuser
+What is your cmd user: root
+Screetsec@dracnmap> show session dbuser
+{"Database user name":
+  {"dbuser":"root"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default database user name.
+# Examples:
+#   - _userdb="admin"
+_userdb="admin"
+``````
+
+### Database password
+
+To set the database password:
+
+``````
+Screetsec@dracnmap> set session dbpass
+What is your cmd pass: aephahDi6euk
+Screetsec@dracnmap> show session dbpass
+{"User password":
+  {"pass":"aephahDi6euk"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default database user password.
+# Examples:
+#   - _passdb=$(pwgen 18)
+_passdb=""
+``````
+
+### Report
+
+To set the report file:
+
+``````
+Screetsec@dracnmap> set session report
+Type [standard,xml,grep]: standard
+Screetsec@dracnmap> show session report
+{"Report type":
+  {"report":"standard"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the default output type and path.
+# Examples:
+#   - _report="html"
+_report=""
+``````
+
+### TOR
+
+To set the tor connections:
+
+``````
+Screetsec@dracnmap> set session tor
+TOR [true,false]: true
+Screetsec@dracnmap> show session tor
+{"Pass through TOR":
+  {"tor":"true"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the TOR connection.
+# Examples:
+#   - _tor="true"
+_tor=""
+``````
+
+### Terminal
+
+To set the terminal type:
+
+``````
+Screetsec@dracnmap> set session terminal
+Terminal [internal,external]: internal
+Screetsec@dracnmap> show session terminal
+{"Terminal type":
+  {"terminal":"internal"}
+}
+``````
+
+or in the `config`:
+
+``````
+# Specifies the terminal type.
+# Examples:
+#   - _terminal="internal"
+_terminal="internal"
+``````
 
 # Requirements
 
@@ -56,6 +318,12 @@ You can visit my channel: https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxF
 # Changelog
 
 Be sure to check out the [CHANGELOG.md](CHANGELOG.md).
+
+# Testing environment
+
+- `4.13.0-kali1-amd64 #1 SMP Debian 4.13.13-1kali1 (2017-11-17) x86_64 GNU/Linux`
+- `GNU bash, version 4.4.12(1)-release`
+- `Nmap version 7.60 ( https://nmap.org )`
 
 # Donations
 
