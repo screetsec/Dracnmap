@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/badge/Dracnmap-3.0.0-brightgreen.svg?maxAge=259200)]()
 [![Version](https://img.shields.io/badge/Codename-Blackhawk-red.svg?maxAge=259200)]()
-[![Stage](https://img.shields.io/badge/Release-Testing-brightgreen.svg)]()
+[![Stage](https://img.shields.io/badge/Release-Stable-brightgreen.svg)]()
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
 
 **Dracnmap** is an open source tool which is using to exploit the network and gathering information with **Nmap** help.
@@ -11,8 +11,8 @@ Hence **Dracnmap** is designed to perform fast scaning with the utilizing script
 
 ## Version
 
-Stable release: **v2.2**  
-Testing release: **testing (v3.0.0)**
+Stable release: **v3.0.0**  
+Testing release: **testing**
 
 ## Screenshot
 
@@ -20,44 +20,10 @@ Testing release: **testing (v3.0.0)**
 
 # Getting started
 
-## Stable release
+1. ```chmod +x dracnmap```
+2. ```sudo ./dracnmap or sudo su ./dracnmap```
 
-1. ```git clone https://github.com/Screetsec/Dracnmap.git```
-2. ```cd Dracnmap```
-3. ```chmod +x dracnmap-v2.2.sh ```
-4. ```sudo ./dracnmap-v2.2.sh or sudo su ./dracnmap-v2.2.sh ```
-
-## Testing release (v3.0.0)
-
-Author of changes: **[trimstray](https://github.com/trimstray)**
-
-- removed blank spaces/tabs
-- correcting indentation (transparent code)
-- separated comparison operator
-- protection against giving an illegal value
-- fixes in user interface
-- changed in the dependency checking mechanism (before init user interface)
-- added modules and separated them into files
-- resolved of reported errors by **shellcheck**
-- added headings to the menu (id, description)
-- added simple **CLI** (the ability to run pure **Nmap**)
-- load config from file
-- added `set/show` commands
-- added **help** (and `help` command)
-- **TOR** support (with proxychains)
-- added multiple IP scan for all existing **Nmap** commands
-
-
-- minor fixes and more
-
-> For more information about changes please see in **CHANGELOG.md**.
-
-1. ```git clone https://github.com/trimstray/Dracnmap```
-2. ```cd Dracnmap```
-3. ```chmod +x dracnmap```
-4. ```sudo ./dracnmap or sudo su ./dracnmap```
-
-### Testing environment
+# Testing environment
 
 * `4.13.0-kali1-amd64 #1 SMP Debian 4.13.13-1kali1 (2017-11-17) x86_64 GNU/Linux`
 * `GNU bash, version 4.4.12(1)-release`
@@ -81,15 +47,15 @@ You can visit my channel: https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxF
 
 - Contact:
 
-  - **Edo Maland** (Screetsec) - author of the stable release (v2.2)
+  - **Edo Maland** (Screetsec) - author
 
     Hey sup? do you want ask about all my tools? You can join me in [telegram.me/offscreetsec](telegram.me/offscreetsec)
 
-  - **[trimstray](https://github.com/trimstray)** - author of the testing release (v.3.0.0)
+  - **[trimstray](https://github.com/trimstray)** - main contributor of the v3.0.0
 
 # Changelog
 
-Be sure to check out the **CHANGELOG.md**.
+Be sure to check out the [CHANGELOG.md](CHANGELOG.md).
 
 # Donations
 
@@ -120,7 +86,7 @@ Be sure to check out the **CHANGELOG.md**.
   - **Boy Suganda Sinaga** [dragz17]
 
 
-  - **v3.0.0** (testing) - **[trimstray](https://github.com/trimstray)**
+  - **v3.0.0** - **[trimstray](https://github.com/trimstray)**
 
 # Books for Nmap
 
