@@ -30,6 +30,11 @@ _iface="eth0"
 #   - _hwaddr="00:01:02:03:04:05"
 _hwaddr=""
 
+# Specifies the default domain name.
+# Examples:
+#   - _domain="example.com"
+_domain="example.com"
+
 # Specifies the default database user name.
 # Examples:
 #   - _userdb="admin"
